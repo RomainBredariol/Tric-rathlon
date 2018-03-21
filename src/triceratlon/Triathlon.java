@@ -3,16 +3,12 @@ package triceratlon;
 
 import java.util.*;
 
-public class Triathlon {
+public class Triathlon extends SuperClass{
 	
 	// listage des atribut
-	private String nom;
-	private String descriptif ;
 	private String format;
 	private String lieu;
 	private boolean championnat;
-	private Date dateDebut;
-	private Date dateFin;
 	private HashMap<Integer, Tache> listeTache;
 	private HashMap<Integer, Benevole> listeBenevole;
 	private HashMap<Integer, Document> listeDoc;
@@ -23,14 +19,10 @@ public class Triathlon {
 	//constructeur
 	public Triathlon(String nom, String descriptif, String format, String lieu, boolean championnat, Date dateDebut,
 			Date dateFin) {
-		super();
-		this.nom = nom;
-		this.descriptif = descriptif;
+		super(nom, descriptif, dateDebut, dateFin);
 		this.format = format;
 		this.lieu = lieu;
 		this.championnat = championnat;
-		this.dateDebut = dateDebut;
-		this.dateFin = dateFin;
 		this.listeTache = new HashMap <Integer, Tache>();
 		this.listeBenevole =  new HashMap <Integer , Benevole>();
 		this.listeDoc =  new HashMap <Integer, Document>();
@@ -47,41 +39,6 @@ public class Triathlon {
 	public void setListeTache(HashMap listeTache) {
 		this.listeTache = listeTache;
 	}
-
-	public Date getDateDebut() {
-		return dateDebut;
-	}
-
-	public void setDateDebut(Date dateDebut) {
-		this.dateDebut = dateDebut;
-	}
-
-	public Date getDateFin() {
-		return dateFin;
-	}
-
-	public void setDateFin(Date dateFin) {
-		this.dateFin = dateFin;
-	}
-
-
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	public String getDescriptif() {
-		return descriptif;
-	}
-
-
-	public void setDescriptif(String descriptif) {
-		this.descriptif = descriptif;
-	}
-
 
 	public String getFormat() {
 		return format;
@@ -107,6 +64,39 @@ public class Triathlon {
 	public void setChampionnat(boolean championnat) {
 		this.championnat = championnat;
 	}
+	
+	public String getNom() {
+		return super.getNom();
+	}
+	
+	public String getDescriptif() {
+		return super.getDescriptif();
+	}
+	
+	public Date getDateDebut() {
+		return super.getDateDebut();
+	}
+	
+	public Date getDateFin() {
+		return super.getDateFin();
+	}
+	
+	public void setNom(String nom) {
+		super.setNom(nom);
+	}
+	
+	public void setDescriptif(String descriptif) {
+		super.setDescriptif(descriptif);
+	}
+	
+	public void setDateDebut(Date dateDebut) {
+		super.setDateDebut(dateDebut);
+	}
+	
+	public void setDateFin(Date dateFin) {
+		super.setDateFin(dateFin);
+	}
+	
 
 	
 	// methode spécifique a un triatlon
