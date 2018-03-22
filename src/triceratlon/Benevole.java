@@ -16,7 +16,7 @@ public class Benevole {
 		this.commentaire=commentaire;
 	}
 	
-	public void affecterAUneTavhe(Tache tache) {}
+	public void affecterAUneTache(Tache tache) {System.out.println("ta mere la pute");}
 	
 	
 	
