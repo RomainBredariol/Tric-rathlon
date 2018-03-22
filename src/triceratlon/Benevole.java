@@ -3,14 +3,14 @@ package triceratlon;
 public class Benevole {
 
 	private String nom;
-	private String prénom;
+	private String prï¿½nom;
 	private String mail;
 	private String tel;
 	private String commentaire;
 	
-	public Benevole(String nom, String prénom, String mail, String tel, String commentaire) {
+	public Benevole(String nom, String prï¿½nom, String mail, String tel, String commentaire) {
 		this.setNom(nom);
-		this.setPrénom(prénom);
+		this.setPrï¿½nom(prï¿½nom);
 		this.setMail(mail);
 		this.setTel(tel);
 		this.setCommentaire(commentaire);
@@ -28,12 +28,12 @@ public class Benevole {
 		this.nom = nom;
 	}
 
-	public String getPrénom() {
-		return prénom;
+	public String getPrï¿½nom() {
+		return prï¿½nom;
 	}
 
-	public void setPrénom(String prénom) {
-		this.prénom = prénom;
+	public void setPrï¿½nom(String prï¿½nom) {
+		this.prï¿½nom = prï¿½nom;
 	}
 
 	public String getMail() {
