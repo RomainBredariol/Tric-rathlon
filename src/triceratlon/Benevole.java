@@ -16,6 +16,8 @@ public class Benevole {
 		this.commentaire=commentaire;
 	}
 	
+	public void affecterAUneTavhe(Tache tache) {}
+	
 	
 	
 }
