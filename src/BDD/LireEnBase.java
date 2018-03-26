@@ -26,8 +26,8 @@ public class LireEnBase {
 
 			rs = st.executeQuery(requete);
 			while (rs.next()) {
-				System.out.println(rs.getString("userName"));
-			}
+			System.out.println(rs.getString("userName"));
+		}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
