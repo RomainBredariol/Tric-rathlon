@@ -21,7 +21,7 @@ public class SqlRequete {
 	
 	public void Connect() {
 		/* Connexion à la base de données */
-		String url = "jdbc:mysql://localhost/test";
+		String url = "jdbc:mysql://localhost/tricerathlon";
 		String utilisateur = "root";
 		String motDePasse = "azerty";
 		Connection connexion = null;
