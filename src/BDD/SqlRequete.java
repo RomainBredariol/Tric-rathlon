@@ -19,7 +19,7 @@ public class SqlRequete {
 
 	}
 	
-	public void Connect() {
+	public void Connect(String requete) {
 		/* Connexion à la base de données */
 		String url = "jdbc:mysql://localhost/test";
 		String utilisateur = "root";
@@ -34,27 +34,26 @@ public class SqlRequete {
 			connexion = DriverManager.getConnection(url, utilisateur, motDePasse);
 			System.out.println("Connexion Effective !");
 			st = connexion.createStatement();
-			System.out.println("Veuillez entrer votre requete :");
-			String rq = this.requete();
 			
+			String rq= requete;
 			//Requete de lecture
 			if (rq.startsWith("select") || rq.startsWith("Select") || rq.startsWith("SELECT")) {
 				rs = st.executeQuery(rq);
 				// On récupère les MetaData
 				ResultSetMetaData resultMeta = rs.getMetaData();
 
-				System.out.println("\n**********************************");
+				System.out.println("\n****************************************************************************");
 				// On affiche le nom des colonnes
 				for (int i = 1; i <= resultMeta.getColumnCount(); i++)
 					System.out.print("\t" + resultMeta.getColumnName(i).toUpperCase() + "\t *");
 
-				System.out.println("\n**********************************");
+				System.out.println("\n****************************************************************************");
 
 				while (rs.next()) {
 					for (int i = 1; i <= resultMeta.getColumnCount(); i++)
 						System.out.print("\t" + rs.getObject(i).toString() + "\t |");
 
-					System.out.println("\n---------------------------------");
+					System.out.println("\n------------------------------------------------------------------------");
 				}
 			} else { // Requete d'ecriture
 				st.executeUpdate(rq);
