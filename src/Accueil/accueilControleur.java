@@ -1,4 +1,4 @@
-package Pages;
+package Accueil;
 
 import BDD.SqlRequete;
 import javafx.beans.value.ChangeListener;
@@ -79,9 +79,9 @@ public class accueilControleur implements ChangeListener{
 	private void clicBoutonEnregistrer() {
 		//if(this.champRemplis()==true) {
 			SqlRequete sql = new SqlRequete();
-			sql.Connect("Insert into name(nom, prenom, tel, mail, comm) values('"+this.Nom+"', '"+this.Prenom+"', '"+this.Tel
-					+"', '"+this.Mail+"', '');");
-			sql.Connect("select * from name;");
+			sql.Connect("Insert into benevoles(nom, prenom, mail, telephone, commentaires) values('"+this.Nom+"', '"+this.Prenom+"', '"+this.Mail
+					+"', '"+this.Tel+"', '');");
+			sql.Connect("select * from benevoles;");
 //		}else {
 //			System.out.println("tout les champs ne sont pas remplis");
 //		}

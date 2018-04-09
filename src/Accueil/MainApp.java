@@ -1,4 +1,4 @@
-package Pages;
+package Accueil;
 
 import java.io.IOException;
 

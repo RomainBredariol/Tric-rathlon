@@ -10,18 +10,9 @@ import java.util.Scanner;
 
 public class SqlRequete {
 	
-	
-
-	public String requete() {
-		Scanner sc = new Scanner(System.in);
-		String requete = sc.nextLine();
-		return requete;
-
-	}
-	
 	public void Connect(String requete) {
 		/* Connexion à la base de données */
-		String url = "jdbc:mysql://localhost/test";
+		String url = "jdbc:mysql://localhost/tricerathlon";
 		String utilisateur = "root";
 		String motDePasse = "azerty";
 		Connection connexion = null;
