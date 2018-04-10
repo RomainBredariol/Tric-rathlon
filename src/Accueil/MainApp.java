@@ -2,6 +2,8 @@ package Accueil;
 
 import java.io.IOException;
 
+import AccueilGeneral.ControleurAccueilGeneral;
+import Profil.ControleurProfil;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,12 +25,12 @@ public class MainApp extends Application {
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Test JavaFX");
 
-		showPersonOverview();
+		showAccueilGeneral();
 		
 	}
 
 
-	public void showPersonOverview() {
+	public void showAccueil() {
 		try {
 			// Load person overview.
 			FXMLLoader loader = new FXMLLoader();
@@ -37,6 +39,28 @@ public class MainApp extends Application {
 			accueilControleur controleur = loader.getController();
 			controleur.setMainApp(this);
 			controleur.setModele();
+			
+			Scene scene = new Scene(personOverview);
+			primaryStage.setScene(scene);
+			primaryStage.show();
+			
+
+			// Set person overview into the center of root layout.
+			//rootLayout.setCenter(personOverview);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void showAccueilGeneral() {
+		try {
+			// Load person overview.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/AccueilGeneral/Accueil_général.fxml"));
+			AnchorPane personOverview = (AnchorPane) loader.load();
+			ControleurAccueilGeneral controleur = loader.getController();
+			controleur.setMainApp(this);
+
 			
 			Scene scene = new Scene(personOverview);
 			primaryStage.setScene(scene);
@@ -61,5 +85,29 @@ public class MainApp extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
+	}
+
+
+	public void showProfil() {
+		try {
+			// Load person overview.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/Accueil/Profil.fxml"));
+			AnchorPane personOverview = (AnchorPane) loader.load();
+			ControleurProfil controleur = loader.getController();
+			controleur.setMainApp(this);
+
+			
+			Scene scene = new Scene(personOverview);
+			primaryStage.setScene(scene);
+			primaryStage.show();
+			
+
+			// Set person overview into the center of root layout.
+			//rootLayout.setCenter(personOverview);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 }

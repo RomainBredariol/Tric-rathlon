@@ -44,6 +44,8 @@ public class accueilControleur implements ChangeListener{
 	@FXML
 	private Button boutonEnregistrer;
 	
+	
+	
 	private MainApp mainApp;
 	private String Nom ;
 	private String Prenom;
@@ -67,25 +69,18 @@ public class accueilControleur implements ChangeListener{
 	
 	
 	@FXML
-	private boolean champRemplis() {
-		if (this.Nom.length()!=0 && this.Prenom.length() != 0 && this.Tel.length() != 0 && this.Mail.length() != 0){
-			return true;
-		}else {
-			return false;
-		}
-	}
-	
-	@FXML
 	private void clicBoutonEnregistrer() {
-		//if(this.champRemplis()==true) {
+		
 			SqlRequete sql = new SqlRequete();
 			sql.Connect("Insert into benevoles(nom, prenom, mail, telephone, commentaires) values('"+this.Nom+"', '"+this.Prenom+"', '"+this.Mail
 					+"', '"+this.Tel+"', '');");
 			sql.Connect("select * from benevoles;");
-//		}else {
-//			System.out.println("tout les champs ne sont pas remplis");
-//		}
+			this.mainApp.showAccueilGeneral();
+
 	}
+	
+	
+	
 
 
 	@Override
