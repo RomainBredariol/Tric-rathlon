@@ -25,8 +25,7 @@ public class MainApp extends Application {
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Test JavaFX");
 
-		showAccueilGeneral();
-		
+		showProfil();		
 	}
 
 
@@ -92,7 +91,7 @@ public class MainApp extends Application {
 		try {
 			// Load person overview.
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("/Accueil/Profil.fxml"));
+			loader.setLocation(MainApp.class.getResource("/Profil/Profil.fxml"));
 			AnchorPane personOverview = (AnchorPane) loader.load();
 			ControleurProfil controleur = loader.getController();
 			controleur.setMainApp(this);

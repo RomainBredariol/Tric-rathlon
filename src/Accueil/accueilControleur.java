@@ -75,6 +75,7 @@ public class accueilControleur implements ChangeListener{
 			sql.Connect("Insert into benevoles(nom, prenom, mail, telephone, commentaires) values('"+this.Nom+"', '"+this.Prenom+"', '"+this.Mail
 					+"', '"+this.Tel+"', '');");
 			sql.Connect("select * from benevoles;");
+			sql.CloseConnexion();
 			this.mainApp.showAccueilGeneral();
 
 	}
