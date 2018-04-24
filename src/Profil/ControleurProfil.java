@@ -63,6 +63,7 @@ public class ControleurProfil implements ChangeListener {
 	private String Mail;
 	private modeleAccueil modele;
 	
+	//Action bouton modif
 	@FXML
 	private void clicBoutonModifier() {
 			this.setNomTextField();
@@ -74,16 +75,18 @@ public class ControleurProfil implements ChangeListener {
 					+"', telephone ='"+this.Tel+"', mail='"+this.Mail+"' where id_benevoles=1;");
 			
 			sql.Connect("select * from benevoles;");
+			sql.CloseConnexion();
 			this.mainApp.showProfil();
 
 	}
 	
+	//Clic bouton retour
 	@FXML
 	private void clicBoutonRetour() {
 		this.mainApp.showAccueilGeneral();
 	}
 	
-	
+	//la méthode initialize permet de charger ce qu'on lui des qu'on fait appel à cette classe (c'est une sorte de deuxieme constructeur)
 	@FXML
 	private void initialize() {
 		
@@ -96,7 +99,7 @@ public class ControleurProfil implements ChangeListener {
 	}
 	
 	
-
+	//tjr pareil ne pas faire attention
 	@Override
 	public void changed(ObservableValue arg0, Object arg1, Object arg2) {
 		// TODO Auto-generated method stub

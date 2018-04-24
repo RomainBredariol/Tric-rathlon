@@ -15,42 +15,52 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+
+//La MainApp va nous permettre de lancer chaque pages fxml. Tout se lancera à partir d'ici!
 public class MainApp extends Application {
 
 	private Stage primaryStage;
-	private BorderPane rootLayout;
+	
+	//en javafx il y a plusieurs sorte de fenetres, ici on utilise le stage et la scene (sachant que la scene est à l'intérieur du stage cf.image google)
 
 	@Override
 	public void start(Stage primaryStage) {
+		
+		//on charge le stage
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Test JavaFX");
-
-		showProfil();		
+		
+		//appel à la méthode qui charge la scene AccueilGeneral dans le stage
+		showAccueilGeneral();
 	}
 
-
+	//charge la page accueil
 	public void showAccueil() {
 		try {
-			// Load person overview.
+			//le loader va permettre de charger la page
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("Accueil_1ereConnexion.fxml"));
 			AnchorPane personOverview = (AnchorPane) loader.load();
+			
+			//charge le controleur
 			accueilControleur controleur = loader.getController();
+			//charge MainApp
 			controleur.setMainApp(this);
+			//Charge modele
 			controleur.setModele();
 			
+			//declare la scene 
 			Scene scene = new Scene(personOverview);
+			//charge scene dans stage
 			primaryStage.setScene(scene);
 			primaryStage.show();
-			
 
-			// Set person overview into the center of root layout.
-			//rootLayout.setCenter(personOverview);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
+	//charge page AccueilGeneral
 	public void showAccueilGeneral() {
 		try {
 			// Load person overview.
@@ -60,32 +70,14 @@ public class MainApp extends Application {
 			ControleurAccueilGeneral controleur = loader.getController();
 			controleur.setMainApp(this);
 
-			
 			Scene scene = new Scene(personOverview);
 			primaryStage.setScene(scene);
 			primaryStage.show();
-			
 
-			// Set person overview into the center of root layout.
-			//rootLayout.setCenter(personOverview);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-
-	/**
-	 * Returns the main stage.
-	 * 
-	 * @return
-	 */
-	public Stage getPrimaryStage() {
-		return primaryStage;
-	}
-
-	public static void main(String[] args) {
-		launch(args);
-	}
-
 
 	public void showProfil() {
 		try {
@@ -96,17 +88,23 @@ public class MainApp extends Application {
 			ControleurProfil controleur = loader.getController();
 			controleur.setMainApp(this);
 
-			
 			Scene scene = new Scene(personOverview);
 			primaryStage.setScene(scene);
 			primaryStage.show();
-			
 
-			// Set person overview into the center of root layout.
-			//rootLayout.setCenter(personOverview);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
+
+	public Stage getPrimaryStage() {
+		return primaryStage;
+	}
+
+	//Lance la MainApp
+	public static void main(String[] args) {
+		launch(args);
+	}
+
 }

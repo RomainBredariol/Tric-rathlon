@@ -12,6 +12,7 @@ public class accueilControleur implements ChangeListener{
 	@FXML
 	private TextField nom;
 	
+	//ces methodes set*** vont permettre de prendre en compte les changements effectués dans une zone de texte 
 	@FXML
 	private void setNomTextField() {
 		this.Nom = nom.getText();
@@ -62,12 +63,12 @@ public class accueilControleur implements ChangeListener{
 	private void initialize() {
 	}
 	
-	
+	//charge la mainApp
 	public void setMainApp(MainApp main) {
 		this.mainApp=main;	
 	}
 	
-	
+	//action lors du clic sur le bouton enregistrer
 	@FXML
 	private void clicBoutonEnregistrer() {
 		
@@ -83,7 +84,7 @@ public class accueilControleur implements ChangeListener{
 	
 	
 
-
+	//ne pas faire attention a celle ci
 	@Override
 	public void changed(ObservableValue arg0, Object arg1, Object arg2) {
 		// TODO Auto-generated method stub

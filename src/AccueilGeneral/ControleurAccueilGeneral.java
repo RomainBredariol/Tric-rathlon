@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 
 public class ControleurAccueilGeneral implements ChangeListener {
 
+	//Ne pas faire attention (c'est pour éviter une erreur qu'il cette methode non implémenter)
 	@Override
 	public void changed(ObservableValue observable, Object oldValue, Object newValue) {
 		// TODO Auto-generated method stub
@@ -42,7 +43,7 @@ public class ControleurAccueilGeneral implements ChangeListener {
 		this.mainApp=main;	
 	}
 	
-	
+	//action du clic bouton profil qui va charger dans la mainapp la page profil
 	@FXML
 	private void clicBoutonProfil() {
 		this.mainApp.showProfil();
