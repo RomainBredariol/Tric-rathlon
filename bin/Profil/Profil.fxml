@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="561.0" prefWidth="828.0" style="-fx-background-color: #B7D5B6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Profil.ControleurProfil">
+   <children>
+      <MenuBar layoutY="-2.0" prefHeight="29.0" prefWidth="828.0" style="-fx-background-color: #587C73;">
+        <menus>
+          <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="boutonModifier" mnemonicParsing="false" onAction="#clicBoutonModifier" prefHeight="31.0" prefWidth="91.0" text="Modifier" translateX="700.0" />
+               </graphic>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <ImageView fitHeight="163.0" fitWidth="163.0" layoutX="210.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: #9CC69B;">
+         <image>
+            <Image url="@../../../../Doc%20DL/user.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="nom" layoutX="420.0" layoutY="166.0" onAction="#setNomTextField" text="Nom" />
+      <TextField fx:id="prenom" layoutX="420.0" layoutY="205.0" onAction="#setPrenomTextField" text="Prénom" />
+      <TextField fx:id="tel" layoutX="420.0" layoutY="248.0" onAction="#setTelTextField" text="Téléphone" />
+      <TextField fx:id="mail" layoutX="420.0" layoutY="288.0" onAction="#setMailTextField" text="E-mail" />
+      <Button fx:id="boutonRetour" layoutX="749.0" layoutY="516.0" mnemonicParsing="false" onAction="#clicBoutonRetour" text="Retour" />
+   </children>
+</AnchorPane>

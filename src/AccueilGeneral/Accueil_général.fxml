@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
@@ -36,5 +37,10 @@
       <Button fx:id="boutonProfil" layoutX="163.0" layoutY="348.0" mnemonicParsing="false" onAction="#clicBoutonProfil" prefHeight="31.0" prefWidth="100.0" text="Profil" />
       <Button fx:id="boutonNouveau" layoutX="364.0" layoutY="348.0" mnemonicParsing="false" onAction="#clicBoutonNouveau" prefHeight="31.0" prefWidth="100.0" text="Nouveau" />
       <Button fx:id="boutonReprendre" layoutX="567.0" layoutY="348.0" mnemonicParsing="false" onAction="#clicBoutonReprendre" prefHeight="31.0" prefWidth="100.0" text="Reprendre" />
+      <Button fx:id="boutonReset" layoutX="727.0" layoutY="49.0" mnemonicParsing="false" onAction="#clicBoutonReset" prefHeight="31.0" prefWidth="87.0" style="-fx-background-color: F34621;" text="Reset">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
