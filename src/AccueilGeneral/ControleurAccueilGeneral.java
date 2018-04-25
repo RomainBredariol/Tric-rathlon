@@ -29,6 +29,9 @@ public class ControleurAccueilGeneral implements ChangeListener {
 	@FXML
 	private Button boutonReprendre;
 	
+	@FXML
+	private Button boutonReset;
+	
 	
 	
 	private MainApp mainApp;
@@ -47,6 +50,12 @@ public class ControleurAccueilGeneral implements ChangeListener {
 	@FXML
 	private void clicBoutonProfil() {
 		this.mainApp.showProfil();
+	}
+	
+	//Action bouton Reset: supprime toutes les données de la bdd et charge l'accueil de 1ere connexion
+	@FXML
+	private void clicBoutonReset() {
+		this.mainApp.showConfirmationReset();
 	}
 	
 	@FXML
