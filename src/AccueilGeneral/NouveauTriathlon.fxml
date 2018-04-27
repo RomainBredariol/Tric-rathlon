@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="561.0" prefWidth="828.0" style="-fx-background-color: #B7D5B6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AccueilGeneral.ControleurNouveauTriathlon">
+   <children>
+      <MenuBar layoutY="-2.0" prefHeight="29.0" prefWidth="828.0" style="-fx-background-color: #587C73;">
+         <menus>
+            <Menu mnemonicParsing="false" style="-fx-font-size: 16;" text=" Nouveau projet" />
+         </menus>
+      </MenuBar>
+      <TitledPane animated="false" collapsible="false" layoutX="221.0" layoutY="188.0" prefHeight="200.0" prefWidth="202.0" text="Sélectionner type :">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <RadioButton layoutX="24.0" layoutY="6.0" mnemonicParsing="false" text="XS (découverte)" fx:id="xs" />
+                  <RadioButton fx:id="s" layoutX="24.0" layoutY="25.0" mnemonicParsing="false" text="S (sprint)" />
+                  <RadioButton fx:id="m" layoutX="24.0" layoutY="43.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="141.0" text="M" />
+                  <RadioButton fx:id="l" layoutX="24.0" layoutY="64.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="141.0" text="L" />
+                  <RadioButton fx:id="half" layoutX="24.0" layoutY="85.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="141.0" text="Half" />
+                  <RadioButton layoutX="24.0" layoutY="106.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="141.0" text="XL" fx:id="xl" />
+                  <RadioButton layoutX="24.0" layoutY="127.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="141.0" text="XXL (IronMan)" fx:id="xxl" />
+               </children>
+            </AnchorPane>
+         </content>
+      </TitledPane>
+      <TitledPane animated="false" collapsible="false" layoutX="22.0" layoutY="188.0" prefHeight="200.0" prefWidth="202.0" text="Sélectionner genre :">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <RadioButton fx:id="amical" layoutX="24.0" layoutY="35.0" mnemonicParsing="false" text="Amical" />
+                  <RadioButton fx:id="competition" layoutX="24.0" layoutY="64.0" mnemonicParsing="false" text="Compétition" />
+                  <RadioButton fx:id="championnat" layoutX="24.0" layoutY="93.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="141.0" text="Championnat national" />
+               </children>
+            </AnchorPane>
+         </content>
+      </TitledPane>
+      <TitledPane animated="false" collapsible="false" layoutX="414.0" layoutY="188.0" prefHeight="200.0" prefWidth="395.0" text="Sélectionner tâches :">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="588.0" prefWidth="393.0">
+               <children>
+                  <ScrollPane layoutX="-2.0" layoutY="-1.0" prefHeight="170.0" prefWidth="199.0">
+                     <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="369.0" prefWidth="185.0">
+                           <children>
+                              <CheckBox fx:id="choix" layoutX="11.0" layoutY="6.0" mnemonicParsing="false" text="Choix (date, lieu,...)" />
+                              <CheckBox fx:id="validations" layoutX="11.0" layoutY="28.0" mnemonicParsing="false" text="Validations" />
+                              <CheckBox fx:id="autorisations" layoutX="11.0" layoutY="50.0" mnemonicParsing="false" text="Autorisations" />
+                              <CheckBox fx:id="premiersContacts" layoutX="11.0" layoutY="71.0" mnemonicParsing="false" text="Premiers contacts" />
+                              <CheckBox fx:id="commandesFermes" layoutX="11.0" layoutY="92.0" mnemonicParsing="false" text="Commandes fermes" />
+                              <CheckBox fx:id="infrastructure" layoutX="11.0" layoutY="112.0" mnemonicParsing="false" text="Infrastructure" />
+                              <CheckBox fx:id="rH" layoutX="11.0" layoutY="133.0" mnemonicParsing="false" text="Ressources humaines" />
+                              <CheckBox fx:id="affectations" layoutX="11.0" layoutY="154.0" mnemonicParsing="false" text="Affectations" />
+                              <CheckBox fx:id="verifications" layoutX="11.0" layoutY="176.0" mnemonicParsing="false" text="Verifications" />
+                              <CheckBox fx:id="pub" layoutX="11.0" layoutY="197.0" mnemonicParsing="false" text="Publicité" />
+                              <CheckBox fx:id="verificationAchatMarchandises" layoutX="11.0" layoutY="218.0" mnemonicParsing="false" text="Vérifications/Achat matériel" />
+                              <CheckBox fx:id="majSite" layoutX="11.0" layoutY="240.0" mnemonicParsing="false" text="Mise à jour du site" />
+                              <CheckBox fx:id="ravitaillment" layoutX="11.0" layoutY="261.0" mnemonicParsing="false" text="Ravitaillement" />
+                              <CheckBox fx:id="relances" layoutX="11.0" layoutY="282.0" mnemonicParsing="false" text="Relances" />
+                              <CheckBox fx:id="installationZone" layoutX="11.0" layoutY="303.0" mnemonicParsing="false" text="Installation de la zone" />
+                              <CheckBox fx:id="gestionVeilleEpreuve" layoutX="11.0" layoutY="326.0" mnemonicParsing="false" text="Gestion vieille de l'évènement" />
+                              <CheckBox fx:id="Accueil" layoutX="11.0" layoutY="347.0" mnemonicParsing="false" text="Acceuil" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
+         </content>
+      </TitledPane>
+      <TitledPane animated="false" collapsible="false" layoutX="625.0" layoutY="188.0" prefHeight="200.0" prefWidth="202.0" text="Renseignements :">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="6.0" layoutY="6.0" prefHeight="17.0" prefWidth="118.0" text="Nom du projet :">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="nom" layoutX="6.0" layoutY="23.0" />
+                  <Label layoutX="6.0" layoutY="112.0" prefHeight="17.0" prefWidth="118.0" text="Ville :">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="ville" layoutX="6.0" layoutY="129.0" />
+                  <Label layoutX="6.0" layoutY="49.0" prefHeight="17.0" prefWidth="118.0" text="Date :">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="19.0" layoutY="66.0" prefHeight="17.0" prefWidth="45.0" text="Début :">
+                     <font>
+                        <Font name="System Italic" size="10.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="19.0" layoutY="97.0" prefHeight="17.0" prefWidth="45.0" text="Fin :">
+                     <font>
+                        <Font name="System Italic" size="10.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="dateDebut" layoutX="65.0" layoutY="65.0" prefHeight="16.0" prefWidth="97.0" />
+                  <DatePicker fx:id="dateFin" layoutX="65.0" layoutY="97.0" prefHeight="21.0" prefWidth="98.0" />
+               </children>
+            </AnchorPane>
+         </content>
+      </TitledPane>
+      <Button fx:id="valider" layoutX="744.0" layoutY="516.0" mnemonicParsing="false" onAction="#clicBoutonValider" text="Valider" />
+   </children>
+</AnchorPane>

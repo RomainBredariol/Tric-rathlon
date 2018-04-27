@@ -60,7 +60,7 @@ public class ControleurAccueilGeneral implements ChangeListener {
 	
 	@FXML
 	private void clicBoutonNouveau() {
-		
+		this.mainApp.showNouveauTriathlon();
 	}
 	
 	@FXML

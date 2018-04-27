@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import AccueilGeneral.ControleurAccueilGeneral;
 import AccueilGeneral.ControleurConfirmationReset;
+import AccueilGeneral.ControleurNouveauTriathlon;
 import Profil.ControleurProfil;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -138,6 +139,23 @@ public class MainApp extends Application {
 
 	}
 
+	public void showNouveauTriathlon() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/AccueilGeneral/NouveauTriathlon.fxml"));
+			AnchorPane personOverview = (AnchorPane) loader.load();
+			ControleurNouveauTriathlon controleur = loader.getController();
+			controleur.setMainApp(this);
+
+			Scene scene = new Scene(personOverview);
+			primaryStage.setScene(scene);
+			primaryStage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}
