@@ -26,7 +26,7 @@ public class MainApp extends Application {
 	private Stage primaryStage;
 
 	// en javafx il y a plusieurs sorte de fenetres, ici on utilise le stage et la
-	// scene (sachant que la scene est ï¿½ l'intï¿½rieur du stage cf.image google)
+	// scene (sachant que la scene est a l'interieur du stage cf.image google)
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -35,7 +35,7 @@ public class MainApp extends Application {
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Test JavaFX");
 
-		// appel ï¿½ la mï¿½thode qui charge la scene AccueilGeneral dans le stage
+		// appel de la methode qui charge la scene AccueilGeneral dans le stage
 		showAccueilGeneral();
 	}
 
@@ -70,7 +70,7 @@ public class MainApp extends Application {
 		try {
 			// Load person overview.
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("/AccueilGeneral/Accueil_gï¿½nï¿½ral.fxml"));
+			loader.setLocation(MainApp.class.getResource("/AccueilGeneral/Accueil_général.fxml"));
 			AnchorPane personOverview = (AnchorPane) loader.load();
 			ControleurAccueilGeneral controleur = loader.getController();
 			controleur.setMainApp(this);
@@ -132,6 +132,26 @@ public class MainApp extends Application {
 		}
 
 	}
+	
+	public void showAgendaAjout() {
+		try {
+			// Load person overview.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/Agenda/agendaAjout.fxml"));
+			AnchorPane personOverview = (AnchorPane) loader.load();
+			ControleurAgendaAjout controleur = loader.getController();
+			controleur.setMainApp(this);
+
+			Scene scene = new Scene(personOverview);
+			primaryStage.setScene(scene);
+			primaryStage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
 
 	public void showNouveauTriathlon() {
 		try {

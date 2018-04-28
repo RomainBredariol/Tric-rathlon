@@ -1,5 +1,6 @@
 package Agenda;
 
+import Accueil.MainApp;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -41,6 +42,16 @@ public class ControleurAgendaAjout implements ChangeListener{
 	
 	@FXML
 	private DatePicker date;
+
+	private MainApp main;
+	
+	public void setMainApp(MainApp mainApp) {
+		this.main=mainApp;
+	}
+	
+	@FXML
+	private void initialize() {
+	}
 	
 	
 	public ControleurAgendaAjout() {

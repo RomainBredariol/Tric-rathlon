@@ -35,9 +35,20 @@ public class ControleurConfirmationReset implements Initializable{
 	@FXML
 	private void clicBoutonReset() {
 		SqlRequete req= new SqlRequete();
-//		req.Connect("delete from benevoles; alter table benevoles AUTO_INCREMENT=1; delete from affecter; delete from affiler;"
-//				+ "delete from détailler; delete from fichier; delete from groupe;"
-//				+ "delete from posseder; delete from tache; delete from triathlon;");
+		req.Connect("delete from benevoles;");
+		req.Connect("alter table benevoles AUTO_INCREMENT=1;");
+		req.Connect("delete from affecter;");
+		req.Connect("delete from affilier;");
+		req.Connect("delete from détailler;");
+		req.Connect("delete from fichier;");
+		req.Connect("alter table fichier AUTO_INCREMENT=1;");
+		req.Connect("delete from groupe;");
+		req.Connect("alter table groupe AUTO_INCREMENT=1;");
+		req.Connect("delete from posseder;");
+		req.Connect("delete from tache;");
+		req.Connect("alter table tache AUTO_INCREMENT=1;");
+		req.Connect("delete from triathlon;");
+		req.Connect("alter table triathlon AUTO_INCREMENT=1;");
 		req.CloseConnexion();
 		this.fenetre.close();
 		this.main.showAccueil();

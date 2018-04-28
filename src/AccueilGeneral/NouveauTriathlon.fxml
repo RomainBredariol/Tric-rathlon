@@ -103,18 +103,12 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="19.0" layoutY="66.0" prefHeight="17.0" prefWidth="45.0" text="Début :">
+                  <Label layoutX="14.0" layoutY="76.0" prefHeight="17.0" prefWidth="45.0" text="Début :">
                      <font>
                         <Font name="System Italic" size="10.0" />
                      </font>
                   </Label>
-                  <Label layoutX="19.0" layoutY="97.0" prefHeight="17.0" prefWidth="45.0" text="Fin :">
-                     <font>
-                        <Font name="System Italic" size="10.0" />
-                     </font>
-                  </Label>
-                  <DatePicker fx:id="dateDebut" layoutX="65.0" layoutY="65.0" prefHeight="16.0" prefWidth="97.0" />
-                  <DatePicker fx:id="dateFin" layoutX="65.0" layoutY="97.0" prefHeight="21.0" prefWidth="98.0" />
+                  <DatePicker fx:id="dateDebut" layoutX="64.0" layoutY="69.0" prefHeight="16.0" prefWidth="97.0" />
                </children>
             </AnchorPane>
          </content>
