@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import AccueilGeneral.ControleurAccueilGeneral;
 import AccueilGeneral.ControleurConfirmationReset;
+import Agenda.ControleurAgendaAjout;
 import AccueilGeneral.ControleurNouveauTriathlon;
 import Profil.ControleurProfil;
 import javafx.application.Application;
@@ -19,50 +20,43 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-
-//La MainApp va nous permettre de lancer chaque pages fxml. Tout se lancera à partir d'ici!
+//La MainApp va nous permettre de lancer chaque pages fxml. Tout se lancera ï¿½ partir d'ici!
 public class MainApp extends Application {
 
 	private Stage primaryStage;
-	
-	
-	
-	//en javafx il y a plusieurs sorte de fenetres, ici on utilise le stage et la scene (sachant que la scene est à l'intérieur du stage cf.image google)
+
+	// en javafx il y a plusieurs sorte de fenetres, ici on utilise le stage et la
+	// scene (sachant que la scene est ï¿½ l'intï¿½rieur du stage cf.image google)
 
 	@Override
 	public void start(Stage primaryStage) {
-		
-		
-		//on charge le stage
+
+		// on charge le stage
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Test JavaFX");
-		
-		
-		//appel à la méthode qui charge la scene AccueilGeneral dans le stage
+
+		// appel ï¿½ la mï¿½thode qui charge la scene AccueilGeneral dans le stage
 		showAccueilGeneral();
 	}
-	
-	
-	
 
-	//charge la page accueil
+	// charge la page accueil
 	public void showAccueil() {
 		try {
-			//le loader va permettre de charger la page
+			// le loader va permettre de charger la page
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("Accueil_1ereConnexion.fxml"));
 			AnchorPane personOverview = (AnchorPane) loader.load();
-			
-			//charge le controleur
+
+			// charge le controleur
 			accueilControleur controleur = loader.getController();
-			//charge MainApp
+			// charge MainApp
 			controleur.setMainApp(this);
-			//Charge modele
+			// Charge modele
 			controleur.setModele();
-			
-			//declare la scene 
+
+			// declare la scene
 			Scene scene = new Scene(personOverview);
-			//charge scene dans stage
+			// charge scene dans stage
 			primaryStage.setScene(scene);
 			primaryStage.show();
 
@@ -70,13 +64,13 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		}
 	}
-	
-	//charge page AccueilGeneral
+
+	// charge page AccueilGeneral
 	public void showAccueilGeneral() {
 		try {
 			// Load person overview.
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("/AccueilGeneral/Accueil_général.fxml"));
+			loader.setLocation(MainApp.class.getResource("/AccueilGeneral/Accueil_gï¿½nï¿½ral.fxml"));
 			AnchorPane personOverview = (AnchorPane) loader.load();
 			ControleurAccueilGeneral controleur = loader.getController();
 			controleur.setMainApp(this);
@@ -89,29 +83,29 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void showConfirmationReset() {
 		try {
-			//le loader va permettre de charger la page
+			// le loader va permettre de charger la page
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("/AccueilGeneral/ConfirmationReset.fxml"));
-			
-			//ici on declare un nouveau stage pour avoir une fenetre "pop up"
+
+			// ici on declare un nouveau stage pour avoir une fenetre "pop up"
 			Stage fenetreConfirmation = new Stage();
 			fenetreConfirmation.setTitle("Confirmation");
-			
+
 			fenetreConfirmation.initOwner(primaryStage);
 			AnchorPane personOverview = (AnchorPane) loader.load();
-			
-			//charge le controleur
+
+			// charge le controleur
 			ControleurConfirmationReset controleur = loader.getController();
-			//charge MainApp
+			// charge MainApp
 			controleur.setfenetre(fenetreConfirmation);
 			controleur.setMainApp(this);
-			
-			//declare la scene 
+
+			// declare la scene
 			Scene scene = new Scene(personOverview);
-			//charge scene dans stage
+			// charge scene dans stage
 			fenetreConfirmation.setScene(scene);
 			fenetreConfirmation.show();
 
@@ -160,7 +154,7 @@ public class MainApp extends Application {
 		return primaryStage;
 	}
 
-	//Lance la MainApp
+	// Lance la MainApp
 	public static void main(String[] args) {
 		launch(args);
 	}

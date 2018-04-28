@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
@@ -22,12 +28,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="580.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="636.0" prefWidth="825.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Agenda.ControleurAgendaAjout">
    <children>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="581.0" prefWidth="740.0" AnchorPane.bottomAnchor="-149.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-106.0" AnchorPane.topAnchor="0.0">
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="432.0" prefWidth="634.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#28ad60" height="43.0" stroke="BLACK" strokeType="INSIDE" width="740.0" />
-            <SplitPane dividerPositions="0.2" layoutX="1.0" layoutY="40.0" prefHeight="542.0" prefWidth="740.0">
+            <SplitPane dividerPositions="0.2" layoutX="1.0" layoutY="25.0" prefHeight="613.0" prefWidth="825.0">
                <items>
                   <AnchorPane prefHeight="394.0" prefWidth="117.0">
                      <children>
@@ -83,20 +88,20 @@
                   </AnchorPane>
                   <SplitPane dividerPositions="0.72" prefHeight="366.0" prefWidth="434.0">
                     <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="608.0" prefWidth="437.0">
                            <children>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="408.0" prefWidth="377.0">
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="408.0" prefWidth="437.0">
                                  <children>
-                                    <Pane layoutX="1.0" layoutY="-1.0" prefHeight="557.0" prefWidth="420.0" AnchorPane.bottomAnchor="-148.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-44.0" AnchorPane.topAnchor="-1.0">
+                                    <Pane layoutX="1.0" layoutY="-1.0" prefHeight="406.0" prefWidth="437.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="-1.0">
                                        <children>
-                                          <ToolBar prefHeight="35.0" prefWidth="420.0">
+                                          <ToolBar layoutY="2.0" prefHeight="43.0" prefWidth="437.0">
                                              <items>
                                                 <Button mnemonicParsing="false" prefHeight="0.0" prefWidth="28.0" text="L" />
                                                 <Button mnemonicParsing="false" text="R" textAlignment="CENTER" translateX="350.0" />
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Décembre" textAlignment="CENTER" wrappingWidth="284.345703125" />
                                              </items>
                                           </ToolBar>
-                                          <GridPane layoutX="25.0" layoutY="35.0" prefHeight="446.0" prefWidth="370.0">
+                                          <GridPane layoutY="35.0" prefHeight="373.0" prefWidth="427.0">
                                              <columnConstraints>
                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -358,33 +363,36 @@
                   </SplitPane>
                </items>
             </SplitPane>
-            <Pane layoutX="2.0" prefHeight="43.0" prefWidth="740.0">
-               <children>
-                  <Text fill="#ecf0f1" layoutX="14.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Text>
-                  <Text fill="#ecf0f1" layoutX="576.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nouvelle Tâche" wrappingWidth="103.19921875">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Text>
-                  <Button layoutX="9.0" layoutY="8.0" mnemonicParsing="false" opacity="0.0" text="MenuButton" />
-               </children>
-            </Pane>
-            <ButtonBar buttonMinWidth="50.0" layoutX="152.0" layoutY="2.0" prefHeight="35.0" prefWidth="420.0">
-              <buttons>
-                <Button mnemonicParsing="false" text="+" />
-                  <Button mnemonicParsing="false" text="edit" />
-                  <Button mnemonicParsing="false" text="back" />
-                  <Button mnemonicParsing="false" text="next" />
-                  <Button mnemonicParsing="false" text="suppr" />
-              </buttons>
-               <padding>
-                  <Insets right="65.0" />
-               </padding>
-            </ButtonBar>
+            <MenuBar layoutX="1.0" layoutY="2.0" prefHeight="32.0" prefWidth="825.0" style="-fx-background-color: #6FC589;">
+               <menus>
+                  <Menu mnemonicParsing="false" text="Menu" />
+                  <Menu mnemonicParsing="false" text="Ajouter">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Modifier">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Back">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Forward">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Supprimer">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                     </items>
+                  </Menu>
+               </menus>
+            </MenuBar>
          </children>
       </Pane>
    </children>
