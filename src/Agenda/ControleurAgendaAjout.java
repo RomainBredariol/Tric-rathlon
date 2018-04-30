@@ -6,6 +6,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
@@ -33,13 +34,11 @@ public class ControleurAgendaAjout implements ChangeListener{
 	private ColorPicker couleur;
 	
 	@FXML
-	private TextField horaires; //On peut implementer une classe TimePicker via jfxtras, 
-								//mais c'est assez chiant, donc on va partir pour l'instant sur du TextField
+	private ChoiceBox horaires; 
 	
 	@FXML
 	private CheckBox contact;
 
-	
 	@FXML
 	private DatePicker date;
 
