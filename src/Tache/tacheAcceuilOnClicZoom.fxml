@@ -7,6 +7,7 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
@@ -184,6 +185,11 @@
                   <Button mnemonicParsing="false" text="next" />
                   <Button mnemonicParsing="false" text="suppr" />
                   <Button mnemonicParsing="false" text="zoom" />
+                  <Slider prefHeight="14.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Slider>
               </buttons>
                <padding>
                   <Insets right="65.0" />

@@ -181,6 +181,7 @@
                   <Button mnemonicParsing="false" text="back" />
                   <Button mnemonicParsing="false" text="next" />
                   <Button mnemonicParsing="false" text="suppr" />
+                  <Button mnemonicParsing="false" text="Zoom" />
               </buttons>
                <padding>
                   <Insets right="65.0" />
