@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="561.0" prefWidth="828.0" style="-fx-background-color: #B7D5B6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Accueil.accueilControleur">
+   <children>
+      <MenuBar layoutY="-2.0" prefHeight="29.0" prefWidth="828.0" style="-fx-background-color: #587C73;">
+        <menus>
+          <Menu mnemonicParsing="false">
+               <graphic>
+                  <Button fx:id="boutonEnregistrer" disable="false" mnemonicParsing="false" onAction="#clicBoutonEnregistrer" text="Enregistrer" translateX="700.0" />
+               </graphic>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <ImageView fitHeight="163.0" fitWidth="163.0" layoutX="212.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: #9CC69B;">
+         <image>
+            <Image url="@../../../../Doc%20DL/user.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="nom" layoutX="420.0" layoutY="166.0" onKeyPressed="#setNomTextField" text="Nom" />
+      <TextField fx:id="prenom" layoutX="420.0" layoutY="205.0" onKeyPressed="#setPrenomTextField" text="Prénom" />
+      <TextField fx:id="tel" layoutX="420.0" layoutY="248.0" onKeyPressed="#setTelTextField" text="Téléphone" />
+      <TextField fx:id="mail" layoutX="420.0" layoutY="288.0" onKeyPressed="#setMailTextField" text="E-mail" />
+   </children>
+</AnchorPane>

@@ -1,4 +1,4 @@
-package Pages;
+package Accueil;
 
 import BDD.SqlRequete;
 import javafx.beans.value.ChangeListener;
@@ -12,6 +12,7 @@ public class accueilControleur implements ChangeListener{
 	@FXML
 	private TextField nom;
 	
+	//ces methodes set*** vont permettre de prendre en compte les changements effectués dans une zone de texte 
 	@FXML
 	private void setNomTextField() {
 		this.Nom = nom.getText();
@@ -44,6 +45,8 @@ public class accueilControleur implements ChangeListener{
 	@FXML
 	private Button boutonEnregistrer;
 	
+	
+	
 	private MainApp mainApp;
 	private String Nom ;
 	private String Prenom;
@@ -60,34 +63,28 @@ public class accueilControleur implements ChangeListener{
 	private void initialize() {
 	}
 	
-	
+	//charge la mainApp
 	public void setMainApp(MainApp main) {
 		this.mainApp=main;	
 	}
 	
-	
-	@FXML
-	private boolean champRemplis() {
-		if (this.Nom.length()!=0 && this.Prenom.length() != 0 && this.Tel.length() != 0 && this.Mail.length() != 0){
-			return true;
-		}else {
-			return false;
-		}
-	}
-	
+	//action lors du clic sur le bouton enregistrer
 	@FXML
 	private void clicBoutonEnregistrer() {
-		//if(this.champRemplis()==true) {
+		
 			SqlRequete sql = new SqlRequete();
-			sql.Connect("Insert into name(nom, prenom, tel, mail, comm) values('"+this.Nom+"', '"+this.Prenom+"', '"+this.Tel
-					+"', '"+this.Mail+"', '');");
-			sql.Connect("select * from name;");
-//		}else {
-//			System.out.println("tout les champs ne sont pas remplis");
-//		}
+			sql.Connect("Insert into benevoles(nom, prenom, mail, telephone, commentaires) values('"+this.Nom+"', '"+this.Prenom+"', '"+this.Mail
+					+"', '"+this.Tel+"', '');");
+			sql.Connect("select * from benevoles;");
+			sql.CloseConnexion();
+			this.mainApp.showAccueilGeneral();
+
 	}
+	
+	
+	
 
-
+	//ne pas faire attention a celle ci
 	@Override
 	public void changed(ObservableValue arg0, Object arg1, Object arg2) {
 		// TODO Auto-generated method stub
