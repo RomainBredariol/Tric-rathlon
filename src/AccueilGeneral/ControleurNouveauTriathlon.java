@@ -173,7 +173,8 @@ public class ControleurNouveauTriathlon implements ChangeListener {
 	//REQUETE CONCERNANT LA TABLE TACHE
 		
 		if(this.choix.isSelected()) {
-			req.Connect("insert into tache(nom) values('Choix(date, lieu...)');");
+			String id = req.getUneValeurBDD("id_triathlon", "triathlon", "nom='"+this.nom.getText()+"'");
+			req.Connect("insert into tache(nom, id_triathlon) values('Choix(date, lieu...)',"+id+" );");
 		}
 		if(this.validations.isSelected()) {
 			req.Connect("insert into tache(nom) values('Validations');");
