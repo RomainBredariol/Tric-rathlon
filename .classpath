@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="lib"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
-	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46-bin.jar"/>
-	<classpathentry kind="lib" path="lib/jfreechart-1.0.19-20180430T142422Z-001/jfreechart-1.0.19/lib/jcommon-1.0.23.jar"/>
-	<classpathentry kind="lib" path="lib/jfreechart-1.0.19-20180430T142422Z-001/jfreechart-1.0.19/lib/jfreechart-1.0.19.jar"/>
+	<classpathentry kind="lib" path="src/librariesJAR/jcommon-1.0.23.jar"/>
+	<classpathentry kind="lib" path="src/librariesJAR/jfreechart-1.0.19.jar"/>
+	<classpathentry kind="lib" path="src/librariesJAR/mysql-connector-java-5.1.46-bin.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
