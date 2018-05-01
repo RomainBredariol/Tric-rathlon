@@ -24,7 +24,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="636.0" prefWidth="825.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Agenda.ControleurAgendaAjout">
+<AnchorPane prefHeight="636.0" prefWidth="825.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Agenda.ControleurAgendaAjout">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="432.0" prefWidth="634.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -333,17 +333,17 @@
                                        <children>
                                           <TextField GridPane.rowIndex="1" />
                                           <TextField GridPane.rowIndex="1" />
-                                          <Button mnemonicParsing="false" text="Valider" GridPane.rowIndex="10" />
+                                          <Button fx:id="valider" mnemonicParsing="false" text="Valider" GridPane.rowIndex="10" />
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date (JJ/MM/AAAA)" wrappingWidth="123.861328125" GridPane.rowIndex="2" />
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Contact (par contact)" GridPane.rowIndex="4" />
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Couleur" GridPane.rowIndex="6" />
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Horaires" GridPane.rowIndex="8" />
-                                          <Button mnemonicParsing="false" text="Annuler" translateX="97.0" GridPane.rowIndex="10" />
-                                          <DatePicker GridPane.rowIndex="3" />
-                                          <ColorPicker GridPane.rowIndex="7" />
-                                          <Text opacity="0.3" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrez une description" GridPane.rowIndex="1" />
-                                          <ChoiceBox prefWidth="150.0" GridPane.rowIndex="9" />
+                                          <Button fx:id="annuler" mnemonicParsing="false" text="Annuler" translateX="97.0" GridPane.rowIndex="10" />
+                                          <DatePicker fx:id="date" GridPane.rowIndex="3" />
+                                          <ColorPicker fx:id="couleur" GridPane.rowIndex="7" />
+                                          <Text fx:id="description" opacity="0.3" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrez une description" GridPane.rowIndex="1" />
+                                          <ChoiceBox fx:id="horaires" prefWidth="150.0" GridPane.rowIndex="9" />
                                           <ScrollPane prefHeight="93.0" prefWidth="131.0" GridPane.rowIndex="5">
                                             <content>
                                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">

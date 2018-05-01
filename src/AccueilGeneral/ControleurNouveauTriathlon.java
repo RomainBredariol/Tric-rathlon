@@ -106,127 +106,168 @@ public class ControleurNouveauTriathlon implements ChangeListener {
 	@FXML
 	private TextField ville;
 
+	
+	// ces 2 methodes servent a verifier si 1 seul RadioButton est selectionné
+	private boolean unSeulRadioButtonType() {
+		HashMap<String, RadioButton> type = new HashMap<String, RadioButton>();
+		type.put("xs", this.xs);
+		type.put("s", this.s);
+		type.put("m", this.m);
+		type.put("l", this.l);
+		type.put("half", this.half);
+		type.put("xl", this.xl);
+		type.put("xxl", this.xxl);
+		int nbRadioButtonSelected = 0;
+		for (RadioButton rb : type.values()) {
+			if (rb.isSelected()) {
+				nbRadioButtonSelected++;
+			}
+		}
+
+		return (nbRadioButtonSelected == 1 || nbRadioButtonSelected == 0);
+	}
+	
+	private boolean unSeulRadioButtonGenre() {
+		HashMap<String, RadioButton> genre = new HashMap<String, RadioButton>();
+		genre.put("amical", this.amical);
+		genre.put("competition", this.competition);
+		genre.put("champ_nat", this.championnat);
+		int nbRadioButtonSelected = 0;
+		for (RadioButton rb : genre.values()) {
+			if (rb.isSelected()) {
+				nbRadioButtonSelected++;
+			}
+		}
+
+		return (nbRadioButtonSelected == 1 || nbRadioButtonSelected == 0);
+	}
+
 	@FXML
 	private void clicBoutonValider() {
-	//REQUETE CONCERNANT LA TABLE TRIATHLON
-		// creation requete
-		SqlRequete req = new SqlRequete();
-		LocalDate date = null;
-
-		// créer un element triathlon dans la bdd
+		// REQUETE CONCERNANT LA TABLE TRIATHLON
+		
+		// créer un element triathlon dans la bdd ssi un seul radioButton selectionné
+		// et que le nom est entré
 		if (this.nom.getText() != null) {
-			// charge la date selectionné
-			date = this.dateDebut.getValue();
-			// charge le nom
-			String nom = this.nom.getText();
-			// charge la ville
-			String lieu = this.ville.getText();
+			if (this.unSeulRadioButtonGenre() == false || this.unSeulRadioButtonType() == false) {
+				//charge la page d'erreur
+				this.main.showErreurChoixTriathlon();
+			} else {
+				// creation requete
+				SqlRequete req = new SqlRequete();
+				LocalDate date = null;
 
-			// championnat
-			int championnat = 0;
-			if (this.championnat.isSelected()) {
-				// =1 si champ_nat est selctioné sinon =0
-				championnat = 1;
-			}
+				// charge la date selectionné
+				date = this.dateDebut.getValue();
+				// charge le nom
+				String nom = this.nom.getText();
+				// charge la ville
+				String lieu = this.ville.getText();
 
-			// format xs selectionné
-			if (this.xs.isSelected()) {
-				String format = "xs";
-				// requete
-				req.Connect("insert into triathlon(nom, date, format, lieu, champ_nat)" + "values('" + nom + "', '"
-						+ date.toString() + "', '" + format + "', '" + lieu + "', " + championnat + ");");
-			}
-			if (this.s.isSelected()) {
-				String format = "s";
-				req.Connect("insert into triathlon(nom, date, format, lieu, champ_nat)" + "values('" + nom + "', '"
-						+ date.toString() + "', '" + format + "', '" + lieu + "', " + championnat + ");");
-			}
-			if (this.m.isSelected()) {
-				String format = "m";
-				req.Connect("insert into triathlon(nom, date, format, lieu, champ_nat)" + "values('" + nom + "', '"
-						+ date.toString() + "', '" + format + "', '" + lieu + "', " + championnat + ");");
-			}
-			if (this.l.isSelected()) {
-				String format = "l";
-				req.Connect("insert into triathlon(nom, date, format, lieu, champ_nat)" + "values('" + nom + "', '"
-						+ date.toString() + "', '" + format + "', '" + lieu + "', " + championnat + ");");
-			}
-			if (this.half.isSelected()) {
-				String format = "half";
-				req.Connect("insert into triathlon(nom, date, format, lieu, champ_nat)" + "values('" + nom + "', '"
-						+ date.toString() + "', '" + format + "', '" + lieu + "', " + championnat + ");");
-			}
-			if (this.xl.isSelected()) {
-				String format = "xl";
-				req.Connect("insert into triathlon(nom, date, format, lieu, champ_nat)" + "values('" + nom + "', '"
-						+ date.toString() + "', '" + format + "', '" + lieu + "', " + championnat + ");");
-			}
-			if (this.xxl.isSelected()) {
-				String format = "xxl";
-				req.Connect("insert into triathlon(nom, date, format, lieu, champ_nat)" + "values('" + nom + "', '"
-						+ date.toString() + "', '" + format + "', '" + lieu + "', " + championnat + ");");
-			}
+				// championnat
+				int championnat = 0;
+				if (this.championnat.isSelected()) {
+					// =1 si champ_nat est selctioné sinon =0
+					championnat = 1;
+				}
 
+				// format xs selectionné
+				if (this.xs.isSelected()) {
+					String format = "xs";
+					// requete
+					req.Connect("insert into triathlon(nom, date, format, lieu, champ_nat)" + "values('" + nom + "', '"
+							+ date.toString() + "', '" + format + "', '" + lieu + "', " + championnat + ");");
+				}
+				if (this.s.isSelected()) {
+					String format = "s";
+					req.Connect("insert into triathlon(nom, date, format, lieu, champ_nat)" + "values('" + nom + "', '"
+							+ date.toString() + "', '" + format + "', '" + lieu + "', " + championnat + ");");
+				}
+				if (this.m.isSelected()) {
+					String format = "m";
+					req.Connect("insert into triathlon(nom, date, format, lieu, champ_nat)" + "values('" + nom + "', '"
+							+ date.toString() + "', '" + format + "', '" + lieu + "', " + championnat + ");");
+				}
+				if (this.l.isSelected()) {
+					String format = "l";
+					req.Connect("insert into triathlon(nom, date, format, lieu, champ_nat)" + "values('" + nom + "', '"
+							+ date.toString() + "', '" + format + "', '" + lieu + "', " + championnat + ");");
+				}
+				if (this.half.isSelected()) {
+					String format = "half";
+					req.Connect("insert into triathlon(nom, date, format, lieu, champ_nat)" + "values('" + nom + "', '"
+							+ date.toString() + "', '" + format + "', '" + lieu + "', " + championnat + ");");
+				}
+				if (this.xl.isSelected()) {
+					String format = "xl";
+					req.Connect("insert into triathlon(nom, date, format, lieu, champ_nat)" + "values('" + nom + "', '"
+							+ date.toString() + "', '" + format + "', '" + lieu + "', " + championnat + ");");
+				}
+				if (this.xxl.isSelected()) {
+					String format = "xxl";
+					req.Connect("insert into triathlon(nom, date, format, lieu, champ_nat)" + "values('" + nom + "', '"
+							+ date.toString() + "', '" + format + "', '" + lieu + "', " + championnat + ");");
+				}
+
+				// REQUETE CONCERNANT LA TABLE TACHE
+				String id = req.getUneValeurBDD("id_triathlon", "triathlon", "nom='" + this.nom.getText() + "'");
+
+				if (this.choix.isSelected()) {
+					req.Connect("insert into tache(nom, id_triathlon) values('Choix(date, lieu...)'," + id + " );");
+				}
+				if (this.validations.isSelected()) {
+					req.Connect("insert into tache(nom, id_triathlon) values('Validations'," + id + " );");
+				}
+				if (this.autorisations.isSelected()) {
+					req.Connect("insert into tache(nom, id_triathlon) values('Autorisations' ,'" + id + "');");
+				}
+				if (this.premiersContacts.isSelected()) {
+					req.Connect("insert into tache(nom, id_triathlon) values('Premiers Contact','" + id + "');");
+				}
+				if (this.commandesFermes.isSelected()) {
+					req.Connect("insert into tache(nom, id_triathlon) values('Commandes','" + id + "');");
+				}
+				if (this.infrastructure.isSelected()) {
+					req.Connect("insert into tache(nom, id_triathlon) values('Infrastructure','" + id + "');");
+				}
+				if (this.rH.isSelected()) {
+					req.Connect("insert into tache(nom, id_triathlon) values('Ressources Humaines','" + id + "');");
+				}
+				if (this.affectations.isSelected()) {
+					req.Connect("insert into tache(nom, id_triathlon) values('Affectations','" + id + "');");
+				}
+				if (this.verifications.isSelected()) {
+					req.Connect("insert into tache(nom, id_triathlon) values('Verifications','" + id + "');");
+				}
+				if (this.pub.isSelected()) {
+					req.Connect("insert into tache(nom, id_triathlon) values('Publicite','" + id + "');");
+				}
+				if (this.verificationAchatMarchandises.isSelected()) {
+					req.Connect("insert into tache(nom, id_triathlon) values('Verification Achat Marchandises','" + id
+							+ "');");
+				}
+				if (this.majSite.isSelected()) {
+					req.Connect("insert into tache(nom, id_triathlon) values('Mise a jour du Site','" + id + "');");
+				}
+				if (this.ravitaillment.isSelected()) {
+					req.Connect("insert into tache(nom, id_triathlon) values('Ravitaillement','" + id + "');");
+				}
+				if (this.relances.isSelected()) {
+					req.Connect("insert into tache(nom, id_triathlon) values('Relances','" + id + "');");
+				}
+				if (this.installationZone.isSelected()) {
+					req.Connect("insert into tache(nom, id_triathlon) values('Installation de la Zone','" + id + "');");
+				}
+				if (this.gestionVeilleEpreuve.isSelected()) {
+					req.Connect("insert into tache(nom, id_triathlon) values('Gestion veille Epreuve','" + id + "');");
+				}
+				if (this.Accueil.isSelected()) {
+					req.Connect("insert into tache(nom, id_triathlon) values('Accueil','" + id + "');");
+				}
+
+				req.CloseConnexion();
+			}
 		}
-		
-		
-	//REQUETE CONCERNANT LA TABLE TACHE
-		
-		if(this.choix.isSelected()) {
-			String id = req.getUneValeurBDD("id_triathlon", "triathlon", "nom='"+this.nom.getText()+"'");
-			req.Connect("insert into tache(nom, id_triathlon) values('Choix(date, lieu...)',"+id+" );");
-		}
-		if(this.validations.isSelected()) {
-			req.Connect("insert into tache(nom) values('Validations');");
-		}
-		if(this.autorisations.isSelected()) {
-			req.Connect("insert into tache(nom) values('Autorisations');");
-		}
-		if(this.premiersContacts.isSelected()) {
-			req.Connect("insert into tache(nom) values('Premiers Contact');");
-		}
-		if(this.commandesFermes.isSelected()) {
-			req.Connect("insert into tache(nom) values('Commandes');");
-		}
-		if(this.infrastructure.isSelected()) {
-			req.Connect("insert into tache(nom) values('Infrastructure');");
-		}
-		if(this.rH.isSelected()) {
-			req.Connect("insert into tache(nom) values('Ressources Humaines');");
-		}
-		if(this.affectations.isSelected()) {
-			req.Connect("insert into tache(nom) values('Affectations');");
-		}
-		if(this.verifications.isSelected()) {
-			req.Connect("insert into tache(nom) values('Verifications');");
-		}
-		if(this.pub.isSelected()) {
-			req.Connect("insert into tache(nom) values('Publicite');");
-		}
-		if(this.verificationAchatMarchandises.isSelected()) {
-			req.Connect("insert into tache(nom) values('Verification Achat Marchandises');");
-		}
-		if(this.majSite.isSelected()) {
-			req.Connect("insert into tache(nom) values('Mise a jour du Site');");
-		}
-		if(this.ravitaillment.isSelected()) {
-			req.Connect("insert into tache(nom) values('Ravitaillement');");
-		}
-		if(this.relances.isSelected()) {
-			req.Connect("insert into tache(nom) values('Relances');");
-		}
-		if(this.installationZone.isSelected()) {
-			req.Connect("insert into tache(nom) values('Installation de la Zone');");
-		}
-		if(this.gestionVeilleEpreuve.isSelected()) {
-			req.Connect("insert into tache(nom) values('Gestion veille Epreuve');");
-		}
-		if(this.Accueil.isSelected()) {
-			req.Connect("insert into tache(nom) values('Accueil');");
-		}
-		
-		
-		req.CloseConnexion();
 	}
 
 	@Override

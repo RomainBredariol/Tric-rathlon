@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import AccueilGeneral.ControleurAccueilGeneral;
 import AccueilGeneral.ControleurConfirmationReset;
+import AccueilGeneral.ControleurErreurChoixTriathlon;
 import Agenda.ControleurAgendaAjout;
 import AccueilGeneral.ControleurNouveauTriathlon;
 import Profil.ControleurProfil;
@@ -108,6 +109,36 @@ public class MainApp extends Application {
 			// charge scene dans stage
 			fenetreConfirmation.setScene(scene);
 			fenetreConfirmation.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void showErreurChoixTriathlon() {
+		try {
+			// le loader va permettre de charger la page
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/AccueilGeneral/erreurChoixTriathlon.fxml"));
+
+			// ici on declare un nouveau stage pour avoir une fenetre "pop up"
+			Stage fenetreErreur = new Stage();
+			fenetreErreur.setTitle("Erreur");
+
+			fenetreErreur.initOwner(primaryStage);
+			AnchorPane personOverview = (AnchorPane) loader.load();
+
+			// charge le controleur
+			ControleurErreurChoixTriathlon controleur = loader.getController();
+			// charge MainApp
+			controleur.setFenetre(fenetreErreur);
+			controleur.setMainApp(this);
+
+			// declare la scene
+			Scene scene = new Scene(personOverview);
+			// charge scene dans stage
+			fenetreErreur.setScene(scene);
+			fenetreErreur.show();
 
 		} catch (IOException e) {
 			e.printStackTrace();
