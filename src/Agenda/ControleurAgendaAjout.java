@@ -1,6 +1,9 @@
 package Agenda;
 
+import java.time.LocalDate;
+
 import Accueil.MainApp;
+import BDD.SqlRequete;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -51,14 +54,14 @@ public class ControleurAgendaAjout implements ChangeListener{
 	private void initialize() {
 	}
 	
-	
-	public ControleurAgendaAjout() {
-		
-	}
-	
 	@FXML
 	private void clicBoutonValider() {
+		LocalDate datePicker =null;
+		SqlRequete event = new SqlRequete();
+		datePicker = this.date.getValue();
 		
+		event.Connect("INSERT INTO evenement(date) values('"+datePicker.toString()+"'");
+		event.CloseConnexion();
 	}
 	
 	@FXML
