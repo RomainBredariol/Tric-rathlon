@@ -4,10 +4,10 @@
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
@@ -67,13 +67,16 @@
                                     <content>
                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
-                                                <Label layoutX="14.0" layoutY="6.0" text="Avancement : " />
-                                                <Label layoutX="14.0" layoutY="72.0" text="Prioritée : " />
-                                                <ComboBox layoutX="15.0" layoutY="31.0" prefWidth="150.0" />
-                                                <ComboBox layoutX="14.0" layoutY="99.0" prefWidth="150.0" />
-                                                <RadioButton layoutX="8.0" layoutY="139.0" mnemonicParsing="false" text="RadioButton" />
-                                                <RadioButton layoutX="8.0" layoutY="165.0" mnemonicParsing="false" text="RadioButton" />
-                                                <RadioButton layoutX="8.0" layoutY="192.0" mnemonicParsing="false" text="RadioButton" />
+                                                <Label layoutX="14.0" layoutY="6.0" text="Avancement" />
+                                                <Label layoutX="14.0" layoutY="139.0" text="Prioritée" />
+                                                <CheckBox layoutX="14.0" layoutY="33.0" mnemonicParsing="false" text="    Tout" />
+                                                <CheckBox layoutX="14.0" layoutY="58.0" mnemonicParsing="false" text="    Terminé(s)" />
+                                                <CheckBox layoutX="14.0" layoutY="113.0" mnemonicParsing="false" text="    A venir" />
+                                                <CheckBox layoutX="14.0" layoutY="85.0" mnemonicParsing="false" text="    En cours" />
+                                                <CheckBox layoutX="14.0" layoutY="166.0" mnemonicParsing="false" text="    Tout" />
+                                                <CheckBox layoutX="14.0" layoutY="191.0" mnemonicParsing="false" text="    Terminé(s)" />
+                                                <CheckBox layoutX="14.0" layoutY="216.0" mnemonicParsing="false" text="    En cours" />
+                                                <CheckBox layoutX="14.0" layoutY="239.0" mnemonicParsing="false" text="    A venir" />
                                              </children>
                                           </AnchorPane>
                                     </content>
@@ -111,10 +114,6 @@
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                           </columnConstraints>
                           <rowConstraints>
                               <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
@@ -123,51 +122,31 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#28ad60" height="87.0" stroke="BLACK" strokeType="INSIDE" width="110.0" GridPane.rowIndex="4" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#28ad60" height="87.0" stroke="BLACK" strokeType="INSIDE" width="110.0" GridPane.rowIndex="3" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#28ad60" height="87.0" stroke="BLACK" strokeType="INSIDE" width="110.0" GridPane.rowIndex="2" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#28ad60" height="92.0" stroke="BLACK" strokeType="INSIDE" width="110.0" GridPane.rowIndex="1" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1" textAlignment="CENTER" wrappingWidth="62.46875" GridPane.columnIndex="1" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" wrappingWidth="60.46875" GridPane.columnIndex="2" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="4" textAlignment="CENTER" wrappingWidth="61.46875" GridPane.columnIndex="4" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="3" textAlignment="CENTER" wrappingWidth="61.46875" GridPane.columnIndex="3" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="5" textAlignment="CENTER" wrappingWidth="60.46875" GridPane.columnIndex="5" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="6" textAlignment="CENTER" wrappingWidth="61.46875" GridPane.columnIndex="6" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="7" textAlignment="CENTER" wrappingWidth="62.13671875" GridPane.columnIndex="7" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="8" textAlignment="CENTER" wrappingWidth="62.46875" GridPane.columnIndex="8" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#28ad60" height="60.0" stroke="BLACK" strokeType="INSIDE" width="61.0" GridPane.rowIndex="1" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#28ad60" height="60.0" stroke="BLACK" strokeType="INSIDE" width="61.0" GridPane.rowIndex="2" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#28ad60" height="60.0" stroke="BLACK" strokeType="INSIDE" width="61.0" GridPane.rowIndex="3" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#28ad60" height="60.0" stroke="BLACK" strokeType="INSIDE" width="61.0" GridPane.rowIndex="4" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#28ad60" height="60.0" stroke="BLACK" strokeType="INSIDE" width="61.0" GridPane.rowIndex="5" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#28ad60" height="60.0" stroke="BLACK" strokeType="INSIDE" width="61.0" GridPane.rowIndex="6" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#28ad60" height="60.0" stroke="BLACK" strokeType="INSIDE" width="61.0" GridPane.rowIndex="7" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#28ad60" height="60.0" stroke="BLACK" strokeType="INSIDE" width="61.0" GridPane.rowIndex="8" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#28ad60" height="87.0" stroke="BLACK" strokeType="INSIDE" width="110.0" GridPane.rowIndex="5" />
                               <Text fill="#ecf0f1" strokeType="OUTSIDE" strokeWidth="0.0" text="Tache A" textAlignment="CENTER" wrappingWidth="61.029296875" GridPane.rowIndex="1" />
                               <Text fill="#ecf0f1" strokeType="OUTSIDE" strokeWidth="0.0" text="Tache B" textAlignment="CENTER" wrappingWidth="61.029296875" GridPane.rowIndex="2" />
                               <Text fill="#ecf0f1" strokeType="OUTSIDE" strokeWidth="0.0" text="Tache C" textAlignment="CENTER" wrappingWidth="61.029296875" GridPane.rowIndex="3" />
                               <Text fill="#ecf0f1" strokeType="OUTSIDE" strokeWidth="0.0" text="Tache D" textAlignment="CENTER" wrappingWidth="61.029296875" GridPane.rowIndex="4" />
                               <Text fill="#ecf0f1" strokeType="OUTSIDE" strokeWidth="0.0" text="Tache E" textAlignment="CENTER" wrappingWidth="61.029296875" GridPane.rowIndex="5" />
-                              <Text fill="#ecf0f1" strokeType="OUTSIDE" strokeWidth="0.0" text="Tache F" textAlignment="CENTER" wrappingWidth="61.029296875" GridPane.rowIndex="6" />
-                              <Text fill="#ecf0f1" strokeType="OUTSIDE" strokeWidth="0.0" text="Tache G" textAlignment="CENTER" wrappingWidth="61.029296875" GridPane.rowIndex="7" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2980b9" height="25.0" stroke="#2980b9" strokeType="INSIDE" width="67.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Text fill="#ecf0f1" strokeType="OUTSIDE" strokeWidth="0.0" text="Tache H" textAlignment="CENTER" wrappingWidth="61.029296875" GridPane.rowIndex="8" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2980b9" height="25.0" stroke="#2980b9" strokeType="INSIDE" width="71.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2980b9" height="25.0" stroke="#2980b9" strokeType="INSIDE" width="113.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2980b9" height="25.0" stroke="#2980b9" strokeType="INSIDE" width="110.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2980b9" height="25.0" stroke="#2980b9" strokeType="INSIDE" width="61.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f1c40f" height="25.0" stroke="#f1c40f" strokeType="INSIDE" width="61.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f1c40f" height="25.0" stroke="#f1c40f" strokeType="INSIDE" width="61.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f1c40f" height="25.0" stroke="#f1c40f" strokeType="INSIDE" width="111.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f1c40f" height="25.0" stroke="#f1c40f" strokeType="INSIDE" width="111.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f1c40f" height="25.0" stroke="#f1c40f" strokeType="INSIDE" width="61.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9b59b6" height="25.0" stroke="#9b59b6" strokeType="INSIDE" width="67.0" GridPane.columnIndex="6" GridPane.rowIndex="3" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9b59b6" height="25.0" stroke="#9b59b6" strokeType="INSIDE" width="33.0" GridPane.columnIndex="7" GridPane.rowIndex="3" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c3e50" height="25.0" stroke="#2c3e50" strokeType="INSIDE" width="69.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c3e50" height="25.0" stroke="#2c3e50" strokeType="INSIDE" width="115.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c3e50" height="25.0" stroke="#2c3e50" strokeType="INSIDE" width="61.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e74c3c" height="25.0" stroke="#e74c3c" strokeType="INSIDE" width="61.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e67e22" height="25.0" stroke="#e67e22" strokeType="INSIDE" width="61.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2ecc71" height="25.0" stroke="#2ecc71" strokeType="INSIDE" width="61.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bdc3c7" height="25.0" stroke="#bdc3c7" strokeType="INSIDE" width="61.0" GridPane.columnIndex="2" GridPane.rowIndex="8" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bdc3c7" height="25.0" stroke="#bdc3c7" strokeType="INSIDE" translateX="30.0" width="33.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bdc3c7" height="25.0" stroke="#bdc3c7" strokeType="INSIDE" width="22.0" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e74c3c" height="25.0" stroke="#e74c3c" strokeType="INSIDE" width="110.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                            </children>
                         </GridPane>
                      </children>
@@ -181,7 +160,12 @@
                   <Button mnemonicParsing="false" text="back" />
                   <Button mnemonicParsing="false" text="next" />
                   <Button mnemonicParsing="false" text="suppr" />
-                  <Button mnemonicParsing="false" text="Zoom" />
+                  <Button mnemonicParsing="false" text="zoom" />
+                  <Slider prefHeight="14.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Slider>
               </buttons>
                <padding>
                   <Insets right="65.0" />

@@ -22,10 +22,11 @@ public class GanttChart extends JFrame {
 
    public GanttChart(String title) {
       super(title);
+      
       // Creation du jeu de donnees
       IntervalCategoryDataset dataset = getCategoryDataset();
       
-      // Creation du Gantt
+      // Creation du Gantt avec JFreeChart
       JFreeChart chart = ChartFactory.createGanttChart(
             "Vue d'ensemble du triathlon", // Titre Gantt
             "Taches", // Titre ordonnee
@@ -38,34 +39,36 @@ public class GanttChart extends JFrame {
 
    private IntervalCategoryDataset getCategoryDataset() {
       
-      TaskSeries series2 = new TaskSeries("Actual Date");
-      series2.add(new Task("Requirement",
+	   //Le jeu de données qu'on va utiliser, pour chaque tache : ligne 1 = début, ligne 2 = fin
+      TaskSeries taches = new TaskSeries("Duree de la tache");//Nom de la série
+      taches.add(new Task("Tache A",
+    		  //Attention : les dates sont sous le format AAAA, MM, DD, il faudra les remplacer par des variables
             Date.from(LocalDate.of(2017, 7, 3).atStartOfDay().toInstant(ZoneOffset.UTC)),
             Date.from(LocalDate.of(2017, 7, 05).atStartOfDay().toInstant(ZoneOffset.UTC))
          ));
       
-      series2.add(new Task("Design",
+      taches.add(new Task("Tache B",
             Date.from(LocalDate.of(2017, 7, 6).atStartOfDay().toInstant(ZoneOffset.UTC)),
             Date.from(LocalDate.of(2017, 7, 17).atStartOfDay().toInstant(ZoneOffset.UTC))
          ));
       
-      series2.add(new Task("Coding",
+      taches.add(new Task("Tache C",
             Date.from(LocalDate.of(2017, 7, 18).atStartOfDay().toInstant(ZoneOffset.UTC)),
             Date.from(LocalDate.of(2017, 7, 27).atStartOfDay().toInstant(ZoneOffset.UTC))
          ));
       
-      series2.add(new Task("Testing",
+      taches.add(new Task("Tache D",
             Date.from(LocalDate.of(2017, 7, 28).atStartOfDay().toInstant(ZoneOffset.UTC)),
             Date.from(LocalDate.of(2017, 8, 1).atStartOfDay().toInstant(ZoneOffset.UTC))
          ));
       
-      series2.add(new Task("Deployment",
+      taches.add(new Task("Tache E",
             Date.from(LocalDate.of(2017, 8, 2).atStartOfDay().toInstant(ZoneOffset.UTC)),
             Date.from(LocalDate.of(2017, 8, 4).atStartOfDay().toInstant(ZoneOffset.UTC))
          ));
 
       TaskSeriesCollection dataset = new TaskSeriesCollection();
-      dataset.add(series2);// ajoute les sets de données au Gantt
+      dataset.add(taches);// ajoute les sets de données au Gantt
       return dataset;
    }
 }

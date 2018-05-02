@@ -65,7 +65,7 @@ public class ControleurAccueilGeneral implements ChangeListener {
 	
 	@FXML
 	private void clicBoutonReprendre() {
-		
+		this.mainApp.showContact("accueil");
 	}
 	
 
