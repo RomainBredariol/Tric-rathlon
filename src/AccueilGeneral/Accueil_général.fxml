@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="561.0" prefWidth="828.0" style="-fx-background-color: #B7D5B6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AccueilGeneral.ControleurAccueilGeneral">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="561.0" prefWidth="828.0" style="-fx-background-color: #B7D5B6;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AccueilGeneral.ControleurAccueilGeneral">
    <children>
       <MenuBar layoutY="-2.0" prefHeight="29.0" prefWidth="828.0" style="-fx-background-color: #587C73;">
          <menus>
@@ -21,17 +17,17 @@
       </MenuBar>
       <ImageView fitHeight="163.0" fitWidth="163.0" layoutX="131.0" layoutY="163.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: #9CC69B;">
          <image>
-            <Image url="@../../../../Doc%20DL/user.png" />
+            <Image url="@../pics/user.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="153.0" fitWidth="163.0" layoutX="541.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: #9CC69B;">
          <image>
-            <Image url="@../../../../Doc%20DL/editer.png" />
+            <Image url="@../pics/editer.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="153.0" fitWidth="163.0" layoutX="338.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: #9CC69B;">
          <image>
-            <Image url="@../../../../Doc%20DL/ajoutUser.png" />
+            <Image url="@../pics/ajoutUser.png" />
          </image>
       </ImageView>
       <Button fx:id="boutonProfil" layoutX="163.0" layoutY="348.0" mnemonicParsing="false" onAction="#clicBoutonProfil" prefHeight="31.0" prefWidth="100.0" text="Profil" />

@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -18,49 +14,21 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="561.0" prefWidth="828.0" style="-fx-background-color: #587C73;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="561.0" prefWidth="828.0" style="-fx-background-color: #587C73;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Contact.ControleurContact">
    <children>
-      <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="204.0" style="-fx-background-color: #587C73;" text="Menu" textFill="WHITE">
+      <Button fx:id="menu" mnemonicParsing="false" onAction="#clicBoutonMenu" prefHeight="44.0" prefWidth="204.0" style="-fx-background-color: #587C73;" text="Menu" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font></Button>
-      <Accordion layoutY="42.0" prefHeight="520.0" prefWidth="204.0" style="-fx-background-color: #B7D5B6;">
-        <panes>
-          <TitledPane animated="false" style="-fx-background-color: #B7D5B6;" text="Tâches">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #B7D5B6;" />
-            </content>
-          </TitledPane>
-          <TitledPane animated="false" style="-fx-background-color: #B7D5B6;" text="Agenda">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #B7D5B6;" />
-            </content>
-          </TitledPane>
-            <TitledPane animated="false" style="-fx-background-color: #B7D5B6;" text="Documents">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #B7D5B6;" />
-               </content>
-            </TitledPane>
-          <TitledPane animated="false" prefWidth="204.0" style="-fx-background-color: #B7D5B6;" text="Contacts">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="438.0" prefWidth="200.0" style="-fx-background-color: #B7D5B6;">
-                     <children>
-                        <TextField layoutX="-2.0" layoutY="-4.0" prefHeight="29.0" prefWidth="204.0" promptText="Recherche" />
-                     </children>
-                  </AnchorPane>
-            </content>
-          </TitledPane>
-        </panes>
-      </Accordion>
       <ScrollPane layoutX="204.0" layoutY="42.0" prefHeight="520.0" prefWidth="460.0">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="446.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="446.0" style="-fx-background-color: #F9F9F9;">
                <children>
                   <Pane prefHeight="127.0" prefWidth="447.0" style="-fx-border-color: #D8EBDC;">
                      <children>
                         <ImageView fitHeight="105.0" fitWidth="107.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@user.png" />
+                              <Image url="@../pics/user.png" />
                            </image>
                         </ImageView>
                         <Label layoutX="133.0" layoutY="11.0" prefHeight="33.0" prefWidth="142.0" text="Nom Contact">
@@ -90,69 +58,61 @@
                </children></AnchorPane>
         </content>
       </ScrollPane>
-      <Button layoutX="211.0" layoutY="4.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="37.0" style="-fx-background-color: #D8EBDC;" textFill="WHITE">
+      <Button fx:id="ajouter" layoutX="211.0" layoutY="4.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="25.0" textFill="WHITE">
          <font>
             <Font size="13.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="23.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="25.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@add1.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <contextMenu>
-            <ContextMenu>
-              <items>
-                <MenuItem mnemonicParsing="false" text="Nouveau contact" />
-                  <MenuItem mnemonicParsing="false" text="Nouveau groupe" />
-              </items>
-            </ContextMenu>
-         </contextMenu>
-      </Button>
-      <Button layoutX="258.0" layoutY="4.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="41.0" style="-fx-background-color: #D8EBDC;" textFill="WHITE">
-         <font>
-            <Font size="13.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="29.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@edit%20(1).png" />
+                  <Image url="@../pics/ajoutUser.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="312.0" layoutY="4.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="37.0" style="-fx-background-color: #D8EBDC;" textFill="WHITE">
+      <Button fx:id="modifier" layoutX="258.0" layoutY="4.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="41.0" textFill="WHITE">
          <font>
             <Font size="13.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="23.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="32.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@garbage.png" />
+                  <Image url="@../pics/editer.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="supprimer" layoutX="309.0" layoutY="5.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="37.0" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../pics/supprimer.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
       <Pane layoutX="662.0" layoutY="42.0" prefHeight="520.0" prefWidth="166.0" style="-fx-background-color: #D8EBDC;">
          <children>
-            <VBox layoutX="5.0" layoutY="9.0" prefHeight="511.0" prefWidth="153.0">
+            <VBox layoutX="5.0" layoutY="9.0" prefHeight="505.0" prefWidth="153.0">
                <children>
                   <Label text="Identité" />
-                  <TextField promptText="prénom" />
-                  <TextField promptText="Nom" />
+                  <TextField fx:id="prenom" promptText="prénom" />
+                  <TextField fx:id="nom" promptText="Nom" />
                   <Separator prefHeight="16.0" prefWidth="153.0" />
                   <Label text="Téléphone" />
-                  <TextField promptText="0102030405" />
+                  <TextField fx:id="tel" promptText="0102030405" />
                   <Separator prefHeight="16.0" prefWidth="153.0" />
                   <Label text="Adresse mail" />
-                  <TextField promptText="adresse@mail.fr" />
+                  <TextField fx:id="mail" promptText="adresse@mail.fr" />
                   <Separator prefHeight="16.0" prefWidth="153.0" />
                   <Label text="Adresse" />
-                  <TextField promptText="Rue" />
-                  <TextField promptText="compélement d'adresse" />
-                  <TextField promptText="code postal" />
-                  <TextField promptText="ville" />
+                  <TextField fx:id="rue" promptText="Rue" />
+                  <TextField fx:id="complementAdr" promptText="compélement d'adresse" />
+                  <TextField fx:id="cp" promptText="code postal" />
+                  <TextField fx:id="ville" promptText="ville" />
                   <Separator prefHeight="16.0" prefWidth="153.0" />
                   <Label text="Ajouter une photo" />
                   <Button contentDisplay="CENTER" graphicTextGap="2.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="135.0" text="Importer de Documents" textAlignment="CENTER">
@@ -161,14 +121,23 @@
                      </font>
                   </Button>
                   <Separator prefHeight="16.0" prefWidth="153.0" />
-                  <Button mnemonicParsing="false" text="Enregistrer" />
-                  <Button mnemonicParsing="false" prefHeight="22.0" prefWidth="83.0" text="Annuler">
+                  <Button fx:id="enregistrer" mnemonicParsing="false" onAction="#clicBoutonEnregistrer" text="Enregistrer" />
+                  <Button fx:id="annuler" mnemonicParsing="false" onAction="#clicBoutonContact" prefHeight="22.0" prefWidth="83.0" text="Annuler">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
                </children>
             </VBox>
+         </children>
+      </Pane>
+      <Pane layoutX="-7.0" layoutY="42.0" prefHeight="520.0" prefWidth="212.0" style="-fx-background-color: #D8EBDC;">
+         <children>
+            <Button fx:id="tache" layoutX="7.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="204.0" style="-fx-background-color: #D8EBDC; -fx-border-color: #587C73;" text="Tâches" />
+            <Button fx:id="agenda" layoutX="7.0" layoutY="22.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="204.0" style="-fx-background-color: #D8EBDC; -fx-border-color: #587C73;" text="Agenda" />
+            <Button layoutX="7.0" layoutY="44.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="204.0" style="-fx-background-color: #D8EBDC; -fx-border-color: #587C73;" text="Documents" />
+            <Button fx:id="contact" layoutX="7.0" layoutY="66.0" mnemonicParsing="false" onAction="#clicBoutonContact" prefHeight="22.0" prefWidth="213.0" style="-fx-background-color: #F9F9F9;" text="Contacts" />
+            <TextField layoutX="4.0" layoutY="97.0" prefHeight="23.0" prefWidth="204.0" promptText="Rechercher" />
          </children>
       </Pane>
    </children>

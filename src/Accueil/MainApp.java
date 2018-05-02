@@ -7,6 +7,7 @@ import AccueilGeneral.ControleurAccueilGeneral;
 import AccueilGeneral.ControleurConfirmationReset;
 import AccueilGeneral.ControleurErreurChoixTriathlon;
 import Agenda.ControleurAgendaAjout;
+import Contact.ControleurContact;
 import AccueilGeneral.ControleurNouveauTriathlon;
 import Profil.ControleurProfil;
 import javafx.application.Application;
@@ -21,10 +22,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+//ASTUCE : POUR MIEUX VOIR LES METHODES VOUS POUVEZ FAIRE UN CTRL+MAJ+/
+
 //La MainApp va nous permettre de lancer chaque pages fxml. Tout se lancera � partir d'ici!
 public class MainApp extends Application {
 
 	private Stage primaryStage;
+	private HashMap<String, String> contact ;
 
 	// en javafx il y a plusieurs sorte de fenetres, ici on utilise le stage et la
 	// scene (sachant que la scene est a l'interieur du stage cf.image google)
@@ -32,12 +36,19 @@ public class MainApp extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 
+		//
+		this.contact = new HashMap<String, String>();
+		contact.put("ajouter", "/Contact/ContactAjout.fxml");
+		contact.put("accueil", "/Contact/contact_accueil.fxml");
+		contact.put("groupe", "/Contact/Contact_nvx_groupe.fxml");
+
 		// on charge le stage
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Test JavaFX");
 
 		// appel de la methode qui charge la scene AccueilGeneral dans le stage
-		showAccueilGeneral();
+		showContact("accueil");
+		
 	}
 
 	// charge la page accueil
@@ -164,6 +175,26 @@ public class MainApp extends Application {
 
 	}
 	
+	public void showContact(String page) {
+		try {
+			// Load person overview.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource(this.contact.get(page)));
+			AnchorPane personOverview = (AnchorPane) loader.load();
+			ControleurContact controleur = loader.getController();
+			controleur.setMainApp(this);
+
+			Scene scene = new Scene(personOverview);
+			primaryStage.setScene(scene);
+			primaryStage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	
 	public void showAgendaAjout() {
 		try {
 			// Load person overview.
@@ -209,5 +240,7 @@ public class MainApp extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
+
+	
 
 }
