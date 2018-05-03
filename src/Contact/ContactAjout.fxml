@@ -127,12 +127,13 @@
                   <TextField fx:id="cp" promptText="code postal" />
                   <TextField fx:id="ville" promptText="ville" />
                   <Separator prefHeight="16.0" prefWidth="153.0" />
-                  <Label text="Ajouter une photo" />
-                  <Button contentDisplay="CENTER" graphicTextGap="2.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="137.0" text="Importer de Documents" textAlignment="CENTER">
+                  <Label text="Ajouter un Document" />
+                  <Button fx:id="importerDoc" contentDisplay="CENTER" graphicTextGap="2.0" mnemonicParsing="false" onAction="#clicBoutonImporter" prefHeight="36.0" prefWidth="137.0" text="Importer de Documents" textAlignment="CENTER">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </Button>
+                  <Label fx:id="selectedFile" prefHeight="21.0" prefWidth="131.0" text="Fichier Selectionné" />
                   <Label prefHeight="21.0" prefWidth="159.0" text="Affecter à un groupe" />
                   <ChoiceBox prefWidth="150.0" />
                   <Separator prefHeight="0.0" prefWidth="158.0" />

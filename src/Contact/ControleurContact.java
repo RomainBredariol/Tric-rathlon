@@ -1,5 +1,10 @@
 package Contact;
 
+import java.io.File;
+import java.net.URL;
+
+
+
 import Accueil.MainApp;
 import BDD.SqlRequete;
 import javafx.fxml.FXML;
@@ -9,6 +14,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 public class ControleurContact {
 	@FXML
@@ -69,9 +76,14 @@ public class ControleurContact {
 	private Label adrContact;
 	
 	@FXML
-	private AnchorPane [] listContact;
+	private Label selectedFile;
+	
+	@FXML
+	private Button importerDoc;
 	
 	private MainApp mainApp;
+	
+	private File file;
 	
 	public void setMainApp(MainApp main) {
 		this.mainApp=main;
@@ -81,6 +93,8 @@ public class ControleurContact {
 	public void initialize() {
 		SqlRequete req = new SqlRequete();
 		int nbContact = Integer.parseInt(req.getUneValeurBDD("count(nom)", "benevoles", ""));
+		
+		//Recupere les valeurs d'un contact
 		this.nomContact.setText(req.getUneValeurBDD("nom", "benevoles", "id_benevoles = 2"));
 		this.telContact.setText(req.getUneValeurBDD("telephone", "benevoles", "id_benevoles = 2"));
 		this.mailContact.setText(req.getUneValeurBDD("mail", "benevoles", "id_benevoles = 2"));
@@ -101,6 +115,17 @@ public class ControleurContact {
 		this.mainApp.showAccueilGeneral();
 	}
 	
+	//ouvre un gestionnaire de fichier où on peut choisir un fichier pour l'envoyer a la bdd
+	@FXML
+	private void clicBoutonImporter() {
+		Stage fenetre = new Stage();
+		FileChooser explorateur = new FileChooser();
+		explorateur.setTitle("Explorateur");
+		this.file = explorateur.showOpenDialog(fenetre);
+		this.selectedFile.setText(file.getName());
+		
+	}
+	
 	@FXML
 	private void clicBoutonContact() {
 		this.mainApp.showContact("accueil");
@@ -114,9 +139,13 @@ public class ControleurContact {
 	@FXML
 	private void clicBoutonEnregistrer() {
 		SqlRequete req = new SqlRequete();
+		//ajoute user
 		req.Connect("Insert into benevoles(nom, prenom, mail, telephone, commentaires) values('"+this.nom.getText()
 		+"', '"+this.prenom.getText()+"', '"+this.mail.getText()+"', '"+this.tel.getText()+"', '"+
 				this.adr.getText()+" "+this.cp.getText()+" "+this.ville.getText()+"');");
+		//ajoute un fichier
+		req.Connect("insert into fichier(nom, descriptif, taille, chemin) values('"+this.file.getName()+"', 'affecter au contact "+this.nom.getText()+"','"
+				+this.file.length()+"', '"+this.file.getAbsolutePath()+"');");
 		req.CloseConnexion();
 		this.mainApp.showContact("accueil");
 	}
