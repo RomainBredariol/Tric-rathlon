@@ -45,22 +45,22 @@
                               </Lighting>
                            </effect>
                         </ImageView>
-                        <Label layoutX="133.0" layoutY="11.0" prefHeight="33.0" prefWidth="142.0" text="Nom Contact">
+                        <Label fx:id="nomContact" layoutX="133.0" layoutY="11.0" prefHeight="33.0" prefWidth="142.0" text="Nom Contact">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Label>
-                        <Label layoutX="142.0" layoutY="86.0" prefHeight="21.0" prefWidth="141.0" text="Adresse Contact">
+                        <Label fx:id="adrContact" layoutX="142.0" layoutY="86.0" prefHeight="21.0" prefWidth="141.0" text="Adresse Contact">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </Label>
-                        <Label layoutX="142.0" layoutY="44.0" prefHeight="21.0" prefWidth="141.0" text="Téléphone Contact">
+                        <Label fx:id="telContact" layoutX="142.0" layoutY="44.0" prefHeight="21.0" prefWidth="141.0" text="Téléphone Contact">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </Label>
-                        <Label layoutX="143.0" layoutY="65.0" prefHeight="21.0" prefWidth="141.0" text="Mail Contact">
+                        <Label fx:id="mailContact" layoutX="143.0" layoutY="65.0" prefHeight="21.0" prefWidth="141.0" text="Mail Contact">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -155,7 +155,7 @@
             <TextField layoutX="7.0" layoutY="97.0" prefHeight="23.0" prefWidth="204.0" promptText="Rechercher" />
          </children>
       </Pane>
-      <Button fx:id="groupe" layoutX="265.0" layoutY="8.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="25.0" textFill="WHITE">
+      <Button fx:id="groupe" layoutX="265.0" layoutY="8.0" mnemonicParsing="false" onAction="#clicBoutonGroupe" prefHeight="36.0" prefWidth="25.0" textFill="WHITE">
          <font>
             <Font size="13.0" />
          </font>
