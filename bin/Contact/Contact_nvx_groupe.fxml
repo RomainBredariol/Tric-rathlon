@@ -19,6 +19,8 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
+
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="561.0" prefWidth="828.0" style="-fx-background-color: #587C73;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Contact.ControleurContact">
    <children>
       <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="204.0" style="-fx-background-color: #587C73;" text="Menu" textFill="WHITE">
@@ -47,22 +49,22 @@
                               </Lighting>
                            </effect>
                         </ImageView>
-                        <Label layoutX="133.0" layoutY="11.0" prefHeight="33.0" prefWidth="142.0" text="Nom Contact">
+                        <Label fx:id="nomContact" layoutX="133.0" layoutY="11.0" prefHeight="33.0" prefWidth="142.0" text="Nom Contact">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Label>
-                        <Label layoutX="142.0" layoutY="86.0" prefHeight="21.0" prefWidth="141.0" text="Adresse Contact">
+                        <Label fx:id="adrContact" layoutX="142.0" layoutY="86.0" prefHeight="21.0" prefWidth="141.0" text="Adresse Contact">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </Label>
-                        <Label layoutX="142.0" layoutY="44.0" prefHeight="21.0" prefWidth="141.0" text="Téléphone Contact">
+                        <Label fx:id="telContact" layoutX="142.0" layoutY="44.0" prefHeight="21.0" prefWidth="141.0" text="Téléphone Contact">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </Label>
-                        <Label layoutX="143.0" layoutY="65.0" prefHeight="21.0" prefWidth="141.0" text="Mail Contact">
+                        <Label fx:id="mailContact" layoutX="143.0" layoutY="65.0" prefHeight="21.0" prefWidth="141.0" text="Mail Contact">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -90,14 +92,14 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="139.0">
                            <children>
-                              <CheckBox layoutX="7.0" layoutY="6.0" mnemonicParsing="false" text="Nom Contact" />
+                          		 <CheckBox layoutX="7.0" layoutY="6.0" mnemonicParsing="false" text="nom contact" />
                            </children>
                         </AnchorPane>
                     </content>
                   </ScrollPane>
                   <Separator prefHeight="16.0" prefWidth="153.0" />
                   <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="101.0" text="Enregistrer" />
-                  <Button mnemonicParsing="false" prefHeight="22.0" prefWidth="83.0" text="Annuler">
+                  <Button fx:id="annuler" mnemonicParsing="false" onAction="#clicBoutonContact" prefHeight="22.0" prefWidth="83.0" text="Annuler">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
@@ -111,11 +113,11 @@
             <Button layoutX="4.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="204.0" style="-fx-background-color: #D8EBDC; -fx-border-color: #587C73;" text="Tâches" />
             <Button layoutX="4.0" layoutY="22.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="204.0" style="-fx-background-color: #D8EBDC; -fx-border-color: #587C73;" text="Agenda" />
             <Button layoutX="4.0" layoutY="44.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="204.0" style="-fx-background-color: #D8EBDC; -fx-border-color: #587C73;" text="Documents" />
-            <Button layoutX="5.0" layoutY="66.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="213.0" style="-fx-background-color: #F9F9F9;" text="Contacts" />
+            <Button fx:id="contact" layoutX="5.0" layoutY="66.0" mnemonicParsing="false" onAction="#clicBoutonContact" prefHeight="22.0" prefWidth="213.0" style="-fx-background-color: #F9F9F9;" text="Contacts" />
             <TextField layoutX="4.0" layoutY="97.0" prefHeight="23.0" prefWidth="204.0" promptText="Rechercher" />
          </children>
       </Pane>
-      <Button fx:id="ajouter" layoutX="211.0" layoutY="8.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="25.0" textFill="WHITE">
+      <Button fx:id="ajouter" layoutX="211.0" layoutY="8.0" mnemonicParsing="false" onAction="#clicBoutonAjouter" prefHeight="36.0" prefWidth="25.0" textFill="WHITE">
          <font>
             <Font size="13.0" />
          </font>

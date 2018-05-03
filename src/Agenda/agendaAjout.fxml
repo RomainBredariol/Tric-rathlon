@@ -315,12 +315,12 @@ ObservableList<String> hours = FXCollections.observableArrayList("00:00","00:15"
                                                       <Insets />
                                                    </GridPane.margin>
                                                 </Rectangle>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="UnRdv" GridPane.rowIndex="5">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="UnRdv" wrappingWidth="56.02734375" GridPane.rowIndex="5">
                                                    <GridPane.margin>
                                                       <Insets left="7.0" />
                                                    </GridPane.margin>
                                                 </Text>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="UnEvent" GridPane.columnIndex="4" GridPane.rowIndex="5">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="UnEvent" wrappingWidth="62.986328125" GridPane.columnIndex="4" GridPane.rowIndex="5">
                                                    <GridPane.margin>
                                                       <Insets left="1.0" />
                                                    </GridPane.margin>
@@ -346,22 +346,30 @@ ObservableList<String> hours = FXCollections.observableArrayList("00:00","00:15"
                                     <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
                                     <RowConstraints maxHeight="67.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
                                     <RowConstraints maxHeight="81.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="161.0" minHeight="10.0" prefHeight="84.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="143.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="148.0" minHeight="0.0" prefHeight="42.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="122.0" minHeight="9.0" prefHeight="34.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="125.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="140.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="161.0" minHeight="10.0" prefHeight="68.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="143.0" minHeight="0.0" prefHeight="56.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="148.0" minHeight="0.0" prefHeight="39.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="122.0" minHeight="9.0" prefHeight="39.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="131.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="140.0" minHeight="10.0" prefHeight="118.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
                                     <TextField translateX="10.0" GridPane.rowIndex="1" />
-                                    <Button mnemonicParsing="false" text="Valider" GridPane.rowIndex="10" />
+                                    <Button mnemonicParsing="false" text="Valider" GridPane.rowIndex="10">
+                                       <GridPane.margin>
+                                          <Insets left="5.0" />
+                                       </GridPane.margin>
+                                    </Button>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Description" />
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Date (JJ/MM/AAAA)" wrappingWidth="123.861328125" GridPane.rowIndex="2" />
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Contact " GridPane.rowIndex="4" />
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Couleur" GridPane.rowIndex="6" />
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Horaires" GridPane.rowIndex="8" />
-                                    <Button mnemonicParsing="false" text="Annuler" translateX="97.0" GridPane.rowIndex="10" />
+                                    <Button mnemonicParsing="false" text="Annuler" translateX="97.0" GridPane.rowIndex="10">
+                                       <GridPane.margin>
+                                          <Insets left="30.0" />
+                                       </GridPane.margin>
+                                    </Button>
                                     <DatePicker translateX="10.0" GridPane.rowIndex="3" />
                                     <ColorPicker translateX="10.0" GridPane.rowIndex="7" />
                                     <Text opacity="0.3" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrez une description" translateX="12.0" GridPane.rowIndex="1" />
@@ -373,6 +381,7 @@ ObservableList<String> hours = FXCollections.observableArrayList("00:00","00:15"
                                                 <CheckBox layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Contact A" />
                                                 <CheckBox layoutX="14.0" layoutY="43.0" mnemonicParsing="false" text="Contact B" />
                                                 <CheckBox layoutX="14.0" layoutY="73.0" mnemonicParsing="false" text="Contact C" />
+                                                <TextField layoutX="13.0" layoutY="123.0" text="Recherche de contact" />
                                              </children>
                                           </AnchorPane>
                                        </content>

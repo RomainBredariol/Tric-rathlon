@@ -4,11 +4,13 @@ import Accueil.MainApp;
 import BDD.SqlRequete;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 public class ControleurContact {
-	
 	@FXML
 	private TextField prenom;
 	@FXML
@@ -28,6 +30,7 @@ public class ControleurContact {
 	private Button enregistrer;
 	@FXML
 	private Button annuler;
+	
 	
 	@FXML
 	private Button ajouter;
@@ -56,10 +59,35 @@ public class ControleurContact {
 	@FXML
 	private Button groupe;
 	
+	@FXML
+	private Label nomContact;
+	@FXML
+	private Label telContact;
+	@FXML
+	private Label mailContact;
+	@FXML
+	private Label adrContact;
+	
+	@FXML
+	private AnchorPane [] listContact;
+	
 	private MainApp mainApp;
 	
 	public void setMainApp(MainApp main) {
 		this.mainApp=main;
+	}
+	
+	@FXML
+	public void initialize() {
+		SqlRequete req = new SqlRequete();
+		int nbContact = Integer.parseInt(req.getUneValeurBDD("count(nom)", "benevoles", ""));
+		this.nomContact.setText(req.getUneValeurBDD("nom", "benevoles", "id_benevoles = 2"));
+		this.telContact.setText(req.getUneValeurBDD("telephone", "benevoles", "id_benevoles = 2"));
+		this.mailContact.setText(req.getUneValeurBDD("mail", "benevoles", "id_benevoles = 2"));
+		this.adrContact.setText(req.getUneValeurBDD("commentaires", "benevoles", "id_benevoles = 2"));
+		req.CloseConnexion();
+		
+		
 	}
 	
 	//Pour la methode showContact 3 valeurs possibles: ajouter, accueil ou groupe
