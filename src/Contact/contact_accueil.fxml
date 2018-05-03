@@ -20,9 +20,9 @@
          <font>
             <Font size="24.0" />
          </font></Button>
-      <ScrollPane layoutX="204.0" layoutY="42.0" prefHeight="520.0" prefWidth="625.0">
+      <ScrollPane layoutX="204.0" layoutY="49.0" prefHeight="513.0" prefWidth="625.0">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="624.0" style="-fx-background-color: #F9F9F9;">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="701.0" prefWidth="624.0" style="-fx-background-color: #F9F9F9;">
                <children>
                   <Pane prefHeight="127.0" prefWidth="612.0" style="-fx-border-color: #D8EBDC;">
                      <children>
@@ -68,43 +68,7 @@
                </children></AnchorPane>
         </content>
       </ScrollPane>
-      <Button fx:id="ajouter" layoutX="211.0" layoutY="4.0" mnemonicParsing="false" onAction="#clicBoutonAjouter" prefHeight="33.0" prefWidth="37.0" textFill="WHITE">
-         <font>
-            <Font size="13.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../pics/ajoutUser.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="modifier" layoutX="258.0" layoutY="4.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="41.0" textFill="WHITE">
-         <font>
-            <Font size="13.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../pics/editer.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="supprimer" layoutX="306.0" layoutY="4.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="37.0" textFill="WHITE">
-         <font>
-            <Font size="13.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="24.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../pics/supprimer.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Pane layoutX="-7.0" layoutY="42.0" prefHeight="520.0" prefWidth="212.0" style="-fx-background-color: #D8EBDC;">
+      <Pane layoutX="-7.0" layoutY="49.0" prefHeight="513.0" prefWidth="212.0" style="-fx-background-color: #D8EBDC;">
          <children>
             <Button fx:id="tache" layoutX="7.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="204.0" style="-fx-background-color: #D8EBDC; -fx-border-color: #587C73;" text="Tâches" />
             <Button fx:id="agenda" layoutX="7.0" layoutY="22.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="204.0" style="-fx-background-color: #D8EBDC; -fx-border-color: #587C73;" text="Agenda" />
@@ -113,5 +77,53 @@
             <TextField layoutX="7.0" layoutY="97.0" prefHeight="23.0" prefWidth="204.0" promptText="Rechercher" />
          </children>
       </Pane>
+      <Button fx:id="ajouter" layoutX="211.0" layoutY="8.0" mnemonicParsing="false" onAction="#clicBoutonAjouter" prefHeight="36.0" prefWidth="25.0" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../pics/ajoutUser.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="modifier" layoutX="318.0" layoutY="8.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="41.0" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../pics/editer.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="supprimer" layoutX="372.0" layoutY="8.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="44.0" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../pics/supprimer.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="groupe" layoutX="265.0" layoutY="8.0" mnemonicParsing="false" onAction="#clicBoutonGroupe" prefHeight="36.0" prefWidth="25.0" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../pics/addGroup.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

@@ -4,6 +4,7 @@ import Accueil.MainApp;
 import BDD.SqlRequete;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 
 public class ControleurContact {
@@ -17,9 +18,7 @@ public class ControleurContact {
 	@FXML
 	private TextField mail;
 	@FXML
-	private TextField rue;
-	@FXML
-	private TextField complementAdr;
+	private TextField adr;
 	@FXML
 	private TextField cp;
 	@FXML
@@ -29,8 +28,6 @@ public class ControleurContact {
 	private Button enregistrer;
 	@FXML
 	private Button annuler;
-	@FXML
-	private Button groupe;
 	
 	@FXML
 	private Button ajouter;
@@ -56,6 +53,9 @@ public class ControleurContact {
 	@FXML
 	private Button document;
 	
+	@FXML
+	private Button groupe;
+	
 	private MainApp mainApp;
 	
 	public void setMainApp(MainApp main) {
@@ -79,13 +79,18 @@ public class ControleurContact {
 	}
 	
 	@FXML
+	private void clicBoutonGroupe() {
+		this.mainApp.showContact("groupe");
+	}
+	
+	@FXML
 	private void clicBoutonEnregistrer() {
 		SqlRequete req = new SqlRequete();
 		req.Connect("Insert into benevoles(nom, prenom, mail, telephone, commentaires) values('"+this.nom.getText()
 		+"', '"+this.prenom.getText()+"', '"+this.mail.getText()+"', '"+this.tel.getText()+"', '"+
-				this.rue.getText()+" "+this.complementAdr.getText()+" "+this.cp.getText()+" "+this.ville.getText()+"');");
+				this.adr.getText()+" "+this.cp.getText()+" "+this.ville.getText()+"');");
 		req.CloseConnexion();
-		
+		this.mainApp.showContact("accueil");
 	}
 
 	
