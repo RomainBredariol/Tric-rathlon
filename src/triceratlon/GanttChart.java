@@ -5,8 +5,6 @@ import java.time.ZoneOffset;
 import java.util.Date;
 
 import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
-import javax.swing.WindowConstants;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;

@@ -33,12 +33,12 @@ public class SqlRequete {
 		System.out.println("Connexion Effective !");
 	}
 	
-	//methode qui envoie une requetre à la bdd CELLE CI N'AFFICHE QUE DANS LA CONSOLE (cf. methode suivante) 
+	//methode qui envoie une requetre ï¿½ la bdd CELLE CI N'AFFICHE QUE DANS LA CONSOLE (cf. methode suivante) 
 	public void Connect(String requete) {
-		/* Connexion à la base de données */
-		//le resultset est le résultat que va nous renvoyer la bdd
+		/* Connexion ï¿½ la base de donnï¿½es */
+		//le resultset est le rï¿½sultat que va nous renvoyer la bdd
 		ResultSet rs = null;
-		//le statement est, en gros, un elemlent qui va transmettre la requete
+		//le statement est, en gros, un element qui va transmettre la requete
 		Statement st = null;
 		try {
 
@@ -50,7 +50,7 @@ public class SqlRequete {
 			if (rq.startsWith("select") || rq.startsWith("Select") || rq.startsWith("SELECT")) {
 				//executeQuery pour de la lecture et executeUpdate pour une modif (cf. else suivant)
 				rs = st.executeQuery(rq);
-				// On récupère les MetaData (= Nom de colonne, nom table etc)
+				// On rï¿½cupï¿½re les MetaData (= Nom de colonne, nom table etc)
 				ResultSetMetaData resultMeta = rs.getMetaData();
 
 				System.out.println("\n****************************************************************************");
@@ -60,7 +60,7 @@ public class SqlRequete {
 
 				System.out.println("\n****************************************************************************");
 				
-				//On affiche les données d'une table 
+				//On affiche les donnï¿½es d'une table 
 				while (rs.next()) {
 					for (int i = 1; i <= resultMeta.getColumnCount(); i++)
 						System.out.print("\t" + rs.getObject(i).toString() + "\t |");
@@ -68,7 +68,7 @@ public class SqlRequete {
 					System.out.println("\n------------------------------------------------------------------------");
 				}
 			} else { 
-				//Requete de modification ou d'écriture (donc avec executeUpdate)
+				//Requete de modification ou d'ï¿½criture (donc avec executeUpdate)
 				st.executeUpdate(rq);
 				System.out.println("Requete admise");
 			}
@@ -87,10 +87,10 @@ public class SqlRequete {
 
 	}
 	
-	//cette méthode permet de demander une donnée en particulier (ex: select nom from user where id=1)
+	//cette mï¿½thode permet de demander une donnï¿½e en particulier (ex: select nom from user where id=1)
 	// De plus celle ci n'affiche pas dans la console mais dans un objet genre un champ de texte d'une page (ex: page profil)
 	public String getUneValeurBDD(String colonne, String table, String condition) {
-		/* Connexion à la base de données */
+		/* Connexion ï¿½ la base de donnï¿½es */
 
 		ResultSet rs = null;
 		Statement st = null;
@@ -127,7 +127,7 @@ public class SqlRequete {
 
 	}
 	
-	//METHODE IMPORTANTE: Elle ferme la connexion effectuée entre jdbc et bdd donc il faudra le faire systématiquement quand on utilise les methodes du dessus
+	//METHODE IMPORTANTE: Elle ferme la connexion effectuï¿½e entre jdbc et bdd donc il faudra le faire systï¿½matiquement quand on utilise les methodes du dessus
 	public void CloseConnexion() {
 		try {
 			this.connexion.close();

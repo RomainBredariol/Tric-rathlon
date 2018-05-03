@@ -6,6 +6,7 @@ import java.util.HashMap;
 import AccueilGeneral.ControleurAccueilGeneral;
 import AccueilGeneral.ControleurConfirmationReset;
 import AccueilGeneral.ControleurErreurChoixTriathlon;
+import Agenda.ControleurAgendaAcceuil;
 import Agenda.ControleurAgendaAjout;
 import Contact.ControleurContact;
 import AccueilGeneral.ControleurNouveauTriathlon;
@@ -82,7 +83,7 @@ public class MainApp extends Application {
 		try {
 			// Load person overview.
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("/AccueilGeneral/Accueil_général.fxml"));
+			loader.setLocation(MainApp.class.getResource("/AccueilGeneral/Accueil_general.fxml"));
 			AnchorPane personOverview = (AnchorPane) loader.load();
 			ControleurAccueilGeneral controleur = loader.getController();
 			controleur.setMainApp(this);
@@ -232,6 +233,24 @@ public class MainApp extends Application {
 		}
 	}
 	
+	public void showAgendaAccueil(){
+		try {
+			// Load person overview.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/Agenda/agendaAcceuil.fxml"));
+			AnchorPane personOverview = (AnchorPane) loader.load();
+			ControleurAgendaAcceuil controleur = loader.getController();
+			controleur.setMainApp(this);
+
+			Scene scene = new Scene(personOverview);
+			primaryStage.setScene(scene);
+			primaryStage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}
