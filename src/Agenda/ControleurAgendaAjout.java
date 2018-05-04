@@ -83,7 +83,7 @@ public class ControleurAgendaAjout implements ChangeListener{
 		
 		event.Connect("INSERT INTO evenement(Date,heure,Nom,Description,Couleur,Contact,ID_Triathlon)"
 				+ " values('"+datePicker.toString()+"', '"+horaires.getValue()+nom.toString()+"', '"+desc.toString()+"', '"
-				+couleur.toString()+"', '"+this.contactsEvent());
+				+couleur.toString()+"', '"+this.contactsEvenement());
 		event.CloseConnexion();
 		main.showAgendaAccueil();
 	}
@@ -99,11 +99,11 @@ public class ControleurAgendaAjout implements ChangeListener{
 		main.showAgendaAccueil();
 	}
 	
-	private String contactsEvent() {
-		String contactsEvent;
+	private String contactsEvenement() {
+		String contactsEvent=null;
 		SqlRequete eventContact = new SqlRequete(); 
 		eventContact.Connect("SELECT COUNT(*) FROM benevole"); //utile ? comment récup la valeur ?
-		String nbContactsRq = SqlRequete.getUneValeurBDD("id_benevoles", "benevoles", null); //tout changer en static ?
+		String nbContactsRq = eventContact.getUneValeurBDD("id_benevoles", "benevoles", null);
 		int nbContacts = Integer.parseInt(nbContactsRq); //La valeur en int de la requete
 		ArrayList <CheckBox> cont = this.contact; //instance de la checkbox initiale
 		for (int i =0; i<nbContacts;i++) {
