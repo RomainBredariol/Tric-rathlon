@@ -19,8 +19,6 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="561.0" prefWidth="828.0" style="-fx-background-color: #587C73;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Contact.ControleurContact">
    <children>
       <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="204.0" style="-fx-background-color: #587C73;" text="Menu" textFill="WHITE">
@@ -81,7 +79,7 @@
          <children>
             <VBox layoutX="5.0" layoutY="9.0" prefHeight="497.0" prefWidth="153.0">
                <children>
-                  <Label text="Nom du groupe" />
+                  <Label fx:id="idPage" text="Nom du groupe" />
                   <TextField promptText="intitulé" />
                   <Separator prefHeight="16.0" prefWidth="153.0" />
                   <Label text="Description" />
@@ -92,7 +90,11 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="139.0">
                            <children>
-                          		 <CheckBox layoutX="7.0" layoutY="6.0" mnemonicParsing="false" text="nom contact" />
+                              <VBox layoutX="7.0" layoutY="6.0">
+                                 <children>
+                                		 <CheckBox fx:id="nomContactGroupe" mnemonicParsing="false" text="nom contact" />
+                                 </children>
+                              </VBox>
                            </children>
                         </AnchorPane>
                     </content>

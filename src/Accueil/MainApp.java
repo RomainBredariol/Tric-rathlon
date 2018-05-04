@@ -36,8 +36,10 @@ public class MainApp extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
+		
+		
 
-		//
+		//on stocke les pages contact dans une hashmap
 		this.contact = new HashMap<String, String>();
 		contact.put("ajouter", "/Contact/ContactAjout.fxml");
 		contact.put("accueil", "/Contact/contact_accueil.fxml");
@@ -45,8 +47,8 @@ public class MainApp extends Application {
 
 		// on charge le stage
 		this.primaryStage = primaryStage;
-		this.primaryStage.setTitle("Test JavaFX");
-
+		this.primaryStage.setTitle("tricerathlon");
+		
 		// appel de la methode qui charge la scene AccueilGeneral dans le stage
 		showContact("accueil");
 		
@@ -178,14 +180,17 @@ public class MainApp extends Application {
 	
 	public void showContact(String page) {
 		try {
+			
 			// Load person overview.
 			FXMLLoader loader = new FXMLLoader();
+			
 			loader.setLocation(MainApp.class.getResource(this.contact.get(page)));
 			AnchorPane personOverview = (AnchorPane) loader.load();
 			ControleurContact controleur = loader.getController();
 			controleur.setMainApp(this);
 
 			Scene scene = new Scene(personOverview);
+			
 			primaryStage.setScene(scene);
 			primaryStage.show();
 

@@ -112,7 +112,7 @@
          <children>
             <VBox layoutX="5.0" layoutY="4.0" prefHeight="494.0" prefWidth="158.0">
                <children>
-                  <Label text="Identité" />
+                  <Label fx:id="idPage" text="Identité" />
                   <TextField fx:id="prenom" promptText="prénom" />
                   <TextField fx:id="nom" promptText="Nom" />
                   <Separator prefHeight="16.0" prefWidth="153.0" />

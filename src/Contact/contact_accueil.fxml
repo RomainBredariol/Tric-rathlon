@@ -125,5 +125,6 @@
             </ImageView>
          </graphic>
       </Button>
+      <Label fx:id="idPage" layoutX="761.0" layoutY="15.0" prefHeight="21.0" prefWidth="67.0" text="Accueil" textFill="WHITE" />
    </children>
 </AnchorPane>
