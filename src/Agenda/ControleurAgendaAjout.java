@@ -1,9 +1,7 @@
 package Agenda;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 import Accueil.MainApp;
 import BDD.SqlRequete;
@@ -36,7 +34,6 @@ public class ControleurAgendaAjout implements ChangeListener{
 			"12:00","12:15","12:30","12:45","13:00","13:15","13:30","13:45","14:00","14:15","14:30","14:45","15:00","15:15","15:30","15:45",
 			"16:00","16:15","16:30","16:45","17:00","17:15","17:30","17:45","18:00","18:15","18:30","18:45","19:00","19:15","19:30","19:45",
 			"20:00","20:15","20:30","20:45","21:00","21:15","21:30","21:45","22:00","22:15","22:30","22:45","23:00","23:15","23:30","23:45");
-
 
 	@FXML
 	private Button valider;
@@ -102,8 +99,7 @@ public class ControleurAgendaAjout implements ChangeListener{
 	private String contactsEvenement() {
 		String contactsEvent=null;
 		SqlRequete eventContact = new SqlRequete(); 
-		eventContact.Connect("SELECT COUNT(*) FROM benevole"); //utile ? comment récup la valeur ?
-		String nbContactsRq = eventContact.getUneValeurBDD("id_benevoles", "benevoles", null);
+		String nbContactsRq = eventContact.getUneValeurBDD("count(id_benevoles)", "benevoles", null);
 		int nbContacts = Integer.parseInt(nbContactsRq); //La valeur en int de la requete
 		ArrayList <CheckBox> cont = this.contact; //instance de la checkbox initiale
 		for (int i =0; i<nbContacts;i++) {
