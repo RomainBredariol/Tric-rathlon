@@ -25,13 +25,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-ObservableList<String> hours = FXCollections.observableArrayList("00:00","00:15","00:30","00:45","01:00","01:15","01:30","01:45",
-			"02:00","03:15","04:30","04:45","05:00","05:15","05:30","05:45","06:00","06:15","06:30","06:45","07:00","07:15","07:30","07:45",
-			"08:00","08:15","08:30","08:45","09:00","09:15","09:30","09:45","10:00","10:15","10:30","10:45","11:00","11:15","11:30","11:45",
-			"12:00","12:15","12:30","12:45","13:00","13:15","13:30","13:45","14:00","14:15","14:30","14:45","15:00","15:15","15:30","15:45",
-			"16:00","16:15","16:30","16:45","17:00","17:15","17:30","17:45","18:00","18:15","18:30","18:45","19:00","19:15","19:30","19:45",
-			"20:00","20:15","20:30","20:45","21:00","21:15","21:30","21:45","22:00","22:15","22:30","22:45","23:00","23:15","23:30","23:45");
-<AnchorPane prefHeight="636.0" prefWidth="825.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Agenda.ControleurAgendaAjout">
+<AnchorPane prefHeight="636.0" prefWidth="825.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Agenda.ControleurAgendaAjout">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="432.0" prefWidth="634.0" style="-fx-background-color: #587C73;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -354,8 +348,8 @@ ObservableList<String> hours = FXCollections.observableArrayList("00:00","00:15"
                                     <RowConstraints maxHeight="140.0" minHeight="10.0" prefHeight="118.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <TextField translateX="10.0" GridPane.rowIndex="1" />
-                                    <Button mnemonicParsing="false" text="Valider" GridPane.rowIndex="10">
+                                    <TextField fx:id="description" translateX="10.0" GridPane.rowIndex="1" />
+                                    <Button fx:id="valider" mnemonicParsing="false" onAction="#clicBoutonValider" text="Valider" GridPane.rowIndex="10">
                                        <GridPane.margin>
                                           <Insets left="5.0" />
                                        </GridPane.margin>
@@ -365,20 +359,20 @@ ObservableList<String> hours = FXCollections.observableArrayList("00:00","00:15"
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Contact " GridPane.rowIndex="4" />
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Couleur" GridPane.rowIndex="6" />
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Horaires" GridPane.rowIndex="8" />
-                                    <Button mnemonicParsing="false" text="Annuler" translateX="97.0" GridPane.rowIndex="10">
+                                    <Button fx:id="annuler" mnemonicParsing="false" onAction="#clicBoutonAnnuler" text="Annuler" translateX="97.0" GridPane.rowIndex="10">
                                        <GridPane.margin>
                                           <Insets left="30.0" />
                                        </GridPane.margin>
                                     </Button>
-                                    <DatePicker translateX="10.0" GridPane.rowIndex="3" />
-                                    <ColorPicker translateX="10.0" GridPane.rowIndex="7" />
+                                    <DatePicker fx:id="date" translateX="10.0" GridPane.rowIndex="3" />
+                                    <ColorPicker fx:id="couleur" translateX="10.0" GridPane.rowIndex="7" />
                                     <Text opacity="0.3" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrez une description" translateX="12.0" GridPane.rowIndex="1" />
-                                    <ChoiceBox prefWidth="150.0" translateX="10.0" GridPane.rowIndex="9" />
+                                    <ChoiceBox fx:id="horaires" prefWidth="150.0" translateX="10.0" GridPane.rowIndex="9" />
                                     <ScrollPane prefHeight="93.0" prefWidth="131.0" GridPane.rowIndex="5">
                                        <content>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
                                              <children>
-                                                <CheckBox layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Contact A" />
+                                                <CheckBox fx:id="contact" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Contact A" />
                                                 <CheckBox layoutX="14.0" layoutY="43.0" mnemonicParsing="false" text="Contact B" />
                                                 <CheckBox layoutX="14.0" layoutY="73.0" mnemonicParsing="false" text="Contact C" />
                                                 <TextField layoutX="13.0" layoutY="123.0" text="Recherche de contact" />

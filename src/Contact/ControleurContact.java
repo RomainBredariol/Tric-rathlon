@@ -87,7 +87,7 @@ public class ControleurContact {
 	
 	/*cet id va determiner dans quel page on se situe
 	 * il prend 3 valeurs : 
-	 * "Identité" pour la page contactAjout
+	 * "Identitï¿½" pour la page contactAjout
 	 * "Nom du groupe" pour la page contact_nvx_groupe
 	 * "Accueil" pour la page accueil
 	*/
@@ -137,7 +137,7 @@ public class ControleurContact {
 		this.mainApp.showAccueilGeneral();
 	}
 	
-	//ouvre un gestionnaire de fichier où on peut choisir un fichier pour l'envoyer a la bdd
+	//ouvre un gestionnaire de fichier oï¿½ on peut choisir un fichier pour l'envoyer a la bdd
 	@FXML
 	private void clicBoutonImporter() {
 		Stage fenetre = new Stage();
@@ -173,8 +173,4 @@ public class ControleurContact {
 		req.CloseConnexion();
 		this.mainApp.showContact("accueil");
 	}
-
-	
-	
-	
 }
