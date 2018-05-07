@@ -22,7 +22,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="580.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="580.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tache.ControleurTaches">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="740.0" style="-fx-background-color: #587C73;" AnchorPane.bottomAnchor="-21.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -42,7 +42,7 @@
                               <RowConstraints maxHeight="71.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tâches" />
+                              <Text fx:id="tache" strokeType="OUTSIDE" strokeWidth="0.0" text="Tâches" />
                               <Button mnemonicParsing="false" opacity="0.0" prefHeight="100.0" prefWidth="140.0" text="DocumentsButton" GridPane.rowIndex="3">
                                  <padding>
                                     <Insets left="15.0" />
@@ -53,14 +53,14 @@
                                     <Insets left="15.0" />
                                  </padding>
                               </Button>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Documents" GridPane.rowIndex="3" />
+                              <Text fx:id="document" strokeType="OUTSIDE" strokeWidth="0.0" text="Documents" GridPane.rowIndex="3" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Contacts" GridPane.rowIndex="4" />
-                              <Button mnemonicParsing="false" opacity="0.0" prefHeight="100.0" prefWidth="140.0" text="ContactButton" GridPane.rowIndex="4">
+                              <Button fx:id="contact" mnemonicParsing="false" opacity="0.0" prefHeight="100.0" prefWidth="140.0" text="ContactButton" GridPane.rowIndex="4">
                                  <padding>
                                     <Insets left="15.0" />
                                  </padding>
                               </Button>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Agenda" GridPane.rowIndex="2" />
+                              <Text fx:id="agenda" strokeType="OUTSIDE" strokeWidth="0.0" text="Agenda" GridPane.rowIndex="2" />
                               <Accordion GridPane.rowIndex="1">
                                 <panes>
                                   <TitledPane animated="false" text="Filtres">

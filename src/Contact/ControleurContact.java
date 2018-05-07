@@ -17,7 +17,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-public class ControleurContact {
+public class ControleurContact extends MainApp {
 	@FXML
 	private TextField prenom;
 	@FXML

@@ -20,7 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
 
-public class ControleurAgendaAjout implements ChangeListener{
+public class ControleurAgendaAjout extends MainApp implements ChangeListener{
 
 	@Override
 	public void changed(ObservableValue arg0, Object arg1, Object arg2) {
@@ -51,13 +51,25 @@ public class ControleurAgendaAjout implements ChangeListener{
 	private ChoiceBox<String> horaires=new ChoiceBox<String>(hours);
 	
 	@FXML
-	private ArrayList<CheckBox> contact; //On en fait une liste
+	private ArrayList<CheckBox> contactList; //On en fait une liste
 
 	@FXML
 	private DatePicker date;
 	
 	@FXML
 	private TextField nom;
+	
+	@FXML
+	private Button tache;
+	
+	@FXML
+	private Button agenda;
+	
+	@FXML
+	private Button contact;
+	
+	@FXML
+	private Button document;
 
 	private MainApp main;
 	
@@ -89,7 +101,7 @@ public class ControleurAgendaAjout implements ChangeListener{
 	private void clicBoutonAnnuler() {
 		this.date = null;
 		this.nom=null;
-		this.contact = null;
+		this.contactList = null;
 		this.horaires = null;
 		this.description = null;
 		this.couleur = null;
@@ -101,7 +113,7 @@ public class ControleurAgendaAjout implements ChangeListener{
 		SqlRequete eventContact = new SqlRequete(); 
 		String nbContactsRq = eventContact.getUneValeurBDD("count(id_benevoles)", "benevoles", null);
 		int nbContacts = Integer.parseInt(nbContactsRq); //La valeur en int de la requete
-		ArrayList <CheckBox> cont = this.contact; //instance de la checkbox initiale
+		ArrayList <CheckBox> cont = this.contactList; //instance de la checkbox initiale
 		for (int i =0; i<nbContacts;i++) {
 			if(cont.get(i).isSelected()) {
 				String newC = cont.get(i).getText();
