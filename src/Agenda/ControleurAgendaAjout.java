@@ -20,7 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
 
-public class ControleurAgendaAjout extends MainApp implements ChangeListener{
+public class ControleurAgendaAjout implements ChangeListener{
 
 	@Override
 	public void changed(ObservableValue arg0, Object arg1, Object arg2) {
@@ -70,11 +70,14 @@ public class ControleurAgendaAjout extends MainApp implements ChangeListener{
 	
 	@FXML
 	private Button document;
-
-	private MainApp main;
 	
-	public void setMainApp(MainApp mainApp) {
-		this.main=mainApp;
+	@FXML
+	private Button menu;
+
+	private MainApp mainApp;
+	
+	public void setMainApp(MainApp main) {
+		this.mainApp=main;
 	}
 	
 	@FXML
@@ -94,7 +97,7 @@ public class ControleurAgendaAjout extends MainApp implements ChangeListener{
 				+ " values('"+datePicker.toString()+"', '"+horaires.getValue()+nom.toString()+"', '"+desc.toString()+"', '"
 				+couleur.toString()+"', '"+this.contactsEvenement());
 		event.CloseConnexion();
-		main.showAgendaAccueil();
+		mainApp.showAgendaAccueil();
 	}
 	
 	@FXML
@@ -105,7 +108,7 @@ public class ControleurAgendaAjout extends MainApp implements ChangeListener{
 		this.horaires = null;
 		this.description = null;
 		this.couleur = null;
-		main.showAgendaAccueil();
+		mainApp.showAgendaAccueil();
 	}
 	
 	private String contactsEvenement() {
@@ -121,5 +124,30 @@ public class ControleurAgendaAjout extends MainApp implements ChangeListener{
 			}
 		}	
 		return contactsEvent;
+	}
+	
+	@FXML
+	private void clicBoutonMenu() {
+		this.mainApp.showAccueilGeneral();
+	}
+	
+	@FXML
+	private void clicBoutonTache() {
+		this.mainApp.showTacheAccueil();
+	}
+	
+	@FXML
+	private void clicBoutonAgenda() {
+		this.mainApp.showAgendaAccueil();
+	}
+	
+	@FXML
+	private void clicBoutonDocuments() {
+		this.mainApp.showAccueilGeneral(); // A remplacer avec la méthode pour afficher la page de Documents
+	}
+	
+	@FXML
+	private void clicBoutonContact() {
+		this.mainApp.showContact("accueil");
 	}
 }

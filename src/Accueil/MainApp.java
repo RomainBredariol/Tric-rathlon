@@ -236,6 +236,42 @@ public class MainApp extends Application {
 
 	}	
 	
+	public void showAgendaAjout(){
+		try {
+			// Load person overview.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/Agenda/agendaAjout.fxml"));
+			AnchorPane personOverview = (AnchorPane) loader.load();
+			ControleurAgendaAjout controleur = loader.getController();
+			controleur.setMainApp(this);
+
+			Scene scene = new Scene(personOverview);
+			primaryStage.setScene(scene);
+			primaryStage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+	public void showSuppression(){
+		try {
+			// Load person overview.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/Agenda/ConfirmationSuppressionTache.fxml"));
+			AnchorPane personOverview = (AnchorPane) loader.load();
+			ControleurTaches controleur = loader.getController();
+			controleur.setMainApp(this);
+
+			Scene scene = new Scene(personOverview);
+			primaryStage.setScene(scene);
+			primaryStage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
 	public void showTacheAccueil(){
 		try {
 			// Load person overview.
@@ -262,7 +298,5 @@ public class MainApp extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
-
-	
 
 }

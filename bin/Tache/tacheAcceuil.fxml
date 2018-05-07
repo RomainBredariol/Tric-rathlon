@@ -100,7 +100,7 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="540.0" prefWidth="538.0">
                      <children>
-                        <GridPane gridLinesVisible="true" layoutY="46.0" prefHeight="494.0" prefWidth="550.0">
+                        <GridPane fx:id="gantt" gridLinesVisible="true" layoutY="46.0" prefHeight="494.0" prefWidth="550.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -201,45 +201,27 @@
                <buttons>
                   <Button mnemonicParsing="false" style="-fx-background-color: #587C73;">
                      <graphic>
-                        <ImageView fitHeight="22.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="ajouter" fitHeight="22.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/plus.png" />
+                              <Image url="@../pics/ajoutUser.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
                   <Button mnemonicParsing="false" style="-fx-background-color: #587C73;">
                      <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="modifier" fitHeight="30.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/edit.png" />
+                              <Image url="@../pics/editer.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
                   <Button mnemonicParsing="false" prefHeight="20.0" style="-fx-background-color: #587C73;">
                      <graphic>
-                        <ImageView fitHeight="19.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="supprimer" fitHeight="19.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/back.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #587C73;">
-                     <graphic>
-                        <ImageView fitHeight="22.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/forward.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #587C73;">
-                     <graphic>
-                        <ImageView fitHeight="23.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/poubelle.png" />
+                              <Image url="@../pics/supprimer.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -249,7 +231,7 @@
                   <Insets right="65.0" />
                </padding>
             </ButtonBar>
-            <Button minHeight="10.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="204.0" style="-fx-background-color: #587C73;" text="Menu" textFill="WHITE">
+            <Button fx:id="menu" minHeight="10.0" mnemonicParsing="false" onAction="#clicBoutonMenu" prefHeight="44.0" prefWidth="204.0" style="-fx-background-color: #587C73;" text="Menu" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
