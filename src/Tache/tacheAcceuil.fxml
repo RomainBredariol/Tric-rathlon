@@ -43,19 +43,19 @@
                           </rowConstraints>
                            <children>
                               <Text fx:id="tache" strokeType="OUTSIDE" strokeWidth="0.0" text="Tâches" />
-                              <Button mnemonicParsing="false" opacity="0.0" prefHeight="100.0" prefWidth="140.0" text="DocumentsButton" GridPane.rowIndex="3">
+                              <Button mnemonicParsing="false" onAction="#clicBoutonDocuments" opacity="0.0" prefHeight="100.0" prefWidth="140.0" text="DocumentsButton" GridPane.rowIndex="3">
                                  <padding>
                                     <Insets left="15.0" />
                                  </padding>
                               </Button>
-                              <Button mnemonicParsing="false" opacity="0.0" prefHeight="100.0" prefWidth="140.0" text="AgendaButton" GridPane.rowIndex="2">
+                              <Button mnemonicParsing="false" onAction="#clicBoutonAgenda" opacity="0.0" prefHeight="100.0" prefWidth="140.0" text="AgendaButton" GridPane.rowIndex="2">
                                  <padding>
                                     <Insets left="15.0" />
                                  </padding>
                               </Button>
                               <Text fx:id="document" strokeType="OUTSIDE" strokeWidth="0.0" text="Documents" GridPane.rowIndex="3" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Contacts" GridPane.rowIndex="4" />
-                              <Button fx:id="contact" mnemonicParsing="false" opacity="0.0" prefHeight="100.0" prefWidth="140.0" text="ContactButton" GridPane.rowIndex="4">
+                              <Button fx:id="contact" mnemonicParsing="false" onAction="#clicBoutonContact" opacity="0.0" prefHeight="100.0" prefWidth="140.0" text="ContactButton" GridPane.rowIndex="4">
                                  <padding>
                                     <Insets left="15.0" />
                                  </padding>
@@ -199,27 +199,27 @@
             </SplitPane>
             <ButtonBar buttonMinWidth="50.0" layoutX="190.0" prefHeight="50.0" prefWidth="359.0">
                <buttons>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #587C73;">
+                  <Button fx:id="ajouter" mnemonicParsing="false" onAction="#clicBoutonAjouter" style="-fx-background-color: #587C73;">
                      <graphic>
-                        <ImageView fx:id="ajouter" fitHeight="22.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="22.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../pics/ajoutUser.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #587C73;">
+                  <Button fx:id="modifier" mnemonicParsing="false" style="-fx-background-color: #587C73;">
                      <graphic>
-                        <ImageView fx:id="modifier" fitHeight="30.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="30.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../pics/editer.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="20.0" style="-fx-background-color: #587C73;">
+                  <Button fx:id="supprimer" mnemonicParsing="false" onAction="#clicBoutonSupprimer" prefHeight="20.0" style="-fx-background-color: #587C73;">
                      <graphic>
-                        <ImageView fx:id="supprimer" fitHeight="19.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="19.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../pics/supprimer.png" />
                            </image>

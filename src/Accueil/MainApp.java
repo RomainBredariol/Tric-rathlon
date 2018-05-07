@@ -3,6 +3,9 @@ package Accueil;
 import java.io.IOException;
 import java.util.HashMap;
 
+import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
+
 import AccueilGeneral.ControleurAccueilGeneral;
 import AccueilGeneral.ControleurConfirmationReset;
 import AccueilGeneral.ControleurErreurChoixTriathlon;
@@ -11,16 +14,20 @@ import Agenda.ControleurAgendaAjout;
 import Contact.ControleurContact;
 import AccueilGeneral.ControleurNouveauTriathlon;
 import Profil.ControleurProfil;
+import Tache.ControleurTacheAjout;
 import Tache.ControleurTaches;
+import Tache.GanttChart;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingNode;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -51,7 +58,7 @@ public class MainApp extends Application {
 		this.primaryStage.setTitle("tricerathlon");
 		
 		// appel de la methode qui charge la scene AccueilGeneral dans le stage
-		showContact("accueil");		
+		showContact("accueil");
 	}
 
 	// charge la page accueil
@@ -290,6 +297,25 @@ public class MainApp extends Application {
 		}
 
 	}
+	
+	public void showTacheAjout(){
+		try {
+			// Load person overview.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/Tache/tacheAjout.fxml"));
+			AnchorPane personOverview = (AnchorPane) loader.load();
+			ControleurTacheAjout controleur = loader.getController();
+			controleur.setMainApp(this);
+
+			Scene scene = new Scene(personOverview);
+			primaryStage.setScene(scene);
+			primaryStage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}
@@ -298,5 +324,6 @@ public class MainApp extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
+
 
 }

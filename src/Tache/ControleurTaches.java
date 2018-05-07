@@ -1,9 +1,13 @@
 package Tache;
 
+import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
+
 import Accueil.MainApp;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 
@@ -36,7 +40,7 @@ public class ControleurTaches extends MainApp implements ChangeListener{
 	private Button supprimer;
 	
 	@FXML
-	private GanttChart gantt = new GanttChart("Triathlon"); // A tester
+	private GanttChart gantt; // regarder avec SwingNode
 	
 	public void setMainApp(MainApp mainApp) {
 		// TODO Auto-generated method stub
@@ -47,6 +51,20 @@ public class ControleurTaches extends MainApp implements ChangeListener{
 		// TODO Auto-generated method stub
 		
 	}
+	
+   public void showGantt() { //A tester
+	      SwingUtilities.invokeLater(() -> {
+	         gantt = new GanttChart("Triathlon");
+	         gantt.setSize(800, 400);
+	         gantt.setLocationRelativeTo(null);
+	         //gantt.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+	         gantt.setVisible(true);
+	      });
+	   }
+
+   public static void main(String[] args) {
+       launch(args);
+   }
 	
 	@FXML
 	private void clicBoutonMenu() {
@@ -76,5 +94,10 @@ public class ControleurTaches extends MainApp implements ChangeListener{
 	@FXML
 	private void clicBoutonSupprimer() {
 		this.main.showSuppression();
+	}
+	
+	@FXML
+	private void clicBoutonAjouter() {
+		this.main.showTacheAjout();
 	}
 }
