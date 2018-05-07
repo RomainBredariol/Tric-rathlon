@@ -2,7 +2,6 @@ package Contact;
 
 import java.io.File;
 import java.net.URL;
-import java.util.ArrayList;
 
 import javax.swing.text.html.ImageView;
 
@@ -27,7 +26,7 @@ import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-public class ControleurContact extends MainApp {
+public class ControleurContact {
 	@FXML
 	private TextField prenom;
 	@FXML
@@ -87,23 +86,10 @@ public class ControleurContact extends MainApp {
 	private MainApp mainApp;
 
 	private File file;
-<<<<<<< HEAD
-=======
-	
-	/*cet id va determiner dans quel page on se situe
-	 * il prend 3 valeurs : 
-	 * "Identitï¿½" pour la page contactAjout
-	 * "Nom du groupe" pour la page contact_nvx_groupe
-	 * "Accueil" pour la page accueil
-	*/
-	@FXML
-	private Label idPage; 
-	
->>>>>>> IHM
 
 	/*
 	 * cet id va determiner dans quel page on se situe il prend 3 valeurs :
-	 * "Identitï¿½" pour la page contactAjout "Nom du groupe" pour la page
+	 * "Identité" pour la page contactAjout "Nom du groupe" pour la page
 	 * contact_nvx_groupe "Accueil" pour la page accueil
 	 */
 	@FXML
@@ -145,7 +131,7 @@ public class ControleurContact extends MainApp {
 			String adrContact = req.getUneValeurBDD("commentaires", "benevoles", "id_benevoles="+i);
 			
 			//l'architecture fxml que l'on a ici est comme ceci : VBox <- Pane <- Image, Label etc
-			//Donc on crï¿½e le pane et y insere tous les elements necessaire
+			//Donc on crée le pane et y insere tous les elements necessaire
 			this.paneContact = new Pane();
 			
 			//on defenit un objet et on lui attribut ses caracteristiques
@@ -196,21 +182,15 @@ public class ControleurContact extends MainApp {
 	@FXML
 	private void clicBoutonAjouter() {
 		this.mainApp.showContact("ajouter");
-		//this.mainApp.getPrimaryStage().setTitle("ajouter");
 	}
 
 	@FXML
 	private void clicBoutonMenu() {
 		this.mainApp.showAccueilGeneral();
 	}
-<<<<<<< HEAD
 
-	// ouvre un gestionnaire de fichier oï¿½ on peut choisir un fichier pour envoyer
+	// ouvre un gestionnaire de fichier où on peut choisir un fichier pour envoyer
 	// ses donnees (nom taille etc) a la bddd
-=======
-	
-	//ouvre un gestionnaire de fichier oï¿½ on peut choisir un fichier pour l'envoyer a la bdd
->>>>>>> IHM
 	@FXML
 	private void clicBoutonImporter() {
 		Stage fenetre = new Stage();
@@ -224,7 +204,6 @@ public class ControleurContact extends MainApp {
 	@FXML
 	private void clicBoutonContact() {
 		this.mainApp.showContact("accueil");
-		//this.mainApp.getPrimaryStage().setTitle("accueil");
 	}
 
 	@FXML
@@ -288,7 +267,6 @@ public class ControleurContact extends MainApp {
 	@FXML
 	private void clicBoutonGroupe() {
 		this.mainApp.showContact("groupe");
-		//this.mainApp.getPrimaryStage().setTitle("groupe");
 	}
 
 	@FXML
@@ -305,8 +283,5 @@ public class ControleurContact extends MainApp {
 		req.CloseConnexion();
 		this.mainApp.showContact("accueil");
 	}
-<<<<<<< HEAD
 
-=======
->>>>>>> IHM
 }
