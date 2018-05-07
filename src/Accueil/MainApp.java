@@ -51,8 +51,7 @@ public class MainApp extends Application {
 		this.primaryStage.setTitle("tricerathlon");
 		
 		// appel de la methode qui charge la scene AccueilGeneral dans le stage
-		showContact("accueil");
-		
+		showContact("accueil");		
 	}
 
 	// charge la page accueil
