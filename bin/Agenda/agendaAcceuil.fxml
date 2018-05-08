@@ -19,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="580.0" prefWidth="740.0" style="-fx-background-color: #587C73;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Agenda.ControleurAgendaAcceuil">
+<AnchorPane prefHeight="580.0" prefWidth="740.0" style="-fx-background-color: #587C73;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Agenda.ControleurAgendaAcceuil">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="581.0" prefWidth="740.0" AnchorPane.bottomAnchor="-149.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-106.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -297,10 +297,24 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <ToolBar layoutX="-5.0" prefHeight="43.0" prefWidth="555.0">
+                        <ToolBar layoutX="-5.0" prefHeight="43.0" prefWidth="555.0" style="-fx-background-color: #D8EBDC;">
                            <items>
-                              <Button fx:id="left" mnemonicParsing="false" onAction="#clicBoutonMoisPrecedent" prefHeight="0.0" prefWidth="28.0" text="L" translateX="10.0" />
-                              <Button fx:id="right" mnemonicParsing="false" onAction="#clicBoutonMoisSuivant" text="R" textAlignment="CENTER" translateX="475.0" />
+                              <Button fx:id="left" mnemonicParsing="false" onAction="#clicBoutonMoisPrecedent" prefHeight="0.0" prefWidth="28.0" translateX="10.0">
+                                 <graphic>
+                                    <ImageView fitHeight="19.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../pics/back.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic></Button>
+                              <Button fx:id="right" mnemonicParsing="false" onAction="#clicBoutonMoisSuivant" textAlignment="CENTER" translateX="460.0">
+                                 <graphic>
+                                    <ImageView fitHeight="18.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../pics/forward.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic></Button>
                               <Text fx:id="mois" strokeType="OUTSIDE" strokeWidth="0.0" text="Decembre" textAlignment="CENTER" wrappingWidth="423.345703125" />
                            </items>
                         </ToolBar>
@@ -308,33 +322,35 @@
                   </AnchorPane>
                </items>
             </SplitPane>
-            <ButtonBar buttonMinWidth="50.0" layoutX="127.0" prefHeight="50.0" prefWidth="359.0">
+            <ButtonBar buttonMinWidth="50.0" layoutX="175.0" prefHeight="50.0" prefWidth="204.0">
               <buttons>
-                <Button fx:id="ajouter" mnemonicParsing="false" onAction="#clicBoutonAjouter" style="-fx-background-color: #587C73;">
+                <Button fx:id="ajouter" maxWidth="50.0" minHeight="35.0" minWidth="50.0" mnemonicParsing="false" onAction="#clicBoutonAjouter" prefWidth="50.0">
                      <graphic>
-                        <ImageView fitHeight="22.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="22.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../pics/ajoutUser.png" />
                            </image>
                         </ImageView>
-                     </graphic></Button>
-                  <Button fx:id="modifier" mnemonicParsing="false" style="-fx-background-color: #587C73;">
+                     </graphic>
+                  </Button>
+                  <Button fx:id="modifier" maxHeight="35.0" maxWidth="50.0" minHeight="35.0" minWidth="50.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="50.0">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../pics/editer.png" />
                            </image>
                         </ImageView>
-                     </graphic></Button>
-                  <Button fx:id="supprimer" mnemonicParsing="false" onAction="#clicBoutonSupprimer" prefHeight="20.0" style="-fx-background-color: #587C73;">
+                     </graphic>
+                  </Button>
+                  <Button fx:id="supprimer" maxHeight="35.0" maxWidth="50.0" minHeight="35.0" minWidth="50.0" mnemonicParsing="false" onAction="#clicBoutonSupprimer" prefHeight="35.0" prefWidth="50.0">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../pics/supprimer.png" />
                            </image>
                         </ImageView>
-                     </graphic></Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #587C73;" />
+                     </graphic>
+                  </Button>
               </buttons>
                <padding>
                   <Insets right="65.0" />
@@ -342,7 +358,7 @@
             </ButtonBar>
          </children>
       </Pane>
-      <Button fx:id="menu" minHeight="10.0" mnemonicParsing="false" onAction="#clicBoutonMenu" prefHeight="44.0" prefWidth="204.0" style="-fx-background-color: #587C73;" text="Menu" textFill="WHITE">
+      <Button fx:id="menu" minHeight="10.0" mnemonicParsing="false" onAction="#clicBoutonMenu" prefHeight="44.0" prefWidth="182.0" style="-fx-background-color: #587C73;" text="Menu" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>

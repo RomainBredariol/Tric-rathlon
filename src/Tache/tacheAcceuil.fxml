@@ -22,7 +22,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="580.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tache.ControleurTaches">
+<AnchorPane prefHeight="580.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tache.ControleurTaches">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="740.0" style="-fx-background-color: #587C73;" AnchorPane.bottomAnchor="-21.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -172,7 +172,7 @@
                                  <graphic>
                                     <ImageView fitHeight="25.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@images/back.png" />
+                                          <Image url="@../pics/back.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -181,7 +181,7 @@
                                  <graphic>
                                     <ImageView fitHeight="25.0" fitWidth="28.0">
                                        <image>
-                                          <Image url="@images/forward.png" />
+                                          <Image url="@../pics/forward.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -197,9 +197,9 @@
                   </AnchorPane>
                </items>
             </SplitPane>
-            <ButtonBar buttonMinWidth="50.0" layoutX="190.0" prefHeight="50.0" prefWidth="359.0">
+            <ButtonBar buttonMinWidth="50.0" layoutX="190.0" prefHeight="50.0" prefWidth="176.0">
                <buttons>
-                  <Button fx:id="ajouter" mnemonicParsing="false" onAction="#clicBoutonAjouter" style="-fx-background-color: #587C73;">
+                  <Button fx:id="ajouter" maxHeight="35.0" minHeight="35.0" mnemonicParsing="false" onAction="#clicBoutonAjouter" prefHeight="35.0">
                      <graphic>
                         <ImageView fitHeight="22.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -208,7 +208,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="modifier" mnemonicParsing="false" style="-fx-background-color: #587C73;">
+                  <Button fx:id="modifier" maxHeight="35.0" minHeight="35.0" mnemonicParsing="false" prefHeight="35.0">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -217,9 +217,9 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="supprimer" mnemonicParsing="false" onAction="#clicBoutonSupprimer" prefHeight="20.0" style="-fx-background-color: #587C73;">
+                  <Button fx:id="supprimer" maxHeight="35.0" minHeight="35.0" mnemonicParsing="false" onAction="#clicBoutonSupprimer" prefHeight="35.0">
                      <graphic>
-                        <ImageView fitHeight="19.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="30.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../pics/supprimer.png" />
                            </image>
