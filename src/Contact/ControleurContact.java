@@ -100,7 +100,7 @@ public class ControleurContact {
 
 	/*
 	 * cet id va determiner dans quel page on se situe il prend 4 valeurs :
-	 * "Identité" pour la page contactAjout "Nom du groupe" pour la page
+	 * "Identitï¿½" pour la page contactAjout "Nom du groupe" pour la page
 	 * contact_nvx_groupe "Accueil" pour la page accueil "Modification" pour la page
 	 * modifier
 	 */
@@ -160,7 +160,7 @@ public class ControleurContact {
 
 			// l'architecture fxml que l'on a ici est comme ceci : VBox <- Pane <- Image,
 			// Label etc
-			// Donc on crée le pane et y insere tous les elements necessaire
+			// Donc on crï¿½e le pane et y insere tous les elements necessaire
 			Pane paneContact = new Pane();
 
 			// on defenit un objet et on lui attribut ses caracteristiques
@@ -227,7 +227,7 @@ public class ControleurContact {
 		}
 
 		// pas fini
-		if (this.idPage.getText().equals("Identité")) {
+		if (this.idPage.getText().equals("Identitï¿½")) {
 			int nbGroupe = Integer.parseInt(req.getUneValeurBDD("count(nom)", "groupe", ""));
 			ObservableList<String> listGroupe = FXCollections.observableArrayList("a", "b");
 			this.choixGroupe = new ComboBox<String>();
@@ -248,12 +248,7 @@ public class ControleurContact {
 		this.mainApp.showContact("ajouter");
 	}
 
-	@FXML
-	private void clicBoutonMenu() {
-		this.mainApp.showAccueilGeneral();
-	}
-
-	// ouvre un gestionnaire de fichier où on peut choisir un fichier pour envoyer
+	// ouvre un gestionnaire de fichier oï¿½ on peut choisir un fichier pour envoyer
 	// ses donnees (nom taille etc) a la bddd
 	@FXML
 	private void clicBoutonImporter() {
@@ -263,11 +258,6 @@ public class ControleurContact {
 		this.file = explorateur.showOpenDialog(fenetre);
 		this.selectedFile.setText(file.getName());
 
-	}
-
-	@FXML
-	private void clicBoutonContact() {
-		this.mainApp.showContact("accueil");
 	}
 
 	@FXML
@@ -411,6 +401,31 @@ public class ControleurContact {
 				+ "', 'affecter au contact " + this.nom.getText() + "','" + this.file.length() + "', '"
 				+ this.file.getAbsolutePath() + "');");
 		req.CloseConnexion();
+		this.mainApp.showContact("accueil");
+	}
+	
+	@FXML
+	private void clicBoutonMenu() {
+		this.mainApp.showAccueilGeneral();
+	}
+	
+	@FXML
+	private void clicBoutonTache() {
+		this.mainApp.showTacheAccueil();
+	}
+	
+	@FXML
+	private void clicBoutonAgenda() {
+		this.mainApp.showAgendaAccueil();
+	}
+	
+	@FXML
+	private void clicBoutonDocuments() {
+		this.mainApp.showDocumentsAccueil();
+	}
+	
+	@FXML
+	private void clicBoutonContact() {
 		this.mainApp.showContact("accueil");
 	}
 

@@ -22,7 +22,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="580.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tache.ControleurTaches">
+<AnchorPane prefHeight="580.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tache.ControleurTaches">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="740.0" style="-fx-background-color: #587C73;" AnchorPane.bottomAnchor="-21.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -168,7 +168,7 @@
                         </GridPane>
                         <ToolBar prefHeight="43.0" prefWidth="550.0" style="-fx-background-color: #D8EBDC;">
                            <items>
-                              <Button mnemonicParsing="false" prefHeight="0.0" prefWidth="28.0" style="-fx-background-color: #D8EBDC #D8EBDC;">
+                              <Button fx:id="left" mnemonicParsing="false" onAction="#clicBoutonMoisPrecedent" prefHeight="0.0" prefWidth="28.0" style="-fx-background-color: #D8EBDC #D8EBDC;">
                                  <graphic>
                                     <ImageView fitHeight="25.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -177,7 +177,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button mnemonicParsing="false" style="-fx-background-color: #D8EBDC;" textAlignment="CENTER" translateX="450.0">
+                              <Button fx:id="right" mnemonicParsing="false" onAction="#clicBoutonMoisSuivant" style="-fx-background-color: #D8EBDC;" textAlignment="CENTER" translateX="450.0">
                                  <graphic>
                                     <ImageView fitHeight="25.0" fitWidth="28.0">
                                        <image>
@@ -186,7 +186,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Text fill="#677c6b" strokeType="OUTSIDE" strokeWidth="0.0" text="Décembre" textAlignment="CENTER" wrappingWidth="402.345703125">
+                              <Text fx:id="mois" fill="#677c6b" strokeType="OUTSIDE" strokeWidth="0.0" text="Décembre" textAlignment="CENTER" wrappingWidth="402.345703125">
                                  <font>
                                     <Font size="14.0" />
                                  </font>

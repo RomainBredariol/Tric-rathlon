@@ -1,8 +1,10 @@
 package Tache;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import Accueil.MainApp;
+import BDD.SqlRequete;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -31,7 +33,10 @@ public class ControleurTacheAjout implements ChangeListener{
 	private ArrayList<CheckBox> contactList; //On en fait une liste
 	
 	@FXML
-	private DatePicker date;
+	private DatePicker dateDebut;
+	
+	@FXML
+	private DatePicker dateFin;
 	
 	@FXML
 	private TextField nom;
@@ -44,6 +49,15 @@ public class ControleurTacheAjout implements ChangeListener{
 	
 	@FXML
 	private RadioButton prioBasse;
+	
+	@FXML
+	private Button left;
+
+	@FXML
+	private Button right;
+
+	@FXML
+	private String mois;
 	
 	@FXML
 	private Button tache;
@@ -73,13 +87,33 @@ public class ControleurTacheAjout implements ChangeListener{
 	
 	@FXML
 	private void clicBoutonValider() {
-		//A faire
+		//A finir
+		LocalDate datePickerDebut =null;
+		LocalDate datePickerFin =null;
+		SqlRequete event = new SqlRequete();
+		datePickerDebut = this.dateDebut.getValue();
+		datePickerFin = this.dateFin.getValue();
+		String desc = this.description.getText();
+		String nom = this.nom.getText();
+		String prio = null;
+		if(this.prioBasse.isSelected()) {
+			prio = "haute";
+		} else if(this.prioNorm.isSelected()) {
+			prio = "normale";
+		}else {
+			prio = "basse";
+		}
+		
+		event.Connect("INSERT INTO tache");
+		event.CloseConnexion();
+		
 		this.mainApp.showTacheAccueil();
 	}
 	
 	@FXML
 	private void clicBoutonAnnuler() {
-		this.date = null;
+		this.dateDebut = null;
+		this.dateFin = null;
 		this.nom=null;
 		this.contactList = null;
 		this.description = null;
@@ -93,6 +127,90 @@ public class ControleurTacheAjout implements ChangeListener{
 	public void changed(ObservableValue arg0, Object arg1, Object arg2) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	@FXML
+	private void clicBoutonMoisPrecedent() {
+		switch(mois) {
+		case "Janvier" :
+			this.mois = "Decembre";
+			break;
+		case "Fevrier" :
+			this.mois = "Janvier";
+			break;
+		case "Mars" :
+			this.mois = "Fevrier";
+			break;
+		case "Avril" :
+			this.mois = "Mars";
+			break;
+		case "Mai" :
+			this.mois = "Avril";
+			break;
+		case "Juin" :
+			this.mois = "Mai";
+			break;
+		case "Juillet" :
+			this.mois = "Juin";
+			break;
+		case "Aout" :
+			this.mois = "Juillet";
+			break;
+		case "Septembre" :
+			this.mois = "Aout";
+			break;
+		case "Octobre" :
+			this.mois = "Septembre";
+			break;
+		case "Novembre" :
+			this.mois = "Octobre";
+			break;
+		case "Decembre" :
+			this.mois = "Novembre";
+			break;
+		}
+	}
+	
+	@FXML
+	private void clicBoutonMoisSuivant() {
+		switch(mois) {
+		case "Janvier" :
+			this.mois = "Fevrier";
+			break;
+		case "Fevrier" :
+			this.mois = "Mars";
+			break;
+		case "Mars" :
+			this.mois = "Avril";
+			break;
+		case "Avril" :
+			this.mois = "Mai";
+			break;
+		case "Mai" :
+			this.mois = "Juin";
+			break;
+		case "Juin" :
+			this.mois = "Juillet";
+			break;
+		case "Juillet" :
+			this.mois = "Aout";
+			break;
+		case "Aout" :
+			this.mois = "Septembre";
+			break;
+		case "Septembre" :
+			this.mois = "Octobre";
+			break;
+		case "Octobre" :
+			this.mois = "Novembre";
+			break;
+		case "Novembre" :
+			this.mois = "Decembre";
+			break;
+		case "Decembre" :
+			this.mois = "Janvier";
+			break;
+		}
 	}
 	
 	@FXML
@@ -112,7 +230,7 @@ public class ControleurTacheAjout implements ChangeListener{
 	
 	@FXML
 	private void clicBoutonDocuments() {
-		this.mainApp.showAccueilGeneral(); // A remplacer avec la méthode pour afficher la page de Documents
+		this.mainApp.showDocumentsAccueil();
 	}
 	
 	@FXML

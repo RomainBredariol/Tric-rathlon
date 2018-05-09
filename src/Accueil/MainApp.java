@@ -12,6 +12,7 @@ import AccueilGeneral.ControleurErreurChoixTriathlon;
 import Agenda.ControleurAgendaAcceuil;
 import Agenda.ControleurAgendaAjout;
 import Contact.ControleurContact;
+import Documents.ControleurDocumentsAccueil;
 import AccueilGeneral.ControleurNouveauTriathlon;
 import Profil.ControleurProfil;
 import Tache.ControleurTacheAjout;
@@ -274,6 +275,25 @@ public class MainApp extends Application {
 		}
 
 	}
+	
+	public void showDocumentsAccueil(){
+		try {
+			// Load person overview.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/Documents/Document_accueil.fxml"));
+			AnchorPane personOverview = (AnchorPane) loader.load();
+			ControleurDocumentsAccueil controleur = loader.getController();
+			controleur.setMainApp(this);
+
+			Scene scene = new Scene(personOverview);
+			primaryStage.setScene(scene);
+			primaryStage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}	
 	public void showSuppression(){
 		try {
 			// Load person overview.

@@ -24,7 +24,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="729.0" prefWidth="849.0" style="-fx-background-color: #587C73;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tache.ControleurTacheAjout">
+<AnchorPane prefHeight="729.0" prefWidth="849.0" style="-fx-background-color: #587C73;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tache.ControleurTacheAjout">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="729.0" prefWidth="849.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -173,7 +173,7 @@
                                     </GridPane>
                                     <ToolBar prefHeight="43.0" prefWidth="475.0" style="-fx-background-color: #D8EBDC;">
                                        <items>
-                                          <Button mnemonicParsing="false" prefHeight="0.0" prefWidth="28.0" style="-fx-background-color: #D8EBDC #D8EBDC;">
+                                          <Button fx:id="left" mnemonicParsing="false" onAction="#clicBoutonMoisPrecedent" prefHeight="0.0" prefWidth="28.0" style="-fx-background-color: #D8EBDC #D8EBDC;">
                                              <graphic>
                                                 <ImageView fitHeight="25.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
@@ -182,7 +182,7 @@
                                                 </ImageView>
                                              </graphic>
                                           </Button>
-                                          <Button mnemonicParsing="false" style="-fx-background-color: #D8EBDC;" textAlignment="CENTER" translateX="375.0">
+                                          <Button fx:id="right" mnemonicParsing="false" onAction="#clicBoutonMoisSuivant" style="-fx-background-color: #D8EBDC;" textAlignment="CENTER" translateX="375.0">
                                              <graphic>
                                                 <ImageView fitHeight="25.0" fitWidth="28.0">
                                                    <image>
@@ -191,7 +191,7 @@
                                                 </ImageView>
                                              </graphic>
                                           </Button>
-                                          <Text fill="#677c6b" strokeType="OUTSIDE" strokeWidth="0.0" text="Décembre" textAlignment="CENTER" wrappingWidth="272.345703125">
+                                          <Text fx:id="mois" fill="#677c6b" strokeType="OUTSIDE" strokeWidth="0.0" text="Décembre" textAlignment="CENTER" wrappingWidth="272.345703125">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
@@ -228,7 +228,7 @@
                                           <TextField GridPane.rowIndex="3" />
                                           <Button fx:id="valider" mnemonicParsing="false" onAction="#clicBoutonValider" text="Valider" GridPane.rowIndex="14" />
                                           <Button fx:id="annuler" mnemonicParsing="false" onAction="#clicBoutonAnnuler" text="Annuler" translateX="97.0" GridPane.rowIndex="14" />
-                                          <DatePicker fx:id="date" GridPane.rowIndex="5" />
+                                          <DatePicker fx:id="dateDebut" GridPane.rowIndex="5" />
                                           <Text fx:id="description" opacity="0.3" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrez une description" GridPane.rowIndex="3" />
                                           <ScrollPane prefHeight="129.0" prefWidth="178.0" GridPane.rowIndex="9">
                                              <content>
@@ -255,7 +255,7 @@
                                           <Label text="Contact" GridPane.rowIndex="8" />
                                           <Label text="Document" GridPane.rowIndex="10" />
                                           <Label text="Date de fin" GridPane.rowIndex="6" />
-                                          <DatePicker fx:id="date1" GridPane.rowIndex="7" />
+                                          <DatePicker fx:id="dateFin" GridPane.rowIndex="7" />
                                        </children>
                                     </GridPane>
                                  </children>

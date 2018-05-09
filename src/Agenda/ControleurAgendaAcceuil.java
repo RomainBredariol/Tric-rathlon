@@ -80,7 +80,7 @@ public class ControleurAgendaAcceuil implements ChangeListener{
 	
 	@FXML
 	private void clicBoutonDocuments() {
-		this.main.showAccueilGeneral(); // A remplacer avec la méthode pour afficher la page de Documents
+		this.main.showDocumentsAccueil();
 	}
 	
 	@FXML
