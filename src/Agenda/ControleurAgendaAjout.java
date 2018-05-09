@@ -42,7 +42,7 @@ public class ControleurAgendaAjout implements ChangeListener{
 	private Button annuler;
 	
 	@FXML
-	private TextArea description; //TextArea : plusieurs lignes
+	private TextField description;
 	
 	@FXML
 	private ColorPicker couleur; 

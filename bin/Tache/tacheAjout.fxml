@@ -229,12 +229,12 @@
                                           <Button fx:id="valider" mnemonicParsing="false" onAction="#clicBoutonValider" text="Valider" GridPane.rowIndex="14" />
                                           <Button fx:id="annuler" mnemonicParsing="false" onAction="#clicBoutonAnnuler" text="Annuler" translateX="97.0" GridPane.rowIndex="14" />
                                           <DatePicker fx:id="dateDebut" GridPane.rowIndex="5" />
-                                          <Text fx:id="description" opacity="0.3" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrez une description" GridPane.rowIndex="3" />
+                                          <Text fx:id="description" accessibleRole="TEXT_FIELD" opacity="0.3" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrez une description" GridPane.rowIndex="3" />
                                           <ScrollPane prefHeight="129.0" prefWidth="178.0" GridPane.rowIndex="9">
                                              <content>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="182.0" prefWidth="175.0">
                                                    <children>
-                                                      <CheckBox fx:id="contactList" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" text="Contact A" />
+                                                      <CheckBox layoutX="14.0" layoutY="6.0" mnemonicParsing="false" text="Contact A" />
                                                       <CheckBox layoutX="14.0" layoutY="36.0" mnemonicParsing="false" text="Contact B" />
                                                       <CheckBox layoutX="14.0" layoutY="66.0" mnemonicParsing="false" text="Contact C" />
                                                       <CheckBox layoutX="14.0" layoutY="100.0" mnemonicParsing="false" text="Contact D" />

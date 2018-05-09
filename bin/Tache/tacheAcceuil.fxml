@@ -100,7 +100,7 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="540.0" prefWidth="538.0">
                      <children>
-                        <GridPane fx:id="gantt" gridLinesVisible="true" layoutY="46.0" prefHeight="494.0" prefWidth="550.0">
+                        <GridPane gridLinesVisible="true" layoutY="46.0" prefHeight="494.0" prefWidth="550.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

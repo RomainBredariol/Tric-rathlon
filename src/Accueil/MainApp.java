@@ -49,8 +49,6 @@ public class MainApp extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		
-		
-
 		//on stocke les pages contact dans une hashmap
 		this.contact = new HashMap<String, String>();
 		contact.put("ajouter", "/Contact/ContactAjout.fxml");
