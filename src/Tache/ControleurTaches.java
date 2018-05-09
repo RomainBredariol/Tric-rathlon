@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 
 public class ControleurTaches implements ChangeListener{
 
@@ -46,7 +47,7 @@ public class ControleurTaches implements ChangeListener{
 	private Button right;
 
 	@FXML
-	private String mois;
+	private Text mois;
 	
 	@FXML
 	private GanttChart gantt; // regarder avec SwingNode
@@ -63,84 +64,84 @@ public class ControleurTaches implements ChangeListener{
 	
 	@FXML
 	private void clicBoutonMoisPrecedent() {
-		switch(mois) {
+		switch(mois.getText()) {
 		case "Janvier" :
-			this.mois = "Decembre";
+			this.mois.setText("Decembre");
 			break;
 		case "Fevrier" :
-			this.mois = "Janvier";
+			this.mois.setText("Janvier");
 			break;
 		case "Mars" :
-			this.mois = "Fevrier";
+			this.mois.setText("Fevrier");
 			break;
 		case "Avril" :
-			this.mois = "Mars";
+			this.mois.setText("Mars");
 			break;
 		case "Mai" :
-			this.mois = "Avril";
+			this.mois.setText("Avril");
 			break;
 		case "Juin" :
-			this.mois = "Mai";
+			this.mois.setText("Mai");
 			break;
 		case "Juillet" :
-			this.mois = "Juin";
+			this.mois.setText("Juin");
 			break;
 		case "Aout" :
-			this.mois = "Juillet";
+			this.mois.setText("Juillet");
 			break;
 		case "Septembre" :
-			this.mois = "Aout";
+			this.mois.setText("Aout");
 			break;
 		case "Octobre" :
-			this.mois = "Septembre";
+			this.mois.setText("Septembre");
 			break;
 		case "Novembre" :
-			this.mois = "Octobre";
+			this.mois.setText("Octobre");
 			break;
 		case "Decembre" :
-			this.mois = "Novembre";
+			this.mois.setText("Novembre");
 			break;
 		}
 	}
 	
 	@FXML
 	private void clicBoutonMoisSuivant() {
-		switch(mois) {
+		switch(mois.getText()) {
 		case "Janvier" :
-			this.mois = "Fevrier";
+			this.mois.setText("Fevrier");
 			break;
 		case "Fevrier" :
-			this.mois = "Mars";
+			this.mois.setText("Mars");
 			break;
 		case "Mars" :
-			this.mois = "Avril";
+			this.mois.setText("Avril");
 			break;
 		case "Avril" :
-			this.mois = "Mai";
+			this.mois.setText("Mai");
 			break;
 		case "Mai" :
-			this.mois = "Juin";
+			this.mois.setText("Juin");
 			break;
 		case "Juin" :
-			this.mois = "Juillet";
+			this.mois.setText("Juillet");
 			break;
 		case "Juillet" :
-			this.mois = "Aout";
+			this.mois.setText("Aout");
 			break;
 		case "Aout" :
-			this.mois = "Septembre";
+			this.mois.setText("Septembre");
 			break;
 		case "Septembre" :
-			this.mois = "Octobre";
+			this.mois.setText("Octobre");
 			break;
 		case "Octobre" :
-			this.mois = "Novembre";
+			this.mois.setText("Novembre");
 			break;
 		case "Novembre" :
-			this.mois = "Decembre";
+			this.mois.setText("Decembre");
 			break;
 		case "Decembre" :
-			this.mois = "Janvier";
+			this.mois.setText("Janvier");
 			break;
 		}
 	}
