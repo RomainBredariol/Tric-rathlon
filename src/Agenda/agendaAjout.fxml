@@ -368,7 +368,7 @@
                                        <content>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="174.0" prefWidth="200.0">
                                              <children>
-                                                <CheckBox fx:id="contactList" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Contact A" />
+                                                <CheckBox layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Contact A" />
                                                 <CheckBox layoutX="14.0" layoutY="43.0" mnemonicParsing="false" text="Contact B" />
                                                 <CheckBox layoutX="14.0" layoutY="73.0" mnemonicParsing="false" text="Contact C" />
                                                 <TextField layoutX="13.0" layoutY="123.0" text="Recherche de contact" />

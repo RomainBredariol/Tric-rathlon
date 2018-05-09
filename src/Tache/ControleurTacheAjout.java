@@ -25,7 +25,7 @@ public class ControleurTacheAjout implements ChangeListener{
 	private Button annuler;
 	
 	@FXML
-	private TextArea description; //TextArea : plusieurs lignes
+	private Text description;
 	
 	@FXML
 	private Button ajouter;
