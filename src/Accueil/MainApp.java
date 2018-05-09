@@ -60,7 +60,7 @@ public class MainApp extends Application {
 		this.primaryStage.setTitle("tricerathlon");
 		
 		// appel de la methode qui charge la scene AccueilGeneral dans le stage
-		showAgendaAccueil();	
+		showTacheAccueil();	
 	}
 	
 	//Ces 2 methodes servent � conserevr une valeur � travers les ihm il faut cependant 
