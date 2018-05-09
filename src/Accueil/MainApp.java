@@ -41,6 +41,7 @@ public class MainApp extends Application {
 	private HashMap<String, String> contact ;
 	
 	private int valeurAConserver;
+	private String stringAConserver;
 
 	// en javafx il y a plusieurs sorte de fenetres, ici on utilise le stage et la
 	// scene (sachant que la scene est a l'interieur du stage cf.image google)
@@ -62,7 +63,7 @@ public class MainApp extends Application {
 		this.primaryStage.setTitle("tricerathlon");
 		
 		// appel de la methode qui charge la scene AccueilGeneral dans le stage
-		showAccueilGeneral();	
+		showContact("accueil");	
 	}
 	
 	//Ces 2 methodes servent � conserevr une valeur � travers les ihm il faut cependant 

@@ -90,7 +90,7 @@ public class ControleurContact {
 
 	@FXML
 	private Button modifierContact;
-	
+
 	@FXML
 	private Button ok;
 
@@ -348,37 +348,52 @@ public class ControleurContact {
 
 	@FXML
 	private void clicBoutonModifier() throws Exception {
+
+		// Sert a identifier le radioButton selectionne
 		if (this.idContactAModifier != 0) {
 			this.mainApp.aConserver(this.idContactAModifier);
 		} else {
+			// on cree un tableaux de pane
 			Pane[] paneContact = new Pane[this.nbContact];
+			// pour chaque contact on cree un pane
 			for (int i = 0; i < this.nbContact; i++) {
 				paneContact[i] = (Pane) this.listContact.getChildren().get(i);
 			}
+			// on cree un tableau de radioButton qu'on va tester par la suite
 			RadioButton[] boutonSelection = new RadioButton[this.nbContact];
+			// pour chaque contact on cree un radioButton
 			for (int i = 0; i < this.nbContact; i++) {
 				boutonSelection[i] = (RadioButton) paneContact[i].getChildren().get(5);
 			}
+			// le "numero" du pane equivaut a id_benevoles de la bdd
 			for (int i = 0; i < boutonSelection.length; i++) {
 				if (boutonSelection[i].isSelected()) {
-					this.idContactAModifier = i + 1;
+					Label nom = (Label) paneContact[i].getChildren().get(1);
+					SqlRequete req = new SqlRequete();
+					int id = Integer.parseInt(req.getUneValeurBDD("id_benevoles", "benevoles", "nom='"+nom.getText()+"'"));
+					this.idContactAModifier=id;
 				}
 			}
+			// on conserve cette valeur
 			this.mainApp.aConserver(this.idContactAModifier);
 		}
-		
-		if(this.mainApp.getValeurAConserver()==0) {
+
+		// si aucun radioButton nest selectionne on affche une erreur
+		if (this.mainApp.getValeurAConserver() == 0) {
+			// Affiche une fenetre popUp qui signale une erreur
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("/Contact/erreurRadioButtonNonSelectione.fxml"));
 			Stage stage = new Stage();
 			AnchorPane anchor = (AnchorPane) loader.load();
+			ControleurErreur controleur = loader.getController();
+			controleur.setFenetre(stage);
 			Scene scene = new Scene(anchor);
 			stage.setScene(scene);
 			stage.show();
-		}else {
+		} else {
 			this.mainApp.showContact("modification");
 		}
-		
+
 	}
 
 	@FXML
@@ -389,6 +404,63 @@ public class ControleurContact {
 				+ this.adr.getText() + "' where id_benevoles=" + this.idContactAModifier);
 	}
 
+	public void clicBoutonSupprimer() throws Exception {
+		// Sert a identifier le radioButton selectionne
+		if (this.idContactAModifier != 0) {
+			this.mainApp.aConserver(this.idContactAModifier);
+		} else {
+			// on cree un tableaux de pane
+			Pane[] paneContact = new Pane[this.nbContact];
+			// pour chaque contact on cree un pane
+			for (int i = 0; i < this.nbContact; i++) {
+				paneContact[i] = (Pane) this.listContact.getChildren().get(i);
+			}
+			// on cree un tableau de radioButton
+			RadioButton[] boutonSelection = new RadioButton[this.nbContact];
+			// pour chaque contact on cree un radioButton
+			for (int i = 0; i < this.nbContact; i++) {
+				boutonSelection[i] = (RadioButton) paneContact[i].getChildren().get(5);
+			}
+			// le "numero" du pane equivaut a id_benevoles de la bdd
+			for (int i = 0; i < boutonSelection.length; i++) {
+				if (boutonSelection[i].isSelected()) {
+					Label nom = (Label) paneContact[i].getChildren().get(1);
+					SqlRequete req = new SqlRequete();
+					int id = Integer.parseInt(req.getUneValeurBDD("id_benevoles", "benevoles", "nom='"+nom.getText()+"'"));
+					this.idContactAModifier=id;
+				}
+			}
+			// on conserve cette valeur
+			this.mainApp.aConserver(this.idContactAModifier);
+		}
+
+		// si aucun radioButton nest selectionne on affche une erreur
+		if (this.mainApp.getValeurAConserver() == 0) {
+			// Affiche une fenetre popUp qui signale une erreur
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/Contact/erreurRadioButtonNonSelectione.fxml"));
+			Stage stage = new Stage();
+			AnchorPane anchor = (AnchorPane) loader.load();
+			ControleurErreur controleur = loader.getController();
+			controleur.setFenetre(stage);
+			Scene scene = new Scene(anchor);
+			stage.setScene(scene);
+			stage.show();
+		} else {
+			// Affiche une fenetre popUp qui signale une erreur
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/Contact/confirmationSuppressionContact.fxml"));
+			Stage stage = new Stage();
+			AnchorPane anchor = (AnchorPane) loader.load();
+			ControleurSuppressionContact controleur = loader.getController();
+			controleur.setfenetre(stage);
+			controleur.setMainApp(this.mainApp);
+			Scene scene = new Scene(anchor);
+			stage.setScene(scene);
+			stage.show();
+		}
+	}
+
 	@FXML
 	private void clicBoutonEnregistrer() {
 		SqlRequete req = new SqlRequete();
@@ -397,9 +469,12 @@ public class ControleurContact {
 				+ "', '" + this.prenom.getText() + "', '" + this.mail.getText() + "', '" + this.tel.getText() + "', '"
 				+ this.adr.getText() + " " + this.cp.getText() + " " + this.ville.getText() + "');");
 		// ajoute un fichier
-		req.Connect("insert into fichier(nom, descriptif, taille, chemin) values('" + this.file.getName()
-				+ "', 'affecter au contact " + this.nom.getText() + "','" + this.file.length() + "', '"
-				+ this.file.getAbsolutePath() + "');");
+		if(this.file != null) {
+			req.Connect("insert into fichier(nom, descriptif, taille, chemin) values('" + this.file.getName()
+			+ "', 'affecter au contact " + this.nom.getText() + "','" + this.file.length() + "', '"
+			+ this.file.getAbsolutePath() + "');");
+		}
+		
 		req.CloseConnexion();
 		this.mainApp.showContact("accueil");
 	}
