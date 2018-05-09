@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -25,7 +24,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="729.0" prefWidth="849.0" style="-fx-background-color: #587C73;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="729.0" prefWidth="849.0" style="-fx-background-color: #587C73;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tache.ControleurTacheAjout">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="729.0" prefWidth="849.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -46,19 +45,19 @@
                            </rowConstraints>
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tâches" />
-                              <Button mnemonicParsing="false" opacity="0.0" prefHeight="100.0" prefWidth="140.0" text="DocumentsButton" GridPane.rowIndex="3">
+                              <Button fx:id="document" mnemonicParsing="false" onAction="#clicBoutonDocuments" opacity="0.0" prefHeight="100.0" prefWidth="140.0" text="DocumentsButton" GridPane.rowIndex="3">
                                  <padding>
                                     <Insets left="15.0" />
                                  </padding>
                               </Button>
-                              <Button mnemonicParsing="false" opacity="0.0" prefHeight="100.0" prefWidth="140.0" text="AgendaButton" GridPane.rowIndex="2">
+                              <Button fx:id="agenda" mnemonicParsing="false" onAction="#clicBoutonAgenda" opacity="0.0" prefHeight="100.0" prefWidth="140.0" text="AgendaButton" GridPane.rowIndex="2">
                                  <padding>
                                     <Insets left="15.0" />
                                  </padding>
                               </Button>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Documents" GridPane.rowIndex="3" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Contacts" GridPane.rowIndex="4" />
-                              <Button mnemonicParsing="false" opacity="0.0" prefHeight="100.0" prefWidth="140.0" text="ContactButton" GridPane.rowIndex="4">
+                              <Button fx:id="contact" mnemonicParsing="false" onAction="#clicBoutonContact" opacity="0.0" prefHeight="100.0" prefWidth="140.0" text="ContactButton" GridPane.rowIndex="4">
                                  <padding>
                                     <Insets left="15.0" />
                                  </padding>
@@ -225,15 +224,15 @@
                                        <children>
                                           <TextField GridPane.rowIndex="3" />
                                           <TextField GridPane.rowIndex="3" />
-                                          <Button mnemonicParsing="false" text="Valider" GridPane.rowIndex="12" />
-                                          <Button mnemonicParsing="false" text="Annuler" translateX="97.0" GridPane.rowIndex="12" />
-                                          <DatePicker GridPane.rowIndex="5" />
-                                          <Text opacity="0.3" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrez une description" GridPane.rowIndex="3" />
+                                          <Button fx:id="valider" mnemonicParsing="false" onAction="#clicBoutonValider" text="Valider" GridPane.rowIndex="12" />
+                                          <Button fx:id="annuler" mnemonicParsing="false" onAction="#clicBoutonAnnuler" text="Annuler" translateX="97.0" GridPane.rowIndex="12" />
+                                          <DatePicker fx:id="date" GridPane.rowIndex="5" />
+                                          <Text fx:id="description" opacity="0.3" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrez une description" GridPane.rowIndex="3" />
                                           <ScrollPane prefHeight="129.0" prefWidth="178.0" GridPane.rowIndex="7">
                                              <content>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="182.0" prefWidth="175.0">
                                                    <children>
-                                                      <CheckBox layoutX="14.0" layoutY="6.0" mnemonicParsing="false" text="Contact A" />
+                                                      <CheckBox fx:id="contactList" layoutX="14.0" layoutY="6.0" mnemonicParsing="false" text="Contact A" />
                                                       <CheckBox layoutX="14.0" layoutY="36.0" mnemonicParsing="false" text="Contact B" />
                                                       <CheckBox layoutX="14.0" layoutY="66.0" mnemonicParsing="false" text="Contact C" />
                                                       <CheckBox layoutX="14.0" layoutY="100.0" mnemonicParsing="false" text="Contact D" />
@@ -242,13 +241,13 @@
                                                 </AnchorPane>
                                              </content>
                                           </ScrollPane>
-                                          <Button mnemonicParsing="false" text="Ajouter" GridPane.rowIndex="9" />
+                                          <Button fx:id="ajouter" mnemonicParsing="false" text="Ajouter" GridPane.rowIndex="9" />
                                           <Label text="Priorité" GridPane.rowIndex="10" />
-                                          <RadioButton mnemonicParsing="false" text="Normale" GridPane.rowIndex="11" />
-                                          <RadioButton mnemonicParsing="false" text="Urgente" translateY="-30.0" GridPane.rowIndex="11" />
-                                          <RadioButton mnemonicParsing="false" text="Faible" translateY="30.0" GridPane.rowIndex="11" />
+                                          <RadioButton fx:id="prioNorm" mnemonicParsing="false" text="Normale" GridPane.rowIndex="11" />
+                                          <RadioButton fx:id="prioHaute" mnemonicParsing="false" text="Urgente" translateY="-30.0" GridPane.rowIndex="11" />
+                                          <RadioButton fx:id="prioBasse" mnemonicParsing="false" text="Faible" translateY="30.0" GridPane.rowIndex="11" />
                                           <Label text="Description" GridPane.rowIndex="2" />
-                                          <TextField GridPane.rowIndex="1" />
+                                          <TextField fx:id="nom" GridPane.rowIndex="1" />
                                           <Label text="Date (JJ:MM:AAAA)" GridPane.rowIndex="4" />
                                           <Label text="Nom" />
                                           <Label text="Contact" GridPane.rowIndex="6" />
@@ -263,65 +262,12 @@
                   </AnchorPane>
                </items>
             </SplitPane>
-            <ButtonBar buttonMinWidth="50.0" layoutX="187.0" prefHeight="50.0" prefWidth="359.0">
-               <buttons>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #587C73;">
-                     <graphic>
-                        <ImageView fitHeight="22.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/plus.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #587C73;">
-                     <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/edit.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button mnemonicParsing="false" prefHeight="20.0" style="-fx-background-color: #587C73;">
-                     <graphic>
-                        <ImageView fitHeight="19.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/back.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #587C73;">
-                     <graphic>
-                        <ImageView fitHeight="22.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/forward.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #587C73;">
-                     <graphic>
-                        <ImageView fitHeight="23.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/poubelle.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </buttons>
-               <padding>
-                  <Insets right="65.0" />
-               </padding>
-            </ButtonBar>
-            <Button minHeight="10.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="204.0" style="-fx-background-color: #587C73;" text="Menu" textFill="WHITE">
+            <Button fx:id="menu" minHeight="10.0" mnemonicParsing="false" onAction="#clicBoutonMenu" prefHeight="43.0" prefWidth="183.0" style="-fx-background-color: #587C73;" text="Menu" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
          </children>
       </Pane>
-      <Label layoutX="10.0" layoutY="10.0" text="Nom" />
    </children>
 </AnchorPane>

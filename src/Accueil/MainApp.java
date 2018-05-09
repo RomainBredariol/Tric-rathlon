@@ -3,6 +3,9 @@ package Accueil;
 import java.io.IOException;
 import java.util.HashMap;
 
+import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
+
 import AccueilGeneral.ControleurAccueilGeneral;
 import AccueilGeneral.ControleurConfirmationReset;
 import AccueilGeneral.ControleurErreurChoixTriathlon;
@@ -11,16 +14,20 @@ import Agenda.ControleurAgendaAjout;
 import Contact.ControleurContact;
 import AccueilGeneral.ControleurNouveauTriathlon;
 import Profil.ControleurProfil;
+import Tache.ControleurTacheAjout;
 import Tache.ControleurTaches;
+import Tache.GanttChart;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingNode;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -57,7 +64,7 @@ public class MainApp extends Application {
 		showContact("accueil");	
 	}
 	
-	//Ces 2 methodes servent à conserevr une valeur à travers les ihm il faut cependant 
+	//Ces 2 methodes servent ï¿½ conserevr une valeur ï¿½ travers les ihm il faut cependant 
 	//l'affecter en local dans la methode setMainApp
 	public void aConserver(int valeur) {
 		this.valeurAConserver=valeur;
@@ -249,6 +256,42 @@ public class MainApp extends Application {
 
 	}	
 	
+	public void showAgendaAjout(){
+		try {
+			// Load person overview.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/Agenda/agendaAjout.fxml"));
+			AnchorPane personOverview = (AnchorPane) loader.load();
+			ControleurAgendaAjout controleur = loader.getController();
+			controleur.setMainApp(this);
+
+			Scene scene = new Scene(personOverview);
+			primaryStage.setScene(scene);
+			primaryStage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+	public void showSuppression(){
+		try {
+			// Load person overview.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/Agenda/ConfirmationSuppressionTache.fxml"));
+			AnchorPane personOverview = (AnchorPane) loader.load();
+			ControleurTaches controleur = loader.getController();
+			controleur.setMainApp(this);
+
+			Scene scene = new Scene(personOverview);
+			primaryStage.setScene(scene);
+			primaryStage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
 	public void showTacheAccueil(){
 		try {
 			// Load person overview.
@@ -256,6 +299,25 @@ public class MainApp extends Application {
 			loader.setLocation(MainApp.class.getResource("/Tache/tacheAcceuil.fxml"));
 			AnchorPane personOverview = (AnchorPane) loader.load();
 			ControleurTaches controleur = loader.getController();
+			controleur.setMainApp(this);
+
+			Scene scene = new Scene(personOverview);
+			primaryStage.setScene(scene);
+			primaryStage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	public void showTacheAjout(){
+		try {
+			// Load person overview.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/Tache/tacheAjout.fxml"));
+			AnchorPane personOverview = (AnchorPane) loader.load();
+			ControleurTacheAjout controleur = loader.getController();
 			controleur.setMainApp(this);
 
 			Scene scene = new Scene(personOverview);
@@ -276,6 +338,5 @@ public class MainApp extends Application {
 		launch(args);
 	}
 
-	
 
 }

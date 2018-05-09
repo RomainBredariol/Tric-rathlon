@@ -1,4 +1,4 @@
-package triceratlon;
+package Tache;
 
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
