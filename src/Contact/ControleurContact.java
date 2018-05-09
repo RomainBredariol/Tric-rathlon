@@ -1,12 +1,15 @@
 package Contact;
 
 import java.io.File;
+import java.io.IOException;
 
 import Accueil.MainApp;
 import BDD.SqlRequete;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -87,6 +90,9 @@ public class ControleurContact {
 
 	@FXML
 	private Button modifierContact;
+	
+	@FXML
+	private Button ok;
 
 	private MainApp mainApp;
 
@@ -351,7 +357,7 @@ public class ControleurContact {
 	}
 
 	@FXML
-	private void clicBoutonModifier() {
+	private void clicBoutonModifier() throws Exception {
 		if (this.idContactAModifier != 0) {
 			this.mainApp.aConserver(this.idContactAModifier);
 		} else {
@@ -370,7 +376,19 @@ public class ControleurContact {
 			}
 			this.mainApp.aConserver(this.idContactAModifier);
 		}
-		this.mainApp.showContact("modification");
+		
+		if(this.mainApp.getValeurAConserver()==0) {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/Contact/erreurRadioButtonNonSelectione.fxml"));
+			Stage stage = new Stage();
+			AnchorPane anchor = (AnchorPane) loader.load();
+			Scene scene = new Scene(anchor);
+			stage.setScene(scene);
+			stage.show();
+		}else {
+			this.mainApp.showContact("modification");
+		}
+		
 	}
 
 	@FXML
