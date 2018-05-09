@@ -31,6 +31,8 @@ public class MainApp extends Application {
 
 	private Stage primaryStage;
 	private HashMap<String, String> contact ;
+	
+	private int valeurAConserver;
 
 	// en javafx il y a plusieurs sorte de fenetres, ici on utilise le stage et la
 	// scene (sachant que la scene est a l'interieur du stage cf.image google)
@@ -45,13 +47,24 @@ public class MainApp extends Application {
 		contact.put("ajouter", "/Contact/ContactAjout.fxml");
 		contact.put("accueil", "/Contact/contact_accueil.fxml");
 		contact.put("groupe", "/Contact/Contact_nvx_groupe.fxml");
-
+		contact.put("modification", "/Contact/contactModification.fxml");
+		
 		// on charge le stage
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("tricerathlon");
 		
 		// appel de la methode qui charge la scene AccueilGeneral dans le stage
-		showContact("accueil");		
+		showContact("accueil");	
+	}
+	
+	//Ces 2 methodes servent à conserevr une valeur à travers les ihm il faut cependant 
+	//l'affecter en local dans la methode setMainApp
+	public void aConserver(int valeur) {
+		this.valeurAConserver=valeur;
+	}
+	
+	public int getValeurAConserver() {
+		return this.valeurAConserver;
 	}
 
 	// charge la page accueil

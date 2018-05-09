@@ -19,18 +19,20 @@
       <Button fx:id="menu" mnemonicParsing="false" onAction="#clicBoutonMenu" prefHeight="44.0" prefWidth="204.0" style="-fx-background-color: #587C73;" text="Menu" textFill="WHITE">
          <font>
             <Font size="24.0" />
-         </font></Button>
+         </font>
+      </Button>
       <ScrollPane layoutX="204.0" layoutY="49.0" prefHeight="514.0" prefWidth="460.0">
-        <content>
-          <AnchorPane fx:id="anchorPaneContact" minHeight="0.0" minWidth="0.0" prefHeight="1027.0" prefWidth="446.0" style="-fx-background-color: #F9F9F9;">
+         <content>
+            <AnchorPane fx:id="anchorPaneContact" minHeight="0.0" minWidth="0.0" prefHeight="1027.0" prefWidth="446.0" style="-fx-background-color: #F9F9F9;">
                <children>
                   <VBox fx:id="listContact">
                      <children>
                         
                      </children>
                   </VBox>
-               </children></AnchorPane>
-        </content>
+               </children>
+            </AnchorPane>
+         </content>
       </ScrollPane>
       <Button fx:id="ajouter" layoutX="211.0" layoutY="8.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="25.0" textFill="WHITE">
          <font>
@@ -72,7 +74,7 @@
          <children>
             <VBox layoutX="5.0" layoutY="4.0" prefHeight="494.0" prefWidth="158.0">
                <children>
-                  <Label fx:id="idPage" text="Identité" />
+                  <Label text="Identité" />
                   <TextField fx:id="prenom" promptText="prénom" />
                   <TextField fx:id="nom" promptText="Nom" />
                   <Separator prefHeight="16.0" prefWidth="153.0" />
@@ -84,20 +86,11 @@
                   <Separator prefHeight="16.0" prefWidth="153.0" />
                   <Label text="Adresse" />
                   <TextField fx:id="adr" promptText="adresse" />
-                  <TextField fx:id="cp" promptText="code postal" />
-                  <TextField fx:id="ville" promptText="ville" />
-                  <Separator prefHeight="16.0" prefWidth="153.0" />
-                  <Label text="Ajouter un Document" />
-                  <Button fx:id="importerDoc" contentDisplay="CENTER" graphicTextGap="2.0" mnemonicParsing="false" onAction="#clicBoutonImporter" prefHeight="36.0" prefWidth="137.0" text="Importer de Documents" textAlignment="CENTER">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Button>
-                  <Label fx:id="selectedFile" prefHeight="21.0" prefWidth="131.0" text="Fichier Selectionné" />
+                  <Separator prefHeight="23.0" prefWidth="158.0" />
                   <Label prefHeight="21.0" prefWidth="159.0" text="Affecter à un groupe" />
                   <ComboBox fx:id="choixGroupe" prefWidth="150.0" />
-                  <Separator prefHeight="0.0" prefWidth="158.0" />
-                  <Button fx:id="enregistrer" mnemonicParsing="false" onAction="#clicBoutonEnregistrer" prefHeight="39.0" prefWidth="92.0" text="Enregistrer" />
+                  <Separator prefHeight="25.0" prefWidth="158.0" />
+                  <Button fx:id="enregistrer" mnemonicParsing="false" onAction="#clicBoutonEnregistrer" prefHeight="39.0" prefWidth="92.0" text="Modifier" />
                   <Button fx:id="annuler" mnemonicParsing="false" onAction="#clicBoutonContact" prefHeight="36.0" prefWidth="84.0" text="Annuler">
                      <VBox.margin>
                         <Insets top="10.0" />
@@ -128,5 +121,6 @@
             </ImageView>
          </graphic>
       </Button>
+      <Label fx:id="idPage" layoutX="725.0" layoutY="15.0" text="Modification" textFill="WHITE" />
    </children>
 </AnchorPane>
