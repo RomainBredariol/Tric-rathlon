@@ -28,7 +28,7 @@
                <children>
                   <VBox fx:id="listContact" prefHeight="742.0" prefWidth="447.0">
                      <children>
-                        <Pane fx:id="paneContact" prefHeight="0.0" prefWidth="447.0" style="-fx-border-color: #D8EBDC;" />
+                        
                      </children>
                   </VBox>
                </children>
@@ -40,10 +40,10 @@
             <VBox layoutX="5.0" layoutY="9.0" prefHeight="497.0" prefWidth="153.0">
                <children>
                   <Label fx:id="idPage" text="Nom du groupe" />
-                  <TextField promptText="intitulé" />
+                  <TextField fx:id="nomGroupe" promptText="intitulé" />
                   <Separator prefHeight="16.0" prefWidth="153.0" />
                   <Label text="Description" />
-                  <TextArea prefHeight="111.0" prefWidth="155.0" />
+                  <TextArea fx:id="descriptionGroupe" prefHeight="111.0" prefWidth="155.0" />
                   <Separator prefHeight="16.0" prefWidth="153.0" />
                   <Label text="Ajouter contact" />
                   <ScrollPane prefHeight="200.0" prefWidth="200.0">
@@ -56,7 +56,7 @@
                     </content>
                   </ScrollPane>
                   <Separator prefHeight="16.0" prefWidth="153.0" />
-                  <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="101.0" text="Enregistrer" />
+                  <Button fx:id="enregistrer" onAction="#clicBoutonEnregistrerGroupe" mnemonicParsing="false" prefHeight="32.0" prefWidth="101.0" text="Enregistrer" />
                   <Button fx:id="annuler" mnemonicParsing="false" onAction="#clicBoutonContact" prefHeight="22.0" prefWidth="83.0" text="Annuler">
                      <VBox.margin>
                         <Insets top="20.0" />

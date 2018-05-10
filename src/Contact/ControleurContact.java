@@ -2,19 +2,23 @@ package Contact;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import Accueil.MainApp;
 import BDD.SqlRequete;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableListBase;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.Lighting;
 import javafx.scene.layout.AnchorPane;
@@ -42,7 +46,12 @@ public class ControleurContact {
 	@FXML
 	private TextField ville;
 
-	// bouton ihm ajout
+	@FXML
+	private TextField nomGroupe;
+	@FXML
+	private TextArea descriptionGroupe;
+
+	// bouton ihm ajout/groupe/modif
 	@FXML
 	private Button enregistrer;
 	@FXML
@@ -98,6 +107,8 @@ public class ControleurContact {
 
 	private File file;
 
+	private SqlRequete req;
+
 	/*
 	 * cet id va determiner dans quel page on se situe il prend 4 valeurs :
 	 * "Identitï¿½" pour la page contactAjout "Nom du groupe" pour la page
@@ -117,7 +128,7 @@ public class ControleurContact {
 	private VBox listContact;
 
 	@FXML
-	private ComboBox<String> choixGroupe;
+	private ChoiceBox<String> choixGroupe;
 
 	@FXML
 	private AnchorPane anchorPaneContact;
@@ -128,7 +139,17 @@ public class ControleurContact {
 		// Sert a modifier un contact, je l'ai mise ici car il fallait recuperer une
 		// valeur d'une autre ihm
 		if (this.idPage.getText().equals("Modification")) {
-			SqlRequete req = new SqlRequete();
+			this.req = new SqlRequete();
+			//on affecte les noms de groupe a la choice box
+			int nbGroupe = Integer.parseInt(req.getUneValeurBDD("count(nom)", "groupe", ""));
+
+			String[] tabNomGroupe = new String[nbGroupe];
+			req.getTabValeurBDD("nom", "groupe", tabNomGroupe);
+
+			for (int i = 0; i < nbGroupe; i++) {
+				this.choixGroupe.getItems().add(tabNomGroupe[i]);
+			}
+			//on definint les champs du contact selectionne
 			this.idContactAModifier = this.mainApp.getValeurAConserver();
 			this.nom.setText(req.getUneValeurBDD("nom", "benevoles", "id_benevoles=" + this.idContactAModifier));
 			this.prenom.setText(req.getUneValeurBDD("prenom", "benevoles", "id_benevoles=" + this.idContactAModifier));
@@ -136,25 +157,27 @@ public class ControleurContact {
 			this.adr.setText(
 					req.getUneValeurBDD("commentaires", "benevoles", "id_benevoles=" + this.idContactAModifier));
 			this.tel.setText(req.getUneValeurBDD("telephone", "benevoles", "id_benevoles=" + this.idContactAModifier));
-			req.CloseConnexion();
+			this.choixGroupe.setValue(req.getUneValeurBDD("groupe.nom", "benevoles, groupe, affilier", "benevoles.id_benevoles=affilier.id_benevoles AND "
+					+ "groupe.id_groupe=affilier.id_groupe AND benevoles.id_benevoles="+this.idContactAModifier+";"));
+			this.req.CloseConnexion();
 		}
 
 	}
 
 	private int nbContact;
-	private int idContactAModifier=0;
+	private int idContactAModifier = 0;
 
 	@FXML
 	public void initialize() {
-		SqlRequete req = new SqlRequete();
+		this.req = new SqlRequete();
 
 		// cette requete recupere le nb de contact contenue dans la bd
 		this.nbContact = Integer.parseInt(req.getUneValeurBDD("count(nom)", "benevoles", ""));
-		
-		//ce tabId est un tableau qui stocke tout les id des benevoles 
+
+		// ce tabId est un tableau qui stocke tout les id des benevoles
 		String[] tabId = new String[nbContact];
 		req.getTabValeurBDD("id_benevoles", "benevoles", tabId);
-	
+
 		// cette boucle affiche tous les contacts avec leurs donnees
 		for (int i = 0; i < tabId.length; i++) {
 			String nomContact = req.getUneValeurBDD("nom", "benevoles", "id_benevoles=" + tabId[i]);
@@ -224,25 +247,25 @@ public class ControleurContact {
 		// injecte dans le fxml le nb de checkbox en fonction du nb de contact dans la
 		// bdd lorsqu'on se trouve dans l'ihm nvx groupe
 		if (this.idPage.getText().equals("Nom du groupe")) {
-			for (int i = 1; i <= nbContact; i++) {
-				String contact = req.getUneValeurBDD("nom", "benevoles", "id_benevoles=" + i);
+			for (int i = 0; i < nbContact; i++) {
+				String contact = req.getUneValeurBDD("nom", "benevoles", "id_benevoles=" + tabId[i]);
 				this.listContactGroupe.getChildren().add(new CheckBox(contact));
 			}
 		}
 
-		// pas fini
-		if (this.idPage.getText().equals("Identitï¿½")) {
+		//affiche les groupes dans la choiceBox
+		if (this.idPage.getText().equals("Identité")) {
 			int nbGroupe = Integer.parseInt(req.getUneValeurBDD("count(nom)", "groupe", ""));
-			ObservableList<String> listGroupe = FXCollections.observableArrayList("a", "b");
-			this.choixGroupe = new ComboBox<String>();
-			for (int i = 1; i <= nbGroupe; i++) {
-				String groupe = req.getUneValeurBDD("nom", "groupe", "id_groupe =" + i);
 
+			String[] tabNomGroupe = new String[nbGroupe];
+			req.getTabValeurBDD("nom", "groupe", tabNomGroupe);
+
+			for (int i = 0; i < nbGroupe; i++) {
+				this.choixGroupe.getItems().add(tabNomGroupe[i]);
 			}
-
 		}
 
-		req.CloseConnexion();
+		this.req.CloseConnexion();
 	}
 
 	// Pour la methode showContact 4 valeurs possibles: ajouter, accueil, groupe ou
@@ -266,7 +289,7 @@ public class ControleurContact {
 
 	@FXML
 	private void rechercheContact() {
-		SqlRequete req = new SqlRequete();
+		this.req = new SqlRequete();
 		String nomRecherche = req.getUneValeurBDD("nom", "benevoles", "nom like '" + this.barreRecherche.getText()
 				+ "%' OR prenom like'" + this.barreRecherche.getText() + "%'");
 		String adrRecherche = req.getUneValeurBDD("commentaires", "benevoles", "nom like '"
@@ -342,7 +365,7 @@ public class ControleurContact {
 		// on ajoute la vbox dans l'anchorPane
 		this.anchorPaneContact.getChildren().add(this.listContact);
 
-		req.CloseConnexion();
+		this.req.CloseConnexion();
 	}
 
 	@FXML
@@ -373,9 +396,11 @@ public class ControleurContact {
 			for (int i = 0; i < boutonSelection.length; i++) {
 				if (boutonSelection[i].isSelected()) {
 					Label nom = (Label) paneContact[i].getChildren().get(1);
-					SqlRequete req = new SqlRequete();
-					int id = Integer.parseInt(req.getUneValeurBDD("id_benevoles", "benevoles", "nom='"+nom.getText()+"'"));
-					this.idContactAModifier=id;
+					this.req = new SqlRequete();
+					int id = Integer
+							.parseInt(req.getUneValeurBDD("id_benevoles", "benevoles", "nom='" + nom.getText() + "'"));
+					this.idContactAModifier = id;
+					this.req.CloseConnexion();
 				}
 			}
 			// on conserve cette valeur
@@ -402,10 +427,14 @@ public class ControleurContact {
 
 	@FXML
 	private void clicBoutonModifierContact() {
-		SqlRequete req = new SqlRequete();
+		this.req = new SqlRequete();
 		req.Connect("update benevoles set nom='" + this.nom.getText() + "', prenom='" + this.prenom.getText()
 				+ "', telephone='" + this.tel.getText() + "', mail='" + this.mail.getText() + "', commentaires='"
 				+ this.adr.getText() + "' where id_benevoles=" + this.idContactAModifier);
+		int idGroupe = Integer.parseInt(req.getUneValeurBDD("id_groupe", "groupe", "nom='"+this.choixGroupe.getValue()+"'"));
+		req.Connect("update affilier set id_groupe="+idGroupe+" where id_benevoles="+this.idContactAModifier);
+		this.req.CloseConnexion();
+		this.mainApp.showContact("accueil");
 	}
 
 	public void clicBoutonSupprimer() throws Exception {
@@ -429,9 +458,11 @@ public class ControleurContact {
 			for (int i = 0; i < boutonSelection.length; i++) {
 				if (boutonSelection[i].isSelected()) {
 					Label nom = (Label) paneContact[i].getChildren().get(1);
-					SqlRequete req = new SqlRequete();
-					int id = Integer.parseInt(req.getUneValeurBDD("id_benevoles", "benevoles", "nom='"+nom.getText()+"'"));
-					this.idContactAModifier=id;
+					this.req = new SqlRequete();
+					int id = Integer
+							.parseInt(req.getUneValeurBDD("id_benevoles", "benevoles", "nom='" + nom.getText() + "'"));
+					this.idContactAModifier = id;
+					this.req.CloseConnexion();
 				}
 			}
 			// on conserve cette valeur
@@ -467,42 +498,77 @@ public class ControleurContact {
 
 	@FXML
 	private void clicBoutonEnregistrer() {
-		SqlRequete req = new SqlRequete();
-		// ajoute user
-		req.Connect("Insert into benevoles(nom, prenom, mail, telephone, commentaires) values('" + this.nom.getText()
-				+ "', '" + this.prenom.getText() + "', '" + this.mail.getText() + "', '" + this.tel.getText() + "', '"
-				+ this.adr.getText() + " " + this.cp.getText() + " " + this.ville.getText() + "');");
-		// ajoute un fichier
-		if(this.file != null) {
-			req.Connect("insert into fichier(nom, descriptif, taille, chemin) values('" + this.file.getName()
-			+ "', 'affecter au contact " + this.nom.getText() + "','" + this.file.length() + "', '"
-			+ this.file.getAbsolutePath() + "');");
+		this.req = new SqlRequete();
+		if (this.nom.getText() != "Nom") {
+			// ajoute user
+			req.Connect("Insert into benevoles(nom, prenom, mail, telephone, commentaires) values('"
+					+ this.nom.getText() + "', '" + this.prenom.getText() + "', '" + this.mail.getText() + "', '"
+					+ this.tel.getText() + "', '" + this.adr.getText() + " " + this.cp.getText() + " "
+					+ this.ville.getText() + "');");
+			// ajoute un fichier
+			if (this.file != null) {
+				this.req.Connect("insert into fichier(nom, descriptif, taille, chemin) values('" + this.file.getName()
+						+ "', 'affecter au contact " + this.nom.getText() + "','" + this.file.length() + "', '"
+						+ this.file.getAbsolutePath() + "');");
+				int idBenevoles = Integer
+						.parseInt(req.getUneValeurBDD("id_benevoles", "benevoles", "nom='" + this.nom.getText() + "'"));
+				int idFichier = Integer
+						.parseInt(req.getUneValeurBDD("id_fichier", "fichier", "nom='" + this.file.getName() + "'"));
+				this.req.Connect("insert into lier(id_benevoles, id_fichier) values('" + idBenevoles + "', '"
+						+ idFichier + "')");
+			}
+			if (this.choixGroupe.getValue() != null) {
+				int idGroupe = Integer.parseInt(req.getUneValeurBDD("id_groupe", "groupe", "nom='"+this.choixGroupe.getValue()+"'"));
+				int idBenevoles = Integer.parseInt(req.getUneValeurBDD("id_benevoles", "benevoles", "nom='"+this.nom.getText()+"'"));
+				req.Connect("insert into affilier(id_groupe, id_benevoles) values('"+idGroupe+"','"+idBenevoles+"')");
+			}
+
+			this.req.CloseConnexion();
+			this.mainApp.showContact("accueil");
 		}
-		
-		req.CloseConnexion();
-		this.mainApp.showContact("accueil");
 	}
-	
+
+	@FXML
+	private void clicBoutonEnregistrerGroupe() {
+		this.req = new SqlRequete();
+		this.req.Connect("insert into groupe(nom, description) values('" + this.nomGroupe.getText() + "', '"
+				+ this.descriptionGroupe.getText() + "')");
+		CheckBox[] tabCheckBox = new CheckBox[this.nbContact];
+		for (int i = 0; i < this.nbContact; i++) {
+			tabCheckBox[i] = (CheckBox) this.listContactGroupe.getChildren().get(i);
+			if (tabCheckBox[i].isSelected()) {
+				int idBenevoles = Integer.parseInt(
+						req.getUneValeurBDD("id_benevoles", "benevoles", "nom='" + tabCheckBox[i].getText() + "'"));
+				int idGroupe = Integer
+						.parseInt(req.getUneValeurBDD("id_groupe", "groupe", "nom='" + this.nomGroupe.getText() + "'"));
+				req.Connect("insert into affilier(id_groupe, id_benevoles) values('" + idGroupe + "','" + idBenevoles
+						+ "')");
+			}
+		}
+		this.mainApp.showContact("accueil");
+
+	}
+
 	@FXML
 	private void clicBoutonMenu() {
 		this.mainApp.showAccueilGeneral();
 	}
-	
+
 	@FXML
 	private void clicBoutonTache() {
 		this.mainApp.showTacheAccueil();
 	}
-	
+
 	@FXML
 	private void clicBoutonAgenda() {
 		this.mainApp.showAgendaAccueil();
 	}
-	
+
 	@FXML
 	private void clicBoutonDocuments() {
 		this.mainApp.showDocumentsAccueil();
 	}
-	
+
 	@FXML
 	private void clicBoutonContact() {
 		this.mainApp.showContact("accueil");
