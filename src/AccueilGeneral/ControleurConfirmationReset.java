@@ -39,7 +39,7 @@ public class ControleurConfirmationReset implements Initializable{
 		req.Connect("alter table benevoles AUTO_INCREMENT=1;");
 		req.Connect("delete from affecter;");
 		req.Connect("delete from affilier;");
-		req.Connect("delete from détailler;");
+		req.Connect("delete from dï¿½tailler;");
 		req.Connect("delete from fichier;");
 		req.Connect("alter table fichier AUTO_INCREMENT=1;");
 		req.Connect("delete from groupe;");
