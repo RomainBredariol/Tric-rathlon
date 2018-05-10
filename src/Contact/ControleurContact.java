@@ -150,17 +150,21 @@ public class ControleurContact {
 
 		// cette requete recupere le nb de contact contenue dans la bd
 		this.nbContact = Integer.parseInt(req.getUneValeurBDD("count(nom)", "benevoles", ""));
-
+		
+		//ce tabId est un tableau qui stocke tout les id des benevoles 
+		String[] tabId = new String[nbContact];
+		req.getTabValeurBDD("id_benevoles", "benevoles", tabId);
+	
 		// cette boucle affiche tous les contacts avec leurs donnees
-		for (int i = 1; i <= nbContact; i++) {
-			String nomContact = req.getUneValeurBDD("nom", "benevoles", "id_benevoles=" + i);
-			String telContact = req.getUneValeurBDD("telephone", "benevoles", "id_benevoles=" + i);
-			String mailContact = req.getUneValeurBDD("mail", "benevoles", "id_benevoles=" + i);
-			String adrContact = req.getUneValeurBDD("commentaires", "benevoles", "id_benevoles=" + i);
+		for (int i = 0; i < tabId.length; i++) {
+			String nomContact = req.getUneValeurBDD("nom", "benevoles", "id_benevoles=" + tabId[i]);
+			String telContact = req.getUneValeurBDD("telephone", "benevoles", "id_benevoles=" + tabId[i]);
+			String mailContact = req.getUneValeurBDD("mail", "benevoles", "id_benevoles=" + tabId[i]);
+			String adrContact = req.getUneValeurBDD("commentaires", "benevoles", "id_benevoles=" + tabId[i]);
 
 			// l'architecture fxml que l'on a ici est comme ceci : VBox <- Pane <- Image,
 			// Label etc
-			// Donc on cr�e le pane et y insere tous les elements necessaire
+			// Donc on cree le pane et y insere tous les elements necessaire
 			Pane paneContact = new Pane();
 
 			// on defenit un objet et on lui attribut ses caracteristiques

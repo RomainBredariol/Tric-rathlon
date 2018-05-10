@@ -61,11 +61,7 @@ public class MainApp extends Application {
 		this.primaryStage.setTitle("tricerathlon");
 		
 		// appel de la methode qui charge la scene AccueilGeneral dans le stage
-<<<<<<< HEAD
-		showContact("accueil");	
-=======
-		showTacheAccueil();	
->>>>>>> IHM
+		showContact("accueil");
 	}
 	
 	//Ces 2 methodes servent � conserevr une valeur � travers les ihm il faut cependant 
