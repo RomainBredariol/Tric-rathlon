@@ -1,36 +1,47 @@
 package Tache;
 
+import java.awt.Dimension;
+import java.awt.Window;
+import java.util.Collection;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 
 import Accueil.MainApp;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.embed.swing.SwingNode;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
-public class ControleurTaches implements ChangeListener{
+public class ControleurTaches {
 
 	private MainApp main;
-	
+
 	@FXML
 	private Button tache;
-	
+
 	@FXML
 	private Button agenda;
-	
+
 	@FXML
 	private Button contact;
-	
+
 	@FXML
 	private Button document;
-	
+
 	@FXML
 	private Button menu;
-	
+
 	@FXML
 	private Button ajouter;
 
@@ -39,7 +50,7 @@ public class ControleurTaches implements ChangeListener{
 
 	@FXML
 	private Button supprimer;
-	
+
 	@FXML
 	private Button left;
 
@@ -48,144 +59,147 @@ public class ControleurTaches implements ChangeListener{
 
 	@FXML
 	private Text mois;
-	
+
+	@FXML
+	private AnchorPane anchorPaneGantt;
+
 	@FXML
 	private GanttChart gantt; // regarder avec SwingNode
-	
+
 	public void setMainApp(MainApp mainApp) {
-		// TODO Auto-generated method stub
-		this.main=mainApp;
+		this.main = mainApp;
 	}
-	@Override
-	public void changed(ObservableValue arg0, Object arg1, Object arg2) {
-		// TODO Auto-generated method stub
+
+	@FXML
+	public void initialize() {
+		SwingNode swingNode = new SwingNode();
+		this.showGantt(swingNode);
 		
+		
+		this.anchorPaneGantt.getChildren().add(swingNode);
 	}
-	
+
+	private void showGantt(SwingNode swingNode) {
+		SwingUtilities.invokeLater(() -> {
+			//swingNode.setContent(new JButton());
+			GanttChart gantt = new GanttChart(swingNode);
+		});
+	}
+
 	@FXML
 	private void clicBoutonMoisPrecedent() {
-		switch(mois.getText()) {
-		case "Janvier" :
+		switch (mois.getText()) {
+		case "Janvier":
 			this.mois.setText("Decembre");
 			break;
-		case "Fevrier" :
+		case "Fevrier":
 			this.mois.setText("Janvier");
 			break;
-		case "Mars" :
+		case "Mars":
 			this.mois.setText("Fevrier");
 			break;
-		case "Avril" :
+		case "Avril":
 			this.mois.setText("Mars");
 			break;
-		case "Mai" :
+		case "Mai":
 			this.mois.setText("Avril");
 			break;
-		case "Juin" :
+		case "Juin":
 			this.mois.setText("Mai");
 			break;
-		case "Juillet" :
+		case "Juillet":
 			this.mois.setText("Juin");
 			break;
-		case "Aout" :
+		case "Aout":
 			this.mois.setText("Juillet");
 			break;
-		case "Septembre" :
+		case "Septembre":
 			this.mois.setText("Aout");
 			break;
-		case "Octobre" :
+		case "Octobre":
 			this.mois.setText("Septembre");
 			break;
-		case "Novembre" :
+		case "Novembre":
 			this.mois.setText("Octobre");
 			break;
-		case "Decembre" :
+		case "Decembre":
 			this.mois.setText("Novembre");
 			break;
 		}
 	}
-	
+
 	@FXML
 	private void clicBoutonMoisSuivant() {
-		switch(mois.getText()) {
-		case "Janvier" :
+		switch (mois.getText()) {
+		case "Janvier":
 			this.mois.setText("Fevrier");
 			break;
-		case "Fevrier" :
+		case "Fevrier":
 			this.mois.setText("Mars");
 			break;
-		case "Mars" :
+		case "Mars":
 			this.mois.setText("Avril");
 			break;
-		case "Avril" :
+		case "Avril":
 			this.mois.setText("Mai");
 			break;
-		case "Mai" :
+		case "Mai":
 			this.mois.setText("Juin");
 			break;
-		case "Juin" :
+		case "Juin":
 			this.mois.setText("Juillet");
 			break;
-		case "Juillet" :
+		case "Juillet":
 			this.mois.setText("Aout");
 			break;
-		case "Aout" :
+		case "Aout":
 			this.mois.setText("Septembre");
 			break;
-		case "Septembre" :
+		case "Septembre":
 			this.mois.setText("Octobre");
 			break;
-		case "Octobre" :
+		case "Octobre":
 			this.mois.setText("Novembre");
 			break;
-		case "Novembre" :
+		case "Novembre":
 			this.mois.setText("Decembre");
 			break;
-		case "Decembre" :
+		case "Decembre":
 			this.mois.setText("Janvier");
 			break;
 		}
 	}
-	
-   public void showGantt() { //A tester
-	      SwingUtilities.invokeLater(() -> {
-	         gantt = new GanttChart("Triathlon");
-	         gantt.setSize(800, 400);
-	         gantt.setLocationRelativeTo(null);
-	         //gantt.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-	         gantt.setVisible(true);
-	      });
-	   }
-	
+
 	@FXML
 	private void clicBoutonMenu() {
 		this.main.showAccueilGeneral();
 	}
-	
+
 	@FXML
 	private void clicBoutonTache() {
 		this.main.showTacheAccueil();
 	}
-	
+
 	@FXML
 	private void clicBoutonAgenda() {
 		this.main.showAgendaAccueil();
 	}
-	
+
 	@FXML
 	private void clicBoutonDocuments() {
 		this.main.showDocumentsAccueil();
 	}
-	
+
 	@FXML
 	private void clicBoutonContact() {
 		this.main.showContact("accueil");
 	}
-	
+
 	@FXML
 	private void clicBoutonSupprimer() {
 		this.main.showSuppression();
 	}
-	
+
 	@FXML
 	private void clicBoutonAjouter() {
 		this.main.showTacheAjout();

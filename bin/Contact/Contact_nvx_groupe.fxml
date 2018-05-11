@@ -17,7 +17,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="561.0" prefWidth="828.0" style="-fx-background-color: #587C73;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Contact.ControleurContact">
    <children>
-      <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="204.0" style="-fx-background-color: #587C73;" text="Menu" textFill="WHITE">
+      <Button fx:id="menu" mnemonicParsing="false" onAction="#clicBoutonMenu" prefHeight="44.0" prefWidth="204.0" style="-fx-background-color: #587C73;" text="Menu" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>
@@ -56,7 +56,7 @@
                     </content>
                   </ScrollPane>
                   <Separator prefHeight="16.0" prefWidth="153.0" />
-                  <Button fx:id="enregistrer" onAction="#clicBoutonEnregistrerGroupe" mnemonicParsing="false" prefHeight="32.0" prefWidth="101.0" text="Enregistrer" />
+                  <Button fx:id="enregistrer" mnemonicParsing="false" onAction="#clicBoutonEnregistrerGroupe" prefHeight="32.0" prefWidth="101.0" text="Enregistrer" />
                   <Button fx:id="annuler" mnemonicParsing="false" onAction="#clicBoutonContact" prefHeight="22.0" prefWidth="83.0" text="Annuler">
                      <VBox.margin>
                         <Insets top="20.0" />
@@ -68,9 +68,9 @@
       </Pane>
       <Pane layoutX="-4.0" layoutY="49.0" prefHeight="513.0" prefWidth="211.0" style="-fx-background-color: #D8EBDC;">
          <children>
-            <Button layoutX="4.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="204.0" style="-fx-background-color: #D8EBDC; -fx-border-color: #587C73;" text="Tâches" />
-            <Button layoutX="4.0" layoutY="22.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="204.0" style="-fx-background-color: #D8EBDC; -fx-border-color: #587C73;" text="Agenda" />
-            <Button layoutX="4.0" layoutY="44.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="204.0" style="-fx-background-color: #D8EBDC; -fx-border-color: #587C73;" text="Documents" />
+            <Button fx:id="tache" layoutX="4.0" mnemonicParsing="false" onAction="#clicBoutonTache" prefHeight="24.0" prefWidth="204.0" style="-fx-background-color: #D8EBDC; -fx-border-color: #587C73;" text="Tâches" />
+            <Button fx:id="agenda" layoutX="4.0" layoutY="22.0" mnemonicParsing="false" onAction="#clicBoutonAgenda" prefHeight="22.0" prefWidth="204.0" style="-fx-background-color: #D8EBDC; -fx-border-color: #587C73;" text="Agenda" />
+            <Button fx:id="document" layoutX="4.0" layoutY="44.0" mnemonicParsing="false" onAction="#clicBoutonDocuments" prefHeight="24.0" prefWidth="204.0" style="-fx-background-color: #D8EBDC; -fx-border-color: #587C73;" text="Documents" />
             <Button fx:id="contact" layoutX="5.0" layoutY="66.0" mnemonicParsing="false" onAction="#clicBoutonContact" prefHeight="22.0" prefWidth="213.0" style="-fx-background-color: #F9F9F9;" text="Contacts" />
             <TextField fx:id="barreRecherche" layoutX="4.0" layoutY="97.0" onAction="#rechercheContact" prefHeight="23.0" prefWidth="204.0" promptText="Rechercher" />
          </children>

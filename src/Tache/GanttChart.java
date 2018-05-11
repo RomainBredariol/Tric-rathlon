@@ -4,7 +4,9 @@ import java.time.LocalDate;
 import java.time.ZoneOffset;
 import java.util.Date;
 
-import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -14,12 +16,14 @@ import org.jfree.data.gantt.Task;
 import org.jfree.data.gantt.TaskSeries;
 import org.jfree.data.gantt.TaskSeriesCollection;
 
-public class GanttChart extends JFrame {
+import javafx.embed.swing.SwingNode;
+
+public class GanttChart {
 
    private static final long serialVersionUID = 1L;
 
-   public GanttChart(String title) {
-      super(title);
+   public GanttChart(SwingNode swingNode) {
+      JPanel pane = new JPanel();
       
       // Creation du jeu de donnees
       IntervalCategoryDataset dataset = getCategoryDataset();
@@ -32,7 +36,8 @@ public class GanttChart extends JFrame {
             dataset);// jeu de donnees à utiliser
 
       ChartPanel panel = new ChartPanel(chart);
-      setContentPane(panel);
+      swingNode.setContent((JComponent) pane.add(panel));
+      
    }
 
    private IntervalCategoryDataset getCategoryDataset() {

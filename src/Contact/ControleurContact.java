@@ -499,7 +499,7 @@ public class ControleurContact {
 	@FXML
 	private void clicBoutonEnregistrer() {
 		this.req = new SqlRequete();
-		if (this.nom.getText() != "Nom") {
+		if (!this.nom.getPromptText().equals("Nom")) {
 			// ajoute user
 			req.Connect("Insert into benevoles(nom, prenom, mail, telephone, commentaires) values('"
 					+ this.nom.getText() + "', '" + this.prenom.getText() + "', '" + this.mail.getText() + "', '"

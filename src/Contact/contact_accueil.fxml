@@ -31,9 +31,9 @@
       </ScrollPane>
       <Pane layoutX="-7.0" layoutY="49.0" prefHeight="513.0" prefWidth="212.0" style="-fx-background-color: #D8EBDC;">
          <children>
-            <Button fx:id="tache" layoutX="7.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="204.0" style="-fx-background-color: #D8EBDC; -fx-border-color: #587C73;" text="Tâches" />
-            <Button fx:id="agenda" layoutX="7.0" layoutY="22.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="204.0" style="-fx-background-color: #D8EBDC; -fx-border-color: #587C73;" text="Agenda" />
-            <Button fx:id="document" layoutX="7.0" layoutY="44.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="204.0" style="-fx-background-color: #D8EBDC; -fx-border-color: #587C73;" text="Documents" />
+            <Button fx:id="tache" layoutX="7.0" mnemonicParsing="false" onAction="#clicBoutonTache" prefHeight="22.0" prefWidth="204.0" style="-fx-background-color: #D8EBDC; -fx-border-color: #587C73;" text="Tâches" />
+            <Button fx:id="agenda" layoutX="7.0" layoutY="22.0" mnemonicParsing="false" onAction="#clicBoutonAgenda" prefHeight="22.0" prefWidth="204.0" style="-fx-background-color: #D8EBDC; -fx-border-color: #587C73;" text="Agenda" />
+            <Button fx:id="document" layoutX="7.0" layoutY="44.0" mnemonicParsing="false" onAction="#clicBoutonDocuments" prefHeight="24.0" prefWidth="204.0" style="-fx-background-color: #D8EBDC; -fx-border-color: #587C73;" text="Documents" />
             <Button fx:id="contact" layoutX="7.0" layoutY="66.0" mnemonicParsing="false" onAction="#clicBoutonContact" prefHeight="31.0" prefWidth="204.0" style="-fx-background-color: #F9F9F9;" text="Contacts" />
             <TextField fx:id="barreRecherche" layoutX="7.0" layoutY="97.0" onAction="#rechercheContact" prefHeight="23.0" prefWidth="204.0" promptText="Rechercher" />
          </children>
