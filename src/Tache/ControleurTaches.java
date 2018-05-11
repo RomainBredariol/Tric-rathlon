@@ -74,14 +74,11 @@ public class ControleurTaches {
 	public void initialize() {
 		SwingNode swingNode = new SwingNode();
 		this.showGantt(swingNode);
-		
-		
 		this.anchorPaneGantt.getChildren().add(swingNode);
 	}
 
 	private void showGantt(SwingNode swingNode) {
 		SwingUtilities.invokeLater(() -> {
-			//swingNode.setContent(new JButton());
 			GanttChart gantt = new GanttChart(swingNode);
 		});
 	}

@@ -21,11 +21,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="580.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tache.ControleurTaches">
+<AnchorPane prefHeight="605.0" prefWidth="910.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tache.ControleurTaches">
    <children>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="740.0" style="-fx-background-color: #587C73;" AnchorPane.bottomAnchor="-21.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="910.0" style="-fx-background-color: #587C73;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <SplitPane dividerPositions="0.3" layoutX="1.0" layoutY="50.0" prefHeight="551.0" prefWidth="740.0">
+            <SplitPane dividerPositions="0.20484581497797358" layoutX="1.0" layoutY="50.0" prefHeight="553.0" prefWidth="910.0">
                <items>
                   <AnchorPane prefHeight="540.0" prefWidth="168.0">
                      <children>
@@ -99,7 +99,7 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="540.0" prefWidth="538.0">
                      <children>
-                        <ToolBar prefHeight="43.0" prefWidth="550.0" style="-fx-background-color: #D8EBDC;">
+                        <ToolBar prefHeight="49.0" prefWidth="718.0" style="-fx-background-color: #D8EBDC;">
                            <items>
                               <Button fx:id="left" mnemonicParsing="false" onAction="#clicBoutonMoisPrecedent" prefHeight="0.0" prefWidth="28.0" style="-fx-background-color: #D8EBDC #D8EBDC;">
                                  <graphic>

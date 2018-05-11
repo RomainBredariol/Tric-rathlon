@@ -44,6 +44,7 @@ public class GanttChart {
       
 	   //Le jeu de données qu'on va utiliser, pour chaque tache : ligne 1 = début, ligne 2 = fin
       TaskSeries taches = new TaskSeries("Duree de la tache");//Nom de la série
+      
       taches.add(new Task("Tache A",
     		  //Attention : les dates sont sous le format AAAA, MM, DD, il faudra les remplacer par des variables
             Date.from(LocalDate.of(2017, 7, 3).atStartOfDay().toInstant(ZoneOffset.UTC)),

@@ -24,7 +24,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="729.0" prefWidth="849.0" style="-fx-background-color: #587C73;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tache.ControleurTacheAjout">
+<AnchorPane prefHeight="729.0" prefWidth="849.0" style="-fx-background-color: #587C73;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tache.ControleurTacheAjout">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="729.0" prefWidth="849.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -200,9 +200,9 @@
                                     </ToolBar>
                                  </children>
                               </AnchorPane>
-                              <Pane prefHeight="681.0" prefWidth="173.0" style="-fx-background-color: #D8EBDC;">
+                              <Pane prefHeight="681.0" prefWidth="172.0" style="-fx-background-color: #D8EBDC;">
                                  <children>
-                                    <GridPane layoutY="14.0" prefHeight="681.0" prefWidth="173.0" style="-fx-background-color: #D8EBDC;">
+                                    <GridPane layoutY="14.0" prefHeight="668.0" prefWidth="173.0" style="-fx-background-color: #D8EBDC;">
                                        <columnConstraints>
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                        </columnConstraints>

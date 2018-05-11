@@ -111,9 +111,10 @@ public class ControleurContact {
 
 	/*
 	 * cet id va determiner dans quel page on se situe il prend 4 valeurs :
-	 * "Identitï¿½" pour la page contactAjout "Nom du groupe" pour la page
-	 * contact_nvx_groupe "Accueil" pour la page accueil "Modification" pour la page
-	 * modifier
+	 * "Identité" pour la page contactAjout 
+	 * "Nom du groupe" pour la page contact_nvx_groupe 
+	 * "Accueil" pour la page accueil 
+	 * "Modification" pour la page modifier
 	 */
 	@FXML
 	private Label idPage;
