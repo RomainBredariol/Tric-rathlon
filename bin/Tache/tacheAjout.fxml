@@ -191,7 +191,7 @@
                                                 </ImageView>
                                              </graphic>
                                           </Button>
-                                          <Text fx:id="mois" fill="#677c6b" strokeType="OUTSIDE" strokeWidth="0.0" text="Décembre" textAlignment="CENTER" wrappingWidth="272.345703125">
+                                          <Text fx:id="mois" fill="#677c6b" strokeType="OUTSIDE" strokeWidth="0.0" text="Decembre" textAlignment="CENTER" wrappingWidth="272.345703125">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
