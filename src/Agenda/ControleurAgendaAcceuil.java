@@ -1,43 +1,47 @@
 package Agenda;
 
+import java.sql.Date;
+
 import Accueil.MainApp;
+import BDD.SqlRequete;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
-public class ControleurAgendaAcceuil implements ChangeListener{
-	
+public class ControleurAgendaAcceuil implements ChangeListener {
+
 	@Override
 	public void changed(ObservableValue arg0, Object arg1, Object arg2) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
-	@FXML
-	private void initialize() {
-	}
-	
+
 	private MainApp main;
+	private SqlRequete req;
 	
 	@FXML
 	private Button tache;
-	
+
 	@FXML
 	private Button agenda;
-	
+
 	@FXML
 	private Button contact;
-	
+
 	@FXML
 	private Button document;
-	
+
 	@FXML
 	private Button menu;
-	
+
 	@FXML
 	private Button ajouter;
 
@@ -46,7 +50,7 @@ public class ControleurAgendaAcceuil implements ChangeListener{
 
 	@FXML
 	private Button supprimer;
-	
+
 	@FXML
 	private Button left;
 
@@ -55,15 +59,58 @@ public class ControleurAgendaAcceuil implements ChangeListener{
 
 	@FXML
 	private Text mois;
-	
+
 	@FXML
-	private GridPane panneauMois; //il faut changer de mois en gardant la structure de la GridPane et stocker les données précedemment entrées
+	private ListView listViewEvent;
+
+	@FXML
+	private GridPane panneauMois; // il faut changer de mois en gardant la structure de la GridPane et stocker les
+									// données précedemment entrées
 	
+	private int nbEvent;
+	private String[] tabDateEvent;
+	private String[] tabHeureEvent;
+
 	public void setMainApp(MainApp mainApp) {
 		// TODO Auto-generated method stub
-		this.main=mainApp;
+		this.main = mainApp;
+	}
+
+	@FXML
+	private void initialize() {
+		this.req= new SqlRequete();
+		
+		nbEvent = Integer.parseInt(req.getUneValeurBDD("count(nom)", "evenement", ""));
+		tabDateEvent = new String[nbEvent];
+		req.getTabValeurBDD("date", "evenement", tabDateEvent);
+		tabHeureEvent = new String[nbEvent];
+		req.getTabValeurBDD("heure", "evenement", tabHeureEvent);
+
+		// ajout des RadioButton pour chaque event
+		for (int i = 0; i < nbEvent; i++) {
+			String nomEvent = req.getUneValeurBDD("nom", "evenement",
+					"date='" + tabDateEvent[i] + "' and heure='" + tabHeureEvent[i] + "'");
+			this.listViewEvent.getItems().add(new RadioButton(nomEvent));
+			this.listViewEvent.getItems().add(new Label(tabHeureEvent[i]+" || "+tabDateEvent[i]));
+		}
 	}
 	
+	@FXML
+	private void clicBoutonModifier() {
+		req = new SqlRequete();
+		RadioButton[] tabCheckBoxEvent = new RadioButton[nbEvent];
+		for(int i = 0; i<nbEvent; i=i+2) {
+			tabCheckBoxEvent[i]= (RadioButton) this.listViewEvent.getItems().get(0);
+			if(tabCheckBoxEvent[i].isSelected()) {
+				int idHeureEvent = Integer.parseInt(tabHeureEvent[i]);
+				String idDateEvent = tabDateEvent[i];
+				this.main.aConserver(idHeureEvent);
+				this.main.stringAConserver(idDateEvent);
+			}
+		}
+		this.main.showAgendaModification();
+	}
+
 	@FXML
 	private void clicBoutonMenu() {
 		this.main.showAccueilGeneral();
@@ -73,114 +120,114 @@ public class ControleurAgendaAcceuil implements ChangeListener{
 	private void clicBoutonTache() {
 		this.main.showTacheAccueil();
 	}
-	
+
 	@FXML
 	private void clicBoutonAgenda() {
 		this.main.showAgendaAccueil();
 	}
-	
+
 	@FXML
 	private void clicBoutonDocuments() {
 		this.main.showDocumentsAccueil();
 	}
-	
+
 	@FXML
 	private void clicBoutonContact() {
 		this.main.showContact("accueil");
 	}
-	
+
 	@FXML
 	private void clicBoutonAjouter() {
 		this.main.showAgendaAjout();
 	}
-	
+
 	@FXML
 	private void clicBoutonSupprimer() {
 		this.main.showSuppression();
 	}
-	
+
 	@FXML
 	private void clicBoutonMoisPrecedent() {
-		switch(mois.getText()) {
-		case "Janvier" :
+		switch (mois.getText()) {
+		case "Janvier":
 			this.mois.setText("Decembre");
 			break;
-		case "Fevrier" :
+		case "Fevrier":
 			this.mois.setText("Janvier");
 			break;
-		case "Mars" :
+		case "Mars":
 			this.mois.setText("Fevrier");
 			break;
-		case "Avril" :
+		case "Avril":
 			this.mois.setText("Mars");
 			break;
-		case "Mai" :
+		case "Mai":
 			this.mois.setText("Avril");
 			break;
-		case "Juin" :
+		case "Juin":
 			this.mois.setText("Mai");
 			break;
-		case "Juillet" :
+		case "Juillet":
 			this.mois.setText("Juin");
 			break;
-		case "Aout" :
+		case "Aout":
 			this.mois.setText("Juillet");
 			break;
-		case "Septembre" :
+		case "Septembre":
 			this.mois.setText("Aout");
 			break;
-		case "Octobre" :
+		case "Octobre":
 			this.mois.setText("Septembre");
 			break;
-		case "Novembre" :
+		case "Novembre":
 			this.mois.setText("Octobre");
 			break;
-		case "Decembre" :
+		case "Decembre":
 			this.mois.setText("Novembre");
 			break;
 		}
 	}
-	
+
 	@FXML
 	private void clicBoutonMoisSuivant() {
-		switch(mois.getText()) {
-		case "Janvier" :
+		switch (mois.getText()) {
+		case "Janvier":
 			this.mois.setText("Fevrier");
 			break;
-		case "Fevrier" :
+		case "Fevrier":
 			this.mois.setText("Mars");
 			break;
-		case "Mars" :
+		case "Mars":
 			this.mois.setText("Avril");
 			break;
-		case "Avril" :
+		case "Avril":
 			this.mois.setText("Mai");
 			break;
-		case "Mai" :
+		case "Mai":
 			this.mois.setText("Juin");
 			break;
-		case "Juin" :
+		case "Juin":
 			this.mois.setText("Juillet");
 			break;
-		case "Juillet" :
+		case "Juillet":
 			this.mois.setText("Aout");
 			break;
-		case "Aout" :
+		case "Aout":
 			this.mois.setText("Septembre");
 			break;
-		case "Septembre" :
+		case "Septembre":
 			this.mois.setText("Octobre");
 			break;
-		case "Octobre" :
+		case "Octobre":
 			this.mois.setText("Novembre");
 			break;
-		case "Novembre" :
+		case "Novembre":
 			this.mois.setText("Decembre");
 			break;
-		case "Decembre" :
+		case "Decembre":
 			this.mois.setText("Janvier");
 			break;
 		}
 	}
-	
+
 }

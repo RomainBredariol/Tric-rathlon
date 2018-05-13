@@ -11,6 +11,7 @@ import AccueilGeneral.ControleurConfirmationReset;
 import AccueilGeneral.ControleurErreurChoixTriathlon;
 import Agenda.ControleurAgendaAcceuil;
 import Agenda.ControleurAgendaAjout;
+import Agenda.ControleurAgendaModifier;
 import Contact.ControleurContact;
 import Documents.ControleurDocumentsAccueil;
 import AccueilGeneral.ControleurNouveauTriathlon;
@@ -61,7 +62,7 @@ public class MainApp extends Application {
 		this.primaryStage.setTitle("tricerathlon");
 		
 		// appel de la methode qui charge la scene AccueilGeneral dans le stage
-		showContact("accueil");
+		showAgendaAccueil();
 	}
 	
 	//Ces 2 methodes servent � conserevr une valeur � travers les ihm il faut cependant 
@@ -72,6 +73,14 @@ public class MainApp extends Application {
 	
 	public int getValeurAConserver() {
 		return this.valeurAConserver;
+	}
+	
+	public void stringAConserver(String valeur) {
+		this.stringAConserver=valeur;
+	}
+	
+	public String getStrinfAConserver() {
+		return this.stringAConserver;
 	}
 
 	// charge la page accueil
@@ -263,6 +272,25 @@ public class MainApp extends Application {
 			loader.setLocation(MainApp.class.getResource("/Agenda/agendaAjout.fxml"));
 			AnchorPane personOverview = (AnchorPane) loader.load();
 			ControleurAgendaAjout controleur = loader.getController();
+			controleur.setMainApp(this);
+
+			Scene scene = new Scene(personOverview);
+			primaryStage.setScene(scene);
+			primaryStage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	public void showAgendaModification(){
+		try {
+			// Load person overview.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/Agenda/agendaModification.fxml"));
+			AnchorPane personOverview = (AnchorPane) loader.load();
+			ControleurAgendaModifier controleur = loader.getController();
 			controleur.setMainApp(this);
 
 			Scene scene = new Scene(personOverview);
