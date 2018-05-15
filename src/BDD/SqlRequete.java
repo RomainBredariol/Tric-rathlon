@@ -130,7 +130,7 @@ public class SqlRequete {
 
 	// cette methode permet de demander un tableau de donnee en particulier (ex:
 	// select id_benevoles from benevoles)
-	public void getTabValeurBDD(String colonne, String table, String[] tab) {
+	public void getTabValeurBDD(String colonne, String table, String condition, String[] tab) {
 
 		ResultSet rs = null;
 		Statement st = null;
@@ -139,9 +139,13 @@ public class SqlRequete {
 
 			st = connexion.createStatement();
 			String rq;
-
-			rq = "Select " + colonne + " from " + table + ";";
-
+			
+			if(condition != "") {
+				rq = "Select " + colonne + " from " + table + " where "+condition;
+			}else {
+				rq = "Select " + colonne + " from " + table + ";";
+			}
+			
 			rs = st.executeQuery(rq);
 
 			for (int i = 0; i <= tab.length; i++) {

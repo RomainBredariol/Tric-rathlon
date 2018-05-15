@@ -32,7 +32,7 @@ public class ControleurDocumentsAccueil {
 		int nbDoc = Integer.parseInt(req.getUneValeurBDD("count(id_fichier)", "fichier", ""));
 		
 		String[] tabIdDoc = new String[nbDoc];
-		req.getTabValeurBDD("id_fichier", "fichier", tabIdDoc);
+		req.getTabValeurBDD("id_fichier", "fichier", "", tabIdDoc);
 		
 		for(int i = 0; i<nbDoc ; i++) {
 			String nomFichier = req.getUneValeurBDD("nom", "fichier", "id_fichier="+tabIdDoc[i]);

@@ -145,7 +145,7 @@ public class ControleurContact {
 			int nbGroupe = Integer.parseInt(req.getUneValeurBDD("count(nom)", "groupe", ""));
 
 			String[] tabNomGroupe = new String[nbGroupe];
-			req.getTabValeurBDD("nom", "groupe", tabNomGroupe);
+			req.getTabValeurBDD("nom", "groupe", "", tabNomGroupe);
 
 			for (int i = 0; i < nbGroupe; i++) {
 				this.choixGroupe.getItems().add(tabNomGroupe[i]);
@@ -177,7 +177,7 @@ public class ControleurContact {
 
 		// ce tabId est un tableau qui stocke tout les id des benevoles
 		String[] tabId = new String[nbContact];
-		req.getTabValeurBDD("id_benevoles", "benevoles", tabId);
+		req.getTabValeurBDD("id_benevoles", "benevoles", "", tabId);
 
 		// cette boucle affiche tous les contacts avec leurs donnees
 		for (int i = 0; i < tabId.length; i++) {
@@ -259,7 +259,7 @@ public class ControleurContact {
 			int nbGroupe = Integer.parseInt(req.getUneValeurBDD("count(nom)", "groupe", ""));
 
 			String[] tabNomGroupe = new String[nbGroupe];
-			req.getTabValeurBDD("nom", "groupe", tabNomGroupe);
+			req.getTabValeurBDD("nom", "groupe", "", tabNomGroupe);
 
 			for (int i = 0; i < nbGroupe; i++) {
 				this.choixGroupe.getItems().add(tabNomGroupe[i]);
@@ -500,7 +500,7 @@ public class ControleurContact {
 	@FXML
 	private void clicBoutonEnregistrer() {
 		this.req = new SqlRequete();
-		if (!this.nom.getPromptText().equals("Nom")) {
+		if (!this.nom.getText().equals("")) {
 			// ajoute user
 			req.Connect("Insert into benevoles(nom, prenom, mail, telephone, commentaires) values('"
 					+ this.nom.getText() + "', '" + this.prenom.getText() + "', '" + this.mail.getText() + "', '"

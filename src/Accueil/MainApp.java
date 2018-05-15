@@ -43,7 +43,8 @@ public class MainApp extends Application {
 	
 	private int valeurAConserver;
 	private String stringAConserver;
-
+	private String string2AConserver;
+	
 	// en javafx il y a plusieurs sorte de fenetres, ici on utilise le stage et la
 	// scene (sachant que la scene est a l'interieur du stage cf.image google)
 
@@ -75,13 +76,19 @@ public class MainApp extends Application {
 		return this.valeurAConserver;
 	}
 	
-	public void stringAConserver(String valeur) {
+	public void stringAConserver(String valeur, String valeur2) {
 		this.stringAConserver=valeur;
+		this.string2AConserver=valeur2;
 	}
 	
-	public String getStrinfAConserver() {
+	public String getString1() {
 		return this.stringAConserver;
 	}
+	
+	public String getString2() {
+		return this.string2AConserver;
+	}
+
 
 	// charge la page accueil
 	public void showAccueil() {

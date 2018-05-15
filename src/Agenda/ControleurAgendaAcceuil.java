@@ -26,7 +26,7 @@ public class ControleurAgendaAcceuil implements ChangeListener {
 
 	private MainApp main;
 	private SqlRequete req;
-	
+
 	@FXML
 	private Button tache;
 
@@ -66,7 +66,7 @@ public class ControleurAgendaAcceuil implements ChangeListener {
 	@FXML
 	private GridPane panneauMois; // il faut changer de mois en gardant la structure de la GridPane et stocker les
 									// données précedemment entrées
-	
+
 	private int nbEvent;
 	private String[] tabDateEvent;
 	private String[] tabHeureEvent;
@@ -78,34 +78,37 @@ public class ControleurAgendaAcceuil implements ChangeListener {
 
 	@FXML
 	private void initialize() {
-		this.req= new SqlRequete();
-		
+		this.req = new SqlRequete();
+
 		nbEvent = Integer.parseInt(req.getUneValeurBDD("count(nom)", "evenement", ""));
 		tabDateEvent = new String[nbEvent];
-		req.getTabValeurBDD("date", "evenement", tabDateEvent);
+		req.getTabValeurBDD("date", "evenement", "", tabDateEvent);
 		tabHeureEvent = new String[nbEvent];
-		req.getTabValeurBDD("heure", "evenement", tabHeureEvent);
+		req.getTabValeurBDD("heure", "evenement", "", tabHeureEvent);
 
 		// ajout des RadioButton pour chaque event
 		for (int i = 0; i < nbEvent; i++) {
 			String nomEvent = req.getUneValeurBDD("nom", "evenement",
 					"date='" + tabDateEvent[i] + "' and heure='" + tabHeureEvent[i] + "'");
 			this.listViewEvent.getItems().add(new RadioButton(nomEvent));
-			this.listViewEvent.getItems().add(new Label(tabHeureEvent[i]+" || "+tabDateEvent[i]));
+			this.listViewEvent.getItems().add(new Label(tabHeureEvent[i] + " || " + tabDateEvent[i]));
 		}
 	}
-	
+
 	@FXML
 	private void clicBoutonModifier() {
-		req = new SqlRequete();
-		RadioButton[] tabCheckBoxEvent = new RadioButton[nbEvent];
-		for(int i = 0; i<nbEvent; i=i+2) {
-			tabCheckBoxEvent[i]= (RadioButton) this.listViewEvent.getItems().get(0);
-			if(tabCheckBoxEvent[i].isSelected()) {
-				int idHeureEvent = Integer.parseInt(tabHeureEvent[i]);
-				String idDateEvent = tabDateEvent[i];
-				this.main.aConserver(idHeureEvent);
-				this.main.stringAConserver(idDateEvent);
+		RadioButton[] tabRadioButtonEvent = new RadioButton[nbEvent];
+		int j = 0;
+		for (int i = 0; i < nbEvent; i++) {
+			tabRadioButtonEvent[i] = (RadioButton) this.listViewEvent.getItems().get(j);
+			j = j + 2;
+		}
+		for (int i = 0; i < tabRadioButtonEvent.length; i++) {
+			if (tabRadioButtonEvent[i].isSelected()) {
+				String dateId = tabDateEvent[i];
+				String heureID = tabHeureEvent[i];
+				heureID = heureID.substring(0, heureID.length() - 3);
+				this.main.stringAConserver(dateId, heureID);
 			}
 		}
 		this.main.showAgendaModification();
@@ -115,7 +118,7 @@ public class ControleurAgendaAcceuil implements ChangeListener {
 	private void clicBoutonMenu() {
 		this.main.showAccueilGeneral();
 	}
-	
+
 	@FXML
 	private void clicBoutonTache() {
 		this.main.showTacheAccueil();
@@ -143,7 +146,22 @@ public class ControleurAgendaAcceuil implements ChangeListener {
 
 	@FXML
 	private void clicBoutonSupprimer() {
-		this.main.showSuppression();
+		RadioButton[] tabRadioButtonEvent = new RadioButton[nbEvent];
+		int j = 0;
+		for (int i = 0; i < nbEvent; i++) {
+			tabRadioButtonEvent[i] = (RadioButton) this.listViewEvent.getItems().get(j);
+			j = j + 2;
+		}
+		for (int i = 0; i < tabRadioButtonEvent.length; i++) {
+			if (tabRadioButtonEvent[i].isSelected()) {
+				String dateId = tabDateEvent[i];
+				String heureID = tabHeureEvent[i];
+				heureID = heureID.substring(0, heureID.length() - 3);
+				this.main.stringAConserver(dateId, heureID);
+			}
+		}
+		this.main.showAgendaModification();
+
 	}
 
 	@FXML

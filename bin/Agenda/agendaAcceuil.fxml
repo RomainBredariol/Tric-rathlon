@@ -333,7 +333,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="modifier" maxHeight="35.0" maxWidth="50.0" minHeight="35.0" minWidth="50.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="50.0">
+                  <Button fx:id="modifier" maxHeight="35.0" maxWidth="50.0" minHeight="35.0" minWidth="50.0" mnemonicParsing="false" onAction="#clicBoutonModifier" prefHeight="35.0" prefWidth="50.0">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                            <image>

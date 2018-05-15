@@ -87,6 +87,8 @@ public class ControleurAgendaAjout implements ChangeListener {
 	private MainApp mainApp;
 
 	private SqlRequete req;
+	
+	private String[] tabIdContact;
 
 	public void setMainApp(MainApp main) {
 		this.mainApp = main;
@@ -101,14 +103,14 @@ public class ControleurAgendaAjout implements ChangeListener {
 		this.req = new SqlRequete();
 		nbContact = Integer.parseInt(req.getUneValeurBDD("count(id_benevoles)", "benevoles", ""));
 
-		String[] tabIdContact = new String[nbContact];
-		req.getTabValeurBDD("id_benevoles", "benevoles", tabIdContact);
+		tabIdContact = new String[nbContact];
+		req.getTabValeurBDD("id_benevoles", "benevoles", "", tabIdContact);
 
 		int nbEvent = Integer.parseInt(req.getUneValeurBDD("count(nom)", "evenement", ""));
 		String[] tabDateEvent = new String[nbEvent];
-		req.getTabValeurBDD("date", "evenement", tabDateEvent);
+		req.getTabValeurBDD("date", "evenement", "", tabDateEvent);
 		String[] tabHeureEvent = new String[nbEvent];
-		req.getTabValeurBDD("heure", "evenement", tabHeureEvent);
+		req.getTabValeurBDD("heure",  "evenement", "", tabHeureEvent);
 
 		// ajout des checkBox pour chaque contact
 		for (int i = 0; i < nbContact; i++) {
@@ -138,17 +140,17 @@ public class ControleurAgendaAjout implements ChangeListener {
 		String nom = this.nom.getText();
 		String heure = this.horaires.getValue();
 		
-		String contact = "|";
 		for(int i = 0; i<nbContact; i++) {
 			CheckBox[] tabContact = new CheckBox[nbContact];
 			tabContact[i] = (CheckBox) this.vboxListeContact.getChildren().get(i);
 			if(tabContact[i].isSelected()) {
-				contact = contact+"|"+tabContact[i].getText()+"|";
+				event.Connect("insert into participer(id_benevoles, date, heure) values("+this.tabIdContact[i]+", '"+datePicker.toString()+"', '"+heure+"')");
 			}
 		}
 		//Il faudra ajouter l'id_triathlon en creant une methodes dans mainapp
-		String requete = "insert into evenement(nom, description, date, contact, couleur, heure)"
-				+ " values('"+nom+"','"+desc+"','"+datePicker.toString()+"','"+contact+"','"+couleur+"','"+heure+"');";		event.Connect(requete);
+		String requete = "insert into evenement(nom, description, date, couleur, heure)"
+				+ " values('"+nom+"','"+desc+"','"+datePicker.toString()+"','"+couleur.toString()+"','"+heure+"');";		
+		event.Connect(requete);
 		event.CloseConnexion();
 		mainApp.showAgendaAccueil();
 	}
