@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="294.0" prefWidth="567.0" style="-fx-background-color: #B7D5B6;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" fx:controller="Agenda.ControleurSuppressionEvent" minHeight="-Infinity" minWidth="-Infinity" prefHeight="294.0" prefWidth="567.0" style="-fx-background-color: #B7D5B6;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <MenuBar layoutY="-2.0" prefHeight="37.0" prefWidth="567.0" style="-fx-background-color: #587C73;">
          <menus>
@@ -15,7 +15,7 @@
          </menus>
       </MenuBar>
       <Button fx:id="boutonAnnuler" layoutX="92.0" layoutY="202.0" mnemonicParsing="false" onAction="#clicBoutonAnnuler" prefHeight="31.0" prefWidth="131.0" text="Annuler" />
-      <Button fx:id="boutonReset" layoutX="340.0" layoutY="202.0" mnemonicParsing="false" onAction="#clicBoutonConfirmer" prefHeight="31.0" prefWidth="131.0" style="-fx-background-color: F34621;" text="Confirmer">
+      <Button fx:id="boutonSupprimer" layoutX="340.0" layoutY="202.0" mnemonicParsing="false" onAction="#clicBoutonSupprimer" prefHeight="31.0" prefWidth="131.0" style="-fx-background-color: F34621;" text="Confirmer">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

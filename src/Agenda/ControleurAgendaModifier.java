@@ -111,7 +111,6 @@ public class ControleurAgendaModifier {
 		this.horaires.setValue(heureId);
 
 		// recupere nom et prenom de benevoles participant a un event
-//		int nbContactParticipant = Integer.parseInt(req.getUneValeurBDD("count(id_benevoles)", "participer", ""));
 		nomContactParticpant = new String[1000];
 		req.getTabValeurBDD("benevoles.nom", "benevoles, participer, evenement",
 				"benevoles.ID_Benevoles=participer.ID_Benevoles and "

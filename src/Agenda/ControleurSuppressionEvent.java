@@ -21,8 +21,13 @@ public class ControleurSuppressionEvent {
 	
 	private MainApp main;
 	
+	private String dateId;
+	private String heureId;
+	
 	public void setMainApp(MainApp main){
 		this.main=main;
+		this.dateId=this.main.getString1();
+		this.heureId=this.main.getString2();
 	}
 	
 	@FXML
@@ -31,12 +36,13 @@ public class ControleurSuppressionEvent {
 	}
 	
 	@FXML
-	private void clicBoutonConfirmer() {
+	private void clicBoutonSupprimer() {
 		SqlRequete req= new SqlRequete();
-		req.Connect("delete from evenement where date='"+this.main.getString1()+" and heure='"+this.main.getString2()+"'");
+		req.Connect("delete from evenement where date='"+dateId+"' and heure='"+heureId+"'");
+		req.Connect("delete from participer where date='"+dateId+"' and heure='"+heureId+"'");
 		req.CloseConnexion();
 		this.fenetre.close();
-		this.main.showContact("accueil");
+		this.main.showAgendaAccueil();
 	}
 
 	

@@ -1,20 +1,26 @@
 package Agenda;
 
+import java.io.IOException;
 import java.sql.Date;
 
 import Accueil.MainApp;
 import BDD.SqlRequete;
+import Contact.ControleurErreur;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class ControleurAgendaAcceuil implements ChangeListener {
 
@@ -145,23 +151,45 @@ public class ControleurAgendaAcceuil implements ChangeListener {
 	}
 
 	@FXML
-	private void clicBoutonSupprimer() {
+	private void clicBoutonSupprimer() throws Exception {
 		RadioButton[] tabRadioButtonEvent = new RadioButton[nbEvent];
 		int j = 0;
+		int nbRadioButtonSelected = 0;
 		for (int i = 0; i < nbEvent; i++) {
 			tabRadioButtonEvent[i] = (RadioButton) this.listViewEvent.getItems().get(j);
 			j = j + 2;
 		}
 		for (int i = 0; i < tabRadioButtonEvent.length; i++) {
 			if (tabRadioButtonEvent[i].isSelected()) {
+				nbRadioButtonSelected++;
 				String dateId = tabDateEvent[i];
 				String heureID = tabHeureEvent[i];
-				heureID = heureID.substring(0, heureID.length() - 3);
+				
 				this.main.stringAConserver(dateId, heureID);
 			}
 		}
-		this.main.showAgendaModification();
-
+		if (nbRadioButtonSelected != 1) {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/Agenda/erreurRadioButtonNonSelectionne.fxml"));
+			Stage stage = new Stage();
+			AnchorPane anchor = (AnchorPane) loader.load();
+			ControleurErreur controleur = loader.getController();
+			controleur.setFenetre(stage);
+			Scene scene = new Scene(anchor);
+			stage.setScene(scene);
+			stage.show();
+		} else {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/Agenda/confirmationSuppressionEvent.fxml"));
+			Stage stage = new Stage();
+			AnchorPane anchor = (AnchorPane) loader.load();
+			ControleurSuppressionEvent controleur = loader.getController();
+			controleur.setMainApp(this.main);
+			controleur.setfenetre(stage);
+			Scene scene = new Scene(anchor);
+			stage.setScene(scene);
+			stage.show();
+		}
 	}
 
 	@FXML
