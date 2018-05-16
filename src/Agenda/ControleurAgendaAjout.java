@@ -23,13 +23,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
-public class ControleurAgendaAjout implements ChangeListener {
-
-	@Override
-	public void changed(ObservableValue arg0, Object arg1, Object arg2) {
-		// TODO Auto-generated method stub
-
-	}
+public class ControleurAgendaAjout  {
 
 	// Un peu sale, mais à part utiliser java.util.Calendar, qui a l'air imbuvable,
 	// ça reste le meilleur moyen
@@ -89,28 +83,24 @@ public class ControleurAgendaAjout implements ChangeListener {
 	private SqlRequete req;
 	
 	private String[] tabIdContact;
+	
+	private int idTriathlon;
 
 	public void setMainApp(MainApp main) {
 		this.mainApp = main;
+		this.idTriathlon = this.mainApp.getIdTriathlon();
 		
-		 
-	}
-
-	private int nbContact;
-	
-	@FXML
-	private void initialize() {
 		this.req = new SqlRequete();
-		nbContact = Integer.parseInt(req.getUneValeurBDD("count(id_benevoles)", "benevoles", ""));
+		nbContact = Integer.parseInt(req.getUneValeurBDD("count(id_benevoles)", "benevoles", "id_triathlon="+this.idTriathlon));
 
 		tabIdContact = new String[nbContact];
-		req.getTabValeurBDD("id_benevoles", "benevoles", "", tabIdContact);
+		req.getTabValeurBDD("id_benevoles", "benevoles", "id_triathlon="+this.idTriathlon, tabIdContact);
 
-		int nbEvent = Integer.parseInt(req.getUneValeurBDD("count(nom)", "evenement", ""));
+		int nbEvent = Integer.parseInt(req.getUneValeurBDD("count(nom)", "evenement", "id_triathlon="+this.idTriathlon));
 		String[] tabDateEvent = new String[nbEvent];
-		req.getTabValeurBDD("date", "evenement", "", tabDateEvent);
+		req.getTabValeurBDD("date", "evenement", "id_triathlon="+this.idTriathlon, tabDateEvent);
 		String[] tabHeureEvent = new String[nbEvent];
-		req.getTabValeurBDD("heure",  "evenement", "", tabHeureEvent);
+		req.getTabValeurBDD("heure",  "evenement", "id_triathlon="+this.idTriathlon, tabHeureEvent);
 
 		// ajout des checkBox pour chaque contact
 		for (int i = 0; i < nbContact; i++) {
@@ -121,13 +111,16 @@ public class ControleurAgendaAjout implements ChangeListener {
 		// ajout des RadioButton pour chaque event
 		for (int i = 0; i < nbEvent; i++) {
 			String nomEvent = req.getUneValeurBDD("nom", "evenement",
-					"date='" + tabDateEvent[i] + "' and heure='" + tabHeureEvent[i] + "'");
+					"date='" + tabDateEvent[i] + "' and heure='" + tabHeureEvent[i] + "' and id_triathlon="+this.idTriathlon);
 			this.listViewEvent.getItems().add(new RadioButton(nomEvent));
 			this.listViewEvent.getItems().add(new Label(tabHeureEvent[i] + " || " + tabDateEvent[i]));
 		}
 		
 		this.horaires.getItems().addAll(hours);
+		 
 	}
+
+	private int nbContact;
 
 	@FXML
 	private void clicBoutonValider() {
@@ -147,9 +140,9 @@ public class ControleurAgendaAjout implements ChangeListener {
 				event.Connect("insert into participer(id_benevoles, date, heure) values("+this.tabIdContact[i]+", '"+datePicker.toString()+"', '"+heure+"')");
 			}
 		}
-		//Il faudra ajouter l'id_triathlon en creant une methodes dans mainapp
-		String requete = "insert into evenement(nom, description, date, couleur, heure)"
-				+ " values('"+nom+"','"+desc+"','"+datePicker.toString()+"','"+couleur.toString()+"','"+heure+"');";		
+		
+		String requete = "insert into evenement(nom, description, date, couleur, heure, id_triathlon)"
+				+ " values('"+nom+"','"+desc+"','"+datePicker.toString()+"','"+couleur.toString()+"','"+heure+"', "+this.idTriathlon+");";		
 		event.Connect(requete);
 		event.CloseConnexion();
 		mainApp.showAgendaAccueil();

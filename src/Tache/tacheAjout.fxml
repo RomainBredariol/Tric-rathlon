@@ -3,12 +3,12 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
@@ -20,19 +20,19 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="729.0" prefWidth="849.0" style="-fx-background-color: #587C73;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tache.ControleurTacheAjout">
+<AnchorPane prefHeight="737.0" prefWidth="1148.0" style="-fx-background-color: #587C73;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tache.ControleurTacheAjout">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="729.0" prefWidth="849.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <SplitPane dividerPositions="0.21919431279620852" layoutX="-2.0" layoutY="48.0" prefHeight="681.0" prefWidth="849.0">
+            <SplitPane dividerPositions="0.21919431279620852" layoutX="-2.0" layoutY="48.0" prefHeight="687.0" prefWidth="994.0">
                <items>
                   <AnchorPane prefHeight="540.0" prefWidth="168.0">
                      <children>
-                        <GridPane prefHeight="685.0" prefWidth="182.0" style="-fx-background-color: #D8EBDC;">
+                        <GridPane prefHeight="685.0" prefWidth="213.0" style="-fx-background-color: #D8EBDC;">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                            </columnConstraints>
@@ -67,28 +67,24 @@
                                  <panes>
                                     <TitledPane animated="false" text="Filtres">
                                        <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                          <VBox prefHeight="200.0" prefWidth="100.0">
                                              <children>
-                                                <Label layoutX="14.0" layoutY="6.0" text="Avancement" />
-                                                <Label layoutX="14.0" layoutY="139.0" text="Priorité" />
-                                                <RadioButton layoutX="14.0" layoutY="171.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="67.0" text="  Tout" />
-                                                <RadioButton layoutX="15.0" layoutY="195.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="96.0" text="  Urgente" />
-                                                <RadioButton layoutX="15.0" layoutY="220.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="86.0" text="  Normale" />
-                                                <RadioButton layoutX="15.0" layoutY="246.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="78.0" text="  Faible" />
-                                                <RadioButton layoutX="15.0" layoutY="41.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="71.0" text="  Tout" />
-                                                <RadioButton layoutX="14.0" layoutY="66.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="99.0" text="  Terminées" />
-                                                <RadioButton layoutX="14.0" layoutY="90.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="88.0" text="  En cours" />
-                                                <RadioButton layoutX="14.0" layoutY="115.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="80.0" text="  A venir" />
+                                                <Label text="Label" />
+                                                <Separator prefHeight="29.0" prefWidth="156.0" />
+                                                <RadioButton mnemonicParsing="false" text="Urgente" />
+                                                <Separator prefHeight="13.0" prefWidth="156.0" />
+                                                <RadioButton mnemonicParsing="false" text="Normale" />
+                                                <Separator prefHeight="14.0" prefWidth="156.0" />
+                                                <RadioButton mnemonicParsing="false" text="Faible" />
                                              </children>
-                                          </AnchorPane>
+                                          </VBox>
                                        </content>
                                     </TitledPane>
                                     <TitledPane animated="false" text="Liste des tâches">
                                        <content>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="258.0" prefWidth="180.0">
                                              <children>
-                                                <TextField layoutX="14.0" layoutY="242.0" text="Recherche de tâche" />
-                                                <ListView prefHeight="236.0" prefWidth="200.0" />
+                                                <ListView fx:id="listViewTache" prefHeight="265.0" prefWidth="200.0" />
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -101,77 +97,11 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="685.0" prefWidth="640.0">
                      <children>
-                        <SplitPane dividerPositions="0.7308868501529052" prefHeight="683.0" prefWidth="656.0">
+                        <SplitPane dividerPositions="0.7570498915401301" prefHeight="683.0" prefWidth="924.0">
                           <items>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="668.0" prefWidth="453.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="668.0" prefWidth="697.0">
                                  <children>
-                                    <GridPane gridLinesVisible="true" layoutY="43.0" prefHeight="463.0" prefWidth="475.0">
-                                       <columnConstraints>
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                       </columnConstraints>
-                                       <rowConstraints>
-                                          <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                       </rowConstraints>
-                                       <children>
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#28ad60" height="55.0" stroke="BLACK" strokeType="INSIDE" width="52.0" GridPane.rowIndex="8" />
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#28ad60" height="55.0" stroke="BLACK" strokeType="INSIDE" width="52.0" GridPane.rowIndex="7" />
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#28ad60" height="55.0" stroke="BLACK" strokeType="INSIDE" width="52.0" GridPane.rowIndex="6" />
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#28ad60" height="55.0" stroke="BLACK" strokeType="INSIDE" width="52.0" GridPane.rowIndex="5" />
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#28ad60" height="55.0" stroke="BLACK" strokeType="INSIDE" width="52.0" GridPane.rowIndex="4" />
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#28ad60" height="55.0" stroke="BLACK" strokeType="INSIDE" width="52.0" GridPane.rowIndex="3" />
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#28ad60" height="55.0" stroke="BLACK" strokeType="INSIDE" width="52.0" GridPane.rowIndex="2" />
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1" textAlignment="CENTER" wrappingWidth="62.46875" GridPane.columnIndex="1" />
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" wrappingWidth="60.46875" GridPane.columnIndex="2" />
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="4" textAlignment="CENTER" wrappingWidth="61.46875" GridPane.columnIndex="4" />
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="3" textAlignment="CENTER" wrappingWidth="61.46875" GridPane.columnIndex="3" />
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="5" textAlignment="CENTER" wrappingWidth="60.46875" GridPane.columnIndex="5" />
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="6" textAlignment="CENTER" wrappingWidth="61.46875" GridPane.columnIndex="6" />
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="7" textAlignment="CENTER" wrappingWidth="62.13671875" GridPane.columnIndex="7" />
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="8" textAlignment="CENTER" wrappingWidth="62.46875" GridPane.columnIndex="8" />
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#28ad60" height="55.0" stroke="BLACK" strokeType="INSIDE" width="52.0" GridPane.rowIndex="1" />
-                                          <Text fill="#ecf0f1" strokeType="OUTSIDE" strokeWidth="0.0" text="Tache A" textAlignment="CENTER" wrappingWidth="52.029296875" GridPane.rowIndex="1" />
-                                          <Text fill="#ecf0f1" strokeType="OUTSIDE" strokeWidth="0.0" text="Tache B" textAlignment="CENTER" wrappingWidth="52.029296875" GridPane.rowIndex="2" />
-                                          <Text fill="#ecf0f1" strokeType="OUTSIDE" strokeWidth="0.0" text="Tache C" textAlignment="CENTER" wrappingWidth="53.029296875" GridPane.rowIndex="3" />
-                                          <Text fill="#ecf0f1" strokeType="OUTSIDE" strokeWidth="0.0" text="Tache D" textAlignment="CENTER" wrappingWidth="51.029296875" GridPane.rowIndex="4" />
-                                          <Text fill="#ecf0f1" strokeType="OUTSIDE" strokeWidth="0.0" text="Tache E" textAlignment="CENTER" wrappingWidth="52.029296875" GridPane.rowIndex="5" />
-                                          <Text fill="#ecf0f1" strokeType="OUTSIDE" strokeWidth="0.0" text="Tache F" textAlignment="CENTER" wrappingWidth="51.029296875" GridPane.rowIndex="6" />
-                                          <Text fill="#ecf0f1" strokeType="OUTSIDE" strokeWidth="0.0" text="Tache G" textAlignment="CENTER" wrappingWidth="51.029296875" GridPane.rowIndex="7" />
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2980b9" height="25.0" stroke="#2980b9" strokeType="INSIDE" width="67.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <Text fill="#ecf0f1" strokeType="OUTSIDE" strokeWidth="0.0" text="Tache H" textAlignment="CENTER" wrappingWidth="52.029296875" GridPane.rowIndex="8" />
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2980b9" height="25.0" stroke="#2980b9" strokeType="INSIDE" width="71.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2980b9" height="25.0" stroke="#2980b9" strokeType="INSIDE" width="61.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f1c40f" height="25.0" stroke="#f1c40f" strokeType="INSIDE" width="61.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f1c40f" height="25.0" stroke="#f1c40f" strokeType="INSIDE" width="61.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f1c40f" height="25.0" stroke="#f1c40f" strokeType="INSIDE" width="61.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9b59b6" height="25.0" stroke="#9b59b6" strokeType="INSIDE" width="67.0" GridPane.columnIndex="6" GridPane.rowIndex="3" />
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9b59b6" height="25.0" stroke="#9b59b6" strokeType="INSIDE" width="33.0" GridPane.columnIndex="7" GridPane.rowIndex="3" />
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c3e50" height="25.0" stroke="#2c3e50" strokeType="INSIDE" width="69.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c3e50" height="25.0" stroke="#2c3e50" strokeType="INSIDE" width="61.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e74c3c" height="25.0" stroke="#e74c3c" strokeType="INSIDE" width="61.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e67e22" height="25.0" stroke="#e67e22" strokeType="INSIDE" width="61.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2ecc71" height="25.0" stroke="#2ecc71" strokeType="INSIDE" width="61.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bdc3c7" height="25.0" stroke="#bdc3c7" strokeType="INSIDE" width="61.0" GridPane.columnIndex="2" GridPane.rowIndex="8" />
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bdc3c7" height="25.0" stroke="#bdc3c7" strokeType="INSIDE" translateX="30.0" width="33.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bdc3c7" height="25.0" stroke="#bdc3c7" strokeType="INSIDE" width="22.0" GridPane.columnIndex="3" GridPane.rowIndex="8" />
-                                       </children>
-                                    </GridPane>
-                                    <ToolBar prefHeight="43.0" prefWidth="475.0" style="-fx-background-color: #D8EBDC;">
+                                    <ToolBar prefHeight="49.0" prefWidth="694.0" style="-fx-background-color: #D8EBDC;">
                                        <items>
                                           <Button fx:id="left" mnemonicParsing="false" onAction="#clicBoutonMoisPrecedent" prefHeight="0.0" prefWidth="28.0" style="-fx-background-color: #D8EBDC #D8EBDC;">
                                              <graphic>
@@ -182,7 +112,7 @@
                                                 </ImageView>
                                              </graphic>
                                           </Button>
-                                          <Button fx:id="right" mnemonicParsing="false" onAction="#clicBoutonMoisSuivant" style="-fx-background-color: #D8EBDC;" textAlignment="CENTER" translateX="375.0">
+                                          <Button fx:id="right" mnemonicParsing="false" onAction="#clicBoutonMoisSuivant" style="-fx-background-color: #D8EBDC;" textAlignment="CENTER" translateX="440.0">
                                              <graphic>
                                                 <ImageView fitHeight="25.0" fitWidth="28.0">
                                                    <image>
@@ -191,18 +121,19 @@
                                                 </ImageView>
                                              </graphic>
                                           </Button>
-                                          <Text fx:id="mois" fill="#677c6b" strokeType="OUTSIDE" strokeWidth="0.0" text="Decembre" textAlignment="CENTER" wrappingWidth="272.345703125">
+                                          <Text fx:id="mois" fill="#677c6b" strokeType="OUTSIDE" strokeWidth="0.0" text="Decembre" textAlignment="CENTER" translateX="40.0" wrappingWidth="272.345703125">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Text>
                                        </items>
                                     </ToolBar>
+                                    <AnchorPane fx:id="anchorPaneGantt" layoutX="-4.0" layoutY="49.0" prefHeight="632.0" prefWidth="482.0" />
                                  </children>
                               </AnchorPane>
                               <Pane prefHeight="681.0" prefWidth="172.0" style="-fx-background-color: #D8EBDC;">
                                  <children>
-                                    <GridPane layoutY="14.0" prefHeight="668.0" prefWidth="173.0" style="-fx-background-color: #D8EBDC;">
+                                    <GridPane layoutY="14.0" prefHeight="668.0" prefWidth="213.0" style="-fx-background-color: #D8EBDC;">
                                        <columnConstraints>
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                        </columnConstraints>
@@ -219,43 +150,36 @@
                                           <RowConstraints maxHeight="300.0" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES" />
                                           <RowConstraints maxHeight="286.0" minHeight="0.0" prefHeight="35.0" vgrow="SOMETIMES" />
                                           <RowConstraints maxHeight="307.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
                                           <RowConstraints maxHeight="264.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
                                           <RowConstraints maxHeight="264.0" minHeight="0.0" prefHeight="111.0" vgrow="SOMETIMES" />
                                           <RowConstraints maxHeight="146.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
                                           <TextField GridPane.rowIndex="3" />
-                                          <TextField GridPane.rowIndex="3" />
-                                          <Button fx:id="valider" mnemonicParsing="false" onAction="#clicBoutonValider" text="Valider" GridPane.rowIndex="14" />
-                                          <Button fx:id="annuler" mnemonicParsing="false" onAction="#clicBoutonAnnuler" text="Annuler" translateX="97.0" GridPane.rowIndex="14" />
+                                          <TextField fx:id="description" GridPane.rowIndex="3" />
+                                          <Button fx:id="valider" mnemonicParsing="false" onAction="#clicBoutonValider" text="Valider" GridPane.rowIndex="15" />
+                                          <Button fx:id="annuler" mnemonicParsing="false" onAction="#clicBoutonAnnuler" text="Annuler" translateX="97.0" GridPane.rowIndex="15" />
                                           <DatePicker fx:id="dateDebut" GridPane.rowIndex="5" />
-                                          <Text fx:id="description" accessibleRole="TEXT_FIELD" opacity="0.3" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrez une description" GridPane.rowIndex="3" />
                                           <ScrollPane prefHeight="129.0" prefWidth="178.0" GridPane.rowIndex="9">
                                              <content>
-                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="182.0" prefWidth="175.0">
-                                                   <children>
-                                                      <CheckBox layoutX="14.0" layoutY="6.0" mnemonicParsing="false" text="Contact A" />
-                                                      <CheckBox layoutX="14.0" layoutY="36.0" mnemonicParsing="false" text="Contact B" />
-                                                      <CheckBox layoutX="14.0" layoutY="66.0" mnemonicParsing="false" text="Contact C" />
-                                                      <CheckBox layoutX="14.0" layoutY="100.0" mnemonicParsing="false" text="Contact D" />
-                                                      <TextField layoutX="-2.0" layoutY="134.0" text="Recherche de contact" />
-                                                   </children>
-                                                </AnchorPane>
+                                                <VBox fx:id="vboxListContact" prefHeight="494.0" prefWidth="171.0" />
                                              </content>
                                           </ScrollPane>
-                                          <Button fx:id="ajouter" mnemonicParsing="false" text="Ajouter" GridPane.rowIndex="11" />
-                                          <Label text="Priorité" GridPane.rowIndex="12" />
-                                          <RadioButton fx:id="prioNorm" mnemonicParsing="false" text="Normale" GridPane.rowIndex="13" />
-                                          <RadioButton fx:id="prioHaute" mnemonicParsing="false" text="Urgente" translateY="-30.0" GridPane.rowIndex="13" />
-                                          <RadioButton fx:id="prioBasse" mnemonicParsing="false" text="Faible" translateY="30.0" GridPane.rowIndex="13" />
+                                          <Button fx:id="ajouter" onAction="#clicBoutonAjouterDocument" mnemonicParsing="false" text="Ajouter" GridPane.rowIndex="11" />
+                                          <Label text="Priorité" GridPane.rowIndex="13" />
+                                          <RadioButton fx:id="prioNorm" mnemonicParsing="false" text="Normale" GridPane.rowIndex="14" />
+                                          <RadioButton fx:id="prioHaute" mnemonicParsing="false" text="Urgente" translateY="-30.0" GridPane.rowIndex="14" />
+                                          <RadioButton fx:id="prioBasse" mnemonicParsing="false" text="Faible" translateY="30.0" GridPane.rowIndex="14" />
                                           <Label text="Description" GridPane.rowIndex="2" />
-                                          <TextField fx:id="nom" GridPane.rowIndex="1" />
+                                          <TextField fx:id="nom" promptText="Nom" GridPane.rowIndex="1" />
                                           <Label text="Date de début (JJ:MM:AAAA)" GridPane.rowIndex="4" />
                                           <Label text="Nom" />
                                           <Label text="Contact" GridPane.rowIndex="8" />
                                           <Label text="Document" GridPane.rowIndex="10" />
                                           <Label text="Date de fin" GridPane.rowIndex="6" />
                                           <DatePicker fx:id="dateFin" GridPane.rowIndex="7" />
+                                          <Label fx:id="fichierSelected" text="Fichier selectionné" GridPane.rowIndex="12" />
                                        </children>
                                     </GridPane>
                                  </children>

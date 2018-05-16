@@ -22,13 +22,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class ControleurAgendaAcceuil implements ChangeListener {
-
-	@Override
-	public void changed(ObservableValue arg0, Object arg1, Object arg2) {
-		// TODO Auto-generated method stub
-
-	}
+public class ControleurAgendaAcceuil {
 
 	private MainApp main;
 	private SqlRequete req;
@@ -76,29 +70,35 @@ public class ControleurAgendaAcceuil implements ChangeListener {
 	private int nbEvent;
 	private String[] tabDateEvent;
 	private String[] tabHeureEvent;
+	
+	private int idTriathlon;
 
 	public void setMainApp(MainApp mainApp) {
-		// TODO Auto-generated method stub
 		this.main = mainApp;
+		
+		this.idTriathlon = this.main.getIdTriathlon();
+		
+		this.req = new SqlRequete();
+
+		nbEvent = Integer.parseInt(req.getUneValeurBDD("count(nom)", "evenement", "id_triathlon="+this.idTriathlon));
+		tabDateEvent = new String[nbEvent];
+		req.getTabValeurBDD("date", "evenement", "id_triathlon="+this.idTriathlon, tabDateEvent);
+		tabHeureEvent = new String[nbEvent];
+		req.getTabValeurBDD("heure", "evenement", "id_triathlon="+this.idTriathlon, tabHeureEvent);
+
+		// ajout des RadioButton pour chaque event
+		for (int i = 0; i < nbEvent; i++) {
+			String nomEvent = req.getUneValeurBDD("nom", "evenement", "date='" + tabDateEvent[i] + 
+					"' and heure='" + tabHeureEvent[i] + "' and id_triathlon="+this.idTriathlon);
+			this.listViewEvent.getItems().add(new RadioButton(nomEvent));
+			this.listViewEvent.getItems().add(new Label(tabHeureEvent[i] + " || " + tabDateEvent[i]));
+		}
 	}
 
 	@FXML
 	private void initialize() {
-		this.req = new SqlRequete();
-
-		nbEvent = Integer.parseInt(req.getUneValeurBDD("count(nom)", "evenement", ""));
-		tabDateEvent = new String[nbEvent];
-		req.getTabValeurBDD("date", "evenement", "", tabDateEvent);
-		tabHeureEvent = new String[nbEvent];
-		req.getTabValeurBDD("heure", "evenement", "", tabHeureEvent);
-
-		// ajout des RadioButton pour chaque event
-		for (int i = 0; i < nbEvent; i++) {
-			String nomEvent = req.getUneValeurBDD("nom", "evenement",
-					"date='" + tabDateEvent[i] + "' and heure='" + tabHeureEvent[i] + "'");
-			this.listViewEvent.getItems().add(new RadioButton(nomEvent));
-			this.listViewEvent.getItems().add(new Label(tabHeureEvent[i] + " || " + tabDateEvent[i]));
-		}
+		
+		
 	}
 
 	@FXML

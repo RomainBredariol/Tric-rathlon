@@ -20,7 +20,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 
-public class ControleurNouveauTriathlon implements ChangeListener {
+public class ControleurNouveauTriathlon {
 
 	private MainApp main;
 
@@ -106,7 +106,6 @@ public class ControleurNouveauTriathlon implements ChangeListener {
 	@FXML
 	private TextField ville;
 
-	
 	// ces 2 methodes servent a verifier si 1 seul RadioButton est selectionné
 	private boolean unSeulRadioButtonType() {
 		HashMap<String, RadioButton> type = new HashMap<String, RadioButton>();
@@ -126,7 +125,7 @@ public class ControleurNouveauTriathlon implements ChangeListener {
 
 		return (nbRadioButtonSelected == 1 || nbRadioButtonSelected == 0);
 	}
-	
+
 	private boolean unSeulRadioButtonGenre() {
 		HashMap<String, RadioButton> genre = new HashMap<String, RadioButton>();
 		genre.put("amical", this.amical);
@@ -145,12 +144,12 @@ public class ControleurNouveauTriathlon implements ChangeListener {
 	@FXML
 	private void clicBoutonValider() {
 		// REQUETE CONCERNANT LA TABLE TRIATHLON
-		
+
 		// créer un element triathlon dans la bdd ssi un seul radioButton selectionné
 		// et que le nom est entré
 		if (this.nom.getText() != null) {
 			if (this.unSeulRadioButtonGenre() == false || this.unSeulRadioButtonType() == false) {
-				//charge la page d'erreur
+				// charge la page d'erreur
 				this.main.showErreurChoixTriathlon();
 			} else {
 				// creation requete
@@ -171,6 +170,7 @@ public class ControleurNouveauTriathlon implements ChangeListener {
 					championnat = 1;
 				}
 
+				// req.Connect("delete from triathlon");
 				// format xs selectionné
 				if (this.xs.isSelected()) {
 					String format = "xs";
@@ -211,6 +211,7 @@ public class ControleurNouveauTriathlon implements ChangeListener {
 
 				// REQUETE CONCERNANT LA TABLE TACHE
 				String id = req.getUneValeurBDD("id_triathlon", "triathlon", "nom='" + this.nom.getText() + "'");
+				this.main.conserverIdTriathlon(Integer.parseInt(id));
 
 				if (this.choix.isSelected()) {
 					req.Connect("insert into tache(nom, id_triathlon) values('Choix(date, lieu...)'," + id + " );");
@@ -266,14 +267,10 @@ public class ControleurNouveauTriathlon implements ChangeListener {
 				}
 
 				req.CloseConnexion();
+				this.main.showTacheAccueil();
 			}
+
 		}
-	}
-
-	@Override
-	public void changed(ObservableValue arg0, Object arg1, Object arg2) {
-		// TODO Auto-generated method stub
-
 	}
 
 }

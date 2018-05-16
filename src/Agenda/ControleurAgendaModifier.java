@@ -88,6 +88,8 @@ public class ControleurAgendaModifier {
 
 	private String heureId;
 	private String dateId;
+	
+	private int idTriathlon;
 
 	private String[] tabIdContact;
 	private String[] nomContactParticpant;
@@ -96,17 +98,18 @@ public class ControleurAgendaModifier {
 	public void setMainApp(MainApp main) {
 		this.mainApp = main;
 		this.req = new SqlRequete();
+		this.idTriathlon=this.mainApp.getIdTriathlon();
 
 		// recuperation des donnees
 		heureId = this.mainApp.getString2();
 		dateId = this.mainApp.getString1();
-		this.nom.setText(req.getUneValeurBDD("nom", "evenement", "heure='" + heureId + "' and date ='" + dateId + "'"));
+		this.nom.setText(req.getUneValeurBDD("nom", "evenement", "heure='" + heureId + "' and date ='" + dateId + "' and id_triathlon="+this.idTriathlon));
 		String descriptionText = req.getUneValeurBDD("description", "evenement",
-				"heure='" + heureId + "' and date ='" + dateId + "'");
+				"heure='" + heureId + "' and date ='" + dateId + "' and id_triathlon="+this.idTriathlon);
 		this.description.setText(descriptionText);
 		this.date.setPromptText(dateId);
 		String couleurString = req.getUneValeurBDD("couleur", "evenement",
-				"heure='" + heureId + "' and date ='" + dateId + "'");
+				"heure='" + heureId + "' and date ='" + dateId + "' and id_triathlon="+this.idTriathlon);
 		this.couleur.setValue(Color.valueOf(couleurString));
 		this.horaires.setValue(heureId);
 
@@ -115,13 +118,13 @@ public class ControleurAgendaModifier {
 		req.getTabValeurBDD("benevoles.nom", "benevoles, participer, evenement",
 				"benevoles.ID_Benevoles=participer.ID_Benevoles and "
 						+ "participer.Date=evenement.Date and participer.heure=evenement.heure and evenement.heure = '"
-						+ heureId + "' and evenement.Date='" + dateId + "' order by benevoles.ID_Benevoles",
+						+ heureId + "' and evenement.Date='" + dateId + "' and id_triathlon="+this.idTriathlon+" order by benevoles.ID_Benevoles",
 				nomContactParticpant);
 		prenomContactParticpant = new String[1000];
 		req.getTabValeurBDD("benevoles.prenom", "benevoles, participer, evenement",
 				"benevoles.ID_Benevoles=participer.ID_Benevoles and "
 						+ "participer.Date=evenement.Date and participer.heure=evenement.heure and evenement.heure = '"
-						+ heureId + "' and evenement.Date='" + dateId + "' order by benevoles.ID_Benevoles",
+						+ heureId + "' and evenement.Date='" + dateId + "' and evenement.id_triathlon="+this.idTriathlon+" order by benevoles.ID_Benevoles",
 				prenomContactParticpant);
 
 		// selection des contacts participant dans la liste
@@ -134,24 +137,17 @@ public class ControleurAgendaModifier {
 				j++;
 			}
 		}
-
-	}
-
-	private int nbContact;
-
-	@FXML
-	private void initialize() {
-		this.req = new SqlRequete();
-		nbContact = Integer.parseInt(req.getUneValeurBDD("count(id_benevoles)", "benevoles", ""));
+		
+		nbContact = Integer.parseInt(req.getUneValeurBDD("count(id_benevoles)", "benevoles", "id_triathlon="+this.idTriathlon));
 
 		tabIdContact = new String[nbContact];
-		req.getTabValeurBDD("id_benevoles", "benevoles", "", tabIdContact);
+		req.getTabValeurBDD("id_benevoles", "benevoles", "id_triathlon="+this.idTriathlon, tabIdContact);
 
-		int nbEvent = Integer.parseInt(req.getUneValeurBDD("count(nom)", "evenement", ""));
+		int nbEvent = Integer.parseInt(req.getUneValeurBDD("count(nom)", "evenement", "id_triathlon="+this.idTriathlon));
 		String[] tabDateEvent = new String[nbEvent];
-		req.getTabValeurBDD("date", "evenement", "", tabDateEvent);
+		req.getTabValeurBDD("date", "evenement", "id_triathlon="+this.idTriathlon, tabDateEvent);
 		String[] tabHeureEvent = new String[nbEvent];
-		req.getTabValeurBDD("heure", "evenement", "", tabHeureEvent);
+		req.getTabValeurBDD("heure", "evenement", "id_triathlon="+this.idTriathlon, tabHeureEvent);
 
 		// ajout des checkBox pour chaque contact
 		for (int i = 0; i < nbContact; i++) {
@@ -168,6 +164,14 @@ public class ControleurAgendaModifier {
 		}
 
 		this.horaires.getItems().addAll(hours);
+
+	}
+
+	private int nbContact;
+
+	@FXML
+	private void initialize() {
+		
 	}
 
 	@FXML

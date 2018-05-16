@@ -21,18 +21,18 @@ public class ControleurDocumentsAccueil {
 	
 	@FXML
 	private Pane paneDocument;
+	
+	private int idTriathlon;
 
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp=mainApp;
-	}
-	
-	@FXML
-	public void initialize() {
+		this.idTriathlon=this.mainApp.getIdTriathlon();
+		
 		this.req = new SqlRequete();
-		int nbDoc = Integer.parseInt(req.getUneValeurBDD("count(id_fichier)", "fichier", ""));
+		int nbDoc = Integer.parseInt(req.getUneValeurBDD("count(id_fichier)", "fichier", "id_triathlon=" + this.idTriathlon));
 		
 		String[] tabIdDoc = new String[nbDoc];
-		req.getTabValeurBDD("id_fichier", "fichier", "", tabIdDoc);
+		req.getTabValeurBDD("id_fichier", "fichier", "id_triathlon=" + this.idTriathlon, tabIdDoc);
 		
 		for(int i = 0; i<nbDoc ; i++) {
 			String nomFichier = req.getUneValeurBDD("nom", "fichier", "id_fichier="+tabIdDoc[i]);
@@ -43,6 +43,11 @@ public class ControleurDocumentsAccueil {
 			this.paneDocument.getChildren().add(imageFichier);
 			this.paneDocument.getChildren().add(labelFichier);
 		}
+	}
+	
+	@FXML
+	public void initialize() {
+		
 	}
 	
 	@FXML

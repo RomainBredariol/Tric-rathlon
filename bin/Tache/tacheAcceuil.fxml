@@ -7,8 +7,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.Image?>
@@ -18,6 +18,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -61,37 +62,32 @@
                               </Button>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Agenda" GridPane.rowIndex="2" />
                               <Accordion GridPane.rowIndex="1">
-                                <panes>
-                                  <TitledPane animated="false" text="Filtres">
-                                    <content>
-                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <panes>
+                                    <TitledPane animated="false" text="Filtres">
+                                       <content>
+                                          <VBox prefHeight="200.0" prefWidth="100.0">
                                              <children>
-                                                <Label layoutX="14.0" layoutY="6.0" text="Avancement" />
-                                                <Label layoutX="14.0" layoutY="139.0" text="Priorité" />
-                                                <RadioButton layoutX="14.0" layoutY="171.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="67.0" text="  Tout" />
-                                                <RadioButton layoutX="15.0" layoutY="195.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="96.0" text="  Urgente" />
-                                                <RadioButton layoutX="15.0" layoutY="220.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="86.0" text="  Normale" />
-                                                <RadioButton layoutX="15.0" layoutY="246.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="78.0" text="  Faible" />
-                                                <RadioButton layoutX="15.0" layoutY="41.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="71.0" text="  Tout" />
-                                                <RadioButton layoutX="14.0" layoutY="66.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="99.0" text="  Terminées" />
-                                                <RadioButton layoutX="14.0" layoutY="90.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="88.0" text="  En cours" />
-                                                <RadioButton layoutX="14.0" layoutY="115.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="80.0" text="  A venir" />
+                                                <Label text="Label" />
+                                                <Separator prefHeight="29.0" prefWidth="156.0" />
+                                                <RadioButton mnemonicParsing="false" text="Urgente" />
+                                                <Separator prefHeight="13.0" prefWidth="156.0" />
+                                                <RadioButton mnemonicParsing="false" text="Normale" />
+                                                <Separator prefHeight="14.0" prefWidth="156.0" />
+                                                <RadioButton mnemonicParsing="false" text="Faible" />
+                                             </children>
+                                          </VBox>
+                                       </content>
+                                    </TitledPane>
+                                    <TitledPane animated="false" text="Liste des tâches">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="258.0" prefWidth="180.0">
+                                             <children>
+                                                <ListView fx:id="listViewTache" prefHeight="265.0" prefWidth="200.0" />
                                              </children>
                                           </AnchorPane>
-                                    </content>
-                                  </TitledPane>
-                                  <TitledPane animated="false" text="Liste des tâches">
-                                    <content>
-                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="258.0" prefWidth="180.0">
-                                             <children>
-                                                <TextField layoutX="14.0" layoutY="242.0" />
-                                                <ListView prefHeight="236.0" prefWidth="200.0" />
-                                                <Text layoutX="14.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rechercher..." wrappingWidth="114.32811099290848" />
-                                             </children>
-                                          </AnchorPane>
-                                    </content>
-                                  </TitledPane>
-                                </panes>
+                                       </content>
+                                    </TitledPane>
+                                 </panes>
                               </Accordion>
                            </children>
                         </GridPane>

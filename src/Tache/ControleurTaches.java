@@ -1,27 +1,16 @@
 package Tache;
 
-import java.awt.Dimension;
-import java.awt.Window;
-import java.util.Collection;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
-import javax.swing.WindowConstants;
 
 import Accueil.MainApp;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import BDD.SqlRequete;
 import javafx.embed.swing.SwingNode;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 public class ControleurTaches {
 
@@ -64,17 +53,42 @@ public class ControleurTaches {
 	private AnchorPane anchorPaneGantt;
 
 	@FXML
-	private GanttChart gantt; // regarder avec SwingNode
+	private ListView listViewTache;
+
+	private int nbTache;
+	private SqlRequete req;
+	
+	private int idTriathlon;
+
+	private String[] tabIdTache;
 
 	public void setMainApp(MainApp mainApp) {
 		this.main = mainApp;
+		this.idTriathlon=this.main.getIdTriathlon();
+		
+		// affiche le gantt dans l'anchorPane central
+		SwingNode swingNode = new SwingNode();
+		this.showGantt(swingNode);
+		this.anchorPaneGantt.getChildren().add(swingNode);
+
+		// recup donees
+		this.req = new SqlRequete();
+		nbTache = Integer.parseInt(req.getUneValeurBDD("count(id_tache)", "tache", "id_triathlon=" + this.idTriathlon));
+		this.tabIdTache = new String[nbTache];
+		this.req.getTabValeurBDD("id_tache", "tache", "id_triathlon=" + this.idTriathlon, tabIdTache);
+
+		// affiche tache dans listView
+		for (int i = 0; i < nbTache; i++) {
+			String nomTache = req.getUneValeurBDD("nom", "tache", "id_tache=" + tabIdTache[i]);
+			this.listViewTache.getItems().add(new RadioButton(nomTache));
+		}
+
+		this.req.CloseConnexion();
 	}
 
 	@FXML
 	public void initialize() {
-		SwingNode swingNode = new SwingNode();
-		this.showGantt(swingNode);
-		this.anchorPaneGantt.getChildren().add(swingNode);
+
 	}
 
 	private void showGantt(SwingNode swingNode) {

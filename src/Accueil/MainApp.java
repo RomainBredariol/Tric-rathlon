@@ -45,6 +45,8 @@ public class MainApp extends Application {
 	private String stringAConserver;
 	private String string2AConserver;
 	
+	private int idTriathlon;
+	
 	// en javafx il y a plusieurs sorte de fenetres, ici on utilise le stage et la
 	// scene (sachant que la scene est a l'interieur du stage cf.image google)
 
@@ -63,7 +65,7 @@ public class MainApp extends Application {
 		this.primaryStage.setTitle("tricerathlon");
 		
 		// appel de la methode qui charge la scene AccueilGeneral dans le stage
-		showAgendaAccueil();
+		showAccueilGeneral();
 	}
 	
 	//Ces 2 methodes servent � conserevr une valeur � travers les ihm il faut cependant 
@@ -87,6 +89,14 @@ public class MainApp extends Application {
 	
 	public String getString2() {
 		return this.string2AConserver;
+	}
+	
+	public void conserverIdTriathlon(int id) {
+		this.idTriathlon=id;
+	}
+	
+	public int getIdTriathlon() {
+		return this.idTriathlon;
 	}
 
 
