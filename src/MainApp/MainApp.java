@@ -1,4 +1,4 @@
-package Accueil;
+package MainApp;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -101,32 +101,6 @@ public class MainApp extends Application {
 		return this.idTriathlon;
 	}
 
-
-	// charge la page accueil
-	public void showAccueil() {
-		try {
-			// le loader va permettre de charger la page
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("Accueil_1ereConnexion.fxml"));
-			AnchorPane personOverview = (AnchorPane) loader.load();
-
-			// charge le controleur
-			accueilControleur controleur = loader.getController();
-			// charge MainApp
-			controleur.setMainApp(this);
-			// Charge modele
-			controleur.setModele();
-
-			// declare la scene
-			Scene scene = new Scene(personOverview);
-			// charge scene dans stage
-			primaryStage.setScene(scene);
-			primaryStage.show();
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 
 	// charge page AccueilGeneral
 	public void showAccueilGeneral() {

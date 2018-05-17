@@ -1,10 +1,7 @@
 package Profil;
 
-import Accueil.MainApp;
-import Accueil.modeleAccueil;
 import BDD.SqlRequete;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import MainApp.MainApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -62,7 +59,6 @@ public class ControleurProfil {
 	private String Prenom;
 	private String Tel;
 	private String Mail;
-	private modeleAccueil modele;
 	
 	//Action bouton modif
 	@FXML

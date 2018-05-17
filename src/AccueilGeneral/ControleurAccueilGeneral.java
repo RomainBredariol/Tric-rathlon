@@ -1,18 +1,10 @@
 package AccueilGeneral;
 
-import java.io.IOException;
-
-import Accueil.MainApp;
-import Accueil.modeleAccueil;
-import BDD.SqlRequete;
-import Contact.ControleurSuppressionContact;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import MainApp.MainApp;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 

@@ -1,7 +1,7 @@
 package AccueilGeneral;
 
-import Accueil.MainApp;
 import BDD.SqlRequete;
+import MainApp.MainApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;

@@ -4,9 +4,9 @@ import java.io.IOException;
 
 import javax.swing.SwingUtilities;
 
-import Accueil.MainApp;
 import BDD.SqlRequete;
 import Contact.ControleurErreur;
+import MainApp.MainApp;
 import javafx.embed.swing.SwingNode;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

@@ -4,8 +4,8 @@ import java.io.File;
 
 import javax.swing.SwingUtilities;
 
-import Accueil.MainApp;
 import BDD.SqlRequete;
+import MainApp.MainApp;
 import javafx.embed.swing.SwingNode;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -107,6 +107,8 @@ public class ControleurTacheModification {
 	private String[] prenomContactAffecter;
 	private String[] tabIdContact;
 	
+	private GanttChart gantt;
+	
 
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp;
@@ -126,7 +128,10 @@ public class ControleurTacheModification {
 		// affiche tache dans listView
 		for (int i = 0; i < nbTache; i++) {
 			String nomTache = req.getUneValeurBDD("nom", "tache", "id_tache=" + tabIdTache[i]);
+			String dateDebut = req.getUneValeurBDD("datedebut", "tache", "id_tache="+tabIdTache[i]);
+			String dateFin = req.getUneValeurBDD("datefin", "tache", "id_tache="+tabIdTache[i]);
 			this.listViewTache.getItems().add(new RadioButton(nomTache));
+			this.addTache(nomTache, dateDebut, dateFin);
 		}
 		
 		//affiche les contacts dans vbox
@@ -189,10 +194,16 @@ public class ControleurTacheModification {
 		
 		this.req.CloseConnexion();
 	}
+	
+	private void addTache(String nom, String dateDebut, String dateFin) {
+		SwingUtilities.invokeLater(() -> {
+			this.gantt.addTache(nom, dateDebut, dateFin);
+		});
+	}
 
 	private void showGantt(SwingNode swingNode) {
 		SwingUtilities.invokeLater(() -> {
-			GanttChart gantt = new GanttChart(swingNode);
+			this.gantt = new GanttChart(swingNode);
 		});
 	}
 
