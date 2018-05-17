@@ -1,6 +1,7 @@
 package Tache;
 
 import java.io.File;
+import java.time.LocalDate;
 
 import javax.swing.SwingUtilities;
 
@@ -101,6 +102,8 @@ public class ControleurTacheAjout {
 	private String[] tabIdTache;
 	
 	private int idTriathlon;
+	
+	private GanttChart gantt;
 
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp;
@@ -119,7 +122,10 @@ public class ControleurTacheAjout {
 		// affiche tache dans listView
 		for (int i = 0; i < nbTache; i++) {
 			String nomTache = req.getUneValeurBDD("nom", "tache", "id_tache=" + tabIdTache[i]);
+			String dateDebut = req.getUneValeurBDD("datedebut", "tache", "id_tache="+tabIdTache[i]);
+			String dateFin = req.getUneValeurBDD("datefin", "tache", "id_tache="+tabIdTache[i]);
 			this.listViewTache.getItems().add(new RadioButton(nomTache));
+			this.addTache(nomTache, dateDebut, dateFin);
 		}
 		
 		//affiche les contacts dans vbox
@@ -136,9 +142,15 @@ public class ControleurTacheAjout {
 		this.req.CloseConnexion();
 	}
 
+	private void addTache(String nom, String dateDebut, String dateFin) {
+		SwingUtilities.invokeLater(() -> {
+			this.gantt.addTache(nom, dateDebut, dateFin);
+		});
+	}
+	
 	private void showGantt(SwingNode swingNode) {
 		SwingUtilities.invokeLater(() -> {
-			GanttChart gantt = new GanttChart(swingNode);
+			this.gantt = new GanttChart(swingNode);
 		});
 	}
 
@@ -157,16 +169,17 @@ public class ControleurTacheAjout {
 		if(this.prioHaute.isSelected())
 			prio="Urgente";
 		
-		req.Connect("insert into tache(nom, description, dateDebut, dateFin, priorite, id_triathlon) values('"+nom+"','"+desc+"'"
-				+"','"+dateDebut+"','"+dateFin+"','"+prio+"', "+this.idTriathlon+")");
+		req.Connect("insert into tache(nom, description, DateDebut, DateFin, priorite, id_triathlon) values('"+nom+"','"+desc+"'"
+				+",'"+dateDebut+"','"+dateFin+"','"+prio+"', "+this.idTriathlon+")");
 		
-		RadioButton[] tabRadioButtonContact = new RadioButton[nbContact];
+		CheckBox[] tabCheckBoxContact = new CheckBox[nbContact];
 		String[] tabIdContact = new String[nbContact];
 		req.getTabValeurBDD("id_benevoles", "benevoles", "id_triathlon="+this.idTriathlon, tabIdContact);
 		int idTache = Integer.parseInt(req.getUneValeurBDD("id_tache", "tache", "nom='"+nom+"' and id_triathlon="+this.idTriathlon));
+	
 		for(int i = 0; i<nbContact; i++) {
-			tabRadioButtonContact[i] = (RadioButton) this.vboxListContact.getChildren().get(i);
-			if(tabRadioButtonContact[i].isSelected()) {
+			tabCheckBoxContact[i] = (CheckBox) this.vboxListContact.getChildren().get(i);
+			if(tabCheckBoxContact[i].isSelected()) {
 				req.Connect("insert into attacher(id_tache, id_benevoles) values("+idTache+", "+tabIdContact[i]+")");
 			}
 		}

@@ -1,35 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="214.0" prefWidth="455.0" style="-fx-background-color: #ecf0f1;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AccueilGeneral.ControleurConfirmationReset">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="294.0" prefWidth="567.0" style="-fx-background-color: #B7D5B6;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tache.ControleurSuppressionTache">
    <children>
-      <Button fx:id="boutonAnnuler" layoutX="281.0" layoutY="148.0" mnemonicParsing="false" onAction="#clicBoutonAnnuler" prefHeight="31.0" prefWidth="131.0" style="-fx-background-color: #2ecc71;" text="Confirmer">
+      <MenuBar layoutY="-2.0" prefHeight="37.0" prefWidth="567.0" style="-fx-background-color: #587C73;">
+         <menus>
+            <Menu mnemonicParsing="false" style="-fx-font-size: 16;" text="Confirmation De Supression" />
+         </menus>
+      </MenuBar>
+      <Button fx:id="boutonAnnuler" layoutX="92.0" layoutY="202.0" mnemonicParsing="false" onAction="#clicBoutonAnnuler" prefHeight="31.0" prefWidth="131.0" text="Annuler" />
+      <Button fx:id="boutonSupprimer" layoutX="340.0" layoutY="202.0" mnemonicParsing="false" onAction="#clicBoutonSupprimer" prefHeight="31.0" prefWidth="131.0" style="-fx-background-color: F34621;" text="Confirmer">
          <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Button>
-      <Button fx:id="boutonReset" layoutX="65.0" layoutY="148.0" mnemonicParsing="false" onAction="#clicBoutonReset" prefHeight="31.0" prefWidth="131.0" style="-fx-background-color: #e74c3c;" text="Annuler">
-         <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Text layoutX="65.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Voulez vous vraiment supprimer l'évènement :">
+      <Label layoutX="53.0" layoutY="93.0" prefHeight="27.0" prefWidth="461.0" text="Etes-vous sûr de vouloir supprimer la tache selectionnée?">
          <font>
-            <Font size="16.0" />
+            <Font size="18.0" />
          </font>
-      </Text>
-      <Text layoutX="151.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Aliquam Tincidunt&quot; ?">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Text>
-      <Text layoutX="130.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cette action est irréversible.">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Text>
+      </Label>
    </children>
 </AnchorPane>

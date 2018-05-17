@@ -102,8 +102,10 @@ public class ControleurAgendaAcceuil {
 	}
 
 	@FXML
-	private void clicBoutonModifier() {
+	private void clicBoutonModifier() throws Exception {
 		RadioButton[] tabRadioButtonEvent = new RadioButton[nbEvent];
+		int nbRadioButtonSelected =0 ;
+		
 		int j = 0;
 		for (int i = 0; i < nbEvent; i++) {
 			tabRadioButtonEvent[i] = (RadioButton) this.listViewEvent.getItems().get(j);
@@ -111,13 +113,28 @@ public class ControleurAgendaAcceuil {
 		}
 		for (int i = 0; i < tabRadioButtonEvent.length; i++) {
 			if (tabRadioButtonEvent[i].isSelected()) {
+				nbRadioButtonSelected++;
 				String dateId = tabDateEvent[i];
 				String heureID = tabHeureEvent[i];
 				heureID = heureID.substring(0, heureID.length() - 3);
 				this.main.stringAConserver(dateId, heureID);
 			}
 		}
-		this.main.showAgendaModification();
+		
+		if(nbRadioButtonSelected != 1) {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/Agenda/erreurRadioButtonNonSelectionne.fxml"));
+			Stage stage = new Stage();
+			AnchorPane anchor = (AnchorPane) loader.load();
+			ControleurErreur controleur = loader.getController();
+			controleur.setFenetre(stage);
+			Scene scene = new Scene(anchor);
+			stage.setScene(scene);
+			stage.show();
+		}else {
+			this.main.showAgendaModification();
+		}
+		
 	}
 
 	@FXML

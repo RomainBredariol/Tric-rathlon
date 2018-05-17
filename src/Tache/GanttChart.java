@@ -17,62 +17,45 @@ import org.jfree.data.gantt.TaskSeries;
 import org.jfree.data.gantt.TaskSeriesCollection;
 
 import javafx.embed.swing.SwingNode;
+import javafx.util.converter.LocalDateStringConverter;
 
 public class GanttChart {
 
    private static final long serialVersionUID = 1L;
-
+   
+   private TaskSeries taches;
+   IntervalCategoryDataset dataset ;
    public GanttChart(SwingNode swingNode) {
       JPanel pane = new JPanel();
       
       // Creation du jeu de donnees
+      taches = new TaskSeries("Dur�e de la tache");
       IntervalCategoryDataset dataset = getCategoryDataset();
-      
       // Creation du Gantt avec JFreeChart
       JFreeChart chart = ChartFactory.createGanttChart(
             "Vue d'ensemble du triathlon", // Titre Gantt
             "Taches", // Titre ordonnee
             "Temps", // Titre abscisse
             dataset);// jeu de donnees à utiliser
-
+      
+     
+     
+      
       ChartPanel panel = new ChartPanel(chart);
       swingNode.setContent((JComponent) pane.add(panel));
       
    }
 
    private IntervalCategoryDataset getCategoryDataset() {
-      
-	   //Le jeu de données qu'on va utiliser, pour chaque tache : ligne 1 = début, ligne 2 = fin
-      TaskSeries taches = new TaskSeries("Duree de la tache");//Nom de la série
-      
-      taches.add(new Task("Tache A",
-    		  //Attention : les dates sont sous le format AAAA, MM, DD, il faudra les remplacer par des variables
-            Date.from(LocalDate.of(2017, 7, 3).atStartOfDay().toInstant(ZoneOffset.UTC)),
-            Date.from(LocalDate.of(2017, 7, 05).atStartOfDay().toInstant(ZoneOffset.UTC))
-         ));
-      
-      taches.add(new Task("Tache B",
-            Date.from(LocalDate.of(2017, 7, 6).atStartOfDay().toInstant(ZoneOffset.UTC)),
-            Date.from(LocalDate.of(2017, 7, 17).atStartOfDay().toInstant(ZoneOffset.UTC))
-         ));
-      
-      taches.add(new Task("Tache C",
-            Date.from(LocalDate.of(2017, 7, 18).atStartOfDay().toInstant(ZoneOffset.UTC)),
-            Date.from(LocalDate.of(2017, 7, 27).atStartOfDay().toInstant(ZoneOffset.UTC))
-         ));
-      
-      taches.add(new Task("Tache D",
-            Date.from(LocalDate.of(2017, 7, 28).atStartOfDay().toInstant(ZoneOffset.UTC)),
-            Date.from(LocalDate.of(2017, 8, 1).atStartOfDay().toInstant(ZoneOffset.UTC))
-         ));
-      
-      taches.add(new Task("Tache E",
-            Date.from(LocalDate.of(2017, 8, 2).atStartOfDay().toInstant(ZoneOffset.UTC)),
-            Date.from(LocalDate.of(2017, 8, 4).atStartOfDay().toInstant(ZoneOffset.UTC))
-         ));
-
       TaskSeriesCollection dataset = new TaskSeriesCollection();
-      dataset.add(taches);// ajoute les sets de données au Gantt
+      dataset.add(taches);
       return dataset;
+   }
+   
+   public void addTache(String nom, String dateDebut, String dateFin) {
+	   Date dateD = Date.from(LocalDate.parse(dateDebut).atStartOfDay().toInstant(ZoneOffset.UTC));
+	   Date dateF = Date.from(LocalDate.parse(dateFin).atStartOfDay().toInstant(ZoneOffset.UTC)); 
+	   
+	   this.taches.add(new Task(nom, dateD, dateF));
    }
 }

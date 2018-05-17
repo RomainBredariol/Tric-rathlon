@@ -214,56 +214,56 @@ public class ControleurNouveauTriathlon {
 				this.main.conserverIdTriathlon(Integer.parseInt(id));
 
 				if (this.choix.isSelected()) {
-					req.Connect("insert into tache(nom, id_triathlon) values('Choix(date, lieu...)'," + id + " );");
+					req.Connect("insert into tache(nom, id_triathlon, priorite, datedebut, datefin, description) values('Choix(date, lieu...)', " + id + ", '', '"+date.toString()+"','"+date.toString()+"' , '');");
 				}
 				if (this.validations.isSelected()) {
-					req.Connect("insert into tache(nom, id_triathlon) values('Validations'," + id + " );");
+					req.Connect("insert into tache(nom, id_triathlon, priorite, datedebut, datefin, description)  values('Validations', " + id + ", '', '"+date.toString()+"','"+date.toString()+"', '');");
 				}
 				if (this.autorisations.isSelected()) {
-					req.Connect("insert into tache(nom, id_triathlon) values('Autorisations' ,'" + id + "');");
+					req.Connect("insert into tache(nom, id_triathlon, priorite, datedebut, datefin, description)  values('Autorisations' , " + id + ", '', '"+date.toString()+"','"+date.toString()+"' , '' );");
 				}
 				if (this.premiersContacts.isSelected()) {
-					req.Connect("insert into tache(nom, id_triathlon) values('Premiers Contact','" + id + "');");
+					req.Connect("insert into tache(nom, id_triathlon, priorite, datedebut, datefin, description)  values('Premiers Contact', " + id + ", '', '"+date.toString()+"','"+date.toString()+"' , '' );");
 				}
 				if (this.commandesFermes.isSelected()) {
-					req.Connect("insert into tache(nom, id_triathlon) values('Commandes','" + id + "');");
+					req.Connect("insert into tache(nom, id_triathlon, priorite, datedebut, datefin, description)  values('Commandes', " + id + ", '','"+date.toString()+"','"+date.toString()+"', '' );");
 				}
 				if (this.infrastructure.isSelected()) {
-					req.Connect("insert into tache(nom, id_triathlon) values('Infrastructure','" + id + "');");
+					req.Connect("insert into tache(nom, id_triathlon, priorite, datedebut, datefin, description)  values('Infrastructure', " + id + ", '','"+date.toString()+"','"+date.toString()+"', '' );");
 				}
 				if (this.rH.isSelected()) {
-					req.Connect("insert into tache(nom, id_triathlon) values('Ressources Humaines','" + id + "');");
+					req.Connect("insert into tache(nom, id_triathlon, priorite, datedebut, datefin, description)  values('Ressources Humaines', " + id + ", '', '"+date.toString()+"','"+date.toString()+"', '' );");
 				}
 				if (this.affectations.isSelected()) {
-					req.Connect("insert into tache(nom, id_triathlon) values('Affectations','" + id + "');");
+					req.Connect("insert into tache(nom, id_triathlon, priorite, datedebut, datefin, description)  values('Affectations', " + id + ", '', '"+date.toString()+"','"+date.toString()+"', '' );");
 				}
 				if (this.verifications.isSelected()) {
-					req.Connect("insert into tache(nom, id_triathlon) values('Verifications','" + id + "');");
+					req.Connect("insert into tache(nom, id_triathlon, priorite, datedebut, datefin, description)  values('Verifications', " + id + ", '', '"+date.toString()+"','"+date.toString()+"', '' );");
 				}
 				if (this.pub.isSelected()) {
-					req.Connect("insert into tache(nom, id_triathlon) values('Publicite','" + id + "');");
+					req.Connect("insert into tache(nom, id_triathlon, priorite, datedebut, datefin, description)  values('Publicite'," + id + ", '','"+date.toString()+"','"+date.toString()+"', '' );");
 				}
 				if (this.verificationAchatMarchandises.isSelected()) {
-					req.Connect("insert into tache(nom, id_triathlon) values('Verification Achat Marchandises','" + id
-							+ "');");
+					req.Connect("insert into tache(nom, id_triathlon, priorite, datedebut, datefin, description)  values('Verification Achat Marchandises'," + id
+							+ ", '', '"+date.toString()+"','"+date.toString()+"', '' );");
 				}
 				if (this.majSite.isSelected()) {
-					req.Connect("insert into tache(nom, id_triathlon) values('Mise a jour du Site','" + id + "');");
+					req.Connect("insert into tache(nom, id_triathlon, priorite, datedebut, datefin, description)  values('Mise a jour du Site'," + id + ", '', '"+date.toString()+"','"+date.toString()+"', '' );");
 				}
 				if (this.ravitaillment.isSelected()) {
-					req.Connect("insert into tache(nom, id_triathlon) values('Ravitaillement','" + id + "');");
+					req.Connect("insert into tache(nom, id_triathlon, priorite, datedebut, datefin, description)  values('Ravitaillement'," + id + ", '', '"+date.toString()+"','"+date.toString()+"', '' );");
 				}
 				if (this.relances.isSelected()) {
-					req.Connect("insert into tache(nom, id_triathlon) values('Relances','" + id + "');");
+					req.Connect("insert into tache(nom, id_triathlon, priorite, datedebut, datefin, description)  values('Relances'," + id + ", '', '"+date.toString()+"','"+date.toString()+"', '' );");
 				}
 				if (this.installationZone.isSelected()) {
-					req.Connect("insert into tache(nom, id_triathlon) values('Installation de la Zone','" + id + "');");
+					req.Connect("insert into tache(nom, id_triathlon, priorite, datedebut, datefin, description)  values('Installation de la Zone'," + id + ", '', '"+date.toString()+"','"+date.toString()+"', '' );");
 				}
 				if (this.gestionVeilleEpreuve.isSelected()) {
-					req.Connect("insert into tache(nom, id_triathlon) values('Gestion veille Epreuve','" + id + "');");
+					req.Connect("insert into tache(nom, id_triathlon, priorite, datedebut, datefin, description)  values('Gestion veille Epreuve'," + id + ", '', '"+date.toString()+"','"+date.toString()+"', '' );");
 				}
 				if (this.Accueil.isSelected()) {
-					req.Connect("insert into tache(nom, id_triathlon) values('Accueil','" + id + "');");
+					req.Connect("insert into tache(nom, id_triathlon, priorite, datedebut, datefin, description)  values('Accueil'," + id + ", '', '"+date.toString()+"','"+date.toString()+"', '' );");
 				}
 
 				req.CloseConnexion();

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="737.0" prefWidth="1148.0" style="-fx-background-color: #587C73;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tache.ControleurTacheModification">
+   <children>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="729.0" prefWidth="849.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <SplitPane dividerPositions="0.21919431279620852" layoutX="-2.0" layoutY="48.0" prefHeight="687.0" prefWidth="994.0">
+               <items>
+                  <AnchorPane prefHeight="540.0" prefWidth="168.0">
+                     <children>
+                        <GridPane prefHeight="685.0" prefWidth="213.0" style="-fx-background-color: #D8EBDC;">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="328.0" minHeight="10.0" prefHeight="328.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="137.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="119.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="71.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tâches" />
+                              <Button fx:id="document" mnemonicParsing="false" onAction="#clicBoutonDocuments" opacity="0.0" prefHeight="100.0" prefWidth="140.0" text="DocumentsButton" GridPane.rowIndex="3">
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding>
+                              </Button>
+                              <Button fx:id="agenda" mnemonicParsing="false" onAction="#clicBoutonAgenda" opacity="0.0" prefHeight="100.0" prefWidth="140.0" text="AgendaButton" GridPane.rowIndex="2">
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding>
+                              </Button>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Documents" GridPane.rowIndex="3" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Contacts" GridPane.rowIndex="4" />
+                              <Button fx:id="contact" mnemonicParsing="false" onAction="#clicBoutonContact" opacity="0.0" prefHeight="100.0" prefWidth="140.0" text="ContactButton" GridPane.rowIndex="4">
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding>
+                              </Button>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Agenda" GridPane.rowIndex="2" />
+                              <Accordion GridPane.rowIndex="1">
+                                 <panes>
+                                    <TitledPane animated="false" text="Filtres">
+                                       <content>
+                                          <VBox prefHeight="200.0" prefWidth="100.0">
+                                             <children>
+                                                <Label text="Label" />
+                                                <Separator prefHeight="29.0" prefWidth="156.0" />
+                                                <RadioButton mnemonicParsing="false" text="Urgente" />
+                                                <Separator prefHeight="13.0" prefWidth="156.0" />
+                                                <RadioButton mnemonicParsing="false" text="Normale" />
+                                                <Separator prefHeight="14.0" prefWidth="156.0" />
+                                                <RadioButton mnemonicParsing="false" text="Faible" />
+                                             </children>
+                                          </VBox>
+                                       </content>
+                                    </TitledPane>
+                                    <TitledPane animated="false" text="Liste des tâches">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="258.0" prefWidth="180.0">
+                                             <children>
+                                                <ListView fx:id="listViewTache" prefHeight="265.0" prefWidth="200.0" />
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </TitledPane>
+                                 </panes>
+                              </Accordion>
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="685.0" prefWidth="640.0">
+                     <children>
+                        <SplitPane dividerPositions="0.7570498915401301" prefHeight="683.0" prefWidth="924.0">
+                           <items>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="668.0" prefWidth="697.0">
+                                 <children>
+                                    <ToolBar prefHeight="49.0" prefWidth="694.0" style="-fx-background-color: #D8EBDC;">
+                                       <items>
+                                          <Button fx:id="left" mnemonicParsing="false" onAction="#clicBoutonMoisPrecedent" prefHeight="0.0" prefWidth="28.0" style="-fx-background-color: #D8EBDC #D8EBDC;">
+                                             <graphic>
+                                                <ImageView fitHeight="25.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../pics/back.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Button fx:id="right" mnemonicParsing="false" onAction="#clicBoutonMoisSuivant" style="-fx-background-color: #D8EBDC;" textAlignment="CENTER" translateX="440.0">
+                                             <graphic>
+                                                <ImageView fitHeight="25.0" fitWidth="28.0">
+                                                   <image>
+                                                      <Image url="@../pics/forward.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Text fx:id="mois" fill="#677c6b" strokeType="OUTSIDE" strokeWidth="0.0" text="Decembre" textAlignment="CENTER" translateX="40.0" wrappingWidth="272.345703125">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Text>
+                                       </items>
+                                    </ToolBar>
+                                    <AnchorPane fx:id="anchorPaneGantt" layoutX="-4.0" layoutY="49.0" prefHeight="632.0" prefWidth="482.0" />
+                                 </children>
+                              </AnchorPane>
+                              <Pane prefHeight="681.0" prefWidth="172.0" style="-fx-background-color: #D8EBDC;">
+                                 <children>
+                                    <GridPane layoutY="14.0" prefHeight="668.0" prefWidth="213.0" style="-fx-background-color: #D8EBDC;">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="53.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="61.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="83.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="106.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="106.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="106.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="135.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="300.0" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="286.0" minHeight="0.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="307.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="264.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="264.0" minHeight="0.0" prefHeight="111.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="146.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <TextField GridPane.rowIndex="3" />
+                                          <TextField fx:id="description" GridPane.rowIndex="3" />
+                                          <Button fx:id="valider" mnemonicParsing="false" onAction="#clicBoutonValider" text="Valider" GridPane.rowIndex="15" />
+                                          <Button fx:id="annuler" mnemonicParsing="false" onAction="#clicBoutonAnnuler" text="Annuler" translateX="97.0" GridPane.rowIndex="15" />
+                                          <DatePicker fx:id="dateDebut" GridPane.rowIndex="5" />
+                                          <ScrollPane prefHeight="129.0" prefWidth="178.0" GridPane.rowIndex="9">
+                                             <content>
+                                                <VBox fx:id="vboxListContact" prefHeight="494.0" prefWidth="171.0" />
+                                             </content>
+                                          </ScrollPane>
+                                          <Button fx:id="ajouter" mnemonicParsing="false" onAction="#clicBoutonAjouterDocument" text="Ajouter" GridPane.rowIndex="11" />
+                                          <Label text="Priorité" GridPane.rowIndex="13" />
+                                          <RadioButton fx:id="prioNorm" mnemonicParsing="false" text="Normale" GridPane.rowIndex="14" />
+                                          <RadioButton fx:id="prioHaute" mnemonicParsing="false" text="Urgente" translateY="-30.0" GridPane.rowIndex="14" />
+                                          <RadioButton fx:id="prioBasse" mnemonicParsing="false" text="Faible" translateY="30.0" GridPane.rowIndex="14" />
+                                          <Label text="Description" GridPane.rowIndex="2" />
+                                          <TextField fx:id="nom" promptText="Nom" GridPane.rowIndex="1" />
+                                          <Label text="Date de début (JJ:MM:AAAA)" GridPane.rowIndex="4" />
+                                          <Label text="Nom" />
+                                          <Label text="Contact" GridPane.rowIndex="8" />
+                                          <Label text="Document" GridPane.rowIndex="10" />
+                                          <Label text="Date de fin" GridPane.rowIndex="6" />
+                                          <DatePicker fx:id="dateFin" GridPane.rowIndex="7" />
+                                          <Label fx:id="fichierSelected" text="Fichier selectionné" GridPane.rowIndex="12" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </Pane>
+                           </items>
+                        </SplitPane>
+                     </children>
+                  </AnchorPane>
+               </items>
+            </SplitPane>
+            <Button fx:id="menu" minHeight="10.0" mnemonicParsing="false" onAction="#clicBoutonMenu" prefHeight="43.0" prefWidth="183.0" style="-fx-background-color: #587C73;" text="Menu" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

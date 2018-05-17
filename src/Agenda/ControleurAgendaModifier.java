@@ -90,6 +90,7 @@ public class ControleurAgendaModifier {
 	private String dateId;
 	
 	private int idTriathlon;
+	private int nbContact;
 
 	private String[] tabIdContact;
 	private String[] nomContactParticpant;
@@ -159,21 +160,12 @@ public class ControleurAgendaModifier {
 		for (int i = 0; i < nbContact; i++) {
 			CheckBox[] tabContact = new CheckBox[nbContact];
 			tabContact[i] = (CheckBox) this.vboxListeContact.getChildren().get(i);
-			System.out.println(tabContact[i].toString());
 			if (tabContact[i].getText().equals(nomContactParticpant[j] + " " + prenomContactParticpant[j])) {
-				System.out.println("cc");
 				tabContact[i].setSelected(true);
 				j++;
 			}
 		}
 
-	}
-
-	private int nbContact;
-
-	@FXML
-	private void initialize() {
-		
 	}
 
 	@FXML
@@ -196,6 +188,7 @@ public class ControleurAgendaModifier {
 				+ "', couleur='" + couleur.toString() + "', heure='" + horraire + "' where heure='" + this.heureId
 				+ "' and date='" + this.dateId + "'");
 
+		//contact ajouter ou supprimer
 		int j = 0;
 		for (int i = 0; i < nbContact; i++) {
 			CheckBox[] tabContact = new CheckBox[nbContact];

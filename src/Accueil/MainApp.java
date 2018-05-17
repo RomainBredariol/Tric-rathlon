@@ -3,6 +3,7 @@ package Accueil;
 import java.io.IOException;
 import java.util.HashMap;
 
+import javax.swing.JComponent;
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 
@@ -17,6 +18,7 @@ import Documents.ControleurDocumentsAccueil;
 import AccueilGeneral.ControleurNouveauTriathlon;
 import Profil.ControleurProfil;
 import Tache.ControleurTacheAjout;
+import Tache.ControleurTacheModification;
 import Tache.ControleurTaches;
 import Tache.GanttChart;
 import javafx.application.Application;
@@ -338,24 +340,8 @@ public class MainApp extends Application {
 		}
 
 	}	
-	public void showSuppression(){
-		try {
-			// Load person overview.
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("/Agenda/ConfirmationSuppressionTache.fxml"));
-			AnchorPane personOverview = (AnchorPane) loader.load();
-			ControleurTaches controleur = loader.getController();
-			controleur.setMainApp(this);
 
-			Scene scene = new Scene(personOverview);
-			primaryStage.setScene(scene);
-			primaryStage.show();
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-	}
+	
 	public void showTacheAccueil(){
 		try {
 			// Load person overview.
@@ -373,6 +359,24 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		}
 
+	}
+	
+	public void showTacheModification() {
+		try {
+			// Load person overview.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/Tache/tacheModification.fxml"));
+			AnchorPane personOverview = (AnchorPane) loader.load();
+			ControleurTacheModification controleur = loader.getController();
+			controleur.setMainApp(this);
+
+			Scene scene = new Scene(personOverview);
+			primaryStage.setScene(scene);
+			primaryStage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void showTacheAjout(){
