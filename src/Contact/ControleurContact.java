@@ -434,9 +434,11 @@ public class ControleurContact {
 		req.Connect("update benevoles set nom='" + this.nom.getText() + "', prenom='" + this.prenom.getText()
 				+ "', telephone='" + this.tel.getText() + "', mail='" + this.mail.getText() + "', commentaires='"
 				+ this.adr.getText() + "' where id_benevoles=" + this.idContactAModifier);
-		int idGroupe = Integer
+		if(this.choixGroupe.getValue() != null) {
+			int idGroupe = Integer
 				.parseInt(req.getUneValeurBDD("id_groupe", "groupe", "nom='" + this.choixGroupe.getValue() + "' and id_triathlon=" + this.idTriathlon));
-		req.Connect("update affilier set id_groupe=" + idGroupe + " where id_benevoles=" + this.idContactAModifier);
+			req.Connect("update affilier set id_groupe=" + idGroupe + " where id_benevoles=" + this.idContactAModifier);
+		}
 		this.req.CloseConnexion();
 		this.mainApp.showContact("accueil");
 	}
@@ -540,7 +542,7 @@ public class ControleurContact {
 	private void clicBoutonEnregistrerGroupe() {
 		this.req = new SqlRequete();
 		this.req.Connect("insert into groupe(nom, description, id_triathlon) values('" + this.nomGroupe.getText() + "', '"
-				+ this.descriptionGroupe.getText() + "', "+this.idContactAModifier+")");
+				+ this.descriptionGroupe.getText() + "', "+this.idTriathlon+")");
 		CheckBox[] tabCheckBox = new CheckBox[this.nbContact];
 		for (int i = 0; i < this.nbContact; i++) {
 			tabCheckBox[i] = (CheckBox) this.listContactGroupe.getChildren().get(i);

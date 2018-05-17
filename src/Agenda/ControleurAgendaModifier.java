@@ -99,47 +99,9 @@ public class ControleurAgendaModifier {
 		this.mainApp = main;
 		this.req = new SqlRequete();
 		this.idTriathlon=this.mainApp.getIdTriathlon();
-
-		// recuperation des donnees
-		heureId = this.mainApp.getString2();
-		dateId = this.mainApp.getString1();
-		this.nom.setText(req.getUneValeurBDD("nom", "evenement", "heure='" + heureId + "' and date ='" + dateId + "' and id_triathlon="+this.idTriathlon));
-		String descriptionText = req.getUneValeurBDD("description", "evenement",
-				"heure='" + heureId + "' and date ='" + dateId + "' and id_triathlon="+this.idTriathlon);
-		this.description.setText(descriptionText);
-		this.date.setPromptText(dateId);
-		String couleurString = req.getUneValeurBDD("couleur", "evenement",
-				"heure='" + heureId + "' and date ='" + dateId + "' and id_triathlon="+this.idTriathlon);
-		this.couleur.setValue(Color.valueOf(couleurString));
-		this.horaires.setValue(heureId);
-
-		// recupere nom et prenom de benevoles participant a un event
-		nomContactParticpant = new String[1000];
-		req.getTabValeurBDD("benevoles.nom", "benevoles, participer, evenement",
-				"benevoles.ID_Benevoles=participer.ID_Benevoles and "
-						+ "participer.Date=evenement.Date and participer.heure=evenement.heure and evenement.heure = '"
-						+ heureId + "' and evenement.Date='" + dateId + "' and id_triathlon="+this.idTriathlon+" order by benevoles.ID_Benevoles",
-				nomContactParticpant);
-		prenomContactParticpant = new String[1000];
-		req.getTabValeurBDD("benevoles.prenom", "benevoles, participer, evenement",
-				"benevoles.ID_Benevoles=participer.ID_Benevoles and "
-						+ "participer.Date=evenement.Date and participer.heure=evenement.heure and evenement.heure = '"
-						+ heureId + "' and evenement.Date='" + dateId + "' and evenement.id_triathlon="+this.idTriathlon+" order by benevoles.ID_Benevoles",
-				prenomContactParticpant);
-
-		// selection des contacts participant dans la liste
-		int j = 0;
-		for (int i = 0; i < nbContact; i++) {
-			CheckBox[] tabContact = new CheckBox[nbContact];
-			tabContact[i] = (CheckBox) this.vboxListeContact.getChildren().get(i);
-			if (tabContact[i].getText().equals(nomContactParticpant[j] + " " + prenomContactParticpant[j])) {
-				tabContact[i].setSelected(true);
-				j++;
-			}
-		}
 		
 		nbContact = Integer.parseInt(req.getUneValeurBDD("count(id_benevoles)", "benevoles", "id_triathlon="+this.idTriathlon));
-
+		
 		tabIdContact = new String[nbContact];
 		req.getTabValeurBDD("id_benevoles", "benevoles", "id_triathlon="+this.idTriathlon, tabIdContact);
 
@@ -164,6 +126,46 @@ public class ControleurAgendaModifier {
 		}
 
 		this.horaires.getItems().addAll(hours);
+
+		// recuperation des donnees
+		heureId = this.mainApp.getString2();
+		dateId = this.mainApp.getString1();
+		this.nom.setText(req.getUneValeurBDD("nom", "evenement", "heure='" + heureId + "' and date ='" + dateId + "' and id_triathlon="+this.idTriathlon));
+		String descriptionText = req.getUneValeurBDD("description", "evenement",
+				"heure='" + heureId + "' and date ='" + dateId + "' and id_triathlon="+this.idTriathlon);
+		this.description.setText(descriptionText);
+		this.date.setPromptText(dateId);
+		String couleurString = req.getUneValeurBDD("couleur", "evenement",
+				"heure='" + heureId + "' and date ='" + dateId + "' and id_triathlon="+this.idTriathlon);
+		this.couleur.setValue(Color.valueOf(couleurString));
+		this.horaires.setValue(heureId);
+
+		// recupere nom et prenom de benevoles participant a un event
+		nomContactParticpant = new String[1000];
+		req.getTabValeurBDD("benevoles.nom", "benevoles, participer, evenement",
+				"benevoles.ID_Benevoles=participer.ID_Benevoles and "
+						+ "participer.Date=evenement.Date and participer.heure=evenement.heure and evenement.heure = '"
+						+ heureId + "' and evenement.Date='" + dateId + "' and evenement.id_triathlon="+this.idTriathlon+" order by benevoles.ID_Benevoles",
+				nomContactParticpant);
+		prenomContactParticpant = new String[1000];
+		req.getTabValeurBDD("benevoles.prenom", "benevoles, participer, evenement",
+				"benevoles.ID_Benevoles=participer.ID_Benevoles and "
+						+ "participer.Date=evenement.Date and participer.heure=evenement.heure and evenement.heure = '"
+						+ heureId + "' and evenement.Date='" + dateId + "' and evenement.id_triathlon="+this.idTriathlon+" order by benevoles.ID_Benevoles",
+				prenomContactParticpant);
+
+		// selection des contacts participant dans la liste
+		int j = 0;
+		for (int i = 0; i < nbContact; i++) {
+			CheckBox[] tabContact = new CheckBox[nbContact];
+			tabContact[i] = (CheckBox) this.vboxListeContact.getChildren().get(i);
+			System.out.println(tabContact[i].toString());
+			if (tabContact[i].getText().equals(nomContactParticpant[j] + " " + prenomContactParticpant[j])) {
+				System.out.println("cc");
+				tabContact[i].setSelected(true);
+				j++;
+			}
+		}
 
 	}
 
