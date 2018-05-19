@@ -14,6 +14,8 @@ import Agenda.ControleurAgendaAcceuil;
 import Agenda.ControleurAgendaAjout;
 import Agenda.ControleurAgendaModifier;
 import Contact.ControleurContact;
+import Documents.ControleurDocumentModification;
+import Documents.ControleurDocumentNouveau;
 import Documents.ControleurDocumentsAccueil;
 import AccueilGeneral.ControleurNouveauTriathlon;
 import Profil.ControleurProfil;
@@ -314,6 +316,42 @@ public class MainApp extends Application {
 		}
 
 	}	
+	
+	public void showDocumentModification() {
+		try {
+			// Load person overview.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/Documents/DocumentModification.fxml"));
+			AnchorPane personOverview = (AnchorPane) loader.load();
+			ControleurDocumentModification controleur = loader.getController();
+			controleur.setMainApp(this);
+
+			Scene scene = new Scene(personOverview);
+			primaryStage.setScene(scene);
+			primaryStage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}		
+	}
+	
+	public void showDocumentAjout() {
+		try {
+			// Load person overview.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/Documents/DocumentNouveauFichier.fxml"));
+			AnchorPane personOverview = (AnchorPane) loader.load();
+			ControleurDocumentNouveau controleur = loader.getController();
+			controleur.setMainApp(this);
+
+			Scene scene = new Scene(personOverview);
+			primaryStage.setScene(scene);
+			primaryStage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	
 	public void showTacheAccueil(){

@@ -185,8 +185,8 @@ public class ControleurTacheAjout {
 		}
 		
 		if (this.fichier != null) {
-			this.req.Connect("insert into fichier(nom, descriptif, taille, chemin, id_triathlon) values('" + this.fichier.getName()
-					+ "', 'affecter a la tache " + this.nom.getText() + "','" + this.fichier.length() + "', '"
+			this.req.Connect("insert into fichier(nom, taille, chemin, id_triathlon) values('" + this.fichier.getName()
+					+ "','" + this.fichier.length() + "', '"
 					+ this.fichier.getAbsolutePath() + "', "+this.idTriathlon+");");
 			int idFichier = Integer
 					.parseInt(req.getUneValeurBDD("id_fichier", "fichier", "nom='" + this.fichier.getName() + "' and id_triathlon="+this.idTriathlon));

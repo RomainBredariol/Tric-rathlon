@@ -514,8 +514,8 @@ public class ControleurContact {
 					+ this.ville.getText() + "', "+this.idTriathlon+");");
 			// ajoute un fichier
 			if (this.file != null) {
-				this.req.Connect("insert into fichier(nom, descriptif, taille, chemin, id_triathlon) values('" + this.file.getName()
-						+ "', 'affecter au contact " + this.nom.getText() + "','" + this.file.length() + "', '"
+				this.req.Connect("insert into fichier(nom, taille, chemin, id_triathlon) values('" + this.file.getName()
+						+ "', '" + this.file.length() + "', '"
 						+ this.file.getAbsolutePath() + "' , "+this.idTriathlon+");");
 				int idBenevoles = Integer
 						.parseInt(req.getUneValeurBDD("id_benevoles", "benevoles", "nom='" + this.nom.getText() + "' and id_triathlon=" + this.idTriathlon));
