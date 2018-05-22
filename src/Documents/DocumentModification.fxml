@@ -27,7 +27,7 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1028.0" prefWidth="459.0" style="-fx-background-color: #F9F9F9;">
                <children>
-                  <GridPane fx:id="gridPaneDoc" prefHeight="1074.0" prefWidth="459.0">
+                  <GridPane fx:id="gridPaneDoc" layoutX="14.0" prefHeight="1074.0" prefWidth="459.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -55,8 +55,7 @@
             <Button layoutX="7.0" mnemonicParsing="false" onAction="#clicBoutonTache" prefHeight="22.0" prefWidth="204.0" style="-fx-background-color: #D8EBDC; -fx-border-color: #587C73;" text="Tâches" />
             <Button layoutX="7.0" layoutY="33.0" mnemonicParsing="false" onAction="#clicBoutonAgenda" prefHeight="22.0" prefWidth="204.0" style="-fx-background-color: #D8EBDC; -fx-border-color: #587C73;" text="Agenda" />
             <Button layoutX="3.0" layoutY="66.0" mnemonicParsing="false" onAction="#clicBoutonDocuments" prefHeight="24.0" prefWidth="212.0" style="-fx-background-color: #F9F9F9;" text="Documents" />
-            <Button layoutX="7.0" layoutY="128.0" mnemonicParsing="false" onAction="#clicBoutonContact" prefHeight="24.0" prefWidth="204.0" style="-fx-background-color: #D8EBDC; -fx-border-color: #587C73;" text="Contacts" />
-            <TextField layoutX="7.0" layoutY="97.0" prefHeight="23.0" prefWidth="204.0" promptText="Rechercher" />
+            <Button layoutX="7.0" layoutY="97.0" mnemonicParsing="false" onAction="#clicBoutonContact" prefHeight="24.0" prefWidth="204.0" style="-fx-background-color: #D8EBDC; -fx-border-color: #587C73;" text="Contacts" />
          </children>
       </Pane>
       <Button fx:id="ajouter" layoutX="211.0" layoutY="8.0" mnemonicParsing="false" onAction="#clicBoutonAjouter" prefHeight="36.0" prefWidth="25.0" textFill="WHITE">

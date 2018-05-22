@@ -45,13 +45,7 @@ public class ControleurTaches {
 
 	@FXML
 	private Button supprimer;
-
-	@FXML
-	private Button left;
-
-	@FXML
-	private Button right;
-
+	
 	@FXML
 	private Text mois;
 
@@ -143,90 +137,7 @@ public class ControleurTaches {
 		});
 	}
 
-	@FXML
-	private void clicBoutonMoisPrecedent() {
-		switch (mois.getText()) {
-		case "Janvier":
-			this.mois.setText("Decembre");
-			break;
-		case "Fevrier":
-			this.mois.setText("Janvier");
-			break;
-		case "Mars":
-			this.mois.setText("Fevrier");
-			break;
-		case "Avril":
-			this.mois.setText("Mars");
-			break;
-		case "Mai":
-			this.mois.setText("Avril");
-			break;
-		case "Juin":
-			this.mois.setText("Mai");
-			break;
-		case "Juillet":
-			this.mois.setText("Juin");
-			break;
-		case "Aout":
-			this.mois.setText("Juillet");
-			break;
-		case "Septembre":
-			this.mois.setText("Aout");
-			break;
-		case "Octobre":
-			this.mois.setText("Septembre");
-			break;
-		case "Novembre":
-			this.mois.setText("Octobre");
-			break;
-		case "Decembre":
-			this.mois.setText("Novembre");
-			break;
-		}
-	}
-
-	@FXML
-	private void clicBoutonMoisSuivant() {
-		switch (mois.getText()) {
-		case "Janvier":
-			this.mois.setText("Fevrier");
-			break;
-		case "Fevrier":
-			this.mois.setText("Mars");
-			break;
-		case "Mars":
-			this.mois.setText("Avril");
-			break;
-		case "Avril":
-			this.mois.setText("Mai");
-			break;
-		case "Mai":
-			this.mois.setText("Juin");
-			break;
-		case "Juin":
-			this.mois.setText("Juillet");
-			break;
-		case "Juillet":
-			this.mois.setText("Aout");
-			break;
-		case "Aout":
-			this.mois.setText("Septembre");
-			break;
-		case "Septembre":
-			this.mois.setText("Octobre");
-			break;
-		case "Octobre":
-			this.mois.setText("Novembre");
-			break;
-		case "Novembre":
-			this.mois.setText("Decembre");
-			break;
-		case "Decembre":
-			this.mois.setText("Janvier");
-			break;
-		}
-	}
-
+	
 	@FXML
 	private void clicBoutonMenu() {
 		this.main.showAccueilGeneral();

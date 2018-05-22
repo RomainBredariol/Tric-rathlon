@@ -1,22 +1,19 @@
 package Agenda;
 
-import java.io.IOException;
-import java.sql.Date;
+import java.time.YearMonth;
 
 import BDD.SqlRequete;
 import Contact.ControleurErreur;
 import MainApp.MainApp;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.NodeBuilder;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
@@ -52,29 +49,29 @@ public class ControleurAgendaAcceuil {
 	private Button supprimer;
 
 	@FXML
-	private Button left;
-
-	@FXML
-	private Button right;
-
-	@FXML
 	private Text mois;
 
 	@FXML
 	private ListView listViewEvent;
 
 	@FXML
-	private GridPane panneauMois; // il faut changer de mois en gardant la structure de la GridPane et stocker les
-									// données précedemment entrées
+	private AnchorPane anchorPaneCalendar;
 
 	private int nbEvent;
 	private String[] tabDateEvent;
 	private String[] tabHeureEvent;
 	
 	private int idTriathlon;
+	
+	
+	private FullCalendarView calendar;
+	private YearMonth currentYearMonth;
 
 	public void setMainApp(MainApp mainApp) {
 		this.main = mainApp;
+		currentYearMonth = YearMonth.now();
+		this.calendar = new FullCalendarView(currentYearMonth);
+
 		
 		this.idTriathlon = this.main.getIdTriathlon();
 		
@@ -93,13 +90,10 @@ public class ControleurAgendaAcceuil {
 			this.listViewEvent.getItems().add(new RadioButton(nomEvent));
 			this.listViewEvent.getItems().add(new Label(tabHeureEvent[i] + " || " + tabDateEvent[i]));
 		}
+		this.anchorPaneCalendar.getChildren().add(calendar.getView());
 	}
-
-	@FXML
-	private void initialize() {
-		
-		
-	}
+	
+	
 
 	@FXML
 	private void clicBoutonModifier() throws Exception {
@@ -206,90 +200,6 @@ public class ControleurAgendaAcceuil {
 			Scene scene = new Scene(anchor);
 			stage.setScene(scene);
 			stage.show();
-		}
-	}
-
-	@FXML
-	private void clicBoutonMoisPrecedent() {
-		switch (mois.getText()) {
-		case "Janvier":
-			this.mois.setText("Decembre");
-			break;
-		case "Fevrier":
-			this.mois.setText("Janvier");
-			break;
-		case "Mars":
-			this.mois.setText("Fevrier");
-			break;
-		case "Avril":
-			this.mois.setText("Mars");
-			break;
-		case "Mai":
-			this.mois.setText("Avril");
-			break;
-		case "Juin":
-			this.mois.setText("Mai");
-			break;
-		case "Juillet":
-			this.mois.setText("Juin");
-			break;
-		case "Aout":
-			this.mois.setText("Juillet");
-			break;
-		case "Septembre":
-			this.mois.setText("Aout");
-			break;
-		case "Octobre":
-			this.mois.setText("Septembre");
-			break;
-		case "Novembre":
-			this.mois.setText("Octobre");
-			break;
-		case "Decembre":
-			this.mois.setText("Novembre");
-			break;
-		}
-	}
-
-	@FXML
-	private void clicBoutonMoisSuivant() {
-		switch (mois.getText()) {
-		case "Janvier":
-			this.mois.setText("Fevrier");
-			break;
-		case "Fevrier":
-			this.mois.setText("Mars");
-			break;
-		case "Mars":
-			this.mois.setText("Avril");
-			break;
-		case "Avril":
-			this.mois.setText("Mai");
-			break;
-		case "Mai":
-			this.mois.setText("Juin");
-			break;
-		case "Juin":
-			this.mois.setText("Juillet");
-			break;
-		case "Juillet":
-			this.mois.setText("Aout");
-			break;
-		case "Aout":
-			this.mois.setText("Septembre");
-			break;
-		case "Septembre":
-			this.mois.setText("Octobre");
-			break;
-		case "Octobre":
-			this.mois.setText("Novembre");
-			break;
-		case "Novembre":
-			this.mois.setText("Decembre");
-			break;
-		case "Decembre":
-			this.mois.setText("Janvier");
-			break;
 		}
 	}
 

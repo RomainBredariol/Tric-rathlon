@@ -12,9 +12,6 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.control.ToolBar?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -101,34 +98,7 @@
                            <items>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="668.0" prefWidth="697.0">
                                  <children>
-                                    <ToolBar prefHeight="49.0" prefWidth="694.0" style="-fx-background-color: #D8EBDC;">
-                                       <items>
-                                          <Button fx:id="left" mnemonicParsing="false" onAction="#clicBoutonMoisPrecedent" prefHeight="0.0" prefWidth="28.0" style="-fx-background-color: #D8EBDC #D8EBDC;">
-                                             <graphic>
-                                                <ImageView fitHeight="25.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../pics/back.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                          </Button>
-                                          <Button fx:id="right" mnemonicParsing="false" onAction="#clicBoutonMoisSuivant" style="-fx-background-color: #D8EBDC;" textAlignment="CENTER" translateX="440.0">
-                                             <graphic>
-                                                <ImageView fitHeight="25.0" fitWidth="28.0">
-                                                   <image>
-                                                      <Image url="@../pics/forward.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                          </Button>
-                                          <Text fx:id="mois" fill="#677c6b" strokeType="OUTSIDE" strokeWidth="0.0" text="Decembre" textAlignment="CENTER" translateX="40.0" wrappingWidth="272.345703125">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                          </Text>
-                                       </items>
-                                    </ToolBar>
-                                    <AnchorPane fx:id="anchorPaneGantt" layoutX="-4.0" layoutY="49.0" prefHeight="632.0" prefWidth="482.0" />
+                                    <AnchorPane fx:id="anchorPaneGantt" layoutX="-4.0" layoutY="-2.0" prefHeight="683.0" prefWidth="482.0" />
                                  </children>
                               </AnchorPane>
                               <Pane prefHeight="681.0" prefWidth="172.0" style="-fx-background-color: #D8EBDC;">

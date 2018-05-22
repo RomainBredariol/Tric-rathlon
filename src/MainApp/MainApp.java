@@ -107,14 +107,16 @@ public class MainApp extends Application {
 	// charge page AccueilGeneral
 	public void showAccueilGeneral() {
 		try {
-			// Load person overview.
+			//cree loader qui va permettre de charger les pages
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("/AccueilGeneral/Accueil_general.fxml"));
 			AnchorPane personOverview = (AnchorPane) loader.load();
 			ControleurAccueilGeneral controleur = loader.getController();
+			//on charge la mainApp depuis le controleur de la page demande
 			controleur.setMainApp(this);
 
 			Scene scene = new Scene(personOverview);
+			//on charge la scene dans le primaryStage
 			primaryStage.setScene(scene);
 			primaryStage.show();
 

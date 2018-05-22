@@ -10,7 +10,6 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -95,34 +94,7 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="540.0" prefWidth="538.0">
                      <children>
-                        <ToolBar prefHeight="49.0" prefWidth="718.0" style="-fx-background-color: #D8EBDC;">
-                           <items>
-                              <Button fx:id="left" mnemonicParsing="false" onAction="#clicBoutonMoisPrecedent" prefHeight="0.0" prefWidth="28.0" style="-fx-background-color: #D8EBDC #D8EBDC;">
-                                 <graphic>
-                                    <ImageView fitHeight="25.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../pics/back.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                              <Button fx:id="right" mnemonicParsing="false" onAction="#clicBoutonMoisSuivant" style="-fx-background-color: #D8EBDC;" textAlignment="CENTER" translateX="450.0">
-                                 <graphic>
-                                    <ImageView fitHeight="25.0" fitWidth="28.0">
-                                       <image>
-                                          <Image url="@../pics/forward.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                              <Text fx:id="mois" fill="#677c6b" strokeType="OUTSIDE" strokeWidth="0.0" text="Decembre" textAlignment="CENTER" wrappingWidth="402.345703125">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Text>
-                           </items>
-                        </ToolBar>
-                        <AnchorPane fx:id="anchorPaneGantt" layoutY="49.0" prefHeight="501.0" prefWidth="550.0" />
+                        <AnchorPane fx:id="anchorPaneGantt" layoutY="-1.0" prefHeight="551.0" prefWidth="550.0" />
                      </children>
                   </AnchorPane>
                </items>

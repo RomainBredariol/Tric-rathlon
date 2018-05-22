@@ -122,6 +122,7 @@ public class ControleurDocumentNouveau {
 		req.CloseConnexion();
 	}
 
+	//ouvre un gestionnaire de document qui permet de charger un fichier
 	@FXML
 	private void clicBoutonImporter() {
 		Stage fenetre = new Stage();

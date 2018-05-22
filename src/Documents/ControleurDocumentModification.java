@@ -103,6 +103,7 @@ public class ControleurDocumentModification {
 		SqlRequete req = new SqlRequete();
 		req.Connect("update fichier set nom='"+this.nomFichier.getText()+"' where id_fichier="+this.idFichierAModifier);
 		req.CloseConnexion();
+		this.main.showDocumentsAccueil();
 	}
 
 	@FXML

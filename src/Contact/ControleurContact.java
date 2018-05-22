@@ -1,21 +1,15 @@
 package Contact;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 
 import BDD.SqlRequete;
 import MainApp.MainApp;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.collections.ObservableListBase;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
@@ -293,6 +287,7 @@ public class ControleurContact {
 	@FXML
 	private void rechercheContact() {
 		this.req = new SqlRequete();
+		//recupere les nom, adresse, mail et tel d'un contact recherche dans la barre de recherche
 		String nomRecherche = req.getUneValeurBDD("nom", "benevoles", "nom like '" + this.barreRecherche.getText()
 				+ "%' OR prenom like'" + this.barreRecherche.getText() + "%' and id_triathlon=" + this.idTriathlon );
 		String adrRecherche = req.getUneValeurBDD("commentaires", "benevoles", "nom like '"
@@ -305,6 +300,7 @@ public class ControleurContact {
 				+ this.barreRecherche.getText() + "%' OR prenom like'" + this.barreRecherche.getText() + "%' and id_triathlon=" + this.idTriathlon));
 		this.idContactAModifier = idRecherche;
 
+		//supprime les contact pour en afficher qu'un seul
 		for (int i = 0; i < this.nbContact; i++) {
 			this.anchorPaneContact.getChildren().remove(this.listContact);
 		}
@@ -312,7 +308,7 @@ public class ControleurContact {
 		this.listContact = new VBox();
 		Pane paneContact = new Pane();
 
-		// on defenit un objet et on lui attribut ses caracteristiques
+		// on defini un objet et on lui attribut ses caracteristiques
 		javafx.scene.image.ImageView imageUser = new javafx.scene.image.ImageView("/pics/user.png");
 		imageUser.setLayoutX(14);
 		imageUser.setLayoutY(11);
@@ -385,7 +381,7 @@ public class ControleurContact {
 		} else {
 			// on cree un tableaux de pane
 			Pane[] paneContact = new Pane[this.nbContact];
-			// pour chaque contact on cree un pane
+			// pour chaque contact on cree un pane qu'on stocke dans le tableau
 			for (int i = 0; i < this.nbContact; i++) {
 				paneContact[i] = (Pane) this.listContact.getChildren().get(i);
 			}
@@ -395,18 +391,19 @@ public class ControleurContact {
 			for (int i = 0; i < this.nbContact; i++) {
 				boutonSelection[i] = (RadioButton) paneContact[i].getChildren().get(5);
 			}
-			// le "numero" du pane equivaut a id_benevoles de la bdd
+			//si un radiobutton est selectionne on recupere l'id du contact 
 			for (int i = 0; i < boutonSelection.length; i++) {
 				if (boutonSelection[i].isSelected()) {
 					Label nom = (Label) paneContact[i].getChildren().get(1);
 					this.req = new SqlRequete();
+					//recuperarion idContact
 					int id = Integer
 							.parseInt(req.getUneValeurBDD("id_benevoles", "benevoles", "nom='" + nom.getText() + "' and id_triathlon=" + this.idTriathlon));
 					this.idContactAModifier = id;
 					this.req.CloseConnexion();
 				}
 			}
-			// on conserve cette valeur
+			// on conserve cet id
 			this.mainApp.aConserver(this.idContactAModifier);
 		}
 
@@ -423,6 +420,7 @@ public class ControleurContact {
 			stage.setScene(scene);
 			stage.show();
 		} else {
+			//sinon on affiche la page modification
 			this.mainApp.showContact("modification");
 		}
 

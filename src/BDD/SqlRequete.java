@@ -13,20 +13,20 @@ public class SqlRequete {
 	private Connection connexion;
 
 	public SqlRequete() {
-		// Comme en php, ici c'est l'url de notre bdd avec login et mdp
+		//On declare url, login et mdp de la bdd
 		String url = "jdbc:mysql://localhost/tricerathlon";
 		String utilisateur = "root";
 		String motDePasse = "azerty";
 		this.connexion = null;
 		try {
-			// ici on charge les drivers de jdbc
+			// ici on charge les drivers jdbc
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		System.out.println("Driver ok !");
 		try {
-			// ici on se connecte
+			//on se connecte
 			connexion = DriverManager.getConnection(url, utilisateur, motDePasse);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -34,13 +34,12 @@ public class SqlRequete {
 		System.out.println("Connexion Effective !");
 	}
 
-	// methode qui envoie une requetre ï¿½ la bdd CELLE CI N'AFFICHE QUE DANS LA
-	// CONSOLE (cf. methode suivante)
+	// methode qui envoie une requetre à la bdd (sert à ecrire et modifier la bdd)
 	public void Connect(String requete) {
-		/* Connexion ï¿½ la base de donnï¿½es */
-		// le resultset est le rï¿½sultat que va nous renvoyer la bdd
+		/* Connexion à la bdd */
+		// le resultset est l'élément que va nous renvoyer la bdd
 		ResultSet rs = null;
-		// le statement est, en gros, un element qui va transmettre la requete
+		// le statement est un element qui va transmettre la requete
 		Statement st = null;
 		try {
 
@@ -50,8 +49,7 @@ public class SqlRequete {
 
 			// Requete de lecture
 			if (rq.startsWith("select") || rq.startsWith("Select") || rq.startsWith("SELECT")) {
-				// executeQuery pour de la lecture et executeUpdate pour une modif (cf. else
-				// suivant)
+				// executeQuery pour de la lecture et executeUpdate pour une modif (cf. else suivant)
 				rs = st.executeQuery(rq);
 				// On rï¿½cupï¿½re les MetaData (= Nom de colonne, nom table etc)
 				ResultSetMetaData resultMeta = rs.getMetaData();
@@ -89,10 +87,7 @@ public class SqlRequete {
 
 	}
 
-	// cette mï¿½thode permet de demander une donnï¿½e en particulier (ex: select
-	// nom from user where id=1)
-	// De plus celle ci n'affiche pas dans la console mais dans un objet genre un
-	// champ de texte d'une page (ex: page profil)
+	// cette mï¿½thode permet de demander une donnï¿½e en particulier
 	public String getUneValeurBDD(String colonne, String table, String condition) {
 		/* Connexion ï¿½ la base de donnï¿½es */
 
@@ -128,8 +123,8 @@ public class SqlRequete {
 
 	}
 
-	// cette methode permet de demander un tableau de donnee en particulier (ex:
-	// select id_benevoles from benevoles)
+	// cette methode permet de demander jeu de donnee en particulier (ex:
+	// select id_benevoles from benevoles) et le stocke dans un tableau de String
 	public void getTabValeurBDD(String colonne, String table, String condition, String[] tab) {
 
 		ResultSet rs = null;

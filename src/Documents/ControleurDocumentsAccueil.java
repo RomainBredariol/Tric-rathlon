@@ -1,17 +1,18 @@
 package Documents;
 
 import BDD.SqlRequete;
+import Contact.ControleurErreur;
 import MainApp.MainApp;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class ControleurDocumentsAccueil {
 
@@ -109,13 +110,49 @@ public class ControleurDocumentsAccueil {
 	}
 
 	@FXML
-	private void clicBoutonModifier() {
+	private void clicBoutonModifier() throws Exception {
 		Pane[] tabPane = new Pane[nbDoc];
 		this.req = new SqlRequete();
 		for (int i = 0; i<nbDoc; i++) {
 			tabPane[i]= (Pane) this.gridPaneDoc.getChildren().get(i);
 		}
 		
+		int nbRadioButtonSelected = 0;
+		RadioButton[] tabBouton = new RadioButton[nbDoc];
+		for(int i = 0; i<nbDoc; i++) {
+			tabBouton[i] = (RadioButton) tabPane[i].getChildren().get(2);
+			if(tabBouton[i].isSelected()) {
+				nbRadioButtonSelected++;
+				Label nomFichier = (Label) tabPane[i].getChildren().get(1);
+				int idDoc = Integer.parseInt(req.getUneValeurBDD("id_fichier", "fichier", "nom='"+nomFichier.getText()+"' and id_triathlon="+this.idTriathlon));
+				this.mainApp.aConserver(idDoc);
+			}
+		}
+		
+		if(nbRadioButtonSelected != 1) {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/Agenda/erreurRadioButtonNonSelectionne.fxml"));
+			Stage stage = new Stage();
+			AnchorPane anchor = (AnchorPane) loader.load();
+			ControleurErreur controleur = loader.getController();
+			controleur.setFenetre(stage);
+			Scene scene = new Scene(anchor);
+			stage.setScene(scene);
+			stage.show();
+		}else {
+			this.mainApp.showDocumentModification();
+		}
+		this.req.CloseConnexion();
+	}
+
+	@FXML
+	private void clicBoutonSupprimer() throws Exception {
+		Pane[] tabPane = new Pane[nbDoc];
+		this.req = new SqlRequete();
+		for (int i = 0; i<nbDoc; i++) {
+			tabPane[i]= (Pane) this.gridPaneDoc.getChildren().get(i);
+		}
+		int nbRadioButtonSelected = 0;
 		RadioButton[] tabBouton = new RadioButton[nbDoc];
 		for(int i = 0; i<nbDoc; i++) {
 			tabBouton[i] = (RadioButton) tabPane[i].getChildren().get(2);
@@ -123,15 +160,34 @@ public class ControleurDocumentsAccueil {
 				Label nomFichier = (Label) tabPane[i].getChildren().get(1);
 				int idDoc = Integer.parseInt(req.getUneValeurBDD("id_fichier", "fichier", "nom='"+nomFichier.getText()+"' and id_triathlon="+this.idTriathlon));
 				this.mainApp.aConserver(idDoc);
-				this.mainApp.showDocumentModification();
+				nbRadioButtonSelected++;
 			}
 		}
 		this.req.CloseConnexion();
-	}
-
-	@FXML
-	private void clicBoutonSupprimer() {
-
+		
+		if(nbRadioButtonSelected != 1) {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/Agenda/erreurRadioButtonNonSelectionne.fxml"));
+			Stage stage = new Stage();
+			AnchorPane anchor = (AnchorPane) loader.load();
+			ControleurErreur controleur = loader.getController();
+			controleur.setFenetre(stage);
+			Scene scene = new Scene(anchor);
+			stage.setScene(scene);
+			stage.show();
+		}else {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/Documents/DocumentSuppression.fxml"));
+			Stage stage = new Stage();
+			AnchorPane anchor = (AnchorPane) loader.load();
+			ControleurSuppressionDocument controleur = loader.getController();
+			controleur.setfenetre(stage);
+			controleur.setMainApp(this.mainApp);
+			Scene scene = new Scene(anchor);
+			stage.setScene(scene);
+			stage.show();
+			
+		}
 	}
 
 }
