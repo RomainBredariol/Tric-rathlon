@@ -71,8 +71,11 @@ public class ControleurAgendaAcceuil {
 		this.main = mainApp;
 		currentYearMonth = YearMonth.now();
 		this.calendar = new FullCalendarView(currentYearMonth);
-
-		
+		Button prev = calendar.getButtonPrev();
+		Button next = calendar.getButtonNext();
+		prev.setOnAction(e -> clicBoutonPrev());
+		next.setOnAction(e -> clicBoutonNext());
+	
 		this.idTriathlon = this.main.getIdTriathlon();
 		
 		this.req = new SqlRequete();
@@ -87,10 +90,44 @@ public class ControleurAgendaAcceuil {
 		for (int i = 0; i < nbEvent; i++) {
 			String nomEvent = req.getUneValeurBDD("nom", "evenement", "date='" + tabDateEvent[i] + 
 					"' and heure='" + tabHeureEvent[i] + "' and id_triathlon="+this.idTriathlon);
+			String couleurEvent = req.getUneValeurBDD("couleur", "evenement", "date='" + tabDateEvent[i] + 
+					"' and heure='" + tabHeureEvent[i] + "' and id_triathlon="+this.idTriathlon);
 			this.listViewEvent.getItems().add(new RadioButton(nomEvent));
 			this.listViewEvent.getItems().add(new Label(tabHeureEvent[i] + " || " + tabDateEvent[i]));
+			this.calendar.addEvent(nomEvent, tabDateEvent[i], couleurEvent);
 		}
 		this.anchorPaneCalendar.getChildren().add(calendar.getView());
+		this.req.CloseConnexion();
+	}
+	
+	@FXML
+	private void clicBoutonNext() {
+		this.req = new SqlRequete();
+		this.calendar.nextMonth();
+		for(int i = 0; i < nbEvent; i++) {
+			String nomEvent = req.getUneValeurBDD("nom", "evenement", "date='" + tabDateEvent[i] + 
+					"' and heure='" + tabHeureEvent[i] + "' and id_triathlon="+this.idTriathlon);
+			String couleurEvent = req.getUneValeurBDD("couleur", "evenement", "date='" + tabDateEvent[i] + 
+					"' and heure='" + tabHeureEvent[i] + "' and id_triathlon="+this.idTriathlon);
+			this.calendar.addEvent(nomEvent, tabDateEvent[i], couleurEvent);
+		}
+		this.anchorPaneCalendar.getChildren().setAll(this.calendar.getView());
+		this.req.CloseConnexion();
+	}
+	
+	@FXML
+	private void clicBoutonPrev() {
+		this.req = new SqlRequete();
+		this.calendar.previousMonth();
+		for(int i = 0; i < nbEvent; i++) {
+			String nomEvent = req.getUneValeurBDD("nom", "evenement", "date='" + tabDateEvent[i] + 
+					"' and heure='" + tabHeureEvent[i] + "' and id_triathlon="+this.idTriathlon);
+			String couleurEvent = req.getUneValeurBDD("couleur", "evenement", "date='" + tabDateEvent[i] + 
+					"' and heure='" + tabHeureEvent[i] + "' and id_triathlon="+this.idTriathlon);
+			this.calendar.addEvent(nomEvent, tabDateEvent[i], couleurEvent);
+		}
+		this.anchorPaneCalendar.getChildren().setAll(this.calendar.getView());
+		this.req.CloseConnexion();
 	}
 	
 	

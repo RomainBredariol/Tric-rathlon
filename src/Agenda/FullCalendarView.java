@@ -1,7 +1,18 @@
 package Agenda;
 
+
+import java.time.LocalDate;
+import java.time.YearMonth;
+import java.util.ArrayList;
+
+import com.sun.javafx.css.converters.ColorConverter;
+import com.sun.javafx.scene.traversal.SubSceneTraversalEngine;
+
+import javafx.css.StyleConverter;
 import javafx.geometry.Pos;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -9,15 +20,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import javafx.util.converter.LocalDateStringConverter;
-
-import java.time.LocalDate;
-import java.time.YearMonth;
-import java.time.ZoneOffset;
-import java.util.ArrayList;
-import java.util.Date;
-
-import MainApp.MainApp;
 
 public class FullCalendarView {
 
@@ -66,9 +68,8 @@ public class FullCalendarView {
 		// Create calendarTitle and buttons to change current month
 		calendarTitle = new Text();
 		this.previousMonth = new Button("<<");
-		previousMonth.setOnAction(e -> previousMonth());
 		this.nextMonth = new Button(">>");
-		nextMonth.setOnAction(e -> nextMonth());
+		
 		HBox titleBar = new HBox(previousMonth, calendarTitle, nextMonth);
 		titleBar.setAlignment(Pos.BASELINE_CENTER);
 		// Populate calendar with the appropriate day numbers
@@ -85,29 +86,30 @@ public class FullCalendarView {
 		return this.nextMonth;
 	}
 
-	public void addEvent(String nom, String date) {
+	public void addEvent(String nom, String date, String color) {
 		Label nomEvent = new Label(nom);
 		nomEvent.setLayoutY(20);
+		String couleur = color.substring(2);
+		if(!couleur.equals("ffffffff")) {
+			nomEvent.setStyle("-fx-text-fill : white; -fx-background-color : #"+couleur+";");
+		}
 		
 		LocalDate dateEvent = LocalDate.parse(date);
 		
-		for (AnchorPaneNode ap : allCalendarDays) {
-			if (ap.getDate().getYear() == dateEvent.getYear()) {
-				if (ap.getDate().getMonthValue() == dateEvent.getMonthValue()) {
-					if (ap.getDate().getDayOfMonth() == dateEvent.getDayOfMonth()) {
+		for (AnchorPaneNode ap : allCalendarDays) {	
+			if(dateEvent.getYear() == ap.getDate().getYear()) {
+				if(dateEvent.getMonthValue() == ap.getDate().getMonthValue()) {
+					if(dateEvent.getDayOfMonth() == ap.getDate().getDayOfMonth()) {
+						int taille = ap.getChildren().size();
+						if(taille > 1) {
+							nomEvent.setLayoutY((taille*10)+20);
+						}
 						ap.getChildren().add(nomEvent);
 					}
 				}
 			}
 		}
 
-	}
-	
-	public void clearEvent() {
-		for(AnchorPaneNode ap : allCalendarDays) {
-			if(ap.getChildren().size() !=1)
-				ap.getChildren().remove(1, ap.getChildren().size()-1);
-		}
 	}
 
 	/**
@@ -126,7 +128,7 @@ public class FullCalendarView {
 		// Populate the calendar with day numbers
 		for (AnchorPaneNode ap : allCalendarDays) {
 			if (ap.getChildren().size() != 0) {
-				ap.getChildren().remove(0);
+				ap.getChildren().remove(0, ap.getChildren().size());
 			}
 			Text txt = new Text(String.valueOf(calendarDate.getDayOfMonth()));
 			ap.setDate(calendarDate);
@@ -143,7 +145,6 @@ public class FullCalendarView {
 	 * Move the month back by one. Repopulate the calendar with the correct dates.
 	 */
 	public void previousMonth() {
-		
 		currentYearMonth = currentYearMonth.minusMonths(1);
 		populateCalendar(currentYearMonth);
 	}
@@ -153,7 +154,6 @@ public class FullCalendarView {
 	 * dates.
 	 */
 	public void nextMonth() {
-		
 		currentYearMonth = currentYearMonth.plusMonths(1);
 		populateCalendar(currentYearMonth);
 	}

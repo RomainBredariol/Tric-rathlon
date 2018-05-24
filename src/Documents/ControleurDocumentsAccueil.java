@@ -61,7 +61,7 @@ public class ControleurDocumentsAccueil {
 					nom.setPrefWidth(100);
 					
 					RadioButton bouton = new RadioButton();
-					bouton.setLayoutX(50);
+					bouton.setLayoutX(60);
 					bouton.setLayoutY(20);
 					
 					
