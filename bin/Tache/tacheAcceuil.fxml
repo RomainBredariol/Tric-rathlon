@@ -68,11 +68,16 @@
                                              <children>
                                                 <Label text="Label" />
                                                 <Separator prefHeight="29.0" prefWidth="156.0" />
-                                                <RadioButton mnemonicParsing="false" text="Urgente" />
+                                                <RadioButton fx:id="urgente" mnemonicParsing="false" text="Urgente" />
                                                 <Separator prefHeight="13.0" prefWidth="156.0" />
-                                                <RadioButton mnemonicParsing="false" text="Normale" />
+                                                <RadioButton fx:id="normale" mnemonicParsing="false" text="Normale" />
                                                 <Separator prefHeight="14.0" prefWidth="156.0" />
-                                                <RadioButton mnemonicParsing="false" text="Faible" />
+                                                <RadioButton fx:id="faible" mnemonicParsing="false" text="Faible" />
+                                                <Pane prefHeight="73.0" prefWidth="187.0">
+                                                   <children>
+                                                      <Button fx:id="ok" layoutX="17.0" layoutY="37.0" mnemonicParsing="false" onAction="#clicBoutonOKFiltres" prefHeight="31.0" prefWidth="123.0" text="Ok" />
+                                                   </children>
+                                                </Pane>
                                              </children>
                                           </VBox>
                                        </content>

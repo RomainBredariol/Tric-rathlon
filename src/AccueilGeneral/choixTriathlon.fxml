@@ -22,7 +22,7 @@
             <Image url="@../pics/logo%20tricérathlon.png" />
          </image>
       </ImageView>
-      <Button fx:id="ok" onAction="#clicBoutonOK" layoutX="336.0" layoutY="520.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="157.0" text="OK" />
+      <Button fx:id="ok" layoutX="336.0" layoutY="520.0" mnemonicParsing="false" onAction="#clicBoutonOK" prefHeight="31.0" prefWidth="157.0" text="OK" />
       <GridPane fx:id="gridPaneTriathlon" layoutX="18.0" layoutY="55.0" prefHeight="435.0" prefWidth="801.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -36,5 +36,14 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
+      <Button fx:id="supprimer" layoutX="18.0" layoutY="497.0" mnemonicParsing="false" onAction="#clicBoutonSupprimer" prefHeight="31.0" prefWidth="33.0" style="-fx-background-color: #B7D5B6;">
+         <graphic>
+            <ImageView fitHeight="44.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../pics/supprimer.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

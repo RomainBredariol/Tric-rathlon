@@ -1,15 +1,9 @@
 package Agenda;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
-
-import com.sun.javafx.css.converters.ColorConverter;
+import java.time.YearMonth;
 
 import BDD.SqlRequete;
 import MainApp.MainApp;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -21,11 +15,10 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.util.converter.LocalDateStringConverter;
 
 public class ControleurAgendaModifier {
 
@@ -96,20 +89,42 @@ public class ControleurAgendaModifier {
 	private String[] nomContactParticpant;
 	private String[] prenomContactParticpant;
 
+	private FullCalendarView calendar;
+
+	private String[] tabHeureEvent;
+
+	private String[] tabDateEvent;
+	
+	@FXML
+	private AnchorPane anchorPaneCalendar;
+
+	private YearMonth currentYearMonth;
+
+	private int nbEvent;
+	
+	
+
 	public void setMainApp(MainApp main) {
 		this.mainApp = main;
 		this.req = new SqlRequete();
 		this.idTriathlon=this.mainApp.getIdTriathlon();
+		
+		currentYearMonth = YearMonth.now();
+		this.calendar = new FullCalendarView(currentYearMonth);
+		Button prev = calendar.getButtonPrev();
+		Button next = calendar.getButtonNext();
+		prev.setOnAction(e -> clicBoutonPrev());
+		next.setOnAction(e -> clicBoutonNext());
 		
 		nbContact = Integer.parseInt(req.getUneValeurBDD("count(id_benevoles)", "benevoles", "id_triathlon="+this.idTriathlon));
 		
 		tabIdContact = new String[nbContact];
 		req.getTabValeurBDD("id_benevoles", "benevoles", "id_triathlon="+this.idTriathlon, tabIdContact);
 
-		int nbEvent = Integer.parseInt(req.getUneValeurBDD("count(nom)", "evenement", "id_triathlon="+this.idTriathlon));
-		String[] tabDateEvent = new String[nbEvent];
+		nbEvent = Integer.parseInt(req.getUneValeurBDD("count(nom)", "evenement", "id_triathlon="+this.idTriathlon));
+		tabDateEvent = new String[nbEvent];
 		req.getTabValeurBDD("date", "evenement", "id_triathlon="+this.idTriathlon, tabDateEvent);
-		String[] tabHeureEvent = new String[nbEvent];
+		tabHeureEvent = new String[nbEvent];
 		req.getTabValeurBDD("heure", "evenement", "id_triathlon="+this.idTriathlon, tabHeureEvent);
 
 		// ajout des checkBox pour chaque contact
@@ -124,7 +139,12 @@ public class ControleurAgendaModifier {
 					"date='" + tabDateEvent[i] + "' and heure='" + tabHeureEvent[i] + "'");
 			this.listViewEvent.getItems().add(new RadioButton(nomEvent));
 			this.listViewEvent.getItems().add(new Label(tabHeureEvent[i] + " || " + tabDateEvent[i]));
+			String couleurEvent = req.getUneValeurBDD("couleur", "evenement", "date='" + tabDateEvent[i] + 
+					"' and heure='" + tabHeureEvent[i] + "' and id_triathlon="+this.idTriathlon);
+			this.calendar.addEvent(nomEvent, tabDateEvent[i], couleurEvent);
 		}
+
+		this.anchorPaneCalendar.getChildren().add(this.calendar.getView());
 
 		this.horaires.getItems().addAll(hours);
 
@@ -166,6 +186,37 @@ public class ControleurAgendaModifier {
 			}
 		}
 
+		this.req.CloseConnexion();
+	}
+	
+	@FXML
+	private void clicBoutonNext() {
+		this.req = new SqlRequete();
+		this.calendar.nextMonth();
+		for(int i = 0; i < nbEvent; i++) {
+			String nomEvent = req.getUneValeurBDD("nom", "evenement", "date='" + tabDateEvent[i] + 
+					"' and heure='" + tabHeureEvent[i] + "' and id_triathlon="+this.idTriathlon);
+			String couleurEvent = req.getUneValeurBDD("couleur", "evenement", "date='" + tabDateEvent[i] + 
+					"' and heure='" + tabHeureEvent[i] + "' and id_triathlon="+this.idTriathlon);
+			this.calendar.addEvent(nomEvent, tabDateEvent[i], couleurEvent);
+		}
+		this.anchorPaneCalendar.getChildren().setAll(this.calendar.getView());
+		this.req.CloseConnexion();
+	}
+	
+	@FXML
+	private void clicBoutonPrev() {
+		this.req = new SqlRequete();
+		this.calendar.previousMonth();
+		for(int i = 0; i < nbEvent; i++) {
+			String nomEvent = req.getUneValeurBDD("nom", "evenement", "date='" + tabDateEvent[i] + 
+					"' and heure='" + tabHeureEvent[i] + "' and id_triathlon="+this.idTriathlon);
+			String couleurEvent = req.getUneValeurBDD("couleur", "evenement", "date='" + tabDateEvent[i] + 
+					"' and heure='" + tabHeureEvent[i] + "' and id_triathlon="+this.idTriathlon);
+			this.calendar.addEvent(nomEvent, tabDateEvent[i], couleurEvent);
+		}
+		this.anchorPaneCalendar.getChildren().setAll(this.calendar.getView());
+		this.req.CloseConnexion();
 	}
 
 	@FXML

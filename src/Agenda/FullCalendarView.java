@@ -5,20 +5,13 @@ import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.ArrayList;
 
-import com.sun.javafx.css.converters.ColorConverter;
-import com.sun.javafx.scene.traversal.SubSceneTraversalEngine;
-
-import javafx.css.StyleConverter;
 import javafx.geometry.Pos;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
-import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 public class FullCalendarView {

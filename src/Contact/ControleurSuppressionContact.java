@@ -1,8 +1,5 @@
 package Contact;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import BDD.SqlRequete;
 import MainApp.MainApp;
 import javafx.fxml.FXML;
@@ -34,6 +31,11 @@ public class ControleurSuppressionContact {
 	private void clicBoutonConfirmer() {
 		SqlRequete req= new SqlRequete();
 		req.Connect("delete from benevoles where id_benevoles="+this.main.getValeurAConserver());
+		req.Connect("delete from affilier where id_benevoles="+this.main.getValeurAConserver());
+		req.Connect("delete from attacher where id_benevoles="+this.main.getValeurAConserver());
+		req.Connect("delete from lier where id_benevoles="+this.main.getValeurAConserver());
+		req.Connect("delete from participer where id_benevoles="+this.main.getValeurAConserver());
+		
 		req.CloseConnexion();
 		this.fenetre.close();
 		this.main.showContact("accueil");

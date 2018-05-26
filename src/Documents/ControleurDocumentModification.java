@@ -1,7 +1,5 @@
 package Documents;
 
-import java.io.File;
-
 import BDD.SqlRequete;
 import MainApp.MainApp;
 import javafx.fxml.FXML;
@@ -11,8 +9,6 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 
 public class ControleurDocumentModification {
 

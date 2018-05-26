@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -13,19 +10,21 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="561.0" prefWidth="828.0" style="-fx-background-color: #B7D5B6;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AccueilGeneral.ControleurNouveauTriathlon">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="561.0" prefWidth="828.0" style="-fx-background-color: #B7D5B6;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AccueilGeneral.ControleurNouveauTriathlon">
    <children>
       <MenuBar layoutY="-2.0" prefHeight="29.0" prefWidth="828.0" style="-fx-background-color: #587C73;">
          <menus>
             <Menu mnemonicParsing="false" style="-fx-font-size: 16;" text=" Nouveau projet" />
          </menus>
       </MenuBar>
-      <TitledPane animated="false" collapsible="false" layoutX="221.0" layoutY="188.0" prefHeight="200.0" prefWidth="202.0" text="Sélectionner type :">
+      <TitledPane animated="false" collapsible="false" layoutX="210.0" layoutY="188.0" prefHeight="200.0" prefWidth="202.0" style="-fx-background-color: #587C73;" text="Sélectionner type :">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #e3efeb;">
                <children>
                   <RadioButton layoutX="24.0" layoutY="6.0" mnemonicParsing="false" text="XS (découverte)" fx:id="xs" />
                   <RadioButton fx:id="s" layoutX="24.0" layoutY="25.0" mnemonicParsing="false" text="S (sprint)" />
@@ -38,9 +37,9 @@
             </AnchorPane>
          </content>
       </TitledPane>
-      <TitledPane animated="false" collapsible="false" layoutX="22.0" layoutY="188.0" prefHeight="200.0" prefWidth="202.0" text="Sélectionner genre :">
+      <TitledPane animated="false" collapsible="false" layoutX="11.0" layoutY="188.0" prefHeight="200.0" prefWidth="202.0" text="Sélectionner genre :">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #e3efeb;">
                <children>
                   <RadioButton fx:id="amical" layoutX="24.0" layoutY="35.0" mnemonicParsing="false" text="Amical" />
                   <RadioButton fx:id="competition" layoutX="24.0" layoutY="64.0" mnemonicParsing="false" text="Compétition" />
@@ -49,13 +48,13 @@
             </AnchorPane>
          </content>
       </TitledPane>
-      <TitledPane animated="false" collapsible="false" layoutX="414.0" layoutY="188.0" prefHeight="200.0" prefWidth="395.0" text="Sélectionner tâches :">
+      <TitledPane animated="false" collapsible="false" layoutX="403.0" layoutY="188.0" prefHeight="200.0" prefWidth="395.0" style="-fx-background-color: #587C73;" text="Sélectionner tâches :">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="588.0" prefWidth="393.0">
                <children>
-                  <ScrollPane layoutX="-2.0" layoutY="-1.0" prefHeight="170.0" prefWidth="199.0">
+                  <ScrollPane layoutX="-2.0" layoutY="-1.0" prefHeight="175.0" prefWidth="212.0">
                      <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="369.0" prefWidth="185.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="369.0" prefWidth="198.0" style="-fx-background-color: #e3efeb;">
                            <children>
                               <CheckBox fx:id="choix" layoutX="11.0" layoutY="6.0" mnemonicParsing="false" text="Choix (date, lieu,...)" />
                               <CheckBox fx:id="validations" layoutX="11.0" layoutY="28.0" mnemonicParsing="false" text="Validations" />
@@ -82,9 +81,9 @@
             </AnchorPane>
          </content>
       </TitledPane>
-      <TitledPane animated="false" collapsible="false" layoutX="625.0" layoutY="188.0" prefHeight="200.0" prefWidth="202.0" text="Renseignements :">
+      <TitledPane animated="false" collapsible="false" layoutX="614.0" layoutY="188.0" prefHeight="200.0" prefWidth="202.0" style="-fx-background-color: #587C73;" text="Renseignements :">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #e3efeb;">
                <children>
                   <Label layoutX="6.0" layoutY="6.0" prefHeight="17.0" prefWidth="118.0" text="Nom du projet :">
                      <font>
@@ -98,7 +97,7 @@
                      </font>
                   </Label>
                   <TextField fx:id="ville" layoutX="6.0" layoutY="129.0" />
-                  <Label layoutX="6.0" layoutY="49.0" prefHeight="17.0" prefWidth="118.0" text="Date :">
+                  <Label layoutX="6.0" layoutY="54.0" prefHeight="17.0" prefWidth="118.0" text="Date :">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -113,6 +112,11 @@
             </AnchorPane>
          </content>
       </TitledPane>
-      <Button fx:id="valider" layoutX="744.0" layoutY="516.0" mnemonicParsing="false" onAction="#clicBoutonValider" text="Valider" />
+      <Button fx:id="valider" layoutX="720.0" layoutY="501.0" mnemonicParsing="false" onAction="#clicBoutonValider" prefHeight="37.0" prefWidth="81.0" style="-fx-background-color: #587C73;" text="Valider" textFill="WHITE" />
+      <ImageView fitHeight="37.0" fitWidth="210.0" layoutX="703.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pics/logo%20tricérathlon.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

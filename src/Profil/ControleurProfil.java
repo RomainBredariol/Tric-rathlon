@@ -88,8 +88,8 @@ public class ControleurProfil {
 		SqlRequete requete = new SqlRequete();
 		this.nom.setText(requete.getUneValeurBDD("nom", "benevoles","id_benevoles=1"));
 		this.prenom.setText(requete.getUneValeurBDD("prenom", "benevoles","id_benevoles=1"));
-		this.tel.setText(requete.getUneValeurBDD("telephone", "benevoles","id_benevoles=1"));
-		this.mail.setText(requete.getUneValeurBDD("mail", "benevoles","id_benevoles=1"));
+		this.tel.setPromptText(requete.getUneValeurBDD("telephone", "benevoles","id_benevoles=1"));
+		this.mail.setPromptText(requete.getUneValeurBDD("mail", "benevoles","id_benevoles=1"));
 		requete.CloseConnexion();
 		
 	}

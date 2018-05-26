@@ -1,7 +1,6 @@
 package Tache;
 
 import javax.swing.SwingUtilities;
-import javax.swing.WindowConstants;
 
 public class GantTest {
 

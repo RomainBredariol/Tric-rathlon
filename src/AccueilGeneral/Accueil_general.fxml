@@ -30,13 +30,25 @@
             <Image url="@../pics/ajoutUser.png" />
          </image>
       </ImageView>
-      <Button fx:id="boutonProfil" layoutX="163.0" layoutY="348.0" mnemonicParsing="false" onAction="#clicBoutonProfil" prefHeight="31.0" prefWidth="100.0" text="Profil" />
-      <Button fx:id="boutonNouveau" layoutX="364.0" layoutY="348.0" mnemonicParsing="false" onAction="#clicBoutonNouveau" prefHeight="31.0" prefWidth="100.0" text="Nouveau" />
-      <Button fx:id="boutonReprendre" layoutX="567.0" layoutY="348.0" mnemonicParsing="false" onAction="#clicBoutonReprendre" prefHeight="31.0" prefWidth="100.0" text="Reprendre" />
-      <Button fx:id="boutonReset" layoutX="727.0" layoutY="49.0" mnemonicParsing="false" onAction="#clicBoutonReset" prefHeight="31.0" prefWidth="87.0" style="-fx-background-color: F34621;" text="Reset">
+      <Button fx:id="boutonProfil" layoutX="163.0" layoutY="348.0" mnemonicParsing="false" onAction="#clicBoutonProfil" prefHeight="31.0" prefWidth="100.0" style="-fx-background-color: #587C73;" text="Profil" textFill="WHITE" />
+      <Button fx:id="boutonNouveau" layoutX="364.0" layoutY="348.0" mnemonicParsing="false" onAction="#clicBoutonNouveau" prefHeight="31.0" prefWidth="100.0" style="-fx-background-color: #587C73;" text="Nouveau" textFill="WHITE" />
+      <Button fx:id="boutonReprendre" layoutX="567.0" layoutY="348.0" mnemonicParsing="false" onAction="#clicBoutonReprendre" prefHeight="31.0" prefWidth="100.0" style="-fx-background-color: #587C73;" text="Reprendre" textFill="WHITE" />
+      <Button fx:id="boutonReset" layoutX="709.0" layoutY="487.0" mnemonicParsing="false" onAction="#clicBoutonReset" prefHeight="67.0" prefWidth="117.0" style="-fx-background-color: #B7D5B6;" text="Reset" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font name="Arial" size="15.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="39.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../pics/supprimer.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Button>
+      <ImageView fitHeight="37.0" fitWidth="210.0" layoutX="702.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pics/logo%20tricérathlon.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

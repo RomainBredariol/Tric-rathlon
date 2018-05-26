@@ -3,13 +3,10 @@ package MainApp;
 import java.io.IOException;
 import java.util.HashMap;
 
-import javax.swing.JComponent;
-import javax.swing.SwingUtilities;
-import javax.swing.WindowConstants;
-
 import AccueilGeneral.ControleurAccueilGeneral;
 import AccueilGeneral.ControleurConfirmationReset;
 import AccueilGeneral.ControleurErreurChoixTriathlon;
+import AccueilGeneral.ControleurNouveauTriathlon;
 import Agenda.ControleurAgendaAcceuil;
 import Agenda.ControleurAgendaAjout;
 import Agenda.ControleurAgendaModifier;
@@ -17,24 +14,14 @@ import Contact.ControleurContact;
 import Documents.ControleurDocumentModification;
 import Documents.ControleurDocumentNouveau;
 import Documents.ControleurDocumentsAccueil;
-import AccueilGeneral.ControleurNouveauTriathlon;
 import Profil.ControleurProfil;
 import Tache.ControleurTacheAjout;
 import Tache.ControleurTacheModification;
 import Tache.ControleurTaches;
-import Tache.GanttChart;
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.embed.swing.SwingNode;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 //ASTUCE : POUR MIEUX VOIR LES METHODES VOUS POUVEZ FAIRE UN CTRL+MAJ+/
@@ -108,6 +95,7 @@ public class MainApp extends Application {
 	public void showAccueilGeneral() {
 		try {
 			//cree loader qui va permettre de charger les pages
+			//Dimension d = new Dimension(1500, 800);
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("/AccueilGeneral/Accueil_general.fxml"));
 			AnchorPane personOverview = (AnchorPane) loader.load();
@@ -118,6 +106,8 @@ public class MainApp extends Application {
 			Scene scene = new Scene(personOverview);
 			//on charge la scene dans le primaryStage
 			primaryStage.setScene(scene);
+//			primaryStage.setResizable(true);
+//			primaryStage.sizeToScene();
 			primaryStage.show();
 
 		} catch (IOException e) {

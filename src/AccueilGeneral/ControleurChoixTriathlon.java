@@ -1,22 +1,26 @@
 package AccueilGeneral;
 
 import BDD.SqlRequete;
+import Contact.ControleurErreur;
 import MainApp.MainApp;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 public class ControleurChoixTriathlon {
 
 	@FXML
 	private Button ok;
+	
+	@FXML
+	private Button supprimer;
 	
 	private MainApp main;
 	private SqlRequete req;
@@ -70,6 +74,53 @@ public class ControleurChoixTriathlon {
 		}
 		this.req.CloseConnexion();
 	}
+	
+	@FXML
+	public void clicBoutonSupprimer() throws Exception {
+		this.req = new SqlRequete();
+
+		Pane[] pane= new Pane[this.nbTriathlon];
+		RadioButton[] tabRadioButtonTriathlon = new RadioButton[this.nbTriathlon];
+		
+		int nbRadioButtonSelected=0;
+		for (int i = 0; i < nbTriathlon; i++) {
+			pane[i]= (Pane) this.gridPaneTriathlon.getChildren().get(i);
+			tabRadioButtonTriathlon[i]= (RadioButton) pane[i].getChildren().get(2);
+			if (tabRadioButtonTriathlon[i].isSelected()) {
+				int id = Integer
+						.parseInt(req.getUneValeurBDD("id_triathlon", "triathlon", "nom='" + tabIdTriathlon[i] + "'"));
+				this.main.conserverIdTriathlon(id);
+				nbRadioButtonSelected++;
+			}
+		}
+
+		this.req.CloseConnexion();
+		
+		if(nbRadioButtonSelected != 1) {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/Agenda/erreurRadioButtonNonSelectionne.fxml"));
+			Stage stage = new Stage();
+			AnchorPane anchor = (AnchorPane) loader.load();
+			ControleurErreur controleur = loader.getController();
+			controleur.setFenetre(stage);
+			Scene scene = new Scene(anchor);
+			stage.setScene(scene);
+			stage.show();
+		}else {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/AccueilGeneral/TriathlonSuppression.fxml"));
+			Stage stage = new Stage();
+			AnchorPane anchor = (AnchorPane) loader.load();
+			ControleurSuppressionTriathlon controleur = loader.getController();
+			controleur.setfenetre(stage);
+			controleur.setMainApp(this.main);
+			Scene scene = new Scene(anchor);
+			stage.setScene(scene);
+			stage.show();
+			
+		}
+	}
+	
 
 	@FXML
 	public void clicBoutonOK() {

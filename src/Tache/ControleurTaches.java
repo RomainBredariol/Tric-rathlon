@@ -1,7 +1,5 @@
 package Tache;
 
-import java.io.IOException;
-
 import javax.swing.SwingUtilities;
 
 import BDD.SqlRequete;
@@ -51,6 +49,16 @@ public class ControleurTaches {
 
 	@FXML
 	private AnchorPane anchorPaneGantt;
+	
+	@FXML
+	private Button ok;
+	
+	@FXML
+	private RadioButton urgente;
+	@FXML
+	private RadioButton normale;
+	@FXML
+	private RadioButton faible;
 
 	@FXML
 	private ListView listViewTache;
@@ -135,6 +143,68 @@ public class ControleurTaches {
 		SwingUtilities.invokeLater(() -> {
 			this.gantt = new GanttChart(swingNode);
 		});
+	}
+	
+	@FXML
+	private void clicBoutonOKFiltres() {
+		this.req = new SqlRequete();
+		if(this.urgente.isSelected()) {
+			int nbTacheUrgente = Integer.parseInt(req.getUneValeurBDD("count(id_tache)", "tache", "id_triathlon="+this.idTriathlon+" and priorite='Urgente'"));
+			String[] nomTacheUrgent = new String[nbTacheUrgente];
+			String[] dateDebutTacheUrgent = new String[nbTacheUrgente];
+			String[] dateFinTacheUrgente = new String[nbTacheUrgente];
+			
+			req.getTabValeurBDD("nom", "tache", "id_triathlon="+this.idTriathlon+" and priorite='Urgente'", nomTacheUrgent);
+			req.getTabValeurBDD("dateDebut", "tache", "id_triathlon="+this.idTriathlon+" and priorite='Urgente'", dateDebutTacheUrgent);
+			req.getTabValeurBDD("dateFin", "tache", "id_triathlon="+this.idTriathlon+" and priorite='Urgente'", dateFinTacheUrgente);
+			
+			SwingNode swingNode = new SwingNode();
+			this.anchorPaneGantt.getChildren().remove(0);
+			this.showGantt(swingNode);
+			this.anchorPaneGantt.getChildren().add(swingNode);
+			for(int i = 0 ; i<nbTacheUrgente; i++) {
+				this.addTache(nomTacheUrgent[i], dateDebutTacheUrgent[i], dateFinTacheUrgente[i]);
+			}
+		}
+		if(this.faible.isSelected()) {
+			int nbTacheFaible = Integer.parseInt(req.getUneValeurBDD("count(id_tache)", "tache", "id_triathlon="+this.idTriathlon+" and priorite='Faible'"));
+			String[] nomTache = new String[nbTacheFaible];
+			String[] dateDebutTache = new String[nbTacheFaible];
+			String[] dateFinTache = new String[nbTacheFaible];
+			
+			req.getTabValeurBDD("nom", "tache", "id_triathlon="+this.idTriathlon+" and priorite='Faible'", nomTache);
+			req.getTabValeurBDD("dateDebut", "tache", "id_triathlon="+this.idTriathlon+" and priorite='Faible'", dateDebutTache);
+			req.getTabValeurBDD("dateFin", "tache", "id_triathlon="+this.idTriathlon+" and priorite='Faible'", dateFinTache);
+			
+			SwingNode swingNode = new SwingNode();
+			this.anchorPaneGantt.getChildren().remove(0);
+			this.showGantt(swingNode);
+			this.anchorPaneGantt.getChildren().add(swingNode);
+			for(int i = 0 ; i<nbTacheFaible; i++) {
+				this.addTache(nomTache[i], dateDebutTache[i], dateFinTache[i]);
+			}
+			
+		}
+		if(this.normale.isSelected()) {
+			int nbTacheNormale = Integer.parseInt(req.getUneValeurBDD("count(id_tache)", "tache", "id_triathlon="+this.idTriathlon+" and priorite='Normale'"));
+			String[] nomTache = new String[nbTacheNormale];
+			String[] dateDebutTache = new String[nbTacheNormale];
+			String[] dateFinTache = new String[nbTacheNormale];
+			
+			req.getTabValeurBDD("nom", "tache", "id_triathlon="+this.idTriathlon+" and priorite='Normale'", nomTache);
+			req.getTabValeurBDD("dateDebut", "tache", "id_triathlon="+this.idTriathlon+" and priorite='Normale'", dateDebutTache);
+			req.getTabValeurBDD("dateFin", "tache", "id_triathlon="+this.idTriathlon+" and priorite='Normale'", dateFinTache);
+			
+			SwingNode swingNode = new SwingNode();
+			this.anchorPaneGantt.getChildren().remove(0);
+			this.showGantt(swingNode);
+			this.anchorPaneGantt.getChildren().add(swingNode);
+			for(int i = 0 ; i<nbTacheNormale; i++) {
+				this.addTache(nomTache[i], dateDebutTache[i], dateFinTache[i]);
+			}		
+		}
+			
+		this.req.CloseConnexion();
 	}
 
 	

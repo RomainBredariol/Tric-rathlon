@@ -1,12 +1,8 @@
 package AccueilGeneral;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import BDD.SqlRequete;
 import MainApp.MainApp;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 

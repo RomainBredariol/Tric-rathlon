@@ -1,19 +1,11 @@
 package AccueilGeneral;
 
-import java.net.URL;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.ResourceBundle;
-import java.util.Set;
 
 import BDD.SqlRequete;
 import MainApp.MainApp;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;

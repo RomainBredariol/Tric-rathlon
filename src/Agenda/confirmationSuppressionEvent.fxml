@@ -7,20 +7,25 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" fx:controller="Agenda.ControleurSuppressionEvent" minHeight="-Infinity" minWidth="-Infinity" prefHeight="294.0" prefWidth="567.0" style="-fx-background-color: #B7D5B6;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="294.0" prefWidth="567.0" style="-fx-background-color: #B7D5B6;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Agenda.ControleurSuppressionEvent">
    <children>
-      <MenuBar layoutY="-2.0" prefHeight="37.0" prefWidth="567.0" style="-fx-background-color: #587C73;">
+      <MenuBar prefHeight="37.0" prefWidth="567.0" style="-fx-background-color: #587C73;">
          <menus>
             <Menu mnemonicParsing="false" style="-fx-font-size: 16;" text="Confirmation De Supression" />
          </menus>
       </MenuBar>
-      <Button fx:id="boutonAnnuler" layoutX="92.0" layoutY="202.0" mnemonicParsing="false" onAction="#clicBoutonAnnuler" prefHeight="31.0" prefWidth="131.0" text="Annuler" />
-      <Button fx:id="boutonSupprimer" layoutX="340.0" layoutY="202.0" mnemonicParsing="false" onAction="#clicBoutonSupprimer" prefHeight="31.0" prefWidth="131.0" style="-fx-background-color: F34621;" text="Confirmer">
+      <Button fx:id="boutonAnnuler" layoutX="92.0" layoutY="202.0" mnemonicParsing="false" onAction="#clicBoutonAnnuler" prefHeight="31.0" prefWidth="131.0" style="-fx-background-color: #587C73;" text="Annuler" textFill="WHITE" />
+      <Button fx:id="boutonSupprimer" layoutX="340.0" layoutY="202.0" mnemonicParsing="false" onAction="#clicBoutonSupprimer" prefHeight="31.0" prefWidth="131.0" style="-fx-background-color: #e5002b;" text="Confirmer" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Label layoutX="35.0" layoutY="96.0" prefHeight="27.0" prefWidth="497.0" text="Etes-vous sûr de vouloir supprimer l'événement selectionné?">
+      <Label layoutX="74.0" layoutY="94.0" prefHeight="27.0" prefWidth="456.0" text="Etes-vous sûr de vouloir supprimer cet évènement ?">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="113.0" layoutY="127.0" prefHeight="27.0" prefWidth="307.0" text="Attention, cette action est irreversible.">
          <font>
             <Font size="18.0" />
          </font>

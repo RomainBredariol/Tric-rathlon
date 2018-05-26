@@ -1,8 +1,5 @@
 package Agenda;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import BDD.SqlRequete;
 import MainApp.MainApp;
 import javafx.fxml.FXML;
