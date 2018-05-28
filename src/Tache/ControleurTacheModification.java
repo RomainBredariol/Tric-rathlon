@@ -17,7 +17,6 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -52,9 +51,6 @@ public class ControleurTacheModification {
 
 	@FXML
 	private RadioButton prioBasse;
-	
-	@FXML
-	private Text mois;
 
 	@FXML
 	private Button tache;
@@ -283,7 +279,7 @@ public class ControleurTacheModification {
 		mainApp.showTacheAccueil();
 	}
 
-		@FXML
+	@FXML
 	private void clicBoutonMenu() {
 		this.mainApp.showAccueilGeneral();
 	}

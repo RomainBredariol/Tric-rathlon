@@ -13,7 +13,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class ControleurTaches {
@@ -43,9 +42,6 @@ public class ControleurTaches {
 
 	@FXML
 	private Button supprimer;
-	
-	@FXML
-	private Text mois;
 
 	@FXML
 	private AnchorPane anchorPaneGantt;
@@ -146,9 +142,11 @@ public class ControleurTaches {
 	}
 	
 	@FXML
-	private void clicBoutonOKFiltres() {
+	private void clicBoutonOKFiltres() throws Exception {
 		this.req = new SqlRequete();
+		int nbRadioButtonSelected =0;
 		if(this.urgente.isSelected()) {
+			nbRadioButtonSelected++;
 			int nbTacheUrgente = Integer.parseInt(req.getUneValeurBDD("count(id_tache)", "tache", "id_triathlon="+this.idTriathlon+" and priorite='Urgente'"));
 			String[] nomTacheUrgent = new String[nbTacheUrgente];
 			String[] dateDebutTacheUrgent = new String[nbTacheUrgente];
@@ -167,6 +165,7 @@ public class ControleurTaches {
 			}
 		}
 		if(this.faible.isSelected()) {
+			nbRadioButtonSelected++;
 			int nbTacheFaible = Integer.parseInt(req.getUneValeurBDD("count(id_tache)", "tache", "id_triathlon="+this.idTriathlon+" and priorite='Faible'"));
 			String[] nomTache = new String[nbTacheFaible];
 			String[] dateDebutTache = new String[nbTacheFaible];
@@ -186,6 +185,7 @@ public class ControleurTaches {
 			
 		}
 		if(this.normale.isSelected()) {
+			nbRadioButtonSelected++;
 			int nbTacheNormale = Integer.parseInt(req.getUneValeurBDD("count(id_tache)", "tache", "id_triathlon="+this.idTriathlon+" and priorite='Normale'"));
 			String[] nomTache = new String[nbTacheNormale];
 			String[] dateDebutTache = new String[nbTacheNormale];
@@ -203,7 +203,18 @@ public class ControleurTaches {
 				this.addTache(nomTache[i], dateDebutTache[i], dateFinTache[i]);
 			}		
 		}
-			
+		
+		if(nbRadioButtonSelected != 1) {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/Agenda/erreurRadioButtonNonSelectionne.fxml"));
+			Stage stage = new Stage();
+			AnchorPane anchor = (AnchorPane) loader.load();
+			ControleurErreur controleur = loader.getController();
+			controleur.setFenetre(stage);
+			Scene scene = new Scene(anchor);
+			stage.setScene(scene);
+			stage.show();
+		}	
 		this.req.CloseConnexion();
 	}
 
@@ -269,6 +280,7 @@ public class ControleurTaches {
 			stage.setScene(scene);
 			stage.show();
 		}
+		this.req.CloseConnexion();
 	}
 
 	@FXML

@@ -132,14 +132,4 @@ public class ControleurDocumentModification {
 		this.main.showDocumentAjout();
 	}
 
-	@FXML
-	private void clicBoutonModifier() {
-
-	}
-
-	@FXML
-	private void clicBoutonSupprimer() {
-
-	}
-
 }

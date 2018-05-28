@@ -287,20 +287,23 @@ public class ControleurContact {
 	@FXML
 	private void rechercheContact() {
 		this.req = new SqlRequete();
-		//recupere les nom, adresse, mail et tel d'un contact recherche dans la barre de recherche
+		// recupere les nom, adresse, mail et tel d'un contact recherche dans la barre
+		// de recherche
 		String nomRecherche = req.getUneValeurBDD("nom", "benevoles", "nom like '" + this.barreRecherche.getText()
-				+ "%' OR prenom like'" + this.barreRecherche.getText() + "%' and id_triathlon=" + this.idTriathlon );
-		String adrRecherche = req.getUneValeurBDD("commentaires", "benevoles", "nom like '"
-				+ this.barreRecherche.getText() + "%' OR prenom like'" + this.barreRecherche.getText() + "%' and id_triathlon=" + this.idTriathlon);
+				+ "%' OR prenom like'" + this.barreRecherche.getText() + "%' and id_triathlon=" + this.idTriathlon);
+		String adrRecherche = req.getUneValeurBDD("commentaires", "benevoles",
+				"nom like '" + this.barreRecherche.getText() + "%' OR prenom like'" + this.barreRecherche.getText()
+						+ "%' and id_triathlon=" + this.idTriathlon);
 		String mailRecherche = req.getUneValeurBDD("mail", "benevoles", "nom like '" + this.barreRecherche.getText()
 				+ "%' OR prenom like'" + this.barreRecherche.getText() + "%' and id_triathlon=" + this.idTriathlon);
 		String telRecherche = req.getUneValeurBDD("telephone", "benevoles", "nom like '" + this.barreRecherche.getText()
 				+ "%' OR prenom like'" + this.barreRecherche.getText() + "%' and id_triathlon=" + this.idTriathlon);
-		int idRecherche = Integer.parseInt(req.getUneValeurBDD("id_benevoles", "benevoles", "nom like '"
-				+ this.barreRecherche.getText() + "%' OR prenom like'" + this.barreRecherche.getText() + "%' and id_triathlon=" + this.idTriathlon));
+		int idRecherche = Integer.parseInt(req.getUneValeurBDD("id_benevoles", "benevoles",
+				"nom like '" + this.barreRecherche.getText() + "%' OR prenom like'" + this.barreRecherche.getText()
+						+ "%' and id_triathlon=" + this.idTriathlon));
 		this.idContactAModifier = idRecherche;
 
-		//supprime les contact pour en afficher qu'un seul
+		// supprime les contact pour en afficher qu'un seul
 		for (int i = 0; i < this.nbContact; i++) {
 			this.anchorPaneContact.getChildren().remove(this.listContact);
 		}
@@ -391,14 +394,14 @@ public class ControleurContact {
 			for (int i = 0; i < this.nbContact; i++) {
 				boutonSelection[i] = (RadioButton) paneContact[i].getChildren().get(5);
 			}
-			//si un radiobutton est selectionne on recupere l'id du contact 
+			// si un radiobutton est selectionne on recupere l'id du contact
 			for (int i = 0; i < boutonSelection.length; i++) {
 				if (boutonSelection[i].isSelected()) {
 					Label nom = (Label) paneContact[i].getChildren().get(1);
 					this.req = new SqlRequete();
-					//recuperarion idContact
-					int id = Integer
-							.parseInt(req.getUneValeurBDD("id_benevoles", "benevoles", "nom='" + nom.getText() + "' and id_triathlon=" + this.idTriathlon));
+					// recuperarion idContact
+					int id = Integer.parseInt(req.getUneValeurBDD("id_benevoles", "benevoles",
+							"nom='" + nom.getText() + "' and id_triathlon=" + this.idTriathlon));
 					this.idContactAModifier = id;
 					this.req.CloseConnexion();
 				}
@@ -420,7 +423,7 @@ public class ControleurContact {
 			stage.setScene(scene);
 			stage.show();
 		} else {
-			//sinon on affiche la page modification
+			// sinon on affiche la page modification
 			this.mainApp.showContact("modification");
 		}
 
@@ -432,9 +435,9 @@ public class ControleurContact {
 		req.Connect("update benevoles set nom='" + this.nom.getText() + "', prenom='" + this.prenom.getText()
 				+ "', telephone='" + this.tel.getText() + "', mail='" + this.mail.getText() + "', commentaires='"
 				+ this.adr.getText() + "' where id_benevoles=" + this.idContactAModifier);
-		if(this.choixGroupe.getValue() != null) {
-			int idGroupe = Integer
-				.parseInt(req.getUneValeurBDD("id_groupe", "groupe", "nom='" + this.choixGroupe.getValue() + "' and id_triathlon=" + this.idTriathlon));
+		if (this.choixGroupe.getValue() != null) {
+			int idGroupe = Integer.parseInt(req.getUneValeurBDD("id_groupe", "groupe",
+					"nom='" + this.choixGroupe.getValue() + "' and id_triathlon=" + this.idTriathlon));
 			req.Connect("update affilier set id_groupe=" + idGroupe + " where id_benevoles=" + this.idContactAModifier);
 		}
 		this.req.CloseConnexion();
@@ -464,8 +467,8 @@ public class ControleurContact {
 				if (boutonSelection[i].isSelected()) {
 					Label nom = (Label) paneContact[i].getChildren().get(1);
 					this.req = new SqlRequete();
-					int id = Integer
-							.parseInt(req.getUneValeurBDD("id_benevoles", "benevoles", "nom='" + nom.getText() + "' and id_triathlon=" + this.idTriathlon));
+					int id = Integer.parseInt(req.getUneValeurBDD("id_benevoles", "benevoles",
+							"nom='" + nom.getText() + "' and id_triathlon=" + this.idTriathlon));
 					this.idContactAModifier = id;
 					this.req.CloseConnexion();
 				}
@@ -509,52 +512,52 @@ public class ControleurContact {
 			req.Connect("Insert into benevoles(nom, prenom, mail, telephone, commentaires, id_triathlon) values('"
 					+ this.nom.getText() + "', '" + this.prenom.getText() + "', '" + this.mail.getText() + "', '"
 					+ this.tel.getText() + "', '" + this.adr.getText() + " " + this.cp.getText() + " "
-					+ this.ville.getText() + "', "+this.idTriathlon+");");
+					+ this.ville.getText() + "', " + this.idTriathlon + ");");
 			// ajoute un fichier
 			if (this.file != null) {
 				this.req.Connect("insert into fichier(nom, taille, chemin, id_triathlon) values('" + this.file.getName()
-						+ "', '" + this.file.length() + "', '"
-						+ this.file.getAbsolutePath() + "' , "+this.idTriathlon+");");
-				int idBenevoles = Integer
-						.parseInt(req.getUneValeurBDD("id_benevoles", "benevoles", "nom='" + this.nom.getText() + "' and id_triathlon=" + this.idTriathlon));
-				int idFichier = Integer
-						.parseInt(req.getUneValeurBDD("id_fichier", "fichier", "nom='" + this.file.getName() + "' and id_triathlon=" + this.idTriathlon));
+						+ "', '" + this.file.length() + "', '" + this.file.getAbsolutePath() + "' , " + this.idTriathlon
+						+ ");");
+				int idBenevoles = Integer.parseInt(req.getUneValeurBDD("id_benevoles", "benevoles",
+						"nom='" + this.nom.getText() + "' and id_triathlon=" + this.idTriathlon));
+				int idFichier = Integer.parseInt(req.getUneValeurBDD("id_fichier", "fichier",
+						"nom='" + this.file.getName() + "' and id_triathlon=" + this.idTriathlon));
 				this.req.Connect("insert into lier(id_benevoles, id_fichier) values('" + idBenevoles + "', '"
 						+ idFichier + "')");
 			}
 			if (this.choixGroupe.getValue() != null) {
-				int idGroupe = Integer.parseInt(
-						req.getUneValeurBDD("id_groupe", "groupe", "nom='" + this.choixGroupe.getValue() + "' and id_triathlon=" + this.idTriathlon));
-				int idBenevoles = Integer
-						.parseInt(req.getUneValeurBDD("id_benevoles", "benevoles", "nom='" + this.nom.getText() + "' and id_triathlon=" + this.idTriathlon));
+				int idGroupe = Integer.parseInt(req.getUneValeurBDD("id_groupe", "groupe",
+						"nom='" + this.choixGroupe.getValue() + "' and id_triathlon=" + this.idTriathlon));
+				int idBenevoles = Integer.parseInt(req.getUneValeurBDD("id_benevoles", "benevoles",
+						"nom='" + this.nom.getText() + "' and id_triathlon=" + this.idTriathlon));
 				req.Connect("insert into affilier(id_groupe, id_benevoles) values('" + idGroupe + "','" + idBenevoles
 						+ "')");
 			}
 
-			this.req.CloseConnexion();
 			this.mainApp.showContact("accueil");
 		}
+		this.req.CloseConnexion();
 	}
 
 	@FXML
 	private void clicBoutonEnregistrerGroupe() {
 		this.req = new SqlRequete();
-		this.req.Connect("insert into groupe(nom, description, id_triathlon) values('" + this.nomGroupe.getText() + "', '"
-				+ this.descriptionGroupe.getText() + "', "+this.idTriathlon+")");
+		this.req.Connect("insert into groupe(nom, description, id_triathlon) values('" + this.nomGroupe.getText()
+				+ "', '" + this.descriptionGroupe.getText() + "', " + this.idTriathlon + ")");
 		CheckBox[] tabCheckBox = new CheckBox[this.nbContact];
 		for (int i = 0; i < this.nbContact; i++) {
 			tabCheckBox[i] = (CheckBox) this.listContactGroupe.getChildren().get(i);
 			if (tabCheckBox[i].isSelected()) {
-				int idBenevoles = Integer.parseInt(
-						req.getUneValeurBDD("id_benevoles", "benevoles", "nom='" + tabCheckBox[i].getText() + "' and id_triathlon=" + this.idTriathlon));
-				int idGroupe = Integer
-						.parseInt(req.getUneValeurBDD("id_groupe", "groupe", "nom='" + this.nomGroupe.getText() + "' and id_triathlon=" + this.idTriathlon));
+				int idBenevoles = Integer.parseInt(req.getUneValeurBDD("id_benevoles", "benevoles",
+						"nom='" + tabCheckBox[i].getText() + "' and id_triathlon=" + this.idTriathlon));
+				int idGroupe = Integer.parseInt(req.getUneValeurBDD("id_groupe", "groupe",
+						"nom='" + this.nomGroupe.getText() + "' and id_triathlon=" + this.idTriathlon));
 				req.Connect("insert into affilier(id_groupe, id_benevoles) values('" + idGroupe + "','" + idBenevoles
 						+ "')");
 			}
 		}
 		this.mainApp.showContact("accueil");
-
+		this.req.CloseConnexion();
 	}
 
 	@FXML

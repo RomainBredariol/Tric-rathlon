@@ -30,84 +30,81 @@ import javafx.stage.Stage;
 public class MainApp extends Application {
 
 	private Stage primaryStage;
-	private HashMap<String, String> contact ;
-	
+	private HashMap<String, String> contact;
+
 	private int valeurAConserver;
 	private String stringAConserver;
 	private String string2AConserver;
-	
+
 	private int idTriathlon;
-	
+
 	// en javafx il y a plusieurs sorte de fenetres, ici on utilise le stage et la
 	// scene (sachant que la scene est a l'interieur du stage cf.image google)
 
 	@Override
 	public void start(Stage primaryStage) {
-		
-		//on stocke les pages contact dans une hashmap
+
+		// on stocke les pages contact dans une hashmap
 		this.contact = new HashMap<String, String>();
 		contact.put("ajouter", "/Contact/ContactAjout.fxml");
 		contact.put("accueil", "/Contact/contact_accueil.fxml");
 		contact.put("groupe", "/Contact/Contact_nvx_groupe.fxml");
 		contact.put("modification", "/Contact/contactModification.fxml");
-		
+
 		// on charge le stage
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("tricerathlon");
-		
+
 		// appel de la methode qui charge la scene AccueilGeneral dans le stage
 		showAccueilGeneral();
 	}
-	
-	//Ces 2 methodes servent � conserevr une valeur � travers les ihm il faut cependant 
-	//l'affecter en local dans la methode setMainApp
+
+	// Ces 2 methodes servent � conserevr une valeur � travers les ihm il faut
+	// cependant
+	// l'affecter en local dans la methode setMainApp
 	public void aConserver(int valeur) {
-		this.valeurAConserver=valeur;
+		this.valeurAConserver = valeur;
 	}
-	
+
 	public int getValeurAConserver() {
 		return this.valeurAConserver;
 	}
-	
+
 	public void stringAConserver(String valeur, String valeur2) {
-		this.stringAConserver=valeur;
-		this.string2AConserver=valeur2;
+		this.stringAConserver = valeur;
+		this.string2AConserver = valeur2;
 	}
-	
+
 	public String getString1() {
 		return this.stringAConserver;
 	}
-	
+
 	public String getString2() {
 		return this.string2AConserver;
 	}
-	
+
 	public void conserverIdTriathlon(int id) {
-		this.idTriathlon=id;
+		this.idTriathlon = id;
 	}
-	
+
 	public int getIdTriathlon() {
 		return this.idTriathlon;
 	}
 
-
 	// charge page AccueilGeneral
 	public void showAccueilGeneral() {
 		try {
-			//cree loader qui va permettre de charger les pages
-			//Dimension d = new Dimension(1500, 800);
+			// cree loader qui va permettre de charger les pages
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("/AccueilGeneral/Accueil_general.fxml"));
 			AnchorPane personOverview = (AnchorPane) loader.load();
 			ControleurAccueilGeneral controleur = loader.getController();
-			//on charge la mainApp depuis le controleur de la page demande
+			// on charge la mainApp depuis le controleur de la page demande
 			controleur.setMainApp(this);
 
 			Scene scene = new Scene(personOverview);
-			//on charge la scene dans le primaryStage
+			// on charge la scene dans le primaryStage
 			primaryStage.setScene(scene);
-//			primaryStage.setResizable(true);
-//			primaryStage.sizeToScene();
 			primaryStage.show();
 
 		} catch (IOException e) {
@@ -144,7 +141,7 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void showErreurChoixTriathlon() {
 		try {
 			// le loader va permettre de charger la page
@@ -193,20 +190,20 @@ public class MainApp extends Application {
 		}
 
 	}
-	
+
 	public void showContact(String page) {
 		try {
-			
+
 			// Load person overview.
 			FXMLLoader loader = new FXMLLoader();
-			
+
 			loader.setLocation(MainApp.class.getResource(this.contact.get(page)));
 			AnchorPane personOverview = (AnchorPane) loader.load();
 			ControleurContact controleur = loader.getController();
 			controleur.setMainApp(this);
 
 			Scene scene = new Scene(personOverview);
-			
+
 			primaryStage.setScene(scene);
 			primaryStage.show();
 
@@ -232,8 +229,8 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		}
 	}
-	
-	public void showAgendaAccueil(){
+
+	public void showAgendaAccueil() {
 		try {
 			// Load person overview.
 			FXMLLoader loader = new FXMLLoader();
@@ -250,9 +247,9 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		}
 
-	}	
-	
-	public void showAgendaAjout(){
+	}
+
+	public void showAgendaAjout() {
 		try {
 			// Load person overview.
 			FXMLLoader loader = new FXMLLoader();
@@ -270,8 +267,8 @@ public class MainApp extends Application {
 		}
 
 	}
-	
-	public void showAgendaModification(){
+
+	public void showAgendaModification() {
 		try {
 			// Load person overview.
 			FXMLLoader loader = new FXMLLoader();
@@ -289,8 +286,8 @@ public class MainApp extends Application {
 		}
 
 	}
-	
-	public void showDocumentsAccueil(){
+
+	public void showDocumentsAccueil() {
 		try {
 			// Load person overview.
 			FXMLLoader loader = new FXMLLoader();
@@ -307,8 +304,8 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		}
 
-	}	
-	
+	}
+
 	public void showDocumentModification() {
 		try {
 			// Load person overview.
@@ -324,9 +321,9 @@ public class MainApp extends Application {
 
 		} catch (IOException e) {
 			e.printStackTrace();
-		}		
+		}
 	}
-	
+
 	public void showDocumentAjout() {
 		try {
 			// Load person overview.
@@ -345,8 +342,7 @@ public class MainApp extends Application {
 		}
 	}
 
-	
-	public void showTacheAccueil(){
+	public void showTacheAccueil() {
 		try {
 			// Load person overview.
 			FXMLLoader loader = new FXMLLoader();
@@ -364,7 +360,7 @@ public class MainApp extends Application {
 		}
 
 	}
-	
+
 	public void showTacheModification() {
 		try {
 			// Load person overview.
@@ -382,8 +378,8 @@ public class MainApp extends Application {
 			e.printStackTrace();
 		}
 	}
-	
-	public void showTacheAjout(){
+
+	public void showTacheAjout() {
 		try {
 			// Load person overview.
 			FXMLLoader loader = new FXMLLoader();
@@ -401,6 +397,7 @@ public class MainApp extends Application {
 		}
 
 	}
+
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}
@@ -409,6 +406,5 @@ public class MainApp extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
-
 
 }

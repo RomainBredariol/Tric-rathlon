@@ -13,7 +13,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class ControleurAgendaAcceuil {
@@ -46,9 +45,6 @@ public class ControleurAgendaAcceuil {
 	private Button supprimer;
 
 	@FXML
-	private Text mois;
-
-	@FXML
 	private ListView listViewEvent;
 
 	@FXML
@@ -57,10 +53,9 @@ public class ControleurAgendaAcceuil {
 	private int nbEvent;
 	private String[] tabDateEvent;
 	private String[] tabHeureEvent;
-	
+
 	private int idTriathlon;
-	
-	
+
 	private FullCalendarView calendar;
 	private YearMonth currentYearMonth;
 
@@ -72,23 +67,23 @@ public class ControleurAgendaAcceuil {
 		Button next = calendar.getButtonNext();
 		prev.setOnAction(e -> clicBoutonPrev());
 		next.setOnAction(e -> clicBoutonNext());
-	
+
 		this.idTriathlon = this.main.getIdTriathlon();
-		
+
 		this.req = new SqlRequete();
 
-		nbEvent = Integer.parseInt(req.getUneValeurBDD("count(nom)", "evenement", "id_triathlon="+this.idTriathlon));
+		nbEvent = Integer.parseInt(req.getUneValeurBDD("count(nom)", "evenement", "id_triathlon=" + this.idTriathlon));
 		tabDateEvent = new String[nbEvent];
-		req.getTabValeurBDD("date", "evenement", "id_triathlon="+this.idTriathlon, tabDateEvent);
+		req.getTabValeurBDD("date", "evenement", "id_triathlon=" + this.idTriathlon, tabDateEvent);
 		tabHeureEvent = new String[nbEvent];
-		req.getTabValeurBDD("heure", "evenement", "id_triathlon="+this.idTriathlon, tabHeureEvent);
+		req.getTabValeurBDD("heure", "evenement", "id_triathlon=" + this.idTriathlon, tabHeureEvent);
 
 		// ajout des RadioButton pour chaque event
 		for (int i = 0; i < nbEvent; i++) {
-			String nomEvent = req.getUneValeurBDD("nom", "evenement", "date='" + tabDateEvent[i] + 
-					"' and heure='" + tabHeureEvent[i] + "' and id_triathlon="+this.idTriathlon);
-			String couleurEvent = req.getUneValeurBDD("couleur", "evenement", "date='" + tabDateEvent[i] + 
-					"' and heure='" + tabHeureEvent[i] + "' and id_triathlon="+this.idTriathlon);
+			String nomEvent = req.getUneValeurBDD("nom", "evenement", "date='" + tabDateEvent[i] + "' and heure='"
+					+ tabHeureEvent[i] + "' and id_triathlon=" + this.idTriathlon);
+			String couleurEvent = req.getUneValeurBDD("couleur", "evenement", "date='" + tabDateEvent[i]
+					+ "' and heure='" + tabHeureEvent[i] + "' and id_triathlon=" + this.idTriathlon);
 			this.listViewEvent.getItems().add(new RadioButton(nomEvent));
 			this.listViewEvent.getItems().add(new Label(tabHeureEvent[i] + " || " + tabDateEvent[i]));
 			this.calendar.addEvent(nomEvent, tabDateEvent[i], couleurEvent);
@@ -96,44 +91,42 @@ public class ControleurAgendaAcceuil {
 		this.anchorPaneCalendar.getChildren().add(calendar.getView());
 		this.req.CloseConnexion();
 	}
-	
+
 	@FXML
 	private void clicBoutonNext() {
 		this.req = new SqlRequete();
 		this.calendar.nextMonth();
-		for(int i = 0; i < nbEvent; i++) {
-			String nomEvent = req.getUneValeurBDD("nom", "evenement", "date='" + tabDateEvent[i] + 
-					"' and heure='" + tabHeureEvent[i] + "' and id_triathlon="+this.idTriathlon);
-			String couleurEvent = req.getUneValeurBDD("couleur", "evenement", "date='" + tabDateEvent[i] + 
-					"' and heure='" + tabHeureEvent[i] + "' and id_triathlon="+this.idTriathlon);
+		for (int i = 0; i < nbEvent; i++) {
+			String nomEvent = req.getUneValeurBDD("nom", "evenement", "date='" + tabDateEvent[i] + "' and heure='"
+					+ tabHeureEvent[i] + "' and id_triathlon=" + this.idTriathlon);
+			String couleurEvent = req.getUneValeurBDD("couleur", "evenement", "date='" + tabDateEvent[i]
+					+ "' and heure='" + tabHeureEvent[i] + "' and id_triathlon=" + this.idTriathlon);
 			this.calendar.addEvent(nomEvent, tabDateEvent[i], couleurEvent);
 		}
 		this.anchorPaneCalendar.getChildren().setAll(this.calendar.getView());
 		this.req.CloseConnexion();
 	}
-	
+
 	@FXML
 	private void clicBoutonPrev() {
 		this.req = new SqlRequete();
 		this.calendar.previousMonth();
-		for(int i = 0; i < nbEvent; i++) {
-			String nomEvent = req.getUneValeurBDD("nom", "evenement", "date='" + tabDateEvent[i] + 
-					"' and heure='" + tabHeureEvent[i] + "' and id_triathlon="+this.idTriathlon);
-			String couleurEvent = req.getUneValeurBDD("couleur", "evenement", "date='" + tabDateEvent[i] + 
-					"' and heure='" + tabHeureEvent[i] + "' and id_triathlon="+this.idTriathlon);
+		for (int i = 0; i < nbEvent; i++) {
+			String nomEvent = req.getUneValeurBDD("nom", "evenement", "date='" + tabDateEvent[i] + "' and heure='"
+					+ tabHeureEvent[i] + "' and id_triathlon=" + this.idTriathlon);
+			String couleurEvent = req.getUneValeurBDD("couleur", "evenement", "date='" + tabDateEvent[i]
+					+ "' and heure='" + tabHeureEvent[i] + "' and id_triathlon=" + this.idTriathlon);
 			this.calendar.addEvent(nomEvent, tabDateEvent[i], couleurEvent);
 		}
 		this.anchorPaneCalendar.getChildren().setAll(this.calendar.getView());
 		this.req.CloseConnexion();
 	}
-	
-	
 
 	@FXML
 	private void clicBoutonModifier() throws Exception {
 		RadioButton[] tabRadioButtonEvent = new RadioButton[nbEvent];
-		int nbRadioButtonSelected =0 ;
-		
+		int nbRadioButtonSelected = 0;
+
 		int j = 0;
 		for (int i = 0; i < nbEvent; i++) {
 			tabRadioButtonEvent[i] = (RadioButton) this.listViewEvent.getItems().get(j);
@@ -148,8 +141,8 @@ public class ControleurAgendaAcceuil {
 				this.main.stringAConserver(dateId, heureID);
 			}
 		}
-		
-		if(nbRadioButtonSelected != 1) {
+
+		if (nbRadioButtonSelected != 1) {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("/Agenda/erreurRadioButtonNonSelectionne.fxml"));
 			Stage stage = new Stage();
@@ -159,10 +152,10 @@ public class ControleurAgendaAcceuil {
 			Scene scene = new Scene(anchor);
 			stage.setScene(scene);
 			stage.show();
-		}else {
+		} else {
 			this.main.showAgendaModification();
 		}
-		
+
 	}
 
 	@FXML
@@ -209,7 +202,7 @@ public class ControleurAgendaAcceuil {
 				nbRadioButtonSelected++;
 				String dateId = tabDateEvent[i];
 				String heureID = tabHeureEvent[i];
-				
+
 				this.main.stringAConserver(dateId, heureID);
 			}
 		}

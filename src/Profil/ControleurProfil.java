@@ -82,7 +82,7 @@ public class ControleurProfil {
 		this.mainApp.showAccueilGeneral();
 	}
 	
-	//la méthode initialize permet de charger ce qu'on lui des qu'on fait appel à cette classe (c'est une sorte de deuxieme constructeur)
+	//la méthode initialize permet de charger ce qu'on lui des qu'on fait appel à cette classe
 	@FXML
 	private void initialize() {
 		SqlRequete requete = new SqlRequete();

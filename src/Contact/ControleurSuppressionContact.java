@@ -39,6 +39,7 @@ public class ControleurSuppressionContact {
 		req.CloseConnexion();
 		this.fenetre.close();
 		this.main.showContact("accueil");
+		req.CloseConnexion();
 	}
 
 	

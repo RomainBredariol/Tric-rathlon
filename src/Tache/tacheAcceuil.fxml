@@ -7,19 +7,16 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="605.0" prefWidth="910.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tache.ControleurTaches">
    <children>
@@ -29,44 +26,16 @@
                <items>
                   <AnchorPane prefHeight="540.0" prefWidth="168.0">
                      <children>
-                        <GridPane prefHeight="551.0" prefWidth="182.0" style="-fx-background-color: #D8EBDC;">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="328.0" minHeight="10.0" prefHeight="328.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="137.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="119.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="71.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
+                        <Pane prefHeight="600.0" prefWidth="212.0" style="-fx-background-color: #D8EBDC;">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tâches" />
-                              <Button fx:id="document" mnemonicParsing="false" onAction="#clicBoutonDocuments" opacity="0.0" prefHeight="100.0" prefWidth="140.0" text="DocumentsButton" GridPane.rowIndex="3">
-                                 <padding>
-                                    <Insets left="15.0" />
-                                 </padding>
-                              </Button>
-                              <Button fx:id="agenda" mnemonicParsing="false" onAction="#clicBoutonAgenda" opacity="0.0" prefHeight="100.0" prefWidth="140.0" text="AgendaButton" GridPane.rowIndex="2">
-                                 <padding>
-                                    <Insets left="15.0" />
-                                 </padding>
-                              </Button>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Documents" GridPane.rowIndex="3" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Contacts" GridPane.rowIndex="4" />
-                              <Button fx:id="contact" mnemonicParsing="false" onAction="#clicBoutonContact" opacity="0.0" prefHeight="100.0" prefWidth="140.0" text="ContactButton" GridPane.rowIndex="4">
-                                 <padding>
-                                    <Insets left="15.0" />
-                                 </padding>
-                              </Button>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Agenda" GridPane.rowIndex="2" />
-                              <Accordion GridPane.rowIndex="1">
+                              <Button fx:id="tache" layoutY="-2.0" mnemonicParsing="false" onAction="#clicBoutonTache" prefHeight="33.0" prefWidth="212.0" style="-fx-background-color: #F9F9F9;" text="Tâches" />
+                              <Accordion layoutY="31.0" prefHeight="320.0" prefWidth="212.0">
                                  <panes>
                                     <TitledPane animated="false" text="Filtres">
                                        <content>
                                           <VBox prefHeight="200.0" prefWidth="100.0">
                                              <children>
-                                                <Label text="Label" />
+                                                <Label text="Priorité" />
                                                 <Separator prefHeight="29.0" prefWidth="156.0" />
                                                 <RadioButton fx:id="urgente" mnemonicParsing="false" text="Urgente" />
                                                 <Separator prefHeight="13.0" prefWidth="156.0" />
@@ -84,17 +53,24 @@
                                     </TitledPane>
                                     <TitledPane animated="false" text="Liste des tâches">
                                        <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="258.0" prefWidth="180.0">
-                                             <children>
-                                                <ListView fx:id="listViewTache" prefHeight="265.0" prefWidth="200.0" />
-                                             </children>
-                                          </AnchorPane>
+                                          <ScrollPane>
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="508.0" prefWidth="192.0">
+                                                   <children>
+                                                      <ListView fx:id="listViewTache" prefHeight="265.0" prefWidth="200.0" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </ScrollPane>
                                        </content>
                                     </TitledPane>
                                  </panes>
                               </Accordion>
+                              <Button fx:id="agenda" layoutY="351.0" mnemonicParsing="false" onAction="#clicBoutonAgenda" prefHeight="33.0" prefWidth="212.0" style="-fx-background-color: #D8EBDC; -fx-border-color: #587C73;" text="Agenda" />
+                              <Button fx:id="document" layoutY="381.0" mnemonicParsing="false" onAction="#clicBoutonDocuments" prefHeight="33.0" prefWidth="212.0" style="-fx-background-color: #D8EBDC; -fx-border-color: #587C73;" text="Documents" />
+                              <Button fx:id="contact" layoutY="411.0" mnemonicParsing="false" onAction="#clicBoutonContact" prefHeight="31.0" prefWidth="212.0" style="-fx-background-color: #D8EBDC; -fx-border-color: #587C73;" text="Contacts" />
                            </children>
-                        </GridPane>
+                        </Pane>
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="540.0" prefWidth="538.0">

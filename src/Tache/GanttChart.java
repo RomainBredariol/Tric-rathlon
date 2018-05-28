@@ -19,8 +19,6 @@ import javafx.embed.swing.SwingNode;
 
 public class GanttChart {
 
-   private static final long serialVersionUID = 1L;
-   
    private TaskSeries taches;
    IntervalCategoryDataset dataset ;
    
@@ -37,17 +35,11 @@ public class GanttChart {
             "Temps", // Titre abscisse
             dataset);// jeu de donnees à utiliser
       
-     
-     
-      
       ChartPanel panel = new ChartPanel(chart);
       swingNode.setContent((JComponent) pane.add(panel));
       
    }
    
-   
-   
-
    private IntervalCategoryDataset getCategoryDataset() {
       TaskSeriesCollection dataset = new TaskSeriesCollection();
       dataset.add(taches);

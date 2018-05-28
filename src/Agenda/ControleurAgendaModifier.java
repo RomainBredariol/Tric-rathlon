@@ -238,6 +238,7 @@ public class ControleurAgendaModifier {
 		req.Connect("update evenement set nom='" + nom + "', description='" + desc + "', date='" + datePicker.toString()
 				+ "', couleur='" + couleur.toString() + "', heure='" + horraire + "' where heure='" + this.heureId
 				+ "' and date='" + this.dateId + "'");
+		req.Connect("upadte participer set date ='"+datePicker.toString()+"', heure='"+horraire+"' where heure='"+this.heureId+"' and date ='"+this.dateId+"'");
 
 		//contact ajouter ou supprimer
 		int j = 0;
@@ -269,11 +270,6 @@ public class ControleurAgendaModifier {
 
 	@FXML
 	private void clicBoutonAnnuler() {
-		this.date = null;
-		this.nom = null;
-		this.horaires = null;
-		this.description = null;
-		this.couleur = null;
 		mainApp.showAgendaAccueil();
 	}
 

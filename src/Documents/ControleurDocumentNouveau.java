@@ -98,7 +98,6 @@ public class ControleurDocumentNouveau {
 		req.CloseConnexion();
 	}
 
-	//gerer l'erreur
 	@FXML
 	private void clicBoutonEnregistrer() {
 		SqlRequete req = new SqlRequete();
@@ -115,8 +114,6 @@ public class ControleurDocumentNouveau {
 				this.main.showDocumentsAccueil();
 			}
 
-		} else {
-			System.out.println("erreur");
 		}
 		
 		req.CloseConnexion();
@@ -162,14 +159,5 @@ public class ControleurDocumentNouveau {
 		this.main.showDocumentAjout();
 	}
 
-	@FXML
-	private void clicBoutonModifier() {
-
-	}
-
-	@FXML
-	private void clicBoutonSupprimer() {
-
-	}
 
 }
