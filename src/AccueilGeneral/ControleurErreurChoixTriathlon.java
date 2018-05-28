@@ -1,6 +1,6 @@
 package AccueilGeneral;
 
-import Accueil.MainApp;
+import MainApp.MainApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;

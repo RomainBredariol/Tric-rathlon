@@ -1,16 +1,14 @@
 package AccueilGeneral;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-import Accueil.MainApp;
-import BDD.SqlRequete;
+import MainApp.MainApp;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class ControleurConfirmationReset implements Initializable{
+public class ControleurConfirmationReset{
 
 	@FXML
 	private Button boutonAnnuler;
@@ -33,30 +31,18 @@ public class ControleurConfirmationReset implements Initializable{
 	}
 	
 	@FXML
-	private void clicBoutonReset() {
-		SqlRequete req= new SqlRequete();
-		req.Connect("delete from benevoles;");
-		req.Connect("alter table benevoles AUTO_INCREMENT=1;");
-		req.Connect("delete from affecter;");
-		req.Connect("delete from affilier;");
-		req.Connect("delete from détailler;");
-		req.Connect("delete from fichier;");
-		req.Connect("alter table fichier AUTO_INCREMENT=1;");
-		req.Connect("delete from groupe;");
-		req.Connect("alter table groupe AUTO_INCREMENT=1;");
-		req.Connect("delete from posseder;");
-		req.Connect("delete from tache;");
-		req.Connect("alter table tache AUTO_INCREMENT=1;");
-		req.Connect("delete from triathlon;");
-		req.Connect("alter table triathlon AUTO_INCREMENT=1;");
-		req.CloseConnexion();
+	private void clicBoutonReset() throws Exception {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(MainApp.class.getResource("/AccueilGeneral/warningTriathlon.fxml"));
+		Stage stage = new Stage();
+		AnchorPane anchor = (AnchorPane) loader.load();
+		ControleurWarningTriathlon controleur = loader.getController();
+		controleur.setMainApp(this.main);
+		controleur.setfenetre(stage);
+		Scene scene = new Scene(anchor);
+		stage.setScene(scene);
 		this.fenetre.close();
-		this.main.showAccueil();
-	}
-
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
+		stage.show();
 		
 	}
 

@@ -1,17 +1,15 @@
 package Profil;
 
-import Accueil.MainApp;
-import Accueil.modeleAccueil;
 import BDD.SqlRequete;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import MainApp.MainApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class ControleurProfil implements ChangeListener {
+public class ControleurProfil {
 	
 	private MainApp mainApp;
+
 
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp=mainApp;
@@ -61,7 +59,6 @@ public class ControleurProfil implements ChangeListener {
 	private String Prenom;
 	private String Tel;
 	private String Mail;
-	private modeleAccueil modele;
 	
 	//Action bouton modif
 	@FXML
@@ -74,7 +71,6 @@ public class ControleurProfil implements ChangeListener {
 			sql.Connect("update benevoles set nom='"+this.Nom+"', prenom='"+this.Prenom
 					+"', telephone ='"+this.Tel+"', mail='"+this.Mail+"' where id_benevoles=1;");
 			
-			sql.Connect("select * from benevoles;");
 			sql.CloseConnexion();
 			this.mainApp.showProfil();
 
@@ -86,26 +82,15 @@ public class ControleurProfil implements ChangeListener {
 		this.mainApp.showAccueilGeneral();
 	}
 	
-	//la méthode initialize permet de charger ce qu'on lui des qu'on fait appel à cette classe (c'est une sorte de deuxieme constructeur)
+	//la méthode initialize permet de charger ce qu'on lui des qu'on fait appel à cette classe
 	@FXML
 	private void initialize() {
-		
 		SqlRequete requete = new SqlRequete();
 		this.nom.setText(requete.getUneValeurBDD("nom", "benevoles","id_benevoles=1"));
 		this.prenom.setText(requete.getUneValeurBDD("prenom", "benevoles","id_benevoles=1"));
-		this.tel.setText(requete.getUneValeurBDD("telephone", "benevoles","id_benevoles=1"));
-		this.mail.setText(requete.getUneValeurBDD("mail", "benevoles","id_benevoles=1"));
+		this.tel.setPromptText(requete.getUneValeurBDD("telephone", "benevoles","id_benevoles=1"));
+		this.mail.setPromptText(requete.getUneValeurBDD("mail", "benevoles","id_benevoles=1"));
 		requete.CloseConnexion();
-	}
-	
-	
-	//tjr pareil ne pas faire attention
-	@Override
-	public void changed(ObservableValue arg0, Object arg1, Object arg2) {
-		// TODO Auto-generated method stub
 		
 	}
-	
-	
-
 }

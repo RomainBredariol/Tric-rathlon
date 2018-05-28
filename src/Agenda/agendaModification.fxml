@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="636.0" prefWidth="935.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Agenda.ControleurAgendaModifier">
+   <children>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="655.0" prefWidth="825.0" style="-fx-background-color: #587C73;" AnchorPane.bottomAnchor="-19.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <SplitPane dividerPositions="0.17792068595927116" layoutX="1.0" layoutY="48.0" prefHeight="602.0" prefWidth="935.0">
+               <items>
+                  <AnchorPane prefHeight="394.0" prefWidth="213.0">
+                     <children>
+                        <Pane prefHeight="600.0" prefWidth="212.0" style="-fx-background-color: #D8EBDC;">
+                           <children>
+                              <Button fx:id="tache" layoutY="-2.0" mnemonicParsing="false" onAction="#clicBoutonTache" prefHeight="33.0" prefWidth="212.0" style="-fx-background-color: #D8EBDC; -fx-border-color: #587C73;" text="Tâches" />
+                              <Button fx:id="agenda" layoutY="31.0" mnemonicParsing="false" onAction="#clicBoutonAgenda" prefHeight="33.0" prefWidth="212.0" style="-fx-background-color: #F9F9F9;" text="Agenda" />
+                              <Accordion layoutY="64.0" prefHeight="319.0" prefWidth="212.0">
+                                 <panes>
+                                    <TitledPane animated="false" prefHeight="338.0" prefWidth="212.0" text="Evenements">
+                                       <content>
+                                          <ScrollPane prefHeight="413.0" prefWidth="210.0">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="682.0" prefWidth="210.0">
+                                                   <children>
+                                                      <ListView fx:id="listViewEvent" accessibleRole="CHECK_BOX" layoutX="-3.0" layoutY="-3.0" prefHeight="690.0" prefWidth="212.0" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </ScrollPane>
+                                       </content>
+                                    </TitledPane>
+                                 </panes>
+                              </Accordion>
+                              <Button fx:id="document" layoutY="386.0" mnemonicParsing="false" onAction="#clicBoutonDocuments" prefHeight="33.0" prefWidth="212.0" style="-fx-background-color: #D8EBDC; -fx-border-color: #587C73;" text="Documents" />
+                              <Button fx:id="contact" layoutY="416.0" mnemonicParsing="false" onAction="#clicBoutonContact" prefHeight="31.0" prefWidth="212.0" style="-fx-background-color: #D8EBDC; -fx-border-color: #587C73;" text="Contacts" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+                  <SplitPane dividerPositions="0.7219973009446694" prefHeight="600.0" prefWidth="650.0">
+                     <items>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="466.0">
+                           <children>
+                              <AnchorPane fx:id="anchorPaneCalendar" layoutY="8.0" minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="437.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefWidth="278.0">
+                           <children>
+                              <Pane prefHeight="590.0" prefWidth="200.0" />
+                              <GridPane layoutX="-2.0" layoutY="-2.0" prefHeight="602.0" prefWidth="204.0" style="-fx-background-color: #D8EBDC;">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints maxHeight="54.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="74.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="61.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="81.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="161.0" minHeight="10.0" prefHeight="116.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="143.0" minHeight="0.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="148.0" minHeight="0.0" prefHeight="41.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="122.0" minHeight="9.0" prefHeight="26.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="131.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="140.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <TextField fx:id="description" text="Entrez une description" translateX="10.0" GridPane.rowIndex="3" />
+                                    <Button fx:id="valider" mnemonicParsing="false" onAction="#clicBoutonValider" text="Valider" GridPane.rowIndex="12">
+                                       <GridPane.margin>
+                                          <Insets left="5.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <Button fx:id="annuler" mnemonicParsing="false" onAction="#clicBoutonAnnuler" text="Annuler" translateX="97.0" GridPane.rowIndex="12">
+                                       <GridPane.margin>
+                                          <Insets left="30.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <DatePicker fx:id="date" prefHeight="31.0" prefWidth="189.0" translateX="10.0" GridPane.rowIndex="5" />
+                                    <ColorPicker fx:id="couleur" translateX="10.0" GridPane.rowIndex="9" />
+                                    <ChoiceBox fx:id="horaires" prefWidth="150.0" translateX="10.0" GridPane.rowIndex="11" />
+                                    <ScrollPane prefHeight="93.0" prefWidth="131.0" GridPane.rowIndex="7">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="507.0" prefWidth="200.0">
+                                             <children>
+                                                <VBox fx:id="vboxListeContact" prefHeight="481.0" prefWidth="185.0" />
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </ScrollPane>
+                                    <Label text="  Description" GridPane.rowIndex="2" />
+                                    <TextField fx:id="nom" prefWidth="191.0" text="Entrez un nom" translateX="10.0" GridPane.rowIndex="1" />
+                                    <Label text="  Nom" />
+                                    <Label text="  Date (JJ/MM/AAAA)" GridPane.rowIndex="4" />
+                                    <Label text="  Contact " GridPane.rowIndex="6" />
+                                    <Label prefHeight="17.0" prefWidth="69.0" text="  Couleur" GridPane.rowIndex="8" />
+                                    <Label text="  Horaires" GridPane.rowIndex="10" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                     </items>
+                  </SplitPane>
+               </items>
+            </SplitPane>
+            <Button fx:id="menu" minHeight="10.0" mnemonicParsing="false" onAction="#clicBoutonMenu" prefHeight="44.0" prefWidth="162.0" style="-fx-background-color: #587C73;" text="Menu" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
